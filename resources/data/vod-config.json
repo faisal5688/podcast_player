@@ -1,0 +1,20 @@
+{
+    "mode": "release",
+    "version": "VOD-6.4",
+    "resources": "resources/",
+    "logging": {
+        "enabled": true,
+        "level": 2,
+        "logger": "LSLogger",
+        "options": {
+            "prefix": "VOD",
+            "logDiv": "#visual-logs"
+        }
+    },
+    "apisrelease": {
+        "coursedata": "data/course-data.json"
+    },
+    "apisdebug": {
+        "coursedata": "data/course-data.json"
+    }
+}

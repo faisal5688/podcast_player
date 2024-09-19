@@ -1,0 +1,60 @@
+﻿.mCS-kpmg-blue {
+    &.mCSB_scrollTools {
+        .mCSB_draggerRail {
+            width: 6px;
+            background-color: #000;
+            background-color: rgba(0,0,0,0.2);
+            background-color: #000;
+            background-color: rgba(0,0,0,0.1);
+        }
+        .mCSB_dragger {
+            .mCSB_dragger_bar {
+                width: 6px;
+                background-color: #99BFE3;
+                background-color: rgba(153,191,227,0.75);
+            }
+            &:hover {
+                .mCSB_dragger_bar {
+                    background-color: #99BFE3;
+                    background-color: rgba(153,191,227,0.85);
+                }
+            }
+        }
+        .mCSB_buttonUp {
+            background-position: -112px -72px;
+        }
+        .mCSB_buttonDown {
+            background-position: -112px -92px;
+        }
+        .mCSB_buttonLeft {
+            background-position: -120px -112px;
+        }
+        .mCSB_buttonRight {
+            background-position: -120px -128px;
+        }
+    }
+}
+
+.mCS-kpmg-blue.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar, 	
+	.mCS-kpmg-blue.mCSB_scrollTools_horizontal .mCSB_draggerRail {
+    width: 100%;
+    height: 6px;
+    margin: 5px 0;
+}
+
+.mCS-kpmg-blue.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded + .mCSB_draggerRail, 
+	.mCS-kpmg-blue.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_draggerRail {
+    width: 12px;
+}
+
+.mCS-kpmg-blue.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded + .mCSB_draggerRail, 
+	.mCS-kpmg-blue.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_draggerRail {
+    height: 12px;
+    margin: 2px 0;
+}
+
+.mCS-kpmg-blue.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+	.mCS-kpmg-blue.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+    background-color: #99BFE3;
+    background-color: rgba(153,191,227,0.9);
+}

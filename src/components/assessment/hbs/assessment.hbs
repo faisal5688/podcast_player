@@ -1,0 +1,93 @@
+<div class="startAssessment">
+    <div class="startAssessment-container">
+        <div class="leftBox">
+
+        </div>
+        <div class="rightBox">
+            <div class="title">{{{startPage.title}}}</div>
+            <hr class="startAssessmentLine">
+            <div class="content">{{{startPage.content}}}</div>
+            <div class="start-btn">{{{startPage.button}}}</div>
+            <div class="closeBtn resultCloseBtn">X</div>
+        </div>
+    </div>
+</div>
+<div class="assessment">
+    <div class="assessmentCloseBtn">X</div>
+    <div class="question-container">
+        <div class="page-number">
+            <div class="index">Q.</div>
+            {{#ifCond APP_MODE "==" "debug"}}
+            <div class="question-number"> {{{NumCurrentQuestionDisplay}}} of {{{NumOfQuestionToDisplay}}}</div>
+            {{/ifCond}}
+        </div>
+
+        <div class="question-text">{{{currentQuestionData.question}}}</div>
+    </div>
+    <div class="question-data">
+        <div class="instruction">{{{currentQuestionData.instruction}}}</div>
+
+        <div class="options">
+            {{#each currentMCQData.choices.choice}}
+                <div class="option">
+                    {{#ifCond ../APP_MODE "==" "debug"}}<span>{{{correct}}}</span>{{/ifCond}}
+                    <input type="radio" class="ck-option" name="ck-option" id="{{@index}}" value={{@index}}>
+                    <label for="{{@index}}">{{{cdata-section}}}</label>
+                </div>
+            {{/each}}
+        </div>
+        <div class="btn-container">
+            <button class="ck-submit-btn disabled" disabled>{{{currentMCQData.button.submit}}}</button>
+            <button class="ck-back-btn" disabled>{{{currentMCQData.button.back}}}</button>
+        </div>
+    </div>
+</div>
+<div class="feedback-container">
+    <div class="feedback">
+        <div class="title">{{current.feedback.title}}</div>
+        <hr>
+        <div class="content"></div>
+        <div class="btn-container">
+            <button class="ck-continue-btn">{{current.continue}}</button>
+            <button class="ck-try-again-btn">{{current.tryagain}}</button>
+        </div>
+    </div>
+</div>
+
+<!-- RESULT PAGE -->
+<div id="assessmentResultPage" class="assesmentShadow assessmentResultPage">
+    <div class="assessmentHeader">
+        <div class="titleText">{{{resultPage.pageTitle}}}</div>
+        <div class="closeBtn">X</div>
+    </div>
+    <div id="assessmentResultContent" class="resultMain">
+        <div class="resultTop">
+            <div class="iconImage"><img src="resources/image/assessmentIcon.png" alt="" class="resourceImageIcon"></div>
+            <hr class="resultDivideLine">
+            <div class="resultText"></div>
+        </div>
+        <div class="resultMiddle">
+            <div class="resultgrad">
+                <ul class="scoreDisplay">
+                    <li id="resultLabel" class="result">Result</li>
+                    <li id="assessmentUserStatus" class="box">{{{assessmentUserStatus}}}</li>
+                    <li id="scoreLabel" class="failpass">Score</li>
+                    <li id="assessmentUserScore" class="box">{{{userPercent}}}</li>
+
+                </ul>
+            </div>
+
+        </div>
+        <div class="resultfooter">
+            <div class="infoText"></div>
+            <div class="remedialContainer">
+                <div id="remedialContent" class="showRemedial"></div>
+            </div>
+            <div id="showRemedialBtn" class="showRemedialShow" title="Show Remedial" style="display: none;">Show
+                Detailed Feedback</div>
+            <div id="hideRemedialBtn" class="showRemedialHide" title="Hide Remedial" style="display: none;">Hide
+                Detailed Feedback</div>
+
+        </div>
+    </div>
+</div>

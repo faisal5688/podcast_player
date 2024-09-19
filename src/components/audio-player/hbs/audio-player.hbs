@@ -1,0 +1,17 @@
+<div id="uiBlocker" class="ui-blocker">
+    <div class="loading-text">{{{messages.loading}}}</div>
+</div>
+<div class="playlist-container"></div>
+<div class="player-container{{#if playlist.currentitem.description}}{{else}} no-description{{/if}}">
+    <div class="video-container">
+        <video id="{{audioid}}" class="video-js vjs-default-skin vjs-big-play-centered" oncontextmenu="return false" data-setup='{"inactivityTimeout":0,"controls":true,"textTrackSettings: false,html5":{"nativeTextTracks":false},"controlBar":{"progressControl":{"seekBar":false},"muteToggle":false,"fullscreenToggle":false,"volumeMenuButton":{"inline":false,"vertical":true}}}' playsinline>
+            <source src="{{options.src}}" type="video/mp4" />
+            <p class="vjs-no-js">{{{messages.nosupport}}}</p>
+        </video>
+    </div>
+
+    <div class="description">
+        <div class="desc-title">{{playlist.currentitem.title}}</div>
+        <div class="desc-text">{{playlist.currentitem.description}}</div>
+    </div>
+</div>

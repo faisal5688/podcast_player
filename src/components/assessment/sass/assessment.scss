@@ -1,0 +1,906 @@
+﻿@import "sass/variables";
+@import "sass/mixins";
+@import "sass/knowledgeChkButtons";
+
+.assessment-container {
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 45px);
+    top: 45px;
+    z-index: 1;
+    display: none;
+    overflow-y: auto;
+    background-color: rgba($colorWhite, 0.98);
+
+    .startAssessment {
+        position: absolute;
+        width: 80%;
+        height: 57%;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        background-color: $colorBlue;
+        color: $colorWhite;
+
+        .startAssessment-container {
+            width: 100%;
+            height: 100%;
+            background: $colorGrayE5;
+            color: $colorBlue;
+            display: table;
+
+
+
+            .leftBox {
+                width: 37%;
+                height: 100%;
+                background: $colorGreen;
+                border: 0px solid $colorBlue;
+                text-align: center;
+                display: table-cell;
+                box-sizing: border-box;
+                vertical-align: top;
+                overflow: hidden;
+                background-image: url(../resources/image/assessmentImage.png);
+                background-repeat: no-repeat, repeat;
+                background-size: cover;
+            }
+
+            .rightBox {
+                height: 300px;
+                display: table-cell;
+                vertical-align: top;
+                padding-bottom: $fontSizeLarge;
+                padding-left: $fontSizeLarge;
+                padding-right: $fontSizeLarge;
+                padding-top: 12px;
+                position: relative;
+                border: 0px solid $colorBlue;
+                width: 59%;
+
+                .title {
+                    float: left;
+                    font-size: $fontSizeLarge;
+                    margin-right: 30px;
+                    color: $colorBlue;
+                    width: 100%;
+                }
+
+                .startAssessmentLine {
+                    width: 100%;
+                    float: left;
+                    opacity: 0.5;
+                    border-bottom: 1px solid $colorBlue;
+                }
+
+                .closeBtn {
+                    padding: 5px;
+                    position: absolute;
+                    right: 1%;
+                    top: 1%;
+                    cursor: pointer;
+                    // display: none;
+
+                    font-size: 25px;
+                    padding: 5px 15px;
+                    background-color: #00338d;
+                    color: #ffffff;
+                }
+
+                .start-btn {
+                    padding: 5px 25px;
+                    float: left;
+                    margin-top: 30px;
+                    background: $colorPurple;
+                    color: $colorWhite;
+                    font-size: $fontSizeStandard;
+                    cursor: pointer;
+
+                    &.disabled {
+                        background: $colorGray60;
+                        color: $colorGray94;
+                        cursor: default;
+                    }
+                }
+
+                .content {
+                    font-size: $fontSizeStandard;
+
+                    p {
+                        margin: 0px
+                    }
+
+                    .instText {
+                        color: $colorPurple;
+                        font-style: italic;
+                    }
+                }
+            }
+        }
+    }
+
+    .assessment {
+        position: absolute;
+        width: 80%;
+        height: 80%;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        padding: 20px;
+        background-color: #dddddd;
+        color: $colorWhite;
+        display: none;
+
+        .assessmentCloseBtn {
+            position: absolute;
+            right: 0px;
+            cursor: pointer;
+            font-size: 25px;
+            top: 0%;
+            padding: 5px 15px;
+            background-color: $colorBlue;
+        }
+
+        .question-container {
+            width: $fullWidth;
+
+            .index {
+                @include floatLeft;
+                width: 7%;
+                color: #00338d;
+                font-size: 54px;
+                line-height: 32px;
+                padding-top: 10px;
+                position: absolute;
+                top: 25px;
+                left: 10px;
+            }
+
+            .question-number {
+                position: absolute;
+                top: 78px;
+                left: 14px;
+                width: 65px;
+            }
+
+            .page-number {
+                position: absolute;
+                top: 5px;
+                left: 20px;
+            }
+
+            .question-text {
+                @include floatLeft;
+                width: 100%;
+                font-size: $fontSizeStandard;
+                font-weight: bold;
+                color: $colorBlue;
+                line-height: 18px;
+                padding: 25px 50px 25px 8%;
+                margin-top: 0px;
+                text-align: justify;
+                box-sizing: border-box;
+            }
+        }
+
+        .question-data {
+            @include floatLeft;
+            padding-left: 8%;
+            width: 100%;
+            box-sizing: border-box;
+
+            .instruction {
+                font-style: italic;
+                width: $fullWidth;
+                color: $colorPurple;
+                font-size: $fontSizeStandard;
+                margin-bottom: $fontSizeLarge;
+                border-bottom: 1px solid $colorBlue;
+                padding-bottom: 8px;
+            }
+
+            hr {
+                @include marginCommonProperty;
+                width: 100%;
+                border-bottom: 1px solid rgba($colorWhite, 0.5);
+            }
+        }
+
+        .options {
+            .option {
+                width: $fullWidth;
+                height: auto;
+                min-height: 30px;
+                box-sizing: border-box;
+                padding-right: 0px;
+                padding-bottom: $fontSizeMicro;
+                position: relative;
+                text-align: justify;
+                display: flex;
+
+                .ck-option {
+                    background: $colorBlack;
+                }
+
+                span{
+                    padding-right: 10px;
+                }
+                label {
+                    font-size: $fontSizeStandard;
+                    color: $colorWhite;
+                    line-height: $fontSizeMidium;
+                }
+
+                &.correct::after {
+                    @include tickMark;
+                }
+
+                &.incorrect::after {
+                    @include crossMark;
+                }
+
+                [type="radio"] {
+                    &:checked+label {
+                        &:before {
+                            background: $colorLightBlue;
+                        }
+                    }
+
+                    &:not(:checked)+label {
+                        &:before {
+                            background: $colorLightBlue;
+                        }
+                    }
+
+                    &:checked {
+                        + {
+                            label {
+                                &:before {
+                                    height: 14px;
+                                    background: $colorWhite;
+                                }
+
+                                color: $colorBlue;
+                            }
+                        }
+                    }
+
+                    &:not(:checked) {
+                        + {
+                            label {
+                                &:before {
+                                    height: $fontSizeMini;
+                                    background: $colorWhite;
+                                }
+
+                                color: $colorBlue;
+                            }
+                        }
+                    }
+                }
+            }
+
+            @include radioButtonStyle;
+            @include checkButtonStyle;
+        }
+
+        .btn-container {
+            .ck-back-btn,
+            .ck-submit-btn {
+                @include submitButton;
+                @include underlineFromLeft;
+                color: $colorWhite;
+                background-color: $colorPurple;
+                padding: 5px 20px;
+                margin-top: $fontSizeLarge;
+                font-size: $fontSizeStandard;
+            }
+            .ck-back-btn.disabled,
+            .ck-submit-btn.disabled {
+                background: $colorGray60;
+                color: $colorGray94;
+                cursor: default;
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    z-index: -1;
+                    background: none;
+                    transition-property: none;
+                }
+
+                &:hover:before,
+                &:focus:before,
+                &:active:before {
+                    right: 0;
+                    cursor: default;
+                }
+            }
+        }
+    }
+
+    .feedback-container {
+        @include commonProperty;
+        background-color: rgba(255, 255, 255, 0.5);
+        z-index: 0;
+        overflow: hidden;
+
+        .feedback {
+            @include feedbackCommonProperty;
+            display: none;
+            background: $colorWhite;
+            min-height: 120px;
+            padding: $fontSizeLarge;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+
+            hr {
+                @include marginCommonProperty;
+                width: $fullWidth;
+                border-bottom: 1px solid $colorBlue;
+            }
+
+            .title {
+                color: $colorBlue;
+                font-size: $fontSizeBitLarger;
+            }
+
+            .content {
+                color: $colorGray20;
+                font-size: $fontSizeMini;
+                line-height: $fontSizeMidium;
+                padding-bottom: $fontSizeMicro;
+            }
+
+            .btn-container {
+                color: $colorWhite;
+
+                .ck-continue-btn {
+                    @include submitButton;
+                    @include underlineFromLeft;
+                    display: none;
+                    color: $colorWhite;
+                    background-color: $colorOrange;
+
+                    &:before {
+                        background: $colorBlue;
+                    }
+                }
+
+                .ck-try-again-btn {
+                    @extend .ck-continue-btn;
+                }
+            }
+        }
+    }
+
+    .assesmentShadow {
+        display: none;
+        position: absolute;
+        width: 70%;
+        height: 80%;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        border: 0px solid $colorMediumBlue;
+        color: $colorWhite;
+        background-color: $colorGrayE5;
+
+        .assessmentHeader {
+            color: $colorWhite;
+            text-align: center;
+            background-color: $colorPurple;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .closeBtn {
+                padding: 5px;
+                position: absolute;
+                right: 1%;
+                top: 1%;
+                cursor: pointer;
+                font-size: $fontSizeBitLarger;
+            }
+
+            .titleText {
+                color: $colorWhite;
+                font-size: $fontSizeMidium;
+                text-align: center;
+            }
+        }
+
+        .resultMain {
+            position: relative;
+            width: 100%;
+            height: 90%;
+            background: transparent;
+
+            .resultTop {
+                margin-bottom: 3px;
+                text-align: center;
+                width: 100%;
+                height: auto;
+                color: $colorBlue;
+
+                .resultDivideLine {
+                    width: 75%;
+                    opacity: 0.5;
+                    height: 1px;
+                    background-color: $colorBlue;
+                }
+
+                .resultText {
+                    line-height: 2px;
+                    padding: 5px 0 20px;
+                }
+
+                .iconImage {
+                    img {
+                        margin-top: 20px;
+                    }
+                }
+            }
+
+            .resultMiddle {
+                height: auto;
+                overflow: auto;
+                position: relative;
+                width: 63%;
+                background: $colorWhite;
+                left: 20%;
+
+                .resultgrad {
+                    float: left;
+                    margin: 0 auto;
+                    width: 100%;
+                    padding: 0 15px;
+                    box-sizing: border-box;
+
+                    .scoreDisplay {
+                        display: table;
+                        margin: 20px auto;
+                        padding-left: 0;
+
+                        li {
+                            display: table-cell;
+                            margin-right: $fontSizeLarge;
+                            padding: 0 10px;
+                            vertical-align: middle;
+                            text-align: center;
+                        }
+
+                        div {
+                            color: $colorWhite;
+                            float: left;
+                            height: 30px;
+                            padding: 3% 0 0 2%;
+                            text-align: center;
+                            width: 22%
+                        }
+
+                        .box {
+                            color: $colorWhite;
+                            font-weight: bold;
+                            text-align: center;
+                            width: 30%;
+                            background: $colorPurple;
+                            border: 1px solid #94a3b5;
+                            height: 35px;
+                        }
+
+                        .result {
+                            padding-right: 35px;
+                            padding-left: 0px;
+                        }
+
+                        .failpass {
+                            padding-right: 35px;
+                            padding-left: 35px;
+                        }
+
+                        .result,
+                        .failpass {
+                            color: $colorBlue;
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+
+            .resultfooter {
+                width: 100%;
+
+                .infoText {
+                    margin-bottom: 3px;
+                    text-align: center;
+                    width: 100%;
+                    height: auto;
+                    color: $colorBlue;
+                    margin-top: 40px;
+                }
+
+                .remedialContainer {
+
+                    .remediaHeader {
+                        color: $colorWhite;
+                        background: $colorLightBlue;
+                        font-size: $fontSizeMidium;
+                        line-height: 26px;
+                        padding-bottom: 7px;
+                        padding-left: 22px;
+                        padding-right: 22px;
+                        padding-top: 7px;
+                        text-align: center;
+                    }
+
+                    .showRemedial {
+                        position: absolute;
+                        top: 0;
+                        display: none;
+                        height: calc(100% - 79px);
+                        padding: 20px;
+                        color: $colorBlack;
+                        overflow-x: hidden;
+                        -webkit-overflow-scrolling: touch;
+                        line-height: 18px;
+                        width: 100%;
+                        box-sizing: border-box;
+
+                        .questContainer {
+                            border-bottom: 2px solid #8099c6;
+                            padding: 10px 0;
+                            border-bottom: none;
+                            padding: 10px 0 20px;
+
+                            span.textSpacing {
+                                &:nth-child(2) {
+                                    display: block;
+                                    padding-top: 10px;
+                                    padding-bottom: 5px;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .showRemedialHide,
+                .showRemedialShow {
+                    background: $colorBlue;
+                    color: $colorWhite;
+                    float: left;
+                    cursor: pointer;
+                    font-weight: bold;
+                    line-height: 32px;
+                    margin-left: 20px;
+                    position: absolute;
+                    bottom: 0;
+                }
+
+                .showRemedialHide {
+                    right: 0;
+                    left: 0;
+                    padding: 5px 25px 2px;
+                    width: 238px;
+                    box-sizing: border-box;
+                    margin: 0 auto;
+                    position: absolute;
+                    float: none;
+                }
+
+                .showRemedialShow {
+                    right: 0;
+                    left: 0;
+                    padding: 5px 25px 2px;
+                    width: 238px;
+                    box-sizing: border-box;
+                    margin: 0 auto;
+                    position: absolute;
+                    float: none;
+                }
+            }
+        }
+
+        &.detailed_feedback {
+            color: $colorGray20;
+            background: $colorWhite;
+
+            .showRemedial {
+                color: $colorGray20;
+                background: $colorWhite;
+            }
+
+            .resultMain {
+                .resultTop {
+                    color: $colorGray20;
+                }
+            }
+        }
+    }
+}
+
+
+/* media queries*/
+
+// mobile both
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .assessment-container {
+        height: calc(100% - 40px);
+        top: 40px;
+
+        .assessment {
+            position: absolute;
+            width: calc(100% - 40px);
+            height: calc(100% - 40px);
+            left: 0;
+            top: 0;
+            padding: 0px;
+            color: $colorWhite;
+
+            .question-container {
+                .page-number {
+                    width: 7%;
+                    top: 10px;
+
+                    .index {
+                        font-size: $fontSizeExtraLarge;
+                        line-height: $fontSizeExtraLarge;
+                    }
+                }
+
+            }
+        }
+
+        .feedback-container {
+            .feedback {
+                min-height: 140px;
+                width: 80%;
+            }
+        }
+    }
+}
+
+// Mobile Landscape
+@media only screen and (max-width: 767px) and (orientation: landscape) {
+    .assessment-container {
+        height: calc(100% - 40px);
+        top: 40px;
+
+        .assessment {
+            width: calc(100% - 40px);
+            height: calc(100% - 40px);
+
+            .question-data {
+                padding-left: 10%;
+            }
+        }
+
+        .feedback-container {
+            .feedback {
+                width: calc(100% - 90px);
+                transform: translate(-50%, -10%);
+            }
+        }
+    }
+}
+
+// iPad landscape
+@media only screen and (max-width: 1024px) and (orientation: landscape) {
+    .assessment-container {
+        top: 40px;
+
+        .assessment {
+            .question-container {
+                .page-number {
+                    left: 10px;
+                    top: 10px;
+
+                    .index {
+                        width: 10%;
+                        left: 0;
+                    }
+                }
+            }
+
+            .question-data {
+                padding-left: 8%;
+            }
+        }
+
+        .feedback-container {
+            .feedback {
+                width: calc(60% - 60px);
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+}
+
+// iPad portrait
+@media only screen and (min-width: 768px) and (orientation: portrait) {
+    .assessment-container {
+        height: calc(100% - 45px);
+        top: 45px;
+
+        .assessment {
+            .question-container {
+                .index {
+                    width: 10%;
+                    font-size: $headerFontSize;
+                }
+            }
+
+            .question-data {
+                padding-left: 10%;
+            }
+        }
+
+        .feedback-container {
+            .feedback {
+                transform: translate(-50%, -10%);
+            }
+        }
+    }
+}
+
+// custom
+@media screen and (max-width: 768px) {
+    .assessment-container {
+        .startAssessment {
+            .startAssessment-container {
+                .leftBox {
+                    width: 100%;
+                    display: block;
+                    height: 300px;
+                }
+
+                .rightBox {
+                    width: 100%;
+                    height: 410px;
+                    display: block;
+                    background: $colorBlue;
+                    color: $colorWhite;
+                    box-sizing: border-box;
+                    padding: 20px;
+
+                    .start-btn {
+                        top: auto;
+                        bottom: 10px;
+                        right: 40%;
+                    }
+                }
+            }
+        }
+
+        .assessment {
+            .question-container {
+                .question-text {
+                    padding: 25px 20px 45px 90px;
+                }
+
+                .page-number {
+                    width: 58px;
+
+                    .index {
+                        font-size: 55px;
+                    }
+                }
+            }
+        }
+
+        .assesmentShadow {
+            height: 680px;
+
+            .resultMain {
+                height: 522px;
+
+                .resultTop {
+                    .resultText {
+                        p {
+                            margin-bottom: 20px;
+                            line-height: 20px;
+                        }
+                    }
+                }
+
+                .resultMiddle {
+                    width: 92%;
+                    left: 4%;
+
+                    .resultgrad {
+
+                        .scoreDisplay {
+                            display: block;
+                            padding: 0 20px;
+                            width: 100%;
+                            box-sizing: border-box;
+
+                            .result {
+                                display: block;
+                                width: 100%;
+                                box-sizing: border-box;
+                                padding: 10px;
+                            }
+
+                            .box {
+                                height: auto;
+                                display: block;
+                                margin: 0 auto;
+                                padding: 5px;
+                            }
+
+                            .failpass {
+                                display: block;
+                                width: 100%;
+                                box-sizing: border-box;
+                                padding: 10px;
+                            }
+                        }
+                    }
+                }
+
+                .resultfooter {
+
+                    .remedialContainer {
+                        .showRemedial {
+                            height: calc(100% - 42px);
+                        }
+                    }
+
+                    .showRemedialHide {
+                        position: relative;
+                    }
+
+                    .showRemedialShow {
+                        position: relative;
+                    }
+                }
+            }
+        }
+
+
+    }
+
+}
+
+@media screen and (max-height: 600px) {
+    .startAssessment {
+        .startAssessment-container {
+            .resultCloseBtn{
+                position: absolute;
+                right: 0px;
+                cursor: pointer;
+                font-size: 25px;
+                top: 0%;
+                padding: 5px 15px;
+                background-color: #00338d;
+            }
+            .leftBox {
+                width: 100%;
+                height: 300px;
+            }
+
+            .rightBox {
+                width: 100%;
+                height: 387px;
+                background: $colorBlue;
+                color: $colorWhite;
+                box-sizing: border-box;
+                padding: 20px;
+
+                .start-btn {
+                    top: auto;
+                    bottom: 10px;
+                    right: 40%;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,38 @@
+<div class="knowledge-check">
+    <div class="knowledge-check-header">
+         {{current.index}}/{{{current.total}}}
+    </div>
+    <div class="question-container">
+        {{!--
+        <div class="index">{{current.idx}}</div> --}}
+        <div class="index">Q.</div>
+        <div class="question-text">{{{current.question}}}</div>
+    </div>
+    <div class="question-data">
+        <div class="instruction">{{{current.instruction}}}</div>
+        <hr>
+        <div class="options">
+            {{#each current.options}}
+                <div class="option">
+                    <input type="{{../current.inputtype}}" class="kc-option" name="kc-option" id="{{id}}" value={{id}}>
+                    <label for="{{id}}">{{{text}}}</label>
+                </div>
+            {{/each}}
+        </div>
+        <div class="btn-container">
+            <button class="ck-submit-btn disabled" disabled>{{current.submit}}</button>
+        </div>
+    </div>
+</div>
+<div class="feedback-container">
+    <div class="feedback">
+        <div class="title">{{current.feedback.title}}</div>
+        <hr>
+        <div class="content"></div>
+        <div class="btn-container">
+            <button class="ck-continue-btn">{{current.continue}}</button>
+            <button class="ck-try-again-btn">{{current.tryagain}}</button>
+            <button class="ck-next-btn">{{current.next}}</button>
+        </div>
+    </div>
+</div>

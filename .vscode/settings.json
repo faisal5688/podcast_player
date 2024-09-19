@@ -1,0 +1,46 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/debug.log": true,
+        "**/node_modules": true,
+        "**/.DS_Store": true,
+        "js/": true
+    },
+    "editor.tabSize": 4,
+    "editor.foldingStrategy": "indentation",
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.minimap.renderCharacters": false,
+    "files.trimTrailingWhitespace": true,
+    "editor.autoClosingQuotes": "always",
+    "editor.showFoldingControls": "always",
+    "js/ts.implicitProjectConfig.experimentalDecorators": true,
+    "editor.detectIndentation": false,
+    "html.format.indentHandlebars": true,
+    "editor.autoIndent": "full",
+    "html.format.enable": true,
+    "diffEditor.renderSideBySide": true,
+    "window.zoomLevel": 0,
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    "task.slowProviderWarning": [
+        "npm"
+    ],
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    "[handlebars]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "editor.wordWrapColumn": 150,
+    "json.schemaDownload.enable": false
+}

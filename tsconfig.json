@@ -1,0 +1,24 @@
+{
+    "include": [
+        "./src/**/*"
+    ],
+    "exclude": [
+        "./src/**/cvs/*"
+    ],
+    "lib": [
+        "dom",
+        "es5",
+        "scripthost",
+        "es2015.iterable"
+    ],
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "target": "es5",
+        "outFile": "./js/app.js",
+        "module": "none",
+        "noImplicitAny": false,
+        "removeComments": true,
+        "inlineSourceMap": true,
+        "inlineSources": true
+    }
+}

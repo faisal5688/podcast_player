@@ -1,0 +1,475 @@
+﻿@import "sass/variables";
+@import "sass/mixins";
+
+@-webkit-keyframes toFullWidth {
+    from {
+        width: 75%
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes toFullWidth {
+    from {
+        width: 75%
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@-webkit-keyframes toSmallWidth {
+    from {
+        width: 100%
+    }
+
+    to {
+        width: 75%;
+    }
+}
+
+@keyframes toSmallWidth {
+    from {
+        width: 100%
+    }
+
+    to {
+        width: 75%;
+    }
+}
+
+.audio-player {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: relative;
+    overflow: hidden;
+
+    .ui-blocker {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+        background-color: rgba(0, 0, 0, 0.5);
+
+        .loading-text {
+            color: #FFF;
+            text-align: center;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+
+    .player-container {
+        float: left;
+        position: absolute;
+        width: calc(40% - 20px);
+        height: calc(10% - 20px);
+        padding: 10px;
+        right: 0%;
+        top: 60%;
+        // bottom: 9%;
+        display: block !important; //hide player
+
+        .video-container {
+            height: 80%;
+            position: relative;
+            box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+
+            .video-js {
+                height: 100%;
+                width: 100%;
+
+                .center-align {
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+
+                .vjs-text-track-display {
+                    &.empty-captions {
+                        :first-child {
+                            :first-child {
+                                :first-child {
+                                    padding: 0;
+                                }
+                            }
+                        }
+                    }
+
+                    div {
+                        font-size: 1.2em !important;
+                        font-family: Arial !important;
+                    }
+
+                    :first-child {
+                        :first-child {
+                            :first-child {
+                                background-color: rgba(0, 0, 0, 0.5) !important;
+                                border-radius: 5px;
+                                padding: 0 10px;
+                            }
+                        }
+                    }
+                }
+
+                .vjs-time-control {
+                    font-size: 1.4em;
+                    line-height: 2em;
+                }
+
+                .vjs-control-bar {
+                    background-color: rgba(43, 51, 63, 0.25);
+
+                    .vjs-progress-control {
+                        .vjs-scrub-blocker {
+                            position: absolute;
+                            left: 9px;
+                            top: 0;
+                            width: calc(100% - 10px);
+                            height: 100%;
+                            z-index: 10;
+                            cursor: default;
+                        }
+
+                        .vjs-load-progress {
+                            div {
+                                background: #8ca6b3;
+                            }
+                        }
+
+                        .vjs-play-progress {
+                            &:before {
+                                color: $colorPink;
+                                font-size: 1.2em;
+                            }
+
+                            @media all and (-ms-high-contrast:none) {
+                                &:before {
+                                    color: $colorPink;
+                                    font-size: 1.4em;
+                                }
+                            }
+                        }
+
+                        .vjs-mouse-display {
+                            .vjs-time-tooltip {
+                                display: none;
+                            }
+                        }
+                    }
+
+                    .vjs-progress-holder {
+                        height: 0.5em;
+                    }
+
+                    .vjs-button {
+                        cursor: pointer;
+
+                        &.hide {
+                            display: none;
+                        }
+
+                        &:hover {
+                            color: $colorPink;
+                        }
+
+                        &::before {
+                            font-size: 2.8em;
+                            line-height: 29px;
+                        }
+
+                        &.vjs-icon-replay {
+                            transform: scaleX(-1);
+                        }
+
+                        &.vjs-captions-button,
+                        &.vjs-subs-caps-button {
+                            display: none;
+                        }
+
+                        &.vjs-icon-toggle-captions {
+                            &:before {
+                                content: 'a';
+                                color: rgba(255, 255, 255, 0);
+                            }
+
+                            &.captions-enabled {
+                                background: url(../resources/image/captions_icon.png) no-repeat 0 0;
+
+                                &:hover {
+                                    background: url(../resources/image/captions_icon.png) no-repeat -40px 0;
+                                }
+                            }
+
+                            &.captions-disabled {
+                                background: url(../resources/image/captions_icon.png) no-repeat -80px 0;
+
+                                &:hover {
+                                    background: url(../resources/image/captions_icon.png) no-repeat -120px 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .description {
+            background-color: #FFF;
+            height: calc(20% - 25px);
+            padding: 10px 10px 5px 10px;
+            position: relative;
+            margin-top: 10px;
+            box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+
+            .desc-title {
+                color: $colorBlue;
+                border-bottom: 1px solid #AAA;
+                padding-bottom: 5px;
+                font-weight: bold;
+            }
+
+            .desc-text {
+                color: $colorBlack;
+                padding-top: 5px;
+                height: calc(100% - 30px);
+                text-align: justify;
+            }
+        }
+
+        &.to-full-width {
+            width: 75%;
+            -webkit-animation: toFullWidth 0.3s 1 ease-in;
+            animation: toFullWidth 0.3s 1 ease-in;
+        }
+
+        &.to-small-width {
+            width: 100%;
+            -webkit-animation: toSmallWidth 0.3s 1 ease-in;
+            animation: toSmallWidth 0.3s 1 ease-in;
+        }
+
+        &.no-description {
+            padding: 10px;
+
+            .video-container {
+                height: 100%;
+            }
+
+            .description {
+                display: none;
+            }
+        }
+
+        &.fullWidth {
+            width: calc(100% - 20px);
+        }
+    }
+}
+
+
+/* media queries*/
+
+@media all and (-ms-high-contrast:none) {
+    .vjs-button {
+        &::before {
+            font-size: 0.6em;
+        }
+    }
+}
+
+// mobile protrait
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .audio-player {
+        .player-container {
+            width: 100%;
+            padding: 0px;
+            height: inherit;
+
+            .video-container {
+                width: 100%;
+                padding: 0px;
+                height: calc(47% - 20px);
+
+                .video-js {
+                    .vjs-control-bar {
+                        .vjs-progress-control {
+                            .vjs-mouse-display {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .description {
+                height: calc(53% - 5px);
+            }
+
+            &.fullWidth {
+                width: 100%;
+                animation-name: none;
+            }
+
+            &.to-full-width {
+                width: 100%;
+                -webkit-animation: none;
+                animation: none;
+            }
+
+            &.to-small-width {
+                width: 100%;
+                -webkit-animation: none;
+                animation: none;
+            }
+
+            &.no-description {
+                padding: 0px;
+            }
+        }
+    }
+}
+
+// MOBILE LANDSCAPE
+@media only screen and (min-width: 1px) and (max-width: 767px) and (orientation: landscape) {
+    .audio-player {
+        .player-container {
+            width: 100%;
+            height: 10%;
+            padding: 0px;
+
+            .video-container {
+                width: calc(75% - 20px);
+                display: inline-block;
+                height: 100%;
+
+                .video-js {
+                    height: 100%;
+                    width: 100%;
+
+                    .vjs-control-bar {
+                        .vjs-progress-control {
+                            .vjs-mouse-display {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .description {
+                width: 25%;
+                float: right;
+                height: calc(100% - 15px);
+                margin: 0;
+
+                .desc-text {
+                    height: calc(100% - 45px);
+                }
+            }
+
+            &.fullWidth {
+                width: 100%;
+                animation-name: none;
+            }
+
+            &.to-full-width {
+                width: 100%;
+                -webkit-animation: none;
+                animation: none;
+            }
+
+            &.to-small-width {
+                width: 100%;
+                -webkit-animation: none;
+                animation: none;
+            }
+
+            &.no-description {
+                width: 100%;
+                padding: 0px;
+
+                .video-container {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+// iPad portrait
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    .audio-player {
+        overflow: auto;
+
+        .player-container {
+            width: calc(100% - 20px);
+            height: calc(10% - 20px);
+
+            .video-container {
+                height: 74%;
+
+                .video-js {
+                    .vjs-control-bar {
+                        .vjs-progress-control {
+                            .vjs-mouse-display {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .description {
+                height: calc(26% - 25px);
+            }
+
+            &.to-full-width {
+                width: calc(100% - 20px);
+                -webkit-animation: none;
+                animation: none;
+            }
+
+            &.to-small-width {
+                width: calc(100% - 20px);
+                -webkit-animation: none;
+                animation: none;
+            }
+
+            &.fullWidth {
+                width: calc(100% - 20px);
+
+                &.no-description {
+                    height: calc(100% - 20px);
+                }
+            }
+
+
+        }
+    }
+}
+
+// iPad Landscape
+@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .audio-player {
+        .player-container {
+            .video-js {
+                .vjs-control-bar {
+                    .vjs-progress-control {
+                        .vjs-mouse-display {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,421 @@
+﻿@import "sass/variables";
+@import "sass/mixins";
+@import "sass/knowledgeChkButtons";
+
+.knowledge-check-container {
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 45px);
+    top: 45px;
+    z-index: 1;
+    display: none;
+    overflow-y: auto;
+    background-color: rgba($colorBlack, 0.20);
+
+    .feedback-container {
+        @include commonProperty;
+        background-color: rgba(255, 255, 255, 0.5);
+        z-index: 0;
+        overflow: hidden;
+
+        .feedback {
+            @include feedbackCommonProperty;
+            display: none;
+            background: $colorWhite;
+            min-height: 120px;
+            padding: $fontSizeLarge;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+
+            hr {
+                @include marginCommonProperty;
+                width: $fullWidth;
+                border-bottom: 1px solid $colorBlue;
+            }
+
+            .title {
+                color: $colorBlue;
+                font-size: $fontSizeBitLarger;
+            }
+
+            .content {
+                color: $colorGray20;
+                font-size: $fontSizeStandard;
+                line-height: $fontSizeMidium;
+                padding-bottom: $fontSizeMicro;
+            }
+
+            .btn-container {
+                color: $colorWhite;
+                padding-top: 10px;
+
+                .ck-continue-btn {
+                    @include submitButton;
+                    @include underlineFromLeft;
+                    display: none;
+                    color: $colorWhite;
+                    font-size: $fontSizeStandard;
+                    padding: 5px 15px;
+                    background-color: $colorPurple;
+
+                    &:before {
+                        // background: $colorBlue;
+                    }
+                }
+
+                .ck-try-again-btn {
+                    @extend .ck-continue-btn;
+                }
+
+                .ck-next-btn{
+                    @extend .ck-continue-btn;
+                }
+            }
+        }
+    }
+
+    .knowledge-check {
+        position: absolute;
+        width: 80%;
+        height: 80%;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        background-color: $colorGrayE5;
+        padding: $fontSizeLarge;
+        color: $colorWhite;
+
+        .question-container {
+            width: $fullWidth;
+
+            .index {
+                @include floatLeft;
+                width: 7%;
+                color: $colorBlue;
+                font-size: 54px;
+                line-height: 32px;
+                padding-top: 10px;
+                position: absolute;
+                top: 10px;
+                left: 10px;
+            }
+
+            .question-text {
+                @include floatLeft;
+                padding-right: 1%;
+                width: 100%;
+                box-sizing: border-box;
+                font-size: $fontSizeStandard;
+                font-weight: bold;
+                color: $colorBlue;
+                line-height: 18px;
+                padding-bottom: $fontSizeMicro;
+                text-align: justify;
+                padding: 25px 20px 22px 8%;
+            }
+        }
+
+        .question-data {
+            @include floatLeft;
+            padding-left: 8%;
+            padding-right: 1%;
+            width: 100%;
+            box-sizing: border-box;
+
+            .instruction {
+                width: $fullWidth;
+                color: $colorPurple;
+                font-size: $fontSizeStandard;
+                font-style: italic;
+            }
+
+            hr {
+                @include marginCommonProperty;
+                width: 100%;
+                border-bottom: 1px solid $colorBlue;
+            }
+
+            .options {
+                padding-top: 10px;
+
+                .option {
+                    width: $fullWidth;
+                    height: auto;
+                    min-height: 30px;
+                    padding-bottom: $fontSizeMicro;
+                    position: relative;
+                    text-align: justify;
+
+                    .kc-option {
+                        background: $colorBlack;
+                    }
+
+                    [type="radio"] {
+                        &:checked+label {
+                            &:before {
+                                background: $colorWhite;
+                                height: 14px;
+                            }
+                        }
+
+                        &:not(:checked)+label {
+                            &:before {
+                                background: $colorWhite;
+                                height: 14px;
+                            }
+                        }
+                    }
+
+                    &:not(:checked)+label {
+                        &:before {
+                            background: $colorWhite;
+                        }
+                    }
+
+                    &:checked+label {
+                        &:before {
+                            background: $colorWhite;
+                        }
+                    }
+
+                    &:not(:checked) {
+                        + {
+                            label {
+                                padding-left: 28px;
+                                display: inline-block;
+
+                                &:before {
+                                    content: '';
+                                    left: 0;
+                                }
+
+                                &:after {
+                                    left: 5px;
+                                    left: 5px;
+                                    top: 5px;
+                                    width: 10px;
+                                    height: 10px;
+                                }
+                            }
+                        }
+                    }
+
+                    [type="checkbox"] {
+                        padding-left: 26px;
+
+
+                        &:checked {
+                            + {
+                                label {
+                                    padding-left: 28px;
+                                    display: inline-block;
+
+                                    &:before {
+                                        content: '';
+                                        left: 0;
+                                    }
+
+                                    &:after {
+                                        left: 5px;
+                                        left: 5px;
+                                        top: 5px;
+                                        width: 10px;
+                                        height: 10px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    label {
+                        font-size: $fontSizeStandard;
+                        color: $colorBlue;
+                        line-height: $fontSizeMidium;
+                    }
+
+                    &.correct::after {
+                        @include tickMark;
+                    }
+
+                    &.incorrect::after {
+                        @include crossMark;
+                    }
+                }
+
+                @include radioButtonStyle;
+                @include checkButtonStyle;
+            }
+        }
+
+        .btn-container {
+            .ck-submit-btn {
+                @include submitButton;
+                @include underlineFromLeft;
+                color: $colorWhite;
+                background-color: $colorPurple;
+                padding: 5px 20px;
+                font-size: $fontSizeStandard;
+                margin-top: 10px;
+            }
+
+            .ck-submit-btn.disabled {
+                background: $colorGray60;
+                color: $colorGray94;
+                cursor: default;
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    z-index: -1;
+                    background: none;
+                    transition-property: none;
+                }
+
+                &:hover:before,
+                &:focus:before,
+                &:active:before {
+                    right: 0;
+                    cursor: default;
+                }
+            }
+        }
+    }
+}
+
+
+/* media queries*/
+
+// mobile both
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .knowledge-check-container {
+        height: calc(100% - 40px);
+        top: 40px;
+
+        .knowledge-check {
+            position: absolute;
+            width: calc(100% - 40px);
+            height: calc(100% - 40px);
+            left: 0;
+            top: 0;
+            background-color: $colorBlue;
+            padding: $fontSizeLarge;
+            color: $colorWhite;
+
+            .question-container {
+                .index {
+                    width: 7%;
+                    font-size: 50px;
+                    line-height: $fontSizeExtraLarge;
+                }
+            }
+        }
+
+        .feedback-container {
+            .feedback {
+                min-height: 140px;
+                width: 80%;
+            }
+        }
+    }
+}
+
+// Mobile Landscape
+@media only screen and (max-width: 767px) and (orientation: landscape) {
+    .knowledge-check-container {
+        height: calc(100% - 40px);
+        top: 40px;
+
+        .knowledge-check {
+            width: calc(100% - 40px);
+            height: calc(100% - 40px);
+
+            .question-data {
+                padding-left: 10%;
+            }
+        }
+
+        .feedback-container {
+            .feedback {
+                width: calc(100% - 90px);
+                transform: translate(-50%, -10%);
+            }
+        }
+    }
+}
+
+// iPad landscape
+@media only screen and (max-width: 1024px) and (orientation: landscape) {
+    .knowledge-check-container {
+        top: 40px;
+
+        .knowledge-check {
+            .question-container {
+                .index {
+                    width: 10%;
+                    left: 0;
+                }
+
+                .question-text {
+                    padding: 25px 1% 22px 10%;
+                }
+            }
+
+            .question-data {
+                padding-left: 10%;
+            }
+        }
+
+        .feedback-container {
+            .feedback {
+                width: calc(60% - 60px);
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+}
+
+// iPad portrait
+@media only screen and (min-width: 768px) and (orientation: portrait) {
+    .knowledge-check-container {
+        height: calc(100% - 45px);
+        top: 45px;
+
+        .knowledge-check {
+            .question-container {
+                .index {
+                    width: 10%;
+                    font-size: $headerFontSize;
+                }
+            }
+
+            .question-data {
+                padding-left: 10%;
+            }
+        }
+
+        .feedback-container {
+            .feedback {
+                transform: translate(-50%, -10%);
+            }
+        }
+    }
+}
+
+// custom css
+@media screen and (max-width: 768px) {
+    .knowledge-check-container {
+        .knowledge-check {
+            .question-container {
+                .question-text {
+                    padding: 25px 1% 22px 70px;
+                }
+            }
+
+            .question-data {
+                padding-left: 70px;
+            }
+        }
+    }
+}

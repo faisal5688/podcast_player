@@ -1,0 +1,29 @@
+
+<div id="course-header" class="course-header{{#if ShowExitButton}} show-exit{{/if}}">
+    <div class="logo"><img src="resources/image/{{logo}}" onload="SVGInject(this)" /></div>
+    <div class="title text-ellipsis">
+        <p>{{{title}}}</p>
+    </div>
+    {{#if help}}
+        {{#if help.show}}
+            <div class="help-button" title="{{help.tooltip}}"><img src="{{help.icon}}" onload="SVGInject(this)" /></div>
+        {{/if}}
+    {{/if}}
+    {{#if ShowExitButton}}
+        <div class="exit-button" title="Exit">EXIT</div>
+    {{/if}}
+</div>
+{{#if carousel.hasCarousel}}
+    <div id="carousel-container" class="carousel-container"></div>
+{{/if}}
+</div>
+<div id="course-body" class="course-body"></div>
+{{#if ShowLauncher}}
+    <div class="launch-holder">
+        <div class="launch-title">
+            <div class="logo"><img src="resources/image/{{logo}}" onload="SVGInject(this)" /></div>
+            <div class='course-title'>{{{title}}}</div>
+        </div>
+        <div class='launch-button'>Launch</div>
+    </div>
+{{/if}}

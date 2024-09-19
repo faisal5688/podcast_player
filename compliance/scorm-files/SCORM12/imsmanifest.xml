@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest identifier="VOD-TEST-768-432-13M" version="1.1"
+	xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2"
+	xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+	<metadata>
+		<schema>ADL SCORM</schema>
+		<schemaversion>1.2</schemaversion>
+		<adlcp:location>metadata.xml</adlcp:location>
+	</metadata>
+	<organizations default="kpmg">
+		<organization identifier="kpmg">
+			<title>podcast-player-V1</title>
+			<item identifier="VODItem01" identifierref="vod_sco_01">
+				<title>Launch Content</title>
+			</item>
+		</organization>
+	</organizations>
+	<resources>
+		<resource identifier="vod_sco_01" type="webcontent" adlcp:scormtype="sco" href="index.html">
+			<file href="index.html"/>
+		</resource>
+	</resources>
+</manifest>

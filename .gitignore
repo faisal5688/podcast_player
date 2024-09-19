@@ -1,0 +1,8 @@
+**/node_modules/**
+**/debug/**
+**/delivery/**
+**/dist/**
+**/output/**
+**/package-lock.json
+**/CVS/**
+js/*.js

@@ -1,0 +1,33 @@
+<div class="modal-dialog vertical-middle{{#if heading}}{{else}} no-header{{/if}}">
+    {{#if heading}}
+        <div class="modal-header">
+            <span class="modal-title">{{{heading}}}</span>
+            {{#if hasclose}}
+                <button type="button" class="close close-modal" data-id="close">&times;</button>
+            {{/if}}
+        </div>
+        <div class="modal-body">
+    {{else}}
+        <div class="modal-body no-header">
+    {{/if}}
+    {{#if hasProgressbar}}
+        <div class="progress">
+            <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="0"
+                style="width: 0%"></div>
+            <div class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar" aria-valuenow="0"
+                style="width: 0%"></div>
+        </div>
+        <div class="progress-text">
+            <span class="progress-text-title">{{progressTitle}}</span>
+            <span class="progress-text-content"></span>
+        </div>
+    {{else}}
+        {{{content}}}
+    {{/if}}
+</div>
+<div class="buttons-container">
+    {{#each buttons}}
+        <button type="button" class="modal-button  close-modal {{#if isHidden}} hidden{{/if}}" data-id="{{id}}">{{name}}</button>
+    {{/each}}
+</div>
+</div>

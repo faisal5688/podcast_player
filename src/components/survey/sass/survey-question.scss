@@ -1,0 +1,135 @@
+@import "sass/variables";
+@import "sass/mixins";
+.survey-container {
+    .survey-question-container{
+        .survey-question{
+            margin: 10px 40px;
+            padding: 20px 0;
+            border-bottom: 1px solid #999999;
+
+            .question-cont {
+                display: block;
+                font-weight: bold;
+
+                .question-no {
+                   display: inline-block;
+                   vertical-align: top;
+                   width: 17px;
+                }
+
+                .question-text {
+                    display: inline-block;
+                    vertical-align: top;
+                    width: calc(100% - 25px);
+                    color: $colorBlue;
+                 }
+            }
+
+            .instruction {
+                color: $colorPurple;
+                font-style: italic;
+                padding: 15px 5px 10px 0;
+            }
+
+            .options-outer {
+
+                .option {
+                    padding: 10px 0px 10px 25px;
+                    position: relative;
+
+                    label {
+                        position: relative;
+                        padding-left: 10px;
+                        color: $colorBlue;
+                        display: block;
+                    }
+
+                    [type="radio"] {
+                        opacity: 0;
+                        position: absolute;
+                        left: 0px;
+                        top: 8px;
+
+                        &:checked+label {
+                            &:before {
+                                content: '';
+                                background: url(../resources/image/survey/radio_on.png);
+                                position: absolute;
+                                left: -24px;
+                                top: 0px;
+                                width: 18px;
+                                height: 18px;
+                            }
+                        }
+                        &:not(:checked)+label {
+                            &:before {
+                                content: '';
+                                background: url(../resources/image/survey/radio_off.png);
+                                position: absolute;
+                                left: -24px;
+                                top: 0px;
+                                width: 18px;
+                                height: 18px;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+
+                    [type="checkbox"] {
+                        opacity: 0;
+                        position: absolute;
+                        left: 0px;
+                        top: 8px;
+
+                        &:checked+label {
+                            &:before {
+                                content: '';
+                                background: url(../resources/image/survey/checkbox_on.png);
+                                position: absolute;
+                                left: -24px;
+                                top: 0px;
+                                width: 18px;
+                                height: 18px;
+                            }
+                        }
+                        &:not(:checked)+label {
+                            &:before {
+                                content: '';
+                                background: url(../resources/image/survey/checkbox_off.png);
+                                position: absolute;
+                                left: -24px;
+                                top: 0px;
+                                width: 18px;
+                                height: 18px;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+
+
+                }
+
+
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width: 450px) {
+    .survey-container {
+        .survey-question-container{
+            .survey-question{
+                margin: 10px 20px;
+            }
+        }
+
+        .button-container {
+            padding: 20px 20px !important;
+
+            .message {
+                font-size: 13px;
+            }
+        }
+    }
+}

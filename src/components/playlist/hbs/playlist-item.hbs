@@ -1,0 +1,27 @@
+<div class="left-content">
+    <img src="{{thumbnail}}" class="vid-thumbnail">
+    {{#if duration}}
+        <div class="duration">{{duration}}</div>
+    {{/if}}
+</div>
+<div class="right-content">
+    <span class="item-complete" {{#if complete}}{{else}} style="display:none" {{/if}}></span>
+    <div class="item-index">{{srNumbar}}</div>
+    <div class="item-title">{{TitleEllipses}}</div>
+</div>
+<div class="audio-player-container" id="audio-player-container">
+    <div class="audio-player-template">
+        {{!-- <audio id="{{Url}}" class="audio-source" preload="metadata">
+            <source src="{{src}}" type="audio/mp3" />
+            <p class="vjs-no-js">{{nosupport}}</p>
+        </audio> --}}
+        <!-- Custom Player Controls -->
+        <div class="controls">
+            <button class="play-pause">Play</button>
+            <span class="current-time">00:00</span> /
+            <span class="total-time">00:00</span>
+            <input type="range" class="progress-bar" value="0" step="1" min="0" max="100" />
+            <button class="refresh">Refresh</button>
+        </div>
+    </div>
+</div>

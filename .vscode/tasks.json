@@ -1,0 +1,138 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "transpile",
+            "type": "typescript",
+            "tsconfig": "tsconfig.json",
+            "group": "build",
+            "problemMatcher": [
+                "$tsc"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "build-SCORM12",
+            "dependsOn": "transpile",
+            "command": "node",
+            "type": "shell",
+            "problemMatcher": [
+                "$tsc"
+            ],
+            "args": [
+                "node_modules/gulp/bin/gulp",
+                "default",
+                "--project",
+                "vod",
+                "--buildType",
+                "debug",
+                "--scormVersion",
+                "SCORM12"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "build-prod-SCORM12",
+            "dependsOn": "build-SCORM12",
+            "command": "node",
+            "type": "shell",
+            "problemMatcher": [
+                "$tsc"
+            ],
+            "args": [
+                "node_modules/gulp/bin/gulp",
+                "prod",
+                "--project",
+                "vod",
+                "--buildType",
+                "release",
+                "--scormVersion",
+                "SCORM12"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "build-SCORM2004",
+            "dependsOn": "transpile",
+            "command": "node",
+            "type": "shell",
+            "problemMatcher": [
+                "$tsc"
+            ],
+            "args": [
+                "node_modules/gulp/bin/gulp",
+                "default",
+                "--project",
+                "vod",
+                "--buildType",
+                "debug",
+                "--scormVersion",
+                "SCORM2004"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "build-prod-SCORM2004",
+            "dependsOn": "build-SCORM2004",
+            "command": "node",
+            "type": "shell",
+            "problemMatcher": [
+                "$tsc"
+            ],
+            "args": [
+                "node_modules/gulp/bin/gulp",
+                "prod",
+                "--project",
+                "vod",
+                "--buildType",
+                "release",
+                "--scormVersion",
+                "SCORM2004"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared"
+            }
+        }
+    ]
+}

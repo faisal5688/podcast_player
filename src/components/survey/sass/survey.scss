@@ -1,0 +1,65 @@
+﻿@import "sass/variables";
+@import "sass/mixins";
+
+.survey-container {
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 45px);
+    top: 45px;
+    z-index: 1;
+    display: none;
+    overflow-y: auto;
+    background-color: $colorWhite;
+
+    .survey-header {
+        background: $colorPurple url(../resources/image/survey/opinion.png) no-repeat 40px center;
+        padding: 15px 10px 15px 100px;
+        color: #ffffff;
+
+        .title {
+            font-size: 19px;
+            font-weight: bold;
+            padding-bottom: 5px;
+        }
+    }
+
+    .button-container{
+        padding: 20px 40px;
+        text-align: right;
+
+        .message {
+            display: inline-block;
+            vertical-align: middle;
+            padding-right: 10px;
+            color: $colorPurple;
+            font-style: italic;
+        }
+        .survey-button {
+            padding: 7px 20px;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            border-radius: 0px;
+            background: $colorPurple;
+            color: $colorWhite;
+            font-size: $fontSizeStandard;
+
+            &.disabled {
+                background: $colorGray60;
+                color: $colorGray94;
+                cursor: default;
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width: 450px) {
+    .survey-container {
+        .survey-header {
+            background: #6d2077 url(../resources/image/survey/opinion.png) no-repeat 20px center;
+            padding: 15px 10px 15px 80px;
+        }
+    }
+
+}

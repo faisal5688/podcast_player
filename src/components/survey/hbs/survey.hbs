@@ -1,0 +1,11 @@
+<div class="survey-header">
+    <div class="title">{{header.title}}</div>
+    <div class="content">{{header.textContent}}</div>
+</div>
+<div class="survey-question-container"></div>
+<div class="button-container">
+    <div class="message">{{messageText}}</div>
+    {{#each buttons}}
+        <button class="survey-button {{style}} {{#if disabled}}disabled{{/if}}">{{name}}</button>
+    {{/each}}
+</div>

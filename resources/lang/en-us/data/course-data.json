@@ -1,0 +1,40 @@
+{
+    "title": "The course Name",
+    "logo": "aptara_logo.png",
+    "progress-update-interval": 2,
+    "playlist": [
+        {
+            "id": "vid-001",
+            "title": "Morning Part One A 1",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet commodo sem, sed malesuada velit. Integer a tristique odio. Integer ultricies massa et magna auctor lacinia.",
+            "url": "resources/video/vid001.mp4",
+            "preview": "resources/image/previews/preview01.jpg",
+            "thumbnail": "resources/image/thumbs/thumb_01.jpg"
+        },
+        {
+            "id": "vid-002",
+            "title": "Morning Part One A 2",
+            "description": "Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.",
+            "url": "resources/video/vid002.mp4",
+            "preview": "resources/image/previews/preview02.jpg",
+            "thumbnail": "resources/image/thumbs/thumb_02.jpg"
+        },
+        {
+            "id": "vid-003",
+            "title": "Morning Part One A 3",
+            "description": "Curabitur sed tincidunt diam. Morbi placerat nisl sed velit dapibus, id tristique purus facilisis. Praesent scelerisque tortor eu vehicula scelerisque.",
+            "url": "resources/video/vid003.mp4",
+            "preview": "resources/image/previews/preview03.jpg",
+            "thumbnail": "resources/image/thumbs/thumb_03.jpg"
+        },
+        {
+            "id": "vid-004",
+            "title": "Morning Part One A 4",
+            "description": "Vestibulum maximus purus sed enim sollicitudin, nec scelerisque nisi finibus. Curabitur at tempus massa. Integer vehicula nisi aliquet mollis ullamcorper.",
+            "url": "resources/video/vid004.mp4",
+            "preview": "resources/image/previews/preview04.jpg",
+            "thumbnail": "resources/image/thumbs/thumb_04.jpg"
+        }
+
+    ]
+}

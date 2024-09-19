@@ -1,0 +1,14 @@
+<div class="question-cont">
+    <div class="question-no">{{{questionNo}}}.</div>
+    <div class="question-text">{{{question}}}</div>
+</div>
+<div class="instruction">{{{instruction}}}</div>
+<div class="options-outer">
+    {{#each options}}
+        <div class="option">
+            <input type="checkbox" class="mcms-option" id="mcms-{{../id}}{{@index}}" name="mcms-option-{{../id}}"
+                value="{{text}}">
+            <label for="mcms-{{../id}}{{@index}}">{{text}}</label>
+        </div>
+    {{/each}}
+</div>
