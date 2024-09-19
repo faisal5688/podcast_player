@@ -6,7 +6,6 @@
 namespace HTML5AudioPlayer.Components.Views {
 
     export class Carousel extends Backbone.View<Models.Carousel> {
-
         private _template: (properties?: HandlebarsTemplates) => string;
 
         private _crouselItems: CarouselItem[];

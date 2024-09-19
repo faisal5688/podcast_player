@@ -173,12 +173,16 @@ namespace HTML5AudioPlayer.Components.Models {
                     found = true;
                 }
             }
+
+
         }
 
         public enableNextKc(curVidId: string): void {
+            let model: Playlist = this;
             let CurrentItem = this.QuestionlistItems.filter(function (val: QuestionlistItem): boolean {
                 return val.Id === curVidId;
             })[0];
+
 
             if(CurrentItem){
                 console.log("CurrentItem ")
@@ -188,16 +192,38 @@ namespace HTML5AudioPlayer.Components.Models {
                 //this.CurrentItem.Current = true;
             }
 
+            model.enableAssessment();
+
+
+
+        }
+
+        public enableAssessment():void{
+            let model: Playlist = this;
+            let assessmentItem = this.PlaylistItems.filter(function (val: PlaylistItem): boolean {
+                return val.IsAssessment;
+            })[0];
+            if(model.isItemComplete() && model.isKcComplete()){
+                assessmentItem.Disabled=false;
+            }else{
+                assessmentItem.Disabled=true;
+            }
         }
 
         public completeKc(curVidId: string): void {
-            let CurrentItem = this.QuestionlistItems.filter(function (val: QuestionlistItem): boolean {
+            let CurrentItem = this.PlaylistItems.filter(function (val: PlaylistItem): boolean {
                 return val.Id === curVidId;
             })[0];
-
+            let CurrentQuestion = this.QuestionlistItems.filter(function (val: QuestionlistItem): boolean {
+                return val.Id === curVidId;
+            })[0];
+            // console.log("CurrentItem")
+            // console.log(CurrentItem)
+            // console.log("CurrentQuestion")
+            // console.log(CurrentQuestion)
             if(CurrentItem){
                 if(CurrentItem.Kccomplete){
-                    CurrentItem.Kccomplete=true;
+                    CurrentQuestion.Kccomplete=true;
                 }
             }
 
@@ -239,10 +265,18 @@ namespace HTML5AudioPlayer.Components.Models {
             }
             return (model.CurrentItem.Id === lastItem.Id);
         }
+        public isItemComplete(): boolean {
+            let model: Playlist = this,
+                lastItem: PlaylistItem = model.PlaylistItems[model.PlaylistItems.length - 1];
+            if (lastItem.IsAssessment) {
+                lastItem = model.PlaylistItems[model.PlaylistItems.length - 2];
+            }
+            return (lastItem.Complete);
+        }
         public isKcComplete(): boolean {
             let model: Playlist = this;
             let KClength:number = this.QuestionlistItems.filter(function (val: QuestionlistItem): boolean {
-                return val.Complete;
+                return val.Kccomplete;
             }).length;
             //let model: Models.AudioPlayer = this;
             return (KClength === model.QuestionlistItems.length);

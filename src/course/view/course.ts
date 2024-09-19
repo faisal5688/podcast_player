@@ -181,9 +181,11 @@ namespace HTML5AudioPlayer.Views {
             // else {
             //     //courseView._player.play();
             // }
-            courseView._item.Kccomplete=true;
-            console.log("courseView._item")
-            console.log(courseView._item)
+
+            courseView._player.markKcComplete(courseView._item.Id);
+            //courseView._item.Kccomplete=true;
+            //console.log("courseView._item")
+            //console.log(courseView._item)
             courseModel.PlayerModel.sendDataToScorm();
             courseView._knowledgeCheck.destroy();
         }
@@ -191,7 +193,7 @@ namespace HTML5AudioPlayer.Views {
         @named
         // private markQuestionComplete(): void {
         //     alert("markQuestionComplete")
-        // }
+        // }~
 
 
 

@@ -503,6 +503,7 @@ namespace HTML5AudioPlayer.Components.Views {
                         audioPlayerModel.maxVisitedTime = audioPlayerView._myPlayer.duration();
                         curObj.c = 1;
                         audioPlayerModel.Playlist.CurrentItem.Complete = true;
+                        audioPlayerModel.Playlist.enableAssessment();
                         //audioPlayerModel.Playlist.QuestionlistItems[0].Complete=true;
 
                     }
@@ -540,13 +541,52 @@ namespace HTML5AudioPlayer.Components.Views {
             audioPlayerModel.maxVisitedTime = audioPlayerView._myPlayer.duration();
             curObj.c = 1;
             audioPlayerModel.Playlist.CurrentItem.Complete = true;
-
+            audioPlayerModel.Playlist.enableAssessment();
             //audioPlayerModel.Playlist.CurrentQuesItem.Complete = true;
-
             curObj.t = parseFloat(audioPlayerModel.maxVisitedTime.toFixed(2));
             audioPlayerModel.ScormPreviousData[audioPlayerModel.Playlist.CurrentItem.Id] = curObj;
 
             curObj.n = audioPlayerModel.CuePoints.length;
+        }
+
+        // public enableAssessment():void{
+        //     let audioPlayerView: AudioPlayer = this,
+        //         audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
+        //     let assessmentItem = audioPlayerModel.Playlist.PlaylistItems.filter((val) => {
+        //         return val.IsAssessment;
+        //     })[0];
+        //     if(audioPlayerModel.Playlist.isItemComplete() && audioPlayerModel.Playlist.isKcComplete()){
+        //         assessmentItem.Disabled=false;
+        //     }else{
+        //         assessmentItem.Disabled=true;
+        //     }
+        // }
+
+
+        public markKcComplete(vidId?:string): void {
+            let audioPlayerView: AudioPlayer = this,
+                audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
+            let CurrentItem = audioPlayerModel.Playlist.PlaylistItems.filter((val) => {
+                return val.Id===vidId;
+            })[0];
+
+            console.log("CurrentItem")
+            console.log(CurrentItem)
+
+            let curObj: DataStructures.AudioScormData = audioPlayerModel.ScormPreviousData[CurrentItem.Id];
+
+            if (!curObj) {
+                curObj = new DataStructures.AudioScormData();
+                curObj.c = 0;
+                curObj.t = 0;
+                curObj.k = 0;
+                curObj.n = 0;
+            }
+
+            curObj.k = 1;
+            CurrentItem.Kccomplete = true;
+            audioPlayerModel.Playlist.completeKc(vidId);
+            audioPlayerModel.Playlist.enableAssessment();
         }
 
         @named
@@ -758,6 +798,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 audioPlayerView.next();
             }
             audioPlayerView.enable();
+            audioPlayerModel.Playlist.enableAssessment();
         }
 
         private onLaunchAssessment(): void {

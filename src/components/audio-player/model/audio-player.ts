@@ -172,10 +172,12 @@ namespace HTML5AudioPlayer.Components.Models {
                         if (curVidScormData) {
                             curVidData.currenttime = +curVidScormData.t || 0;
                             curVidData.complete = curVidScormData.c ? true : false;
+                            curVidData.kccomplete = curVidScormData.k ? true : false;
                         }
                         else {
                             curVidData.currenttime = 0;
                             curVidData.complete = false;
+                            curVidData.kccomplete = false;
                         }
                         //curVidData.currenttime =
                         // model.ScormPreviousData.cv is "Current Video"

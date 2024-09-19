@@ -11,14 +11,11 @@
                 questionlistItemModel: Models.QuestionlistItem = this.model;
 
             questionlistItemView._template = HBTemplates['queslist-item'];
-
            questionlistItemModel.on("change:numQuestions", questionlistItemView.render, questionlistItemView);
            questionlistItemModel.on("change:complete", questionlistItemView.render, questionlistItemView);
            questionlistItemModel.on("change:current", questionlistItemView.render, questionlistItemView);
            questionlistItemModel.on("change:disabled", questionlistItemView.render, questionlistItemView);
            questionlistItemModel.on("change:kccomplete", questionlistItemView.render, questionlistItemView);
-
-
         }
 
         events(): Backbone.EventsHash {

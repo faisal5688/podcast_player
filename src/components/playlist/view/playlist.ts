@@ -32,12 +32,10 @@ namespace HTML5AudioPlayer.Components.Views {
                 if (playlistModel.PlaylistItems[i].HiddenInPlaylist) {
                     playlistItemView.$el.addClass("hide");
                 }
-                // if(!playlistModel.isKcComplete() && playlistModel.PlaylistItems[i].IsAssessment){
-                //     //playlistModel.QuestionlistItems[i].Disabled=false;
-                //     alert("false")
-                // }else{
-                //     alert("true")
-                //     //playlistModel.QuestionlistItems[i].Disabled=true;
+                // if(playlistModel.isKcComplete() && playlistModel.PlaylistItems[i].IsAssessment){
+                //     //playlistView._playlistItems.Disabled=false;
+                //     //alert("false")
+                //     playlistModel.PlaylistItems[i].Disabled =false;
                 // }
                 playlistView._playlistItems.push(playlistItemView);
                 playlistItemView.on(Events.EVENT_ITEM_CLICKED, playlistView.onItemClicked, playlistView);
@@ -46,6 +44,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 playlistItemView.on(Events.EVENT_ITEM_CLICKED_TOGGLE, playlistView.togglePlayPause, playlistView);
                 playlistItemView.on(Events.EVENT_ITEM_CLICKED_REFRESH, playlistView.refreshAudio, playlistView);
                 playlistItemView.on(Events.EVENT_ITEM_CLICKED_SEEK, playlistView.seekAudio, playlistView);
+                playlistModel.enableAssessment();
 
             }
 
@@ -59,10 +58,10 @@ namespace HTML5AudioPlayer.Components.Views {
                     model: playlistModel.QuestionlistItems[i]
                 });
                 //if (playlistModel.QuestionlistItems[i].HasQuestion) {
-                    //playlistModel.PlaylistItems[i].NumQuestions = 0;
-                    playlistView._playlistQuestions.push(QuestionlistItemView);
-                    QuestionlistItemView.on(Events.EVENT_ITEM_CLICKED, playlistView.onQuesClicked, playlistView);
-               // }
+                //playlistModel.PlaylistItems[i].NumQuestions = 0;
+                playlistView._playlistQuestions.push(QuestionlistItemView);
+                QuestionlistItemView.on(Events.EVENT_ITEM_CLICKED, playlistView.onQuesClicked, playlistView);
+                // }
             }
         }
 
@@ -155,10 +154,10 @@ namespace HTML5AudioPlayer.Components.Views {
             let playlistView: Playlist = this,
                 playlistModel: Models.Playlist = playlistView.model;
             //let knowledge : KnowledgeCheck =this;
-               // alert(item.Id)
+            // alert(item.Id)
 
-               //item.Complete=true;
-            playlistView.trigger(Events.EVENT_QUESTION_CLICKED,item);
+            //item.Complete=true;
+            playlistView.trigger(Events.EVENT_QUESTION_CLICKED, item);
 
 
         }
@@ -194,10 +193,13 @@ namespace HTML5AudioPlayer.Components.Views {
             playlistModel.CurrentItem = item;
             playlistModel.CurrentItem.Current = true;
             playlistModel.CurrentItem.Disabled = false;
-            playlistModel.CurrentListItem=item.Index;
+            playlistModel.CurrentListItem = item.Index;
             //playlistModel.CurrentItem.NumQuestions= playlistModel.CurrentItem.
+
+            //alert(playlistModel.isLastAudio())
+
+            //alert(playlistModel.isItemComplete())
             //alert(playlistModel.isKcComplete())
-           // alert(playlistModel.isLastAudio())
 
             playlistView.trigger(Events.EVENT_SELECTION_CHANGE, item);
             //playlistView.trigger(Events.EVENT_AUDIOPLAYER_CHANGE, item);
@@ -291,7 +293,7 @@ namespace HTML5AudioPlayer.Components.Views {
 
         }
 
-        onInitPlayer():void{
+        onInitPlayer(): void {
             let playlistView: Playlist = this;
             playlistView.trigger(Events.EVENT_ITEM_INIT_PLAYER);
         }
@@ -310,7 +312,7 @@ namespace HTML5AudioPlayer.Components.Views {
             playlistView.trigger(Events.EVENT_ITEM_REFRESH);
             alert("refreshAudio")
         }
-        seekAudio(time:any): void {
+        seekAudio(time: any): void {
             console.log("seekAudio")
             let playlistView: Playlist = this,
                 playlistModel: Models.Playlist = playlistView.model,
