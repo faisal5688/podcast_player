@@ -11,13 +11,26 @@
 </div>
 <div class="audio-player-container" id="audio-player-container">
     <div class="audio-player-template">
-        {{!-- <audio id="{{Url}}" class="audio-source" preload="metadata">
-            <source src="{{src}}" type="audio/mp3" />
-            <p class="vjs-no-js">{{nosupport}}</p>
-        </audio> --}}
+        {{!-- <div class="audio-container">
+            <audio id="{{audioid}}" class="video-js vjs-default-skin vjs-big-play-centered" oncontextmenu="return false" data-setup='{"inactivityTimeout":0,"controls":true,"textTrackSettings: false,html5":{"nativeTextTracks":false},"controlBar":{"progressControl":{"seekBar":false},"muteToggle":false,"fullscreenToggle":false,"volumeMenuButton":{"inline":false,"vertical":true}}}' playsinline>
+                <source src="{{options.src}}" type="video/mp4" />
+                <p class="vjs-no-js">{{{messages.nosupport}}}</p>
+            </audio>
+        </div> --}}
         <!-- Custom Player Controls -->
         <div class="controls">
             <button class="play-pause">Play</button>
+
+            {{!-- <div class="pie">
+                <div id="bottomNav_pause" class="audioIcon play">
+                    <a id="navigatorPlayPauseBtn" class="navHighlight" title=""><span
+                            class="tooltipText">Play</span></a>
+                </div>
+                <div id="bottomNav_replay" class="replay audioIcon hideElement">
+                    <a id="navigatorReplayBtn" class="navHighlight" title=""></a>
+                </div>
+            </div> --}}
+
             <span class="current-time">00:00</span> /
             <span class="total-time">00:00</span>
             <input type="range" class="progress-bar" value="0" step="1" min="0" max="100" />

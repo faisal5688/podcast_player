@@ -82,7 +82,7 @@
         "HidePlaylist": false,
         "AutoAdvanceToNext": false,
         "options": {
-            "playbackRates": [1, 1.5]
+            "playbackRates": [0.7,1, 1.5]
         },
         "rePollOnSeek": true,
         "playlist": [{

@@ -37,6 +37,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 //     //alert("false")
                 //     playlistModel.PlaylistItems[i].Disabled =false;
                 // }
+                playlistModel.PlaylistItems[i].CurrentClicked=false;
                 playlistView._playlistItems.push(playlistItemView);
                 playlistItemView.on(Events.EVENT_ITEM_CLICKED, playlistView.onItemClicked, playlistView);
                 playlistItemView.on(Events.EVENT_INIT_PLAYER, playlistView.onInitPlayer, playlistView);
@@ -45,6 +46,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 playlistItemView.on(Events.EVENT_ITEM_CLICKED_REFRESH, playlistView.refreshAudio, playlistView);
                 playlistItemView.on(Events.EVENT_ITEM_CLICKED_SEEK, playlistView.seekAudio, playlistView);
                 playlistModel.enableAssessment();
+                //playlistItemView.afterRender()
 
             }
 
@@ -173,7 +175,7 @@ namespace HTML5AudioPlayer.Components.Views {
 
             //playlistModel.
             //playlistItemView.$el.addClass("hide");
-
+            //console.log(item)
 
             if (playlistModel.CurrentItem.id === item.Id) {
                 return;
@@ -188,12 +190,15 @@ namespace HTML5AudioPlayer.Components.Views {
                 playlistView.trigger(Events.EVENT_LAUNCH_SURVEY);
                 return;
             }
-
+            //playlistModel.setCurrentClicked(item.Id);
+            playlistModel.CurrentItem.CurrentClicked = false;
             playlistModel.CurrentItem.Current = false;
             playlistModel.CurrentItem = item;
             playlistModel.CurrentItem.Current = true;
+            playlistModel.CurrentItem.CurrentClicked = true;
             playlistModel.CurrentItem.Disabled = false;
             playlistModel.CurrentListItem = item.Index;
+
             //playlistModel.CurrentItem.NumQuestions= playlistModel.CurrentItem.
 
             //alert(playlistModel.isLastAudio())
@@ -204,6 +209,7 @@ namespace HTML5AudioPlayer.Components.Views {
             playlistView.trigger(Events.EVENT_SELECTION_CHANGE, item);
             //playlistView.trigger(Events.EVENT_AUDIOPLAYER_CHANGE, item);
             //playlistView.trigger(Events.EVENT_AUDIOPLAYPAUSE_CHANGE, item);
+
 
 
 
@@ -306,11 +312,10 @@ namespace HTML5AudioPlayer.Components.Views {
         }
 
         refreshAudio(): void {
-
             console.log("refreshAudio")
             let playlistView: Playlist = this;
             playlistView.trigger(Events.EVENT_ITEM_REFRESH);
-            alert("refreshAudio")
+
         }
         seekAudio(time: any): void {
             console.log("seekAudio")

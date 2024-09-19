@@ -185,8 +185,8 @@ namespace HTML5AudioPlayer.Components.Models {
 
 
             if(CurrentItem){
-                console.log("CurrentItem ")
-                console.log(CurrentItem)
+                //console.log("CurrentItem ")
+                //console.log(CurrentItem)
                 //CurrentItem.Complete=true;
                 CurrentItem.Disabled=false;
                 //this.CurrentItem.Current = true;
@@ -208,6 +208,9 @@ namespace HTML5AudioPlayer.Components.Models {
             }else{
                 assessmentItem.Disabled=true;
             }
+
+            console.log("PlaylistItems")
+            console.log(model.PlaylistItems)
         }
 
         public completeKc(curVidId: string): void {
@@ -280,6 +283,20 @@ namespace HTML5AudioPlayer.Components.Models {
             }).length;
             //let model: Models.AudioPlayer = this;
             return (KClength === model.QuestionlistItems.length);
+        }
+
+        public setCurrentClicked(curVidId: string):void{
+            let model: Playlist = this;
+            for (let i = 0; i < this.PlaylistItems.length; i++) {
+                model.PlaylistItems[i].CurrentClicked=false;
+            }
+            let currentClicked = this.PlaylistItems.filter(function (val: PlaylistItem): boolean {
+                return val.Id === curVidId;
+            })[0];
+
+            if(currentClicked){
+                currentClicked.CurrentClicked = true;
+            }
         }
 
     }

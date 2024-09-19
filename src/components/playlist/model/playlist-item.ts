@@ -32,6 +32,9 @@
         get Current(): boolean { return this.get("current"); }
         set Current(value: boolean) { this.set("current", value); }
 
+        get CurrentClicked(): boolean { return this.get("currentClicked"); }
+        set CurrentClicked(value: boolean) { this.set("currentClicked", value); }
+
         get CurrentTime(): number { return this.get("currenttime"); }
         set CurrentTime(value: number) { this.set("currenttime", value); }
 
@@ -91,6 +94,7 @@
             model.Kccomplete = model.Kccomplete || false;
             model.MicroPolls = model.MicroPolls || [];
             model.TitleEllipses = model.Title;
+            model.CurrentClicked = model.CurrentClicked || false;
             if (model.Title.length > 75) {
                 model.TitleEllipses = model.Title.slice(0, 75) + "...";
             }

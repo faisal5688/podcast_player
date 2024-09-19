@@ -52,7 +52,15 @@
 
          }
 
+         public quesRender(): void {
 
+            let questionlistItemView = this,
+                questionlistItemModel: Models.QuestionlistItem = this.model;
+            questionlistItemView.$el.find(".item-complete").show()
+            //playlistItemModel.Complete=true;
+
+
+        }
 
         @named
         private onQuestionClick(e: MouseEvent): void {

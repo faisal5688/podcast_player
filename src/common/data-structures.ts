@@ -110,6 +110,7 @@ namespace HTML5AudioPlayer.DataStructures {
         quesDescription: string;
         microPolls: MicroPoll[];
         numQuestions:number;
+        currentClicked:boolean;
     }
 
     export class kcListData {

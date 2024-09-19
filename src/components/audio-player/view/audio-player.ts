@@ -125,8 +125,8 @@ namespace HTML5AudioPlayer.Components.Views {
         public render() {
             let audioPlayerView = this,
                 audioPlayerModel: Models.AudioPlayer = this.model;
-            console.log("**************")
-            console.log(audioPlayerModel.toJSON())
+            //console.log("**************")
+            //console.log(audioPlayerModel.toJSON())
             audioPlayerView.$el.html(audioPlayerView._template(audioPlayerModel.toJSON()));
             let playlistContainer: JQuery = audioPlayerView.$(".playlist-container");
             if (audioPlayerModel.CourseMode !== DataStructures.CourseMode.CPE) {
@@ -157,7 +157,7 @@ namespace HTML5AudioPlayer.Components.Views {
 
             audioPlayerView._playlist.afterRender();
 
-           // audioPlayerView._crousel.afterRender();
+            // audioPlayerView._crousel.afterRender();
             audioPlayerView.updateAudioDesc();
 
             //alert("afterRender")
@@ -214,6 +214,7 @@ namespace HTML5AudioPlayer.Components.Views {
         @named
         public pause(): void {
             this._myPlayer.pause();
+
         }
 
         @named
@@ -499,14 +500,15 @@ namespace HTML5AudioPlayer.Components.Views {
 
             if (0 === curObj.c) {
                 //if (!audioPlayerModel.hasEndKC()) {
-                    if (audioPlayerModel.maxVisitedTime > (audioPlayerView._myPlayer.duration() - audioPlayerModel.CompletionDelta)) {
-                        audioPlayerModel.maxVisitedTime = audioPlayerView._myPlayer.duration();
-                        curObj.c = 1;
-                        audioPlayerModel.Playlist.CurrentItem.Complete = true;
-                        audioPlayerModel.Playlist.enableAssessment();
-                        //audioPlayerModel.Playlist.QuestionlistItems[0].Complete=true;
+                if (audioPlayerModel.maxVisitedTime > (audioPlayerView._myPlayer.duration() - audioPlayerModel.CompletionDelta)) {
+                    audioPlayerModel.maxVisitedTime = audioPlayerView._myPlayer.duration();
+                    curObj.c = 1;
+                    //audioPlayerModel.Playlist.CurrentItem.Complete = true;
+                    //audioPlayerModel.Playlist.enableAssessment();
+                    //alert(4)
+                    //audioPlayerModel.Playlist.QuestionlistItems[0].Complete=true;
 
-                    }
+                }
                 //}
                 curObj.t = parseFloat(audioPlayerModel.maxVisitedTime.toFixed(2));
 
@@ -542,6 +544,7 @@ namespace HTML5AudioPlayer.Components.Views {
             curObj.c = 1;
             audioPlayerModel.Playlist.CurrentItem.Complete = true;
             audioPlayerModel.Playlist.enableAssessment();
+            //alert(3)
             //audioPlayerModel.Playlist.CurrentQuesItem.Complete = true;
             curObj.t = parseFloat(audioPlayerModel.maxVisitedTime.toFixed(2));
             audioPlayerModel.ScormPreviousData[audioPlayerModel.Playlist.CurrentItem.Id] = curObj;
@@ -563,11 +566,11 @@ namespace HTML5AudioPlayer.Components.Views {
         // }
 
 
-        public markKcComplete(vidId?:string): void {
+        public markKcComplete(vidId?: string): void {
             let audioPlayerView: AudioPlayer = this,
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
             let CurrentItem = audioPlayerModel.Playlist.PlaylistItems.filter((val) => {
-                return val.Id===vidId;
+                return val.Id === vidId;
             })[0];
 
             console.log("CurrentItem")
@@ -587,6 +590,7 @@ namespace HTML5AudioPlayer.Components.Views {
             CurrentItem.Kccomplete = true;
             audioPlayerModel.Playlist.completeKc(vidId);
             audioPlayerModel.Playlist.enableAssessment();
+            //alert(2)
         }
 
         @named
@@ -644,16 +648,16 @@ namespace HTML5AudioPlayer.Components.Views {
 
         private triggerQuetion(item: Models.PlaylistItem) {
             let audioPlayerView: AudioPlayer = this;
-               // audioPlayerModel: Models.AudioPlayer = this.model,
-                //cp: DataStructures.CuePoint = null,
-                //delta: number = 0;
+            // audioPlayerModel: Models.AudioPlayer = this.model,
+            //cp: DataStructures.CuePoint = null,
+            //delta: number = 0;
 
-               // alert()
+            // alert()
             //cp = audioPlayerModel.CuePoints[0];
             //Utilities.consoleTrace("cp",cp)
             //audioPlayerView.trigger(Events.EVENT_CUEPOINT_HIT, cp);
             //alert("cp")
-            audioPlayerView.trigger(Events.EVENT_CURRENT_QUESTION,item);
+            audioPlayerView.trigger(Events.EVENT_CURRENT_QUESTION, item);
 
         };
 
@@ -792,6 +796,8 @@ namespace HTML5AudioPlayer.Components.Views {
             //     }
             //     audioPlayerView.enable();
             // }
+            audioPlayerModel.Playlist.CurrentItem.CurrentClicked = true;
+            audioPlayerModel.Playlist.CurrentItem.Complete = true;
 
             audioPlayerView.enableNext();
             if (audioPlayerModel.AutoAdvanceToNext) {
@@ -799,6 +805,7 @@ namespace HTML5AudioPlayer.Components.Views {
             }
             audioPlayerView.enable();
             audioPlayerModel.Playlist.enableAssessment();
+            //alert(1)
         }
 
         private onLaunchAssessment(): void {
@@ -1135,7 +1142,6 @@ namespace HTML5AudioPlayer.Components.Views {
         @named
         private restartVideo() {
             let audioPlayerView: AudioPlayer = this;
-
             audioPlayerView._myPlayer.currentTime(0);
             audioPlayerView.resetCuePointStatus();
             audioPlayerView.resetMicroPollStatus();
@@ -1274,23 +1280,6 @@ namespace HTML5AudioPlayer.Components.Views {
         @named
         public togglePlayPause(): void {
             let audioPlayerView: AudioPlayer = this;
-            console.log("*******************************video page*****************************");
-            // e.stopPropagation();
-            // let audioPlayerView: AudioPlayer = this;
-            // if (this.audioElement) {
-            //     if (this.audioElement.paused) {
-            //         //this.audioElement.play();
-            //         this.audioPlayerView._player.play();
-            //         this.playPauseBtn?.text('Pause');
-
-            //     } else {
-            //         //this.audioElement.pause();
-            //         this.audioPlayerView._player.pause();
-            //         this.playPauseBtn?.text('Play');
-
-            //     }
-            // }
-
             if (audioPlayerView._myPlayer.paused()) {
                 audioPlayerView._myPlayer.play();
                 $('.audio-player-template .play-pause').text('Pause');
@@ -1343,7 +1332,9 @@ namespace HTML5AudioPlayer.Components.Views {
 
         @named
         private onItemClickedToggle(): void {
-            let audioPlayerView: AudioPlayer = this;
+            let audioPlayerView: AudioPlayer = this,
+                audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
+            //audioPlayerModel.Playlist.$el.hide();
             if (audioPlayerView._myPlayer.paused()) {
                 audioPlayerView._myPlayer.play();
                 $('.audio-player-template .play-pause').text('Pause');
@@ -1356,6 +1347,9 @@ namespace HTML5AudioPlayer.Components.Views {
         @named
         private onItemClickedRefresh(): void {
             //alert("onItemClickedRefresh")
+            let audioPlayerView: AudioPlayer = this,
+                audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
+            audioPlayerView.restartVideo()
         }
 
         @named
@@ -1393,9 +1387,19 @@ namespace HTML5AudioPlayer.Components.Views {
         }
         @named
         private onItemInitPlayer(): void {
+            //alert("onItemInitPlayer")
             let audioPlayerView: AudioPlayer = this;
+            if (audioPlayerView._myPlayer.currentTime() <= 0) {
+                const currentTime = this.formatTime(audioPlayerView._myPlayer.currentTime());
+                const totalTime = this.formatTime(audioPlayerView._myPlayer.duration());
+                //const progress = (audioPlayerView._myPlayer.currentTime() / audioPlayerView._myPlayer.duration()) * 100;
+                $('.audio-player-template .progress-bar').val(0);
+                $('.audio-player-template .current-time').text(currentTime);
+                $('.audio-player-template .total-time').text(totalTime);
 
+            }
             audioPlayerView._myPlayer.paused()
+
         }
 
 
