@@ -105,6 +105,9 @@ namespace HTML5AudioPlayer.Components.Views {
             audioPlayerView._playlist.on(Events.EVENT_ITEM_REFRESH, audioPlayerView.onItemClickedRefresh, audioPlayerView);
             audioPlayerView._playlist.on(Events.EVENT_ITEM_SEEK, audioPlayerView.onItemClickedSeek, audioPlayerView);
             audioPlayerView._playlist.on(Events.EVENT_ITEM_INIT_PLAYER, audioPlayerView.onItemInitPlayer, audioPlayerView);
+            audioPlayerView._playlist.on(Events.EVENT_ITEM_SPEEDLIST, audioPlayerView.onItemClickedSpeedList, audioPlayerView);
+            audioPlayerView._playlist.on(Events.EVENT_ITEM_CLICKED_SPEED, audioPlayerView.onItemClickedSpeed, audioPlayerView);
+
 
 
 
@@ -884,6 +887,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 audioPlayerModel.lastUpdateTime = audioPlayerModel.maxVisitedTime;
                 // save to scorm.
                 audioPlayerModel.ScormPreviousData.cv = item.Id;
+                audioPlayerModel.ScormPreviousData.feedback = "liked"
                 let scorm: Utilities.ScormWrapper = Utilities.ScormWrapper.Instance,
                     scormData: string = JSON.stringify(audioPlayerModel.ScormPreviousData);
                 Utilities.consoleTrace("Updating current video to scorm: ", scormData);
@@ -1402,7 +1406,31 @@ namespace HTML5AudioPlayer.Components.Views {
 
         }
 
+        private onItemClickedSpeedList(): void {
+            alert("onItemClickedSpeedList")
+        }
 
+        private onItemClickedSpeed(): void {
+            // alert("onItemClickedSpeed");
+            // $('.audioSpeedContent').toggle();
+            $('.audioSpeedContent').empty()
+            let audioPlayerView: AudioPlayer = this,
+                audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
+            audioPlayerModel.optionsList.playbackRates.forEach(function (speed) {
+                var speedOption = $('<a href="#" data-speed="' + speed + '">' + speed + 'x</a>');
+                $('.audioSpeedContent').append(speedOption);
+            });
+            $('.audioSpeedContent a').click(function(event) {
+                event.preventDefault();
+                var speed = $(this).data('speed');
+               // NavigatorController.saveSpeed = speed;
+                //alert("speed "+speed)
+                audioPlayerView._myPlayer.playbackRate(speed)
+                $('.navigatorAudioSpeedBtn').text(speed + 'x');
+                $('.audioSpeedContent').toggle();
+
+            });
+        }
 
     }
 }

@@ -19,9 +19,59 @@
     overflow: hidden;
     display: block;
 
+    .course-leftpanel {
+        width: 5%;
+        height: 100%;
+        background-color: #00338d;
+        position: relative;
+        float: left;
+    }
+
+    .course-leftpanel {
+        .help-button {
+            position: absolute;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            top: 7%;
+            transform: translateY(-50%);
+            right: 10px;
+            opacity: 0.9;
+
+            svg {
+                width: 100%;
+            }
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        .exit-button {
+            position: absolute;
+            right: 10px;
+            top: 95%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            // padding: 6px 10px 5px 10px;
+            cursor: pointer;
+            opacity: 0.9;
+            color: white;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        &.show-exit {
+            .help-button {
+                right: 70px;
+            }
+        }
+    }
+
     .course-header {
-        padding: 5px 5px 0px 10px;
-        width: calc(100% - 15px);
+        width: 95%;
         height: 40px;
         z-index: 1;
         position: relative;
@@ -59,56 +109,20 @@
             }
         }
 
-        .help-button {
-            position: absolute;
-            cursor: pointer;
-            width: 30px;
-            height: 30px;
-            top: 50%;
-            transform: translateY(-50%);
-            right: 10px;
-            opacity: 0.9;
 
-            svg {
-                width: 100%;
-            }
 
-            &:hover {
-                opacity: 1;
-            }
-        }
 
-        .exit-button {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 16px;
-            padding: 6px 10px 5px 10px;
-            cursor: pointer;
-            opacity: 0.9;
-
-            &:hover {
-                opacity: 1;
-            }
-        }
-
-        &.show-exit {
-            .help-button {
-                right: 70px;
-            }
-        }
     }
 
     .course-body {
-        height: calc(100% - 45px);
+        height: calc(80% - 45px);
         display: inline-flex;
-        width: $fullWidth;
+        width: 95%;
         position: relative;
     }
 
     .launch-holder {
-        width: 100%;
+        width: 80%;
         height: 100%;
         position: absolute;
         right: 0;

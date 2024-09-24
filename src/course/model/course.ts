@@ -76,14 +76,41 @@ namespace HTML5AudioPlayer.Models {
         get hasCarousel(): boolean { return this.get("hasCarousel"); }
         set hasCarousel(value: boolean) { this.set("current", value); }
 
+
+        get HideIndexBtn(): boolean { return this.get("HideIndexBtn"); }
+        set HideIndexBtn(value: boolean) { this.set("HideIndexBtn", value); }
+
+        get IndexBtnText(): string { return this.get("IndexBtnText"); }
+        set IndexBtnText(value: string) { this.set("IndexBtnText", value); }
+
+        get HideGlossaryBtn(): boolean { return this.get("HideGlossaryBtn"); }
+        set HideGlossaryBtn(value: boolean) { this.set("HideGlossaryBtn", value); }
+
+        get GlossaryBtnText(): string { return this.get("GlossaryBtnText"); }
+        set GlossaryBtnText(value: string) { this.set("GlossaryBtnText", value); }
+
+        get ShowResourceBtn(): boolean { return this.get("ShowResourceBtn"); }
+        set ShowResourceBtn(value: boolean) { this.set("ShowResourceBtn", value); }
+
+
+
         constructor(options: any) {
             super(options);
             let model: Course = this;
+
             //let hasCarousel:Boolean = true;
            //alert(model.Carousel.hasCarousel)
 
 
+
            model.hasCarousel = model.Carousel.hasCarousel;
+
+        //    let HideGlossaryBtn: options.HideGlossaryBtn,
+        //         HideIndexBtn: options.HideIndexBtn,
+        //         IndexBtnText: options.IndexBtnText,
+        //         ShowResourceBtn: options.ShowResourceBtn,
+        //         GlossaryBtnText: options.GlossaryBtnText,
+        //         ResourceBtnText: options.ResourceBtnText,
 
             model.scorm = Utilities.ScormWrapper.Instance;
             Utilities.consoleTrace("UseCookies: ", model.UseCookies);

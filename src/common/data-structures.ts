@@ -79,6 +79,7 @@ namespace HTML5AudioPlayer.DataStructures {
         messages: VideoMessages;
         completiondelta: number;
         playlist: AudioData[];
+        options: options[];
         kcList : kcDate[]
         //slides : Carousel;
         ScormPreviousData: any;
@@ -86,6 +87,10 @@ namespace HTML5AudioPlayer.DataStructures {
         commlostmsg: string;
         passingPercent: number;
     }
+    export class options {
+        playbackRates: [];
+    }
+
     export class kcDate {
     }
 

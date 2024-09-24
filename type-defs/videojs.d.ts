@@ -76,6 +76,7 @@ interface VideoJSPlayer {
 	removeRemoteTextTrack(track: HTMLTrackElement): void;
 	poster(val?: string): string | VideoJSPlayer;
 	playbackRate(rate?: number): number;
+	playbackList(playbackRates?: number): number;
 	seeking(): boolean;
 	textTracks(): TextTrackList;
 	videoWidth(): number;

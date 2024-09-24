@@ -35,12 +35,15 @@ namespace HTML5AudioPlayer.Events {
     export let EVENT_ITEM_TOGGLE: string = "item-playPause";
     export let EVENT_ITEM_REFRESH: string = "item-refresh";
     export let EVENT_ITEM_SEEK: string = "item-seek";
+    export let EVENT_ITEM_SPEEDLIST: string = "item-speedlist";
 
 
 
     export let EVENT_ITEM_CLICKED_TOGGLE: string = "item-click-playPause";
     export let EVENT_ITEM_CLICKED_REFRESH: string = "item-click-refresh";
     export let EVENT_ITEM_CLICKED_SEEK: string = "item-click-seek";
+    export let EVENT_ITEM_CLICKED_SPEED: string = "item-click-speed";
+    export let EVENT_ITEM_CLICKED_SPEEDLIST: string = "item-click-speedlist";
     export let EVENT_INIT_PLAYER: string = "init-player";
     export let EVENT_ITEM_INIT_PLAYER: string = "item-init-player";
 

@@ -30,6 +30,9 @@ namespace HTML5AudioPlayer.Components.Views {
                 'click .play-pause': 'togglePlayPause1',
                 'click .refresh': 'refreshAudio',
                 'input .progress-bar': 'seekAudio',
+                'click .navigatorAudioSpeedBtn': 'speedAudio',
+                'a .audioSpeedContent': 'speedContentAudio'
+
             };
         }
 
@@ -139,5 +142,24 @@ namespace HTML5AudioPlayer.Components.Views {
             playlistItemView.trigger(Events.EVENT_ITEM_CLICKED_SEEK, playlistItemModel);
 
         }
+
+        speedAudio(e): void {
+            e.stopPropagation();
+            $('.audioSpeedContent').toggle();
+            let playlistItemView: PlaylistItem = this,
+            playlistItemModel: Models.PlaylistItem = playlistItemView.model;
+            playlistItemView.trigger(Events.EVENT_ITEM_CLICKED_SPEED, playlistItemModel);
+
+
+        }
+        speedContentAudio(e): void {
+            e.stopPropagation();
+            $('.audioSpeedContent').hide();
+            let playlistItemView: PlaylistItem = this,
+                playlistItemModel: Models.PlaylistItem = playlistItemView.model;
+            playlistItemView.trigger(Events.EVENT_ITEM_CLICKED_SPEEDLIST, playlistItemModel);
+        }
+
+
     }
 }

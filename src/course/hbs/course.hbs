@@ -1,18 +1,42 @@
-
-<div id="course-header" class="course-header{{#if ShowExitButton}} show-exit{{/if}}">
-    <div class="logo"><img src="resources/image/{{logo}}" onload="SVGInject(this)" /></div>
-    <div class="title text-ellipsis">
-        <p>{{{title}}}</p>
-    </div>
+<div id="course-leftpanel" class="course-leftpanel">
+    {{#if ShowExitButton}}
+        <div class="exit-button" title="Exit">EXIT</div>
+    {{/if}}
     {{#if help}}
         {{#if help.show}}
             <div class="help-button" title="{{help.tooltip}}"><img src="{{help.icon}}" onload="SVGInject(this)" /></div>
         {{/if}}
     {{/if}}
-    {{#if ShowExitButton}}
-        <div class="exit-button" title="Exit">EXIT</div>
+
+    {{#if HideIndexBtn}} {{else}}
+        <div class="index-button">
+            <img src="resources/image/index-button-icon.png" alt="" />
+            <h4>{{{IndexBtnText}}}</h4>
+        </div>
     {{/if}}
+    {{#if ShowResourceBtn}}
+        <div class="resource-button">
+            <img src="resources/image/index-button-icon.png" alt="" />
+            <h4>{{{ResourceBtnText}}}</h4>
+        </div>
+    {{/if}}
+    {{#if HideGlossaryBtn}} {{else}}
+        <div class="glossary-button">
+            <img src="resources/image/glossary-button-icon.png" alt="" />
+            <h4>{{{GlossaryBtnText}}}</h4>
+        </div>
+    {{/if}}
+
 </div>
+
+{{!-- <div id="course-header" class="course-header{{#if ShowExitButton}} show-exit{{/if}}">
+    <div class="logo"><img src="resources/image/{{logo}}" onload="SVGInject(this)" /></div>
+    <div class="title text-ellipsis">
+        <p>{{{title}}}</p>
+    </div>
+
+
+</div> --}}
 {{#if carousel.hasCarousel}}
     <div id="carousel-container" class="carousel-container"></div>
 {{/if}}

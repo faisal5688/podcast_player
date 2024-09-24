@@ -4,9 +4,11 @@
 
 <div class="playlist-inner"></div>
 <div class="questionlist-inner"></div>
-{{#ifCond HideIndexBtn '&&' HideGlossaryBtn}} {{else}}
+<div class="knowledge-check-list-inner"></div>
+
+{{!-- {{#ifCond HideIndexBtn '&&' HideGlossaryBtn}} {{else}} --}}
         <div class="playlist-buttons">
-            {{#if HideIndexBtn}} {{else}}
+            {{!-- {{#if HideIndexBtn}} {{else}}
                 <div class="index-button">
                     <img src="resources/image/index-button-icon.png" alt="" />
                     <h4>{{{IndexBtnText}}}</h4>
@@ -23,6 +25,6 @@
                     <img src="resources/image/glossary-button-icon.png" alt="" />
                     <h4>{{{GlossaryBtnText}}}</h4>
                 </div>
-            {{/if}}
+            {{/if}} --}}
         </div>
-{{/ifCond}}
+{{!-- {{/ifCond}} --}}

@@ -91,6 +91,7 @@
         height: 50px;
     }
 }
+
 @-webkit-keyframes toAnimateDown {
     from {
         height: 0px;
@@ -105,7 +106,7 @@
 .playlist-container {
     float: left;
     width: 100%;
-    height: calc(60% - 20px);
+    height: calc(100% - 20px);
     position: relative;
     opacity: 1;
     padding-top: 10px;
@@ -122,7 +123,8 @@
                 height: $fullHeight;
                 width: 60%;
             }
-            .questionlist-inner{
+
+            .questionlist-inner {
                 height: $fullHeight;
                 width: 40%;
             }
@@ -140,8 +142,10 @@
         border-top: $lightGreyBorder;
         border-bottom: $lightGreyBorder;
         display: flex;
+        display: none;
 
         .index-button {
+
             border-right: 1px solid $colorGray94;
             flex: 1 1 auto;
             height: 37px;
@@ -210,7 +214,7 @@
         .playlist-inner {
             height: calc(100% - 52px);
             background: $colorWhite;
-            width: 60%;
+            width: 40%;
 
             .playlist-item {
                 cursor: pointer;
@@ -297,11 +301,71 @@
 
                     &.showPlayer {
                         display: block;
-                        height:50px;
+                        height: 50px;
                         -webkit-animation: toAnimateDown 0.3s 1 ease-in;
                         animation: toAnimateDown 0.3s 1 ease-in;
                     }
 
+                    .audio-player-template {
+                        .controls {
+                            .bottomNav_audioSpeed {
+                                position: relative;
+                                display: inline-block;
+
+                                .navigatorAudioSpeedBtn {
+                                    background: none;
+                                    color: #ffffff;
+                                    border: none;
+                                    padding: 0;
+                                    font: inherit;
+                                    cursor: pointer;
+                                    outline: inherit;
+                                    font-size: 16px;
+                                    width: 50px;
+                                    height: 38px;
+                                    text-align: center;
+
+                                }
+                                &.navigatorAudioSpeedBtn:hover {
+                                    background: #00b8f5;
+                                    border-radius: 5px;
+                                    height: 38px;
+                                    font-weight: bold;
+                                }
+                                &.navigatorAudioSpeedBtn.disabled {
+                                    cursor: default;
+                                }
+                                &.navigatorAudioSpeedBtn.disabled:hover {
+                                    background: none;
+                                    font-weight: normal;
+                                }
+
+                                .audioSpeedContent {
+                                    display: none;
+                                    position: absolute;
+                                    background-color: #00338d;
+                                    color: blue;
+                                    min-width: 52px;
+                                    /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
+                                    z-index: 1;
+                                    bottom: 41px;
+                                    /* Position the dropdown content above the button */
+                                    left: -1px;
+
+                                    a {
+                                        color: $colorGray20;
+                                        padding: 0px 5px;
+                                        text-decoration: none;
+                                        display: block;
+                                        text-align: center;
+                                        font-size: 12px;
+                                        background-color: $colorWhite;
+                                    }
+                                }
+
+                            }
+                        }
+                    }
 
 
                 }
@@ -313,9 +377,9 @@
 
         }
 
-        .questionlist-inner{
+        .questionlist-inner {
             height: calc(100% - 52px);
-            width: 40%;
+            width: 30%;
 
             .questionlist-item {
                 cursor: pointer;
@@ -403,7 +467,112 @@
 
                     &.showPlayer {
                         display: block;
-                        height:50px;
+                        height: 50px;
+                        -webkit-animation: toAnimateDown 0.3s 1 ease-in;
+                        animation: toAnimateDown 0.3s 1 ease-in;
+                    }
+
+
+
+                }
+
+
+
+
+            }
+        }
+
+        .knowledge-check-list-inner {
+            height: calc(100% - 52px);
+            width: 30%;
+
+            .questionlist-item {
+                cursor: pointer;
+                display: inline-flex;
+                padding: 5px;
+                margin-bottom: 1px;
+                width: calc(100% - 10px);
+                height: auto;
+                position: relative;
+                background: $colorWhite;
+                box-shadow: 0px 6px 10px -8px #000;
+                color: $colorGray20;
+                flex-wrap: wrap;
+
+                &.enabled {
+                    @include underlineFromLeft;
+                }
+
+                &.current {
+                    cursor: default !important;
+                    @include currentPlaylistItem;
+
+                }
+
+                &.hide {
+                    display: none;
+                }
+
+                &.disabled {
+                    cursor: default;
+                    color: $colorGray60;
+                    @include grayscale;
+                }
+
+                .left-content {
+                    width: 10%;
+                    height: 50px;
+                    background-color: #000;
+                    position: relative;
+                    margin: auto;
+                    overflow: hidden;
+
+                    .vid-thumbnail {
+                        width: 67px;
+                        @include centerAlign;
+                    }
+
+                    .duration {
+                        @include videoDurationProperty;
+                    }
+                }
+
+                .right-content {
+                    width: 90%;
+                    position: relative;
+
+                    .item-complete {
+                        @include itemCompletion;
+                        left: 200px;
+                    }
+
+                    .item-index {
+                        @include ItemFontStyle;
+                        padding: 10px 0 2px 0;
+                        font-weight: bold;
+                        height: 16px;
+                    }
+
+                    .item-title {
+                        @include ItemFontStyle;
+                        font-weight: normal;
+                        height: 32px;
+                    }
+                }
+
+                .audio-player-container {
+                    display: none;
+                    // height: 40px;
+                    width: 100%;
+                    background: grey;
+                    position: relative;
+                    bottom: 0;
+                    height: 0px;
+                    // transition: 0 0.5s ease;
+
+                    &.showPlayer {
+                        display: block;
+                        height: 50px;
                         -webkit-animation: toAnimateDown 0.3s 1 ease-in;
                         animation: toAnimateDown 0.3s 1 ease-in;
                     }
@@ -433,6 +602,7 @@
         animation: toAnimateLeft 0.3s 1 ease-in;
     }
 }
+
 .questionlist-inner {
     float: left;
     width: 40%;

@@ -1,5 +1,6 @@
 ﻿/// <reference path="playlist-item.ts" />
 /// <reference path="queslist-item.ts" />
+/// <reference path="../../knowledge-check/model/knowledge-check-list.ts" />
 
 namespace HTML5AudioPlayer.Components.Models {
 
@@ -10,6 +11,11 @@ namespace HTML5AudioPlayer.Components.Models {
 
         get QuestionlistItems(): QuestionlistItem[] { return this.get("questionlistItems"); }
         set QuestionlistItems(value: QuestionlistItem[]) { this.set("questionlistItems", value); }
+
+        get KnowledgeChecks(): DataStructures.KCData[] { return this.get("knowledgechecksdata"); }
+        set KnowledgeChecks(value: DataStructures.KCData[]) { this.set("knowledgechecksdata", value); }
+
+
 
         get CurrentItem(): PlaylistItem { return this.get("currentitem"); }
         set CurrentItem(value: PlaylistItem) { this.set("currentitem", value); }
@@ -30,20 +36,7 @@ namespace HTML5AudioPlayer.Components.Models {
         get CourseMode(): DataStructures.CourseMode { return this.get("coursemode"); }
         set CourseMode(value: DataStructures.CourseMode) { this.set("coursemode", value); }
 
-        get HideIndexBtn(): boolean { return this.get("HideIndexBtn"); }
-        set HideIndexBtn(value: boolean) { this.set("HideIndexBtn", value); }
 
-        get IndexBtnText(): string { return this.get("IndexBtnText"); }
-        set IndexBtnText(value: string) { this.set("IndexBtnText", value); }
-
-        get HideGlossaryBtn(): boolean { return this.get("HideGlossaryBtn"); }
-        set HideGlossaryBtn(value: boolean) { this.set("HideGlossaryBtn", value); }
-
-        get GlossaryBtnText(): string { return this.get("GlossaryBtnText"); }
-        set GlossaryBtnText(value: string) { this.set("GlossaryBtnText", value); }
-
-        get ShowResourceBtn(): boolean { return this.get("ShowResourceBtn"); }
-        set ShowResourceBtn(value: boolean) { this.set("ShowResourceBtn", value); }
 
         get ScormPreviousData(): any { return this.get("ScormPreviousData"); }
         set ScormPreviousData(value: any) { this.set("ScormPreviousData", value); }

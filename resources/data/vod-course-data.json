@@ -11,6 +11,15 @@
     "commlostmsg": "The communication with server that tracks your progress has failed. Further course progress will be lost. Please relaunch the course to continue and track your progress.",
     "ShowLauncher": false,
     "ShowExitButton": true,
+
+    "HideIndexBtn": false,
+    "IndexBtnText": "Index",
+    "ShowResourceBtn": false,
+    "ResourceBtnText": "Resource",
+    "HideGlossaryBtn": false,
+    "GlossaryBtnText": "Glossary",
+
+
     "exitPopup": {
         "heading": "Confirm",
         "content": "Are you sure you want to exit?",
@@ -72,12 +81,7 @@
             ]
         },
         "playlistStartIndex": 0,
-        "HideIndexBtn": false,
-        "IndexBtnText": "Index",
-        "ShowResourceBtn": false,
-        "ResourceBtnText": "Resource",
-        "HideGlossaryBtn": false,
-        "GlossaryBtnText": "Glossary",
+
         "HideCaptionsOnLaunch": true,
         "HidePlaylist": false,
         "AutoAdvanceToNext": false,
@@ -96,7 +100,7 @@
                 "thumbnail": "resources/image/thumbs/part1_0.png",
                 "duration": "01:55",
                 "hasQuestion":true,
-                "total":2,
+                "total":3,
                 "quesDescription": "Fusce vulputate dui sit amet diam tincidunt vestibulum."
             },
             {
@@ -240,7 +244,7 @@
             },
             {
                 "id": "kc-003",
-                "audio": "aud-002",
+                "audio": "aud-000",
                 "time": "end",
                 "question": "This is KC 3. Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.",
                 "instruction": "Select an answer and click Submit.",
@@ -293,12 +297,12 @@
             },
             {
                 "id": "kc-004",
-                "audio": "aud-004",
+                "audio": "aud-002",
                 "time": "end",
                 "question": "This is KC 4. Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.",
                 "instruction": "Select all applicable answers and click Submit.",
                 "type": "mcms",
-                "attempts": 2,
+                "attempts": 1,
                 "correct": [
                     "1",
                     "4"

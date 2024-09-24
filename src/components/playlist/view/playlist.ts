@@ -1,5 +1,6 @@
 ﻿/// <reference path="../model/playlist.ts" />
 /// <reference path="../model/playlist-item.ts" />
+/// <reference path="../../knowledge-check/view/knowledge-check-list.ts" />
 
 namespace HTML5AudioPlayer.Components.Views {
 
@@ -9,6 +10,7 @@ namespace HTML5AudioPlayer.Components.Views {
 
         private _playlistItems: PlaylistItem[];
         private _playlistQuestions: QuestionlistItem[];
+        private _KnowledgeCheckList :KnowledgeCheckList;
 
         constructor(options: Backbone.ViewOptions<Models.Playlist>) {
             super(options);
@@ -21,6 +23,12 @@ namespace HTML5AudioPlayer.Components.Views {
 
             playlistView._playlistItems = new Array<PlaylistItem>();
             playlistView._playlistQuestions = new Array<QuestionlistItem>();
+
+            playlistView._KnowledgeCheckList = new KnowledgeCheckList({
+                id: _.uniqueId("KnowledgeCheckList"),
+                className: "KnowledgeCheckList",
+                model: playlistModel.KnowledgeCheckList
+            });
 
             for (let i = 0; i < playlistModel.PlaylistItems.length; i++) {
                 //console.log(playlistModel.PlaylistItems[i].IsAssessment)
@@ -45,6 +53,9 @@ namespace HTML5AudioPlayer.Components.Views {
                 playlistItemView.on(Events.EVENT_ITEM_CLICKED_TOGGLE, playlistView.togglePlayPause, playlistView);
                 playlistItemView.on(Events.EVENT_ITEM_CLICKED_REFRESH, playlistView.refreshAudio, playlistView);
                 playlistItemView.on(Events.EVENT_ITEM_CLICKED_SEEK, playlistView.seekAudio, playlistView);
+                playlistItemView.on(Events.EVENT_ITEM_CLICKED_SPEEDLIST, playlistView.speedListAudio, playlistView);
+                playlistItemView.on(Events.EVENT_ITEM_CLICKED_SPEED, playlistView.speedClickAudio, playlistView);
+
                 playlistModel.enableAssessment();
                 //playlistItemView.afterRender()
 
@@ -84,6 +95,9 @@ namespace HTML5AudioPlayer.Components.Views {
             let playlistView = this,
                 playlistModel: Models.Playlist = this.model;
 
+                console.log("playlistView.model")
+                console.log(playlistView.model)
+
             playlistView.$el.html(playlistView._template(playlistView.model.toJSON()));
 
             let playlistInner: JQuery = playlistView.$el.find(".playlist-inner");
@@ -100,6 +114,9 @@ namespace HTML5AudioPlayer.Components.Views {
 
                 questionlistInner.append(playlistQuestionItem.render().$el);
             }
+            let KnowledgeCheckLisInner: JQuery = playlistView.$el.find(".knowledge-check-list-inner");
+
+            KnowledgeCheckLisInner.append(this._KnowledgeCheckList.render().$el);
 
 
             return playlistView;
@@ -326,6 +343,27 @@ namespace HTML5AudioPlayer.Components.Views {
             //playlistModel.CurrentItem.CurrentTime=time;
             playlistView.trigger(Events.EVENT_ITEM_SEEK);
             // alert("seekAudio")
+        }
+
+        speedListAudio():void{
+            console.log("speedListAudio")
+            let playlistView: Playlist = this,
+                playlistModel: Models.Playlist = playlistView.model,
+                playlistContainer: JQuery = playlistView.$el.parent();
+
+            //playlistModel.CurrentItem.CurrentTime=time;
+            playlistView.trigger(Events.EVENT_ITEM_SPEEDLIST);
+
+        }
+
+        speedClickAudio():void{
+            console.log("speedClickAudio")
+            let playlistView: Playlist = this,
+                playlistModel: Models.Playlist = playlistView.model,
+                playlistContainer: JQuery = playlistView.$el.parent();
+            //playlistModel.CurrentItem.CurrentTime=time;
+            playlistView.trigger(Events.EVENT_ITEM_CLICKED_SPEED);
+
         }
     }
 }

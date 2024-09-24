@@ -19,6 +19,8 @@ namespace HTML5AudioPlayer.Components.Models {
         get Messages(): DataStructures.VideoMessages { return this.get("messages"); }
         set Messages(value: DataStructures.VideoMessages) { this.set("messages", value); }
 
+
+        get optionsList(): DataStructures.options { return this.get("options"); }
         // get Poster(): string { return this.get("poster"); }
         // set Poster(value: string) { this.set("poster", value); }
 
@@ -55,6 +57,9 @@ namespace HTML5AudioPlayer.Components.Models {
         get ContinueOnFocusout(): boolean { return this.get("continueOnFocusout"); }
         get PassingPercent(): number { return this.get("passingPercent"); }
 
+
+
+
         public supposedCurrentTime: number;
         public maxVisitedTime: number;
         public lastUpdateTime: number;
@@ -64,7 +69,7 @@ namespace HTML5AudioPlayer.Components.Models {
         public _startPlayingOnError: boolean;
         public _prevItemId: string;
         public _retries: number;
-        public numQuestions:number;
+        public numQuestions: number;
 
         constructor(options: any) {
             super(options);
@@ -149,7 +154,7 @@ namespace HTML5AudioPlayer.Components.Models {
             if (model.ScormPreviousData) {
                 Utilities.consoleTrace("Applying SCORM Data: ", model.ScormPreviousData);
                 model.ScormPreviousData.cv = model.ScormPreviousData.cv || playlistItems[0].id;
-
+                model.ScormPreviousData.feedback = "liked"
                 for (let i: number = 0; i < playlistItems.length; i++) {
                     let curVidData: DataStructures.AudioData = playlistItems[i],
                         curVidScormData: DataStructures.AudioScormData = model.ScormPreviousData[curVidData.id];
@@ -204,6 +209,7 @@ namespace HTML5AudioPlayer.Components.Models {
                 }
                 model.ScormPreviousData = {};
                 model.ScormPreviousData.cv = model.ScormPreviousData.cv || playlistItems[0].id;
+                model.ScormPreviousData.feedback = "liked"
 
                 playlistItems[0].currenttime = 0;
                 playlistItems[0].current = true;

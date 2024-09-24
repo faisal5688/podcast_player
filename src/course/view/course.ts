@@ -5,6 +5,8 @@
 /// <reference path="../../components/assessment/view/assessment.ts" />
 /// <reference path="../../components/survey/view/survey.ts" />
 /// <reference path="../../components/carousel/view/carousel.ts" />
+/// <reference path="../../components/knowledge-check/view/knowledge-check-list.ts" />
+
 
 
 
@@ -14,6 +16,7 @@ namespace HTML5AudioPlayer.Views {
         private _template: (properties?: HandlebarsTemplates) => string;
         public _player: Components.Views.AudioPlayer;
         private _knowledgeCheck: Components.Views.KnowledgeCheck;
+        private _knowledgeCheckList: Components.Views.KnowledgeCheckList;
         private _assessment: Components.Views.Assessment;
         private _survey: Components.Views.Survey;
         private _carousel: Components.Views.Carousel;
@@ -62,7 +65,11 @@ namespace HTML5AudioPlayer.Views {
             return {
                 'click .launch-button': 'onLaunchCourse',
                 'click .help-button': 'onOpenHelp',
-                'click .exit-button': 'onCourseExit'
+                'click .exit-button': 'onCourseExit',
+
+                'click .index-button': 'onShowIndex',
+                'click .glossary-button': 'onShowGlossary',
+                'click .resource-button': 'onShowResource',
             }
         }
 
