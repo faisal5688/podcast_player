@@ -486,7 +486,7 @@
             height: calc(100% - 52px);
             width: 30%;
 
-            .questionlist-item {
+            .knowledge-check-item{
                 cursor: pointer;
                 display: inline-flex;
                 padding: 5px;
@@ -558,27 +558,6 @@
                         font-weight: normal;
                         height: 32px;
                     }
-                }
-
-                .audio-player-container {
-                    display: none;
-                    // height: 40px;
-                    width: 100%;
-                    background: grey;
-                    position: relative;
-                    bottom: 0;
-                    height: 0px;
-                    // transition: 0 0.5s ease;
-
-                    &.showPlayer {
-                        display: block;
-                        height: 50px;
-                        -webkit-animation: toAnimateDown 0.3s 1 ease-in;
-                        animation: toAnimateDown 0.3s 1 ease-in;
-                    }
-
-
-
                 }
 
 
