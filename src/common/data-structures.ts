@@ -87,6 +87,11 @@ namespace HTML5AudioPlayer.DataStructures {
         commlostmsg: string;
         passingPercent: number;
     }
+    export class KnowledgeChecks{
+        enabled?: boolean;
+        cuepointdelta:number;        
+        knowledgechecksdata:KCData[];
+    }
     export class options {
         playbackRates: [];
     }

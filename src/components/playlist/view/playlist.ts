@@ -1,6 +1,5 @@
 ﻿/// <reference path="../model/playlist.ts" />
 /// <reference path="../model/playlist-item.ts" />
-/// <reference path="../../knowledge-check/view/knowledge-check-list.ts" />
 
 namespace HTML5AudioPlayer.Components.Views {
 
@@ -10,7 +9,7 @@ namespace HTML5AudioPlayer.Components.Views {
 
         private _playlistItems: PlaylistItem[];
         private _playlistQuestions: QuestionlistItem[];
-        private _KnowledgeCheckList :KnowledgeCheckList;
+       private _knowledgeCheckItems :KnowledgeCheckItem[];
 
         constructor(options: Backbone.ViewOptions<Models.Playlist>) {
             super(options);
@@ -23,12 +22,13 @@ namespace HTML5AudioPlayer.Components.Views {
 
             playlistView._playlistItems = new Array<PlaylistItem>();
             playlistView._playlistQuestions = new Array<QuestionlistItem>();
+            playlistView._knowledgeCheckItems = new Array<KnowledgeCheckItem>();
 
-            playlistView._KnowledgeCheckList = new KnowledgeCheckList({
-                id: _.uniqueId("KnowledgeCheckList"),
-                className: "KnowledgeCheckList",
-                model: playlistModel.KnowledgeCheckList
-            });
+            // playlistView._KnowledgeCheckList = new KnowledgeCheckList({
+            //     id: _.uniqueId("KnowledgeCheckList"),
+            //     className: "KnowledgeCheckList",
+            //     model: COURSE_MODEL.KnowledgeCheck
+            // });
 
             for (let i = 0; i < playlistModel.PlaylistItems.length; i++) {
                 //console.log(playlistModel.PlaylistItems[i].IsAssessment)
@@ -76,6 +76,17 @@ namespace HTML5AudioPlayer.Components.Views {
                 QuestionlistItemView.on(Events.EVENT_ITEM_CLICKED, playlistView.onQuesClicked, playlistView);
                 // }
             }
+
+            //alert(COURSE_MODEL.KnowledgeCheck.CuePoints)
+            for (let i = 0; i < playlistModel.KnowledgeCheckItems.length; i++) {
+                let KnowledgeCheckItemsView = new KnowledgeCheckItem({
+                    id: _.uniqueId("knowledge-check-item"),
+                    className: "knowledge-check-item",
+                    model: playlistModel.KnowledgeCheckItems[i]
+                });
+
+                playlistView._knowledgeCheckItems.push(KnowledgeCheckItemsView);
+            }
         }
 
         public events(): Backbone.EventsHash {
@@ -114,9 +125,15 @@ namespace HTML5AudioPlayer.Components.Views {
 
                 questionlistInner.append(playlistQuestionItem.render().$el);
             }
-            let KnowledgeCheckLisInner: JQuery = playlistView.$el.find(".knowledge-check-list-inner");
 
-            KnowledgeCheckLisInner.append(this._KnowledgeCheckList.render().$el);
+            let KnowledgeCheckLisInner: JQuery = playlistView.$el.find(".knowledge-check-list-inner");
+            for (let i = 0; i < playlistView._knowledgeCheckItems.length; i++) {
+                let knowledgeCheckItem: KnowledgeCheckItem = playlistView._knowledgeCheckItems[i];
+
+                KnowledgeCheckLisInner.append(knowledgeCheckItem.render().$el);
+            }
+
+            //KnowledgeCheckLisInner.append(this._knowledgeCheckItems.render().$el);
 
 
             return playlistView;

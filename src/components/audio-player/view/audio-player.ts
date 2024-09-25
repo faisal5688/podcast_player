@@ -147,7 +147,8 @@ namespace HTML5AudioPlayer.Components.Views {
             // let crouserContainer: JQuery = audioPlayerView.$(".carousel-container");
             // crouserContainer.append(this._crousel.render().$el);
 
-
+           // console.log("audioPlayerModel.CuePoints")
+           // console.log(audioPlayerModel.CuePoints)
             return audioPlayerView;
         }
 

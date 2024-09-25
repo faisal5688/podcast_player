@@ -71,7 +71,7 @@ namespace HTML5AudioPlayer.Components.Models {
         public _retries: number;
         public numQuestions: number;
 
-        constructor(options: any) {
+        constructor(options: any,kcdata?:any) {
             super(options);
 
             let model: AudioPlayer = this;
@@ -105,10 +105,12 @@ namespace HTML5AudioPlayer.Components.Models {
                 ShowResourceBtn: options.ShowResourceBtn,
                 GlossaryBtnText: options.GlossaryBtnText,
                 ResourceBtnText: options.ResourceBtnText,
-                ScormPreviousData: model.ScormPreviousData
+                ScormPreviousData: model.ScormPreviousData,
+                kcdata:kcdata,
             });
             model.Playlist.CourseMode = model.CourseMode;
             model.PlayerOptions.src = model.Playlist.CurrentItem.Url;
+            //model.Playlist.CuePoints = model.CuePoints;
 
             // TEMP Change for Video Autoplay
             //model.PlayerOptions.muted = false;

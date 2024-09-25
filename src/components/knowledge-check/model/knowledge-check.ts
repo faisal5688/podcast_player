@@ -20,6 +20,9 @@ namespace HTML5AudioPlayer.Components.Models {
         get KnowledgeChecks(): DataStructures.KCData[] { return this.get("knowledgechecksdata"); }
         set KnowledgeChecks(value: DataStructures.KCData[]) { this.set("knowledgechecksdata", value); }
 
+        get Knowledgechecksdata(): DataStructures.KCData[] { return this.get("Knowledgechecksdata"); }
+        set Knowledgechecksdata(value: DataStructures.KCData[]) { this.set("Knowledgechecksdata", value); }
+
         get Current(): DataStructures.KCData { return this.get("current"); }
         set Current(value: DataStructures.KCData) { this.set("current", value); }
 
@@ -37,6 +40,7 @@ namespace HTML5AudioPlayer.Components.Models {
 
         constructor(options: any) {
             super(options);
+
 
             let model: KnowledgeCheck = this;
 

@@ -1,6 +1,6 @@
 ﻿/// <reference path="playlist-item.ts" />
 /// <reference path="queslist-item.ts" />
-/// <reference path="../../knowledge-check/model/knowledge-check-list.ts" />
+/// <reference path="knowledge-check-item.ts" />
 
 namespace HTML5AudioPlayer.Components.Models {
 
@@ -12,10 +12,8 @@ namespace HTML5AudioPlayer.Components.Models {
         get QuestionlistItems(): QuestionlistItem[] { return this.get("questionlistItems"); }
         set QuestionlistItems(value: QuestionlistItem[]) { this.set("questionlistItems", value); }
 
-        get KnowledgeChecks(): DataStructures.KCData[] { return this.get("knowledgechecksdata"); }
-        set KnowledgeChecks(value: DataStructures.KCData[]) { this.set("knowledgechecksdata", value); }
-
-
+        get KnowledgeCheckItems(): KnowledgeCheckItem[] { return this.get("KnowledgeCheckItems"); }
+        set KnowledgeCheckItems(value: KnowledgeCheckItem[]) { this.set("KnowledgeCheckItems", value); }
 
         get CurrentItem(): PlaylistItem { return this.get("currentitem"); }
         set CurrentItem(value: PlaylistItem) { this.set("currentitem", value); }
@@ -26,7 +24,6 @@ namespace HTML5AudioPlayer.Components.Models {
         get CurrentListItem(): string { return this.get("currentListItem"); }
         set CurrentListItem(value: string) { this.set("currentListItem", value); }
 
-
         get Visible(): boolean { return this.get("visible"); }
         set Visible(value: boolean) { this.set("visible", value); }
 
@@ -36,24 +33,38 @@ namespace HTML5AudioPlayer.Components.Models {
         get CourseMode(): DataStructures.CourseMode { return this.get("coursemode"); }
         set CourseMode(value: DataStructures.CourseMode) { this.set("coursemode", value); }
 
-
-
         get ScormPreviousData(): any { return this.get("ScormPreviousData"); }
         set ScormPreviousData(value: any) { this.set("ScormPreviousData", value); }
+
+        // get KnowledgeChecks(): Components.Models.KnowledgeCheck { return this.get("KnowledgeCheckModel"); }
+        // set KnowledgeChecks(value: Components.Models.KnowledgeCheck) { this.set("KnowledgeCheckModel", value); }
+
+        get KnowledgeChecks(): DataStructures.KnowledgeChecks[] { return this.get("KnowledgeChecks"); }
+        set KnowledgeChecks(value: DataStructures.KnowledgeChecks[]) { this.set("KnowledgeChecks", value); }
+
+        get CuePoints(): DataStructures.CuePoint[] { return this.get("CuePoints"); }
+        set CuePoints(value: DataStructures.CuePoint[]) { this.set("CuePoints", value); }
+
+
 
         protected currentitemid: string;
 
         constructor(options: any) {
             super(options);
 
+
+
             let model: Playlist = this,
                 audioData: DataStructures.AudioData[] = options.audioData,
+                kcdata:DataStructures.KCData[]= options.kcdata,
                 hideItemCount = 0,
                 qItemCount = 0;
 
             model.PlaylistItems = new Array<PlaylistItem>();
 
             model.QuestionlistItems = new Array<QuestionlistItem>();
+
+            model.KnowledgeCheckItems = new Array<KnowledgeCheckItem>();
 
 
             for (let i = 0; i < audioData.length; i++) {
@@ -112,6 +123,16 @@ namespace HTML5AudioPlayer.Components.Models {
 
             if (!model.CurrentItem) {
                 model.setAudioByID(model.PlaylistItems[0].Id);
+            }
+            console.log("Playlist options")
+            console.log(options)
+            console.log(options.kcdata)
+            //alert("model.KnowledgeChecks")
+           // alert(kcdata)
+            for (let i: number = 0; i < kcdata.length; i++) {
+                let knowledgeCheckItem :KnowledgeCheckItem = new KnowledgeCheckItem(kcdata[i])
+                model.KnowledgeCheckItems.push(knowledgeCheckItem)
+
             }
         }
 

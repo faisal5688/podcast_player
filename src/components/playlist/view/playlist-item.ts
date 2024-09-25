@@ -40,6 +40,9 @@ namespace HTML5AudioPlayer.Components.Views {
             let playlistItemView = this,
                 playlistItemModel: Models.PlaylistItem = this.model;
 
+                console.log("playlistItemModel")
+                console.log(playlistItemModel)
+
 
             playlistItemView.$el.html(playlistItemView._template(playlistItemModel.toJSON()));
             // if (playlistItemModel.Current) {

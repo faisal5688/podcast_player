@@ -42,6 +42,8 @@ namespace HTML5AudioPlayer.Models {
 
         get PlayerData(): DataStructures.PlayerData { return this.get("playerdata"); }
 
+        get KnowledgecheckItemData(): DataStructures.KnowledgeChecks { return this.get("knowledgechecks"); }
+
 
         get PlayerModel(): Components.Models.AudioPlayer { return this.get("PlayerModel"); }
         set PlayerModel(value: Components.Models.AudioPlayer) { this.set("PlayerModel", value); }
@@ -56,7 +58,12 @@ namespace HTML5AudioPlayer.Models {
         set CompleteOn(value: DataStructures.CompleteOn) { this.set("completeon", value); }
 
         get KnowledgeCheck(): Components.Models.KnowledgeCheck { return this.get("KnowledgeCheckModel"); }
-        set KnowledgeCheck(value: Components.Models.KnowledgeCheck) { this.set("KnowledgeCheckModel", value); }
+        set KnowledgeCheck(value: Components.Models.KnowledgeCheck) {
+            this.set("KnowledgeCheckModel", value);
+
+        }
+        get KnowledgeCheckItem(): Components.Models.KnowledgeCheckItem { return this.get("KnowledgeCheckItem"); }
+        set KnowledgeCheckItem(value: Components.Models.KnowledgeCheckItem) { this.set("KnowledgeCheckItem", value); }
 
         get Assessment(): Components.Models.Assessment { return this.get("AssessmentModel"); }
         set Assessment(value: Components.Models.Assessment) { this.set("AssessmentModel", value); }
@@ -99,18 +106,18 @@ namespace HTML5AudioPlayer.Models {
             let model: Course = this;
 
             //let hasCarousel:Boolean = true;
-           //alert(model.Carousel.hasCarousel)
+            //alert(model.Carousel.hasCarousel)
 
 
 
-           model.hasCarousel = model.Carousel.hasCarousel;
+            model.hasCarousel = model.Carousel.hasCarousel;
 
-        //    let HideGlossaryBtn: options.HideGlossaryBtn,
-        //         HideIndexBtn: options.HideIndexBtn,
-        //         IndexBtnText: options.IndexBtnText,
-        //         ShowResourceBtn: options.ShowResourceBtn,
-        //         GlossaryBtnText: options.GlossaryBtnText,
-        //         ResourceBtnText: options.ResourceBtnText,
+            //    let HideGlossaryBtn: options.HideGlossaryBtn,
+            //         HideIndexBtn: options.HideIndexBtn,
+            //         IndexBtnText: options.IndexBtnText,
+            //         ShowResourceBtn: options.ShowResourceBtn,
+            //         GlossaryBtnText: options.GlossaryBtnText,
+            //         ResourceBtnText: options.ResourceBtnText,
 
             model.scorm = Utilities.ScormWrapper.Instance;
             Utilities.consoleTrace("UseCookies: ", model.UseCookies);
@@ -133,26 +140,38 @@ namespace HTML5AudioPlayer.Models {
 
             model.PlayerData.coursemode = model.CourseMode;
             model.PlayerData.passingPercent = options.assessmentData ? options.assessmentData.passingPercent : 0;
-            model.PlayerModel = new Components.Models.AudioPlayer(model.PlayerData);
+            model.PlayerModel = new Components.Models.AudioPlayer(model.PlayerData,model.KnowledgecheckItemData.knowledgechecksdata);
             model.PlayerModel.on(Events.EVENT_SAVE_COURSE_DATA, model.onSendDataToScorm, model);
             model.PlayerModel.once(Events.EVENT_MARK_COURSE_COMPLETE, model.onMarkCourseComplete, model);
 
 
             model.CarouselModel = new Components.Models.Carousel(model.Carousel);
 
+            model.KnowledgeCheckItem = new Components.Models.KnowledgeCheckItem(model.KnowledgecheckItemData.knowledgechecksdata)
+
+
             // hasCarousel = model.Carousel.hasCarousel;
             //alert(model.ShowExitButton)
-           // PlayerData
-           console.log("model.Carousel")
-           console.log(model.CarouselModel)
+            // PlayerData
+            console.log("model.Carousel")
+            console.log(model.CarouselModel)
+            console.log(model.KnowledgeCheckItem)
             //Carousel
 
+
+
             options.knowledgechecks = options.knowledgechecks || { "enabled": false };
+
             model.KnowledgeCheck = new Components.Models.KnowledgeCheck(options.knowledgechecks);
             if (model.CourseMode === DataStructures.CourseMode.CPE && model.KnowledgeCheck.Enabled) {
                 model.PlayerModel.CuePoints = model.KnowledgeCheck.getCuePoints(model.PlayerModel.Playlist.CurrentItem.Id);
                 model.PlayerModel.CuePointDelta = model.KnowledgeCheck.CuePointDelta;
+                //model.PlayerModel.Knowledgechecksdata = model.KnowledgeCheck.knowledgechecksdata;
             }
+
+            //     console.log("model.KnowledgeCheck")
+            //    console.log(model.KnowledgeCheck)
+
 
             model.CourseComplete = false;
 
