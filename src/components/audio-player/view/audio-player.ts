@@ -1118,11 +1118,11 @@ namespace HTML5AudioPlayer.Components.Views {
         public onMetadataLoaded(e: Event): void {
             let audioPlayerView: AudioPlayer = this,
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model,
-                videoContainer: JQuery = audioPlayerView.$(".video-container"),
+                audioContainer: JQuery = audioPlayerView.$(".audio-container"),
                 videoElement: JQuery = audioPlayerView.$(".video-js .vjs-tech"),
-                width: number = videoContainer.width(),
+                width: number = audioContainer.width(),
                 videoWidth: number = audioPlayerView._myPlayer.videoWidth(),
-                height: number = videoContainer.height(),
+                height: number = audioContainer.height(),
                 videoHeight: number = audioPlayerView._myPlayer.videoHeight();
 
             audioPlayerModel.duration = audioPlayerView._myPlayer.duration();
