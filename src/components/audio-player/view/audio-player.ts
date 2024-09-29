@@ -100,6 +100,7 @@ namespace HTML5AudioPlayer.Components.Views {
             audioPlayerView._playlist.on(Events.EVENT_AUDIOPLAYPAUSE_CHANGE, audioPlayerView.togglePlayPause, audioPlayerView);
             audioPlayerModel.on("change:CuePoints", audioPlayerView.resetCuePointStatus, audioPlayerView);
             audioPlayerView._playlist.on(Events.EVENT_QUESTION_CLICKED, audioPlayerView.triggerQuetion, audioPlayerView);
+            audioPlayerView._playlist.on(Events.EVENT_KCITEM_CLICKED, audioPlayerView.triggerKcItem, audioPlayerView);
 
             audioPlayerView._playlist.on(Events.EVENT_ITEM_TOGGLE, audioPlayerView.onItemClickedToggle, audioPlayerView);
             audioPlayerView._playlist.on(Events.EVENT_ITEM_REFRESH, audioPlayerView.onItemClickedRefresh, audioPlayerView);
@@ -147,8 +148,8 @@ namespace HTML5AudioPlayer.Components.Views {
             // let crouserContainer: JQuery = audioPlayerView.$(".carousel-container");
             // crouserContainer.append(this._crousel.render().$el);
 
-           // console.log("audioPlayerModel.CuePoints")
-           // console.log(audioPlayerModel.CuePoints)
+            // console.log("audioPlayerModel.CuePoints")
+            // console.log(audioPlayerModel.CuePoints)
             return audioPlayerView;
         }
 
@@ -488,7 +489,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 : audioPlayerModel.maxVisitedTime);
 
             audioPlayerModel.Playlist.CurrentItem.CurrentTime = audioPlayerModel.maxVisitedTime;
-            //audioPlayerView.triggerCuepoint(currentTime);
+            audioPlayerView.triggerCuepoint(currentTime);
             audioPlayerView.openMicroPoll(false, currentTime);
 
             // save in SCORM structure
@@ -569,6 +570,66 @@ namespace HTML5AudioPlayer.Components.Views {
         //     }
         // }
 
+        public kcItemActiveList(): number {
+            let audioPlayerView: AudioPlayer = this,
+            audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
+            return audioPlayerModel.Playlist.kcItemActiveList();
+        }
+
+        public enableKcItem(vidId?: string): void {
+            let audioPlayerView: AudioPlayer = this,
+                audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
+            let CurrentItem = audioPlayerModel.Playlist.KnowledgeCheckItems.filter((val) => {
+                return val.Id === vidId;
+            })[0];
+            let curObj: DataStructures.KcScormData = audioPlayerModel.ScormPreviousData[CurrentItem.Id];
+            if (!curObj) {
+                curObj = new DataStructures.KcScormData();
+                curObj.c = 0;
+                curObj.e = 0;
+            }
+
+            curObj.e = 1;
+            audioPlayerModel.ScormPreviousData[CurrentItem.Id] = curObj;
+            CurrentItem.Disabled = false;
+            //alert()
+            //audioPlayerModel.Playlist.completeKc(vidId);
+            //audioPlayerModel.Playlist.enableAssessment();
+        }
+
+        public markKcKCItemComplete(vidId?: string): void {
+            let audioPlayerView: AudioPlayer = this,
+                audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
+
+            console.log(vidId)
+            //console.log(audioPlayerModel.Playlist.KnowledgeCheckItems)
+            //console.log(audioPlayerModel.CuePoints)
+            let CurrentItem = audioPlayerModel.Playlist.KnowledgeCheckItems.filter((val) => {
+                return val.attributes.id === vidId;
+            })[0];
+
+            let CurrentCueItem = audioPlayerModel.CuePoints.filter((val) => {
+                return val.id === vidId;
+            })[0];
+            //console.log("markKcKCItemComplete CurrentItem")
+           // console.log(CurrentItem.Kccomplete)
+            //CurrentCueItem.completed = true;
+            console.log(CurrentItem)
+            CurrentItem.Complete = true;
+
+            let curObj: DataStructures.KcScormData = audioPlayerModel.ScormPreviousData[CurrentItem.Id];
+            if (!curObj) {
+                curObj = new DataStructures.KcScormData();
+                curObj.c = 0;
+                curObj.e = 0;
+            }
+
+            curObj.c = 1;
+            audioPlayerModel.ScormPreviousData[CurrentItem.Id] = curObj;
+            audioPlayerModel.Playlist.enableAssessment();
+
+
+        }
 
         public markKcComplete(vidId?: string): void {
             let audioPlayerView: AudioPlayer = this,
@@ -576,9 +637,12 @@ namespace HTML5AudioPlayer.Components.Views {
             let CurrentItem = audioPlayerModel.Playlist.PlaylistItems.filter((val) => {
                 return val.Id === vidId;
             })[0];
+            console.log(vidId)
 
             console.log("CurrentItem")
             console.log(CurrentItem)
+
+
 
             let curObj: DataStructures.AudioScormData = audioPlayerModel.ScormPreviousData[CurrentItem.Id];
 
@@ -594,7 +658,7 @@ namespace HTML5AudioPlayer.Components.Views {
             CurrentItem.Kccomplete = true;
             audioPlayerModel.Playlist.completeKc(vidId);
             audioPlayerModel.Playlist.enableAssessment();
-            //alert(2)
+            //alert(vidId)
         }
 
         @named
@@ -664,6 +728,21 @@ namespace HTML5AudioPlayer.Components.Views {
             audioPlayerView.trigger(Events.EVENT_CURRENT_QUESTION, item);
 
         };
+        private triggerKcItem(item: Models.PlaylistItem) {
+            let audioPlayerView: AudioPlayer = this;
+            // audioPlayerModel: Models.AudioPlayer = this.model,
+            //cp: DataStructures.CuePoint = null,
+            //delta: number = 0;
+
+            // alert()
+            //cp = audioPlayerModel.CuePoints[0];
+            //Utilities.consoleTrace("cp",cp)
+            //audioPlayerView.trigger(Events.EVENT_CUEPOINT_HIT, cp);
+            //alert("cp")
+            audioPlayerView.trigger(Events.EVENT_CURRENT_KCITEM, item);
+
+        };
+
 
         @named
         private triggerCuepoint(currentTime: number): void {
@@ -684,6 +763,7 @@ namespace HTML5AudioPlayer.Components.Views {
                             cp.visited = true;
                             Utilities.consoleTrace("Trigger cue point event for: ", cp.id, audioPlayerView.cid, currentTime);
                             audioPlayerView.trigger(Events.EVENT_CUEPOINT_HIT, cp);
+                            //alert("CP")
                         }
                         else {
                             Utilities.consoleTrace("Already Triggered cue point event for: ", cp.id);
@@ -800,6 +880,13 @@ namespace HTML5AudioPlayer.Components.Views {
             //     }
             //     audioPlayerView.enable();
             // }
+
+            if (audioPlayerModel.hasEndKC()) {
+                //audioPlayerView.enable();
+                audioPlayerView.triggerCuepoint(DataStructures.KCWhen.End);
+                //audioPlayerView.resetCuePointStatus();
+            }
+
             audioPlayerModel.Playlist.CurrentItem.CurrentClicked = true;
             audioPlayerModel.Playlist.CurrentItem.Complete = true;
 
@@ -1421,10 +1508,10 @@ namespace HTML5AudioPlayer.Components.Views {
                 var speedOption = $('<a href="#" data-speed="' + speed + '">' + speed + 'x</a>');
                 $('.audioSpeedContent').append(speedOption);
             });
-            $('.audioSpeedContent a').click(function(event) {
+            $('.audioSpeedContent a').click(function (event) {
                 event.preventDefault();
                 var speed = $(this).data('speed');
-               // NavigatorController.saveSpeed = speed;
+                // NavigatorController.saveSpeed = speed;
                 //alert("speed "+speed)
                 audioPlayerView._myPlayer.playbackRate(speed)
                 $('.navigatorAudioSpeedBtn').text(speed + 'x');

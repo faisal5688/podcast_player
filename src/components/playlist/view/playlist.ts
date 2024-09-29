@@ -48,6 +48,8 @@ namespace HTML5AudioPlayer.Components.Views {
                 playlistModel.PlaylistItems[i].CurrentClicked=false;
                 playlistView._playlistItems.push(playlistItemView);
                 playlistItemView.on(Events.EVENT_ITEM_CLICKED, playlistView.onItemClicked, playlistView);
+
+
                 playlistItemView.on(Events.EVENT_INIT_PLAYER, playlistView.onInitPlayer, playlistView);
 
                 playlistItemView.on(Events.EVENT_ITEM_CLICKED_TOGGLE, playlistView.togglePlayPause, playlistView);
@@ -79,6 +81,8 @@ namespace HTML5AudioPlayer.Components.Views {
 
             //alert(COURSE_MODEL.KnowledgeCheck.CuePoints)
             for (let i = 0; i < playlistModel.KnowledgeCheckItems.length; i++) {
+                //playlistModel.KnowledgeCheckItems[i].Disabled=true;
+                playlistView.model.enableKcList(playlistModel.KnowledgeCheckItems[i].Id);
                 let KnowledgeCheckItemsView = new KnowledgeCheckItem({
                     id: _.uniqueId("knowledge-check-item"),
                     className: "knowledge-check-item",
@@ -86,6 +90,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 });
 
                 playlistView._knowledgeCheckItems.push(KnowledgeCheckItemsView);
+                KnowledgeCheckItemsView.on(Events.EVENT_KCITEM_CLICKED, playlistView.onKcItemClicked, playlistView);
             }
         }
 
@@ -197,6 +202,20 @@ namespace HTML5AudioPlayer.Components.Views {
 
 
         }
+
+        public onKcItemClicked(item: Models.PlaylistItem): void {
+            let playlistView: Playlist = this,
+                playlistModel: Models.Playlist = playlistView.model;
+            //let knowledge : KnowledgeCheck =this;
+            //alert(item.Id)
+
+            //item.Complete=true;
+            playlistView.trigger(Events.EVENT_KCITEM_CLICKED, item);
+
+
+        }
+
+
 
         public onItemClicked(item: Models.PlaylistItem): void {
             let playlistView: Playlist = this,
@@ -325,6 +344,7 @@ namespace HTML5AudioPlayer.Components.Views {
             let playlistView: Playlist = this;
             playlistView.model.enableNext(curVidId);
             playlistView.enableNextKc(curVidId)
+
         }
 
         enableNextKc(curVidId: string): void {

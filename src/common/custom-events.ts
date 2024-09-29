@@ -28,7 +28,9 @@ namespace HTML5AudioPlayer.Events {
     export let EVENT_AUDIOPLAYPAUSE_CHANGE: string = "selection-playPause";
     export let EVENT_QUESTION_CLICKED: string = "question-clicked";
     export let EVENT_CURRENT_QUESTION: string = "getCurrentQuestion";
+    export let EVENT_CURRENT_KCITEM: string = "getCurrentKcitem";
     export let EVENT_COMPLETE_QUESTION: string = "EVENT_COMPLETE_QUESTION";
+
 
 
 
@@ -47,7 +49,12 @@ namespace HTML5AudioPlayer.Events {
     export let EVENT_INIT_PLAYER: string = "init-player";
     export let EVENT_ITEM_INIT_PLAYER: string = "item-init-player";
 
+    export let EVENT_KCITEM_CLICKED: string = "kcitem-clicked";
+
     export let EVENT_KC_NEXT: string = "KC_NEXT";
+    export let EVENT_KC_Back: string = "KC_Back";
+
+
 
 
 

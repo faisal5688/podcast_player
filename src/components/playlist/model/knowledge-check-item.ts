@@ -5,6 +5,11 @@
         get Id(): string { return this.get("id"); }
         set Id(value: string) { this.set("id", value); }
 
+
+
+        get audio(): string { return this.get("audio"); }
+        set audio(value: string) { this.set("audio", value); }
+
         get Title(): string { return this.get("title"); }
         set Title(value: string) { this.set("title", value); }
 
@@ -38,15 +43,17 @@
         get Duration(): number { return this.get("duration"); }
         set Duration(value: number) { this.set("duration", value); }
 
-        get Index(): string { return this.get("index"); }
-        set Index(value: string) { this.set("index", value); }
+        get Index(): number { return this.get("index"); }
+        set Index(value: number) { this.set("index", value); }
 
         get SrNumbar(): string { return this.get("srNumbar"); }
         set SrNumbar(value: string) { this.set("srNumbar", value); }
 
-
         get Complete(): boolean { return this.get("complete"); }
         set Complete(value: boolean) { this.set("complete", value); }
+
+        get Enable(): boolean { return this.get("enable"); }
+        set Enable(value: boolean) { this.set("enable", value); }
 
         get Kccomplete(): boolean { return this.get("kccomplete"); }
         set Kccomplete(value: boolean) { this.set("kccomplete", value); }
@@ -89,14 +96,15 @@
             console.log("KnowledgeCheckItem")
             console.log(options)
             let model: KnowledgeCheckItem = this;
-            // model.CurrentTime = model.CurrentTime || 0;
-            // model.Current = model.Current || false;
-            // model.Complete = model.Complete || false;
-            // model.Kccomplete = model.Kccomplete || false;
-            // model.Total = model.Total || 0;
-            // model.TitleEllipses = model.Title;
-            // model.Disabled = model.Disabled || false;
-            // //model.MicroPolls = model.MicroPolls || [];
+            model.CurrentTime = model.CurrentTime || 0;
+            model.Current = model.Current || false;
+            model.Enable=model.Enable || false;
+            model.Complete = model.Complete || false;
+            model.Kccomplete = model.Kccomplete || false;
+            model.Total = model.Total || 0;
+            model.TitleEllipses = model.Title;
+            model.Disabled = model.Disabled || false;
+            //model.MicroPolls = model.MicroPolls || [];
             // if (model.Title.length > 75) {
             //     model.TitleEllipses = model.Title.slice(0, 75) + "...";
             // }

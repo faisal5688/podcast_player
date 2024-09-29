@@ -89,7 +89,7 @@ namespace HTML5AudioPlayer.DataStructures {
     }
     export class KnowledgeChecks{
         enabled?: boolean;
-        cuepointdelta:number;        
+        cuepointdelta:number;
         knowledgechecksdata:KCData[];
     }
     export class options {
@@ -147,6 +147,12 @@ namespace HTML5AudioPlayer.DataStructures {
         n: number; // number of KC present in the audio;
     }
 
+    export class KcScormData {
+        e: number; // enabled status (0-not, 1-enabled)
+        c: number; // complete status (0-not, 1-complete)
+
+    }
+
     export enum KCType {
         MCSS = "mcss",
         MCMS = "mcms"
@@ -198,12 +204,15 @@ namespace HTML5AudioPlayer.DataStructures {
         time: number;
         triggered: boolean;
         visited:boolean;
+        completed: boolean;
+        complete: boolean;
     }
 
     export class KCData {
         id: string;
         audio: string;
         time: string;
+        title:string;
         question: string;
         instruction: string;
         type: KCType;
@@ -215,10 +224,14 @@ namespace HTML5AudioPlayer.DataStructures {
         continue: string;
         tryagain: string;
         next: string;
+        back: string;
         inputtype: string;
         usedattempts: number;
         index:number;
         total:number;
+        Id: string;
+        complete: boolean;
+        disabled: boolean;
     }
 
     export class PlaylistItemData {

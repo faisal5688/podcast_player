@@ -83,7 +83,6 @@
         set NumQuestions(value: number) { this.set("numQuestions", value); }
 
 
-
         constructor(options: DataStructures.kcListData) {
             super(options);
             let model: QuestionlistItem = this;

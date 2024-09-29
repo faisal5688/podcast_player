@@ -19,7 +19,7 @@ namespace HTML5AudioPlayer.Views {
         private _assessment: Components.Views.Assessment;
         private _survey: Components.Views.Survey;
         private _carousel: Components.Views.Carousel;
-        private _item : Components.Models.PlaylistItem;
+        private _item: Components.Models.PlaylistItem;
 
         constructor(options: any) {
             super(options);
@@ -51,7 +51,7 @@ namespace HTML5AudioPlayer.Views {
 
 
 
-            courseView._player.on(Events.EVENT_CUEPOINT_HIT, courseView.onCuePointHit, courseView);
+            courseView._player.on(Events.EVENT_CUEPOINT_HIT, courseView.onCuePointHitPlaying, courseView);
             courseView._player.on(Events.EVENT_SELECTION_CHANGE, courseView.onVideoChanged, courseView);
             courseView._player.on(Events.EVENT_SHOW_GLOSSARY, courseView.onShowGlossary, courseView);
             courseView._player.on(Events.EVENT_SHOW_INDEX, courseView.onShowIndex, courseView);
@@ -59,9 +59,11 @@ namespace HTML5AudioPlayer.Views {
             courseView._player.on(Events.EVENT_LAUNCH_ASSESSMNET, courseView.onLaunchAssessment, courseView);
             courseView._player.on(Events.EVENT_LAUNCH_SURVEY, courseView.onLaunchSurvey, courseView);
             courseView._player.on(Events.EVENT_CURRENT_QUESTION, courseView.getCurrentQuestion, courseView);
+            courseView._player.on(Events.EVENT_CURRENT_KCITEM, courseView.getCurrentKcItem, courseView);
+
             //courseView._player.on(Events.EVENT_COMPLETE_QUESTION, courseView.markQuestionComplete, courseView);
-           // courseView._player.on(Events.EVENT_AUDIOPLAYER_CHANGE, courseView.onAudioChanged, courseView);
-           // courseView._player.on(Events.EVENT_AUDIOPLAYPAUSE_CHANGE, courseView.togglePlayPause, courseView);
+            // courseView._player.on(Events.EVENT_AUDIOPLAYER_CHANGE, courseView.onAudioChanged, courseView);
+            // courseView._player.on(Events.EVENT_AUDIOPLAYPAUSE_CHANGE, courseView.togglePlayPause, courseView);
 
 
         }
@@ -102,7 +104,20 @@ namespace HTML5AudioPlayer.Views {
         }
 
         @named
-        private onCuePointHit(cp: DataStructures.CuePoint,index?: number): void {
+        private onCuePointHitPlaying(cp: DataStructures.CuePoint, index?: number): void {
+            let courseView: Course = this,
+                courseModel: Models.Course = courseView.model;
+            Utilities.consoleTrace("Cuepoint hit: ", cp, courseView.cid);
+            //alert("cp "+cp.id)
+            courseView._player.enableKcItem(cp.id);
+            courseModel.PlayerModel.sendDataToScorm();
+
+        }
+
+
+
+        @named
+        private onCuePointHitList(cp: DataStructures.CuePoint, index?: any): void {
             let courseView: Course = this,
                 courseModel: Models.Course = courseView.model;
             Utilities.consoleTrace("Cuepoint hit: ", cp, courseView.cid);
@@ -115,33 +130,129 @@ namespace HTML5AudioPlayer.Views {
                     el: "#knowledge-check-container"
                 });
                 //if(index){
-                    courseView._knowledgeCheck.setIndex(index)
+                courseView._knowledgeCheck.setIndex(index)
+                //alert(courseView._player.markKcKCItemComplete)
+                //alert(courseView.kcItemActiveList())
+                courseView._knowledgeCheck.setTotalActive(courseView._player.kcItemActiveList())
+                courseView._knowledgeCheck.render();
+                courseView._knowledgeCheck.once(Events.EVENT_KC_SHOWN, courseView.onListKCShown, courseView);
+                courseView._knowledgeCheck.once(Events.EVENT_KC_COMPLETE, courseView.onListKCComplete, courseView);
+                courseView._knowledgeCheck.once(Events.EVENT_KC_NEXT, courseView.onListKCNext, courseView);
+                courseView._knowledgeCheck.once(Events.EVENT_KC_Back, courseView.onListKCBack, courseView);
+                courseView._knowledgeCheck.show();
+            }
+        }
+
+        private getCurrentKcItem(item: Components.Models.PlaylistItem): void {
+            //alert("getCurrentQuestion "+item.Id);
+
+            let courseView: Course = this,
+                courseModel: Models.Course = courseView.model;
+            courseView._item = item;
+            console.log(courseView._item.Index)
+            courseView.onCuePointHitList(courseModel.KnowledgeCheck.getCurrentCuePointsById(courseView._item.Id)[0],courseView._item.Index);
+        }
+
+        private onListKCNext(kc: DataStructures.KCData, increment?: any) {
+            let courseView: Course = this,
+                courseModel: Models.Course = courseView.model,
+                curIndex: number = increment ? (kc.index + 2) : kc.index + 1,
+                curKcId:string = "kc-00"+curIndex;
+                console.log(kc)
+                kc = courseView._knowledgeCheck.model.KnowledgeChecks[courseView._knowledgeCheck.getIndex()-1];
+                courseView._player.markKcKCItemComplete(kc.id);
+                courseView.onCuePointHitList(courseModel.KnowledgeCheck.getCurrentCuePointsById(curKcId)[0],curIndex);
+
+        }
+
+
+
+
+        private onListKCBack(kc: DataStructures.KCData, increment?: boolean) {
+            let courseView: Course = this,
+                courseModel: Models.Course = courseView.model,
+                curIndex: number = increment ? (kc.index + 2) : kc.index - 1;
+            //courseView.onCuePointHit(courseModel.KnowledgeCheck.getCurrentCuePoints(courseView._item.Id)[curIndex - 1], curIndex);
+
+        }
+        @named
+        private onListKCShown(kc: DataStructures.KCData): void {
+            let courseView: Course = this,
+                courseModel: Models.Course = courseView.model;
+            if (courseModel.CourseMode === DataStructures.CourseMode.CPE && courseModel.KnowledgeCheck.Enabled) {
+                courseView._knowledgeCheck.afterRender();
+            }
+        }
+
+        @named
+        private onListKCComplete(kc: DataStructures.KCData,curIndex?:Number): void {
+            let courseView: Course = this,
+                courseModel: Models.Course = courseView.model,
+                curKcId:string = "kc-00"+curIndex;
+                kc = courseView._knowledgeCheck.model.KnowledgeChecks[courseView._knowledgeCheck.getIndex()-1];
+
+            console.log("******************"+kc.id)
+            courseView._player.markKcKCItemComplete(kc.id);
+
+            //courseModel.ScormPreviousData.CuePoints =courseModel.KnowledgeCheck.CuePoints
+            courseModel.PlayerModel.sendDataToScorm();
+
+            //kcItemActiveList
+            courseView._knowledgeCheck.destroy();
+        }
+
+
+
+
+
+
+
+
+
+
+
+        @named
+        private onCuePointHit(cp: DataStructures.CuePoint, index?: number): void {
+            let courseView: Course = this,
+                courseModel: Models.Course = courseView.model;
+            Utilities.consoleTrace("Cuepoint hit: ", cp, courseView.cid);
+            courseView._player.pause();
+            if ((courseModel.CourseMode === DataStructures.CourseMode.CPE) &&
+                courseModel.KnowledgeCheck.Enabled) {
+                courseModel.KnowledgeCheck.setCurrentKC(cp.id);
+                courseView._knowledgeCheck = new Components.Views.KnowledgeCheck({
+                    model: courseModel.KnowledgeCheck,
+                    el: "#knowledge-check-container"
+                });
+                //if(index){
+                courseView._knowledgeCheck.setIndex(index)
                 //}
                 courseView._knowledgeCheck.render();
                 courseView._knowledgeCheck.once(Events.EVENT_KC_SHOWN, courseView.onKCShown, courseView);
                 courseView._knowledgeCheck.once(Events.EVENT_KC_COMPLETE, courseView.onKCComplete, courseView);
                 courseView._knowledgeCheck.once(Events.EVENT_KC_NEXT, courseView.onKCNext, courseView);
                 courseView._knowledgeCheck.show();
-
-
             }
         }
 
-        private getCurrentQuestion(item: Components.Models.PlaylistItem): void{
-            //alert("getCurrentQuestion "+item.Id);
+
+
+
+
+
+        private getCurrentQuestion(item: Components.Models.PlaylistItem): void {
             let courseView: Course = this,
                 courseModel: Models.Course = courseView.model;
-                //courseModel.KnowledgeCheck;
-            //courseModel.KnowledgeCheck.setIndex(3);
-            //item.Total
-            courseView._item=item;
-            courseView.onCuePointHit(courseModel.KnowledgeCheck.getCurrentCuePoints(courseView._item.Id)[0],1);
+            courseView._item = item;
+            //console.log(courseView._item)
+
+            courseView.onCuePointHit(courseModel.KnowledgeCheck.getCurrentCuePoints(courseView._item.Id)[0], 1);
         }
 
-        private onKCNext(kc: DataStructures.KCData,increment?: boolean){
+        private onKCNext(kc: DataStructures.KCData, increment?: boolean) {
             let courseView: Course = this,
                 courseModel: Models.Course = courseView.model,
-                curIndex:number =increment ? (kc.index + 2) : kc.index + 1;
+                curIndex: number = increment ? (kc.index + 2) : kc.index + 1;
 
             //courseView._knowledgeCheck.getIndex()
 
@@ -149,21 +260,12 @@ namespace HTML5AudioPlayer.Views {
             //alert(courseModel.KnowledgeCheck.getCurrentCuePoints(courseView._item.Id).length)
             //alert(courseView._item.Id)
 
-            courseView.onCuePointHit(courseModel.KnowledgeCheck.getCurrentCuePoints(courseView._item.Id)[curIndex-1],curIndex);
+            courseView.onCuePointHit(courseModel.KnowledgeCheck.getCurrentCuePoints(courseView._item.Id)[curIndex - 1], curIndex);
 
             //courseView._knowledgeCheck.setIndex(2)
             //courseView._item=item;
-           // courseView.onCuePointHit(courseModel.KnowledgeCheck.getCurrentCuePoints(courseView._item.Id)[0]);
+            // courseView.onCuePointHit(courseModel.KnowledgeCheck.getCurrentCuePoints(courseView._item.Id)[0]);
         }
-
-        // private setNumQuestion(item: Components.Models.PlaylistItem): void{
-        //     //alert("getCurrentQuestion "+item.Id);
-        //     let courseView: Course = this,
-        //         courseModel: Models.Course = courseView.model;
-        //     item.NumQuestions =courseModel.KnowledgeCheck.getCurrentCuePoints(item.Id).length;
-        //     //courseView.onCuePointHit(courseModel.KnowledgeCheck.getCurrentCuePoints(item.Id)[0])
-        // }
-
 
 
 
@@ -239,7 +341,7 @@ namespace HTML5AudioPlayer.Views {
         }
 
         @named
-        private togglePlayPause():void{
+        private togglePlayPause(): void {
             console.log("*******************************course togglePlayPause*****************************");
 
         }

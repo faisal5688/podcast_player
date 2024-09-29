@@ -70,6 +70,10 @@
                 .ck-next-btn{
                     @extend .ck-continue-btn;
                 }
+
+                .ck-close-btn{
+                    @extend .ck-continue-btn;
+                }
             }
         }
     }
@@ -261,6 +265,70 @@
             }
 
             .ck-submit-btn.disabled {
+                background: $colorGray60;
+                color: $colorGray94;
+                cursor: default;
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    z-index: -1;
+                    background: none;
+                    transition-property: none;
+                }
+
+                &:hover:before,
+                &:focus:before,
+                &:active:before {
+                    right: 0;
+                    cursor: default;
+                }
+            }
+
+
+            .ck-next-btn {
+                @include submitButton;
+                @include underlineFromLeft;
+                color: $colorWhite;
+                background-color: $colorPurple;
+                padding: 5px 20px;
+                font-size: $fontSizeStandard;
+                margin-top: 10px;
+            }
+
+            .ck-next-btn.disabled {
+                background: $colorGray60;
+                color: $colorGray94;
+                cursor: default;
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    z-index: -1;
+                    background: none;
+                    transition-property: none;
+                }
+
+                &:hover:before,
+                &:focus:before,
+                &:active:before {
+                    right: 0;
+                    cursor: default;
+                }
+            }
+
+
+            .ck-back-btn {
+                @include submitButton;
+                @include underlineFromLeft;
+                color: $colorWhite;
+                background-color: $colorPurple;
+                padding: 5px 20px;
+                font-size: $fontSizeStandard;
+                margin-top: 10px;
+            }
+
+            .ck-back-btn.disabled {
                 background: $colorGray60;
                 color: $colorGray94;
                 cursor: default;

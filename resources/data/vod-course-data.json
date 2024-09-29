@@ -150,7 +150,8 @@
             {
                 "id": "kc-001",
                 "audio": "aud-000",
-                "time": 10,
+                "time": 5,
+                "title": "Chapter 01 | Question 01",
                 "question": "This is KC 1.",
                 "instruction": "Select an answer and click Submit.",
                 "type": "mcss",
@@ -198,12 +199,14 @@
                 "submit": "Submit",
                 "continue": "Continue",
                 "tryagain": "Try Again",
-                "next": "Next"
+                "next": "Next",
+                "back":"back"
             },
             {
                 "id": "kc-002",
                 "audio": "aud-000",
-                "time": "end",
+                "time": "10",
+                "title": "Chapter 01 | Question 02",
                 "question": "This is KC 2.",
                 "instruction": "Select all applicable answers and click Submit.",
                 "type": "mcms",
@@ -240,12 +243,14 @@
                 "submit": "Submit",
                 "continue": "Continue",
                 "tryagain": "Try Again",
-                "next": "Next"
+                "next": "Next",
+                "back":"back"
             },
             {
                 "id": "kc-003",
                 "audio": "aud-000",
                 "time": "end",
+                "title": "Chapter 01 | Question 03",
                 "question": "This is KC 3. Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.",
                 "instruction": "Select an answer and click Submit.",
                 "type": "mcss",
@@ -293,12 +298,14 @@
                 "submit": "Submit",
                 "continue": "Continue",
                 "tryagain": "Try Again",
-                "next": "Next"
+                "next": "Next",
+                "back":"back"
             },
             {
                 "id": "kc-004",
                 "audio": "aud-002",
-                "time": "end",
+                "time": "10",
+                "title": "Chapter 03 | Question 01",
                 "question": "This is KC 4. Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.",
                 "instruction": "Select all applicable answers and click Submit.",
                 "type": "mcms",
@@ -335,7 +342,8 @@
                 "submit": "Submit",
                 "continue": "Continue",
                 "tryagain": "Try Again",
-                "next": "Next"
+                "next": "Next",
+                "back":"back"
             }
         ]
     },

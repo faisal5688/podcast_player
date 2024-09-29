@@ -1,6 +1,6 @@
 <div class="knowledge-check">
     <div class="knowledge-check-header">
-         {{current.index}}/{{{current.total}}}
+        {{current.index}}/{{{current.total}}}
     </div>
     <div class="question-container">
         {{!--
@@ -21,6 +21,9 @@
         </div>
         <div class="btn-container">
             <button class="ck-submit-btn disabled" disabled>{{current.submit}}</button>
+            <button class="ck-next-btn disabled" >{{current.next}}</button>
+            <button class="ck-back-btn disabled">{{current.back}}</button>
+            <button class="ck-close-btn disabled" disabled>X</button>
         </div>
     </div>
 </div>
@@ -29,10 +32,11 @@
         <div class="title">{{current.feedback.title}}</div>
         <hr>
         <div class="content"></div>
+        <button class="ck-close-btn">X</button>
         <div class="btn-container">
             <button class="ck-continue-btn">{{current.continue}}</button>
             <button class="ck-try-again-btn">{{current.tryagain}}</button>
-            <button class="ck-next-btn">{{current.next}}</button>
+
         </div>
     </div>
 </div>

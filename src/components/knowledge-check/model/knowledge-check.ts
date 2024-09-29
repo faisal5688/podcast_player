@@ -104,6 +104,13 @@ namespace HTML5AudioPlayer.Components.Models {
             })[0];
         }
 
+        public getCurrentCuePointsById(id: string): DataStructures.CuePoint[] {
+            let model: KnowledgeCheck = this;
+            return model.CurrentCuePoints = model.CuePoints.filter(item => item.id === id);
+        }
+
+
+
         public getCurrentCuePoints(id: string): DataStructures.CuePoint[] {
             let model: KnowledgeCheck = this;
             return model.CurrentCuePoints = model.CuePoints.filter(item => item.audio === id);

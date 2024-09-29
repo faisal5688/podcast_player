@@ -22,7 +22,7 @@ namespace HTML5AudioPlayer.Components.Views {
             console.log(knowledgeCheckModel.CuePoints)
             console.log("CuePoints id "+knowledgeCheckModel.Current.audio)
             console.log(knowledgeCheckModel.getCurrentCuePoints(knowledgeCheckModel.Current.audio))
-            knowledgeCheckModel.Current.total = knowledgeCheckModel.getCurrentCuePoints(knowledgeCheckModel.Current.audio).length
+            //knowledgeCheckModel.Current.total = knowledgeCheckModel.getCurrentCuePoints(knowledgeCheckModel.Current.audio).length
             //knowledgeCheckModel.Current.index =1;
         }
 
@@ -32,9 +32,16 @@ namespace HTML5AudioPlayer.Components.Views {
                 'change .kc-option': 'onOptionChange',
                 'click .ck-continue-btn': 'onContinue',
                 'click .ck-try-again-btn': 'onTryAgain',
-                'click .ck-next-btn': 'onNext'
+                'click .question-data .ck-close-btn': 'onContinue',
+
+                //'click .ck-next-btn': 'onNext',
+                'click .ck-next-btn': 'goNext',
+                'click .ck-back-btn': 'goBack',
+                'click .feedback-container .ck-close-btn': 'onClose'
             };
         }
+
+
 
         public render() {
             let knowledgeCheckView = this,
@@ -108,7 +115,7 @@ namespace HTML5AudioPlayer.Components.Views {
             knowledgeCheckModel: Models.KnowledgeCheck = knowledgeCheckView.model;
             knowledgeCheckView.reset();
             knowledgeCheckView.$(".feedback").hide();
-            knowledgeCheckView.trigger(Events.EVENT_KC_NEXT, knowledgeCheckModel.Current);
+            knowledgeCheckView.trigger(Events.EVENT_KC_NEXT, knowledgeCheckModel.Current.index);
             //knowledgeCheckView.hide();
             // setTimeout(() => {
             //     audioPlayerModel._startPlayingOnError = true;
@@ -132,6 +139,31 @@ namespace HTML5AudioPlayer.Components.Views {
             knowledgeCheckView.$(".feedback").hide(200);
             knowledgeCheckView.$(".feedback-container").hide();
             knowledgeCheckView.$(".ck-submit-btn").attr("disabled", "true").addClass("disabled");
+        }
+
+        private goNext(e:any):void{
+            let knowledgeCheckView: KnowledgeCheck = this,
+            knowledgeCheckModel: Models.KnowledgeCheck = knowledgeCheckView.model;
+            knowledgeCheckView.reset();
+            knowledgeCheckView.$(".feedback").hide();
+            knowledgeCheckView.trigger(Events.EVENT_KC_NEXT, knowledgeCheckModel.Current);
+        }
+
+        private goBack(e:any):void{
+            let knowledgeCheckView: KnowledgeCheck = this,
+            knowledgeCheckModel: Models.KnowledgeCheck = knowledgeCheckView.model;
+            knowledgeCheckView.reset();
+            knowledgeCheckView.$(".feedback").hide();
+            knowledgeCheckView.trigger(Events.EVENT_KC_Back, knowledgeCheckModel.Current);
+        }
+
+        private onClose(e:any):void{
+            let knowledgeCheckView: KnowledgeCheck = this,
+            knowledgeCheckModel: Models.KnowledgeCheck = knowledgeCheckView.model;
+            knowledgeCheckView.reset();
+            knowledgeCheckView.$(".feedback").hide();
+            knowledgeCheckView.$(".feedback-container").hide();
+            //knowledgeCheckView.trigger(Events.EVENT_KC_NEXT, knowledgeCheckModel.Current);
         }
 
         @named
@@ -172,6 +204,9 @@ namespace HTML5AudioPlayer.Components.Views {
             knowledgeCheckView.$(".feedback").fadeIn(200);
 
             knowledgeCheckView.$(".feedback-container").fadeIn(200);
+            knowledgeCheckView.$(".question-data .ck-close-btn").removeAttr("disabled").removeClass("disabled");
+
+
 
             if (DataStructures.KCFeedbackType.Generic === knowledgeCheckModel.Current.feedback.type) {
 
@@ -220,15 +255,21 @@ namespace HTML5AudioPlayer.Components.Views {
 
                 knowledgeCheckView.showCorrectAnswers(DataStructures.KCResult.Correct !== result);
             }
-            //alert(knowledgeCheckModel.Current.index)
-            //alert(knowledgeCheckModel.Current.total)
+
             if(knowledgeCheckModel.Current.index<knowledgeCheckModel.Current.total){
+               // alert("ck-continue-btn hide")
                 knowledgeCheckView.$(".ck-continue-btn").hide();
-                knowledgeCheckView.$(".ck-next-btn").show();
+                knowledgeCheckView.$(".ck-next-btn").removeClass("disabled").show();
             }else{
+                //alert("ck-continue-btn show")
                 knowledgeCheckView.$(".ck-continue-btn").show();
-                knowledgeCheckView.$(".ck-next-btn").hide();
+                knowledgeCheckView.$(".ck-next-btn").addClass("disabled").hide();
             }
+
+
+            //knowledgeCheckView.$(".ck-next-btn").removeClass("disabled").show();
+
+
         }
 
         private showCorrectAnswers(markIncorrect: boolean): void {
@@ -266,8 +307,9 @@ namespace HTML5AudioPlayer.Components.Views {
             let knowledgeCheckView: KnowledgeCheck = this,
                 knowledgeCheckModel: Models.KnowledgeCheck = knowledgeCheckView.model;
 
-            knowledgeCheckView.$el.hide(200, () => {
                 knowledgeCheckView.trigger(Events.EVENT_KC_COMPLETE, knowledgeCheckModel.Current);
+            knowledgeCheckView.$el.hide(200, () => {
+
             });
         }
 
@@ -310,6 +352,13 @@ namespace HTML5AudioPlayer.Components.Views {
                 knowledgeCheckModel: Models.KnowledgeCheck = knowledgeCheckView.model;
                 //knowledgeCheckModel.setIndex(ind)
             return knowledgeCheckModel.Current.index;
+        }
+
+        public setTotalActive(num:number): void {
+            let knowledgeCheckView: KnowledgeCheck = this,
+                knowledgeCheckModel: Models.KnowledgeCheck = knowledgeCheckView.model;
+                //knowledgeCheckModel.setIndex(ind)
+            knowledgeCheckModel.Current.total =num;
         }
 
 

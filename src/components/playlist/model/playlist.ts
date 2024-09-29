@@ -67,6 +67,8 @@ namespace HTML5AudioPlayer.Components.Models {
             model.KnowledgeCheckItems = new Array<KnowledgeCheckItem>();
 
 
+
+
             for (let i = 0; i < audioData.length; i++) {
                 let playlistItem: PlaylistItem = new PlaylistItem(audioData[i]),
                     idx: number = (model.PlaylistStartIndex ? model.PlaylistStartIndex + i : i),
@@ -131,6 +133,7 @@ namespace HTML5AudioPlayer.Components.Models {
            // alert(kcdata)
             for (let i: number = 0; i < kcdata.length; i++) {
                 let knowledgeCheckItem :KnowledgeCheckItem = new KnowledgeCheckItem(kcdata[i])
+                knowledgeCheckItem.Index = i+1
                 model.KnowledgeCheckItems.push(knowledgeCheckItem)
 
             }
@@ -217,7 +220,7 @@ namespace HTML5AudioPlayer.Components.Models {
             let assessmentItem = this.PlaylistItems.filter(function (val: PlaylistItem): boolean {
                 return val.IsAssessment;
             })[0];
-            if(model.isItemComplete() && model.isKcComplete()){
+            if(model.isItemComplete() && model.isKClistComplete()){
                 assessmentItem.Disabled=false;
             }else{
                 assessmentItem.Disabled=true;
@@ -299,6 +302,25 @@ namespace HTML5AudioPlayer.Components.Models {
             return (KClength === model.QuestionlistItems.length);
         }
 
+        public isKClistComplete(): boolean {
+            let model: Playlist = this;
+            let KClength:number = this.KnowledgeCheckItems.filter(function (val: KnowledgeCheckItem): boolean {
+                return val.Complete;
+            }).length;
+            //let model: Models.AudioPlayer = this;
+            return (KClength === model.KnowledgeCheckItems.length);
+        }
+
+        public kcItemActiveList(): number {
+            let model: Playlist = this;
+            let KClength:number = this.KnowledgeCheckItems.filter(function (val: KnowledgeCheckItem): boolean {
+                return !val.Disabled;
+            }).length;
+
+            //let model: Models.AudioPlayer = this;
+            return KClength;
+        }
+
         public setCurrentClicked(curVidId: string):void{
             let model: Playlist = this;
             for (let i = 0; i < this.PlaylistItems.length; i++) {
@@ -310,6 +332,28 @@ namespace HTML5AudioPlayer.Components.Models {
 
             if(currentClicked){
                 currentClicked.CurrentClicked = true;
+            }
+        }
+
+        public enableKcList(curVidId: string): void {
+
+            let CurrentItem = this.KnowledgeCheckItems.filter(function (val: KnowledgeCheckItem): boolean {
+                return val.Id === curVidId;
+            })[0];
+
+            if(CurrentItem){
+                if(CurrentItem.Complete){
+                    CurrentItem.Complete=true;
+                }else{
+                    CurrentItem.Complete=false;
+                }
+                if(CurrentItem.Disabled){
+                    CurrentItem.Disabled=false;
+                }else{
+                    CurrentItem.Disabled=true;
+                }
+
+                //this.CurrentItem.Current = true;
             }
         }
 

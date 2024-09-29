@@ -10,7 +10,8 @@ namespace HTML5AudioPlayer.Components.Models {
         get Playlist(): Playlist { return this.get("playlist"); }
         set Playlist(value: Playlist) { this.set("playlist", value); }
 
-
+        get KnowledgeCheckItems(): KnowledgeCheckItem { return this.get("KnowledgeCheckItems"); }
+        set KnowledgeCheckItems(value: KnowledgeCheckItem) { this.set("KnowledgeCheckItems", value); }
 
 
         get AudioId(): string { return this.get("audioid"); }
@@ -71,7 +72,7 @@ namespace HTML5AudioPlayer.Components.Models {
         public _retries: number;
         public numQuestions: number;
 
-        constructor(options: any,kcdata?:any) {
+        constructor(options: any, kcdata?: any) {
             super(options);
 
             let model: AudioPlayer = this;
@@ -93,7 +94,7 @@ namespace HTML5AudioPlayer.Components.Models {
             model.UpdateInterval = model.UpdateInterval ?? DataStructures.Defaults.UpdateInterval;
 
             model.PlayerOptions = model.PlayerOptions ?? {};
-            model.parseScormData(options);
+            model.parseScormData(options, kcdata);
 
             model.Playlist = new Playlist({
                 audioData: options.playlist,
@@ -106,8 +107,10 @@ namespace HTML5AudioPlayer.Components.Models {
                 GlossaryBtnText: options.GlossaryBtnText,
                 ResourceBtnText: options.ResourceBtnText,
                 ScormPreviousData: model.ScormPreviousData,
-                kcdata:kcdata,
+                kcdata: kcdata,
             });
+
+
             model.Playlist.CourseMode = model.CourseMode;
             model.PlayerOptions.src = model.Playlist.CurrentItem.Url;
             //model.Playlist.CuePoints = model.CuePoints;
@@ -147,9 +150,11 @@ namespace HTML5AudioPlayer.Components.Models {
         }
 
         @named
-        private parseScormData(options: any): void {
+        private parseScormData(options: any, kcdata?: any): void {
             let model: AudioPlayer = this,
                 playlistItems: DataStructures.AudioData[] = options.playlist,
+                KnowledgeCheckItem: DataStructures.KCData[] = kcdata,
+                //cuePoint : DataStructures.KCData[]=kcdata,
                 //QuestionlistItem: DataStructures.AudioData[] = options.playlist,
                 prevVidComplete: boolean = true;
 
@@ -157,6 +162,25 @@ namespace HTML5AudioPlayer.Components.Models {
                 Utilities.consoleTrace("Applying SCORM Data: ", model.ScormPreviousData);
                 model.ScormPreviousData.cv = model.ScormPreviousData.cv || playlistItems[0].id;
                 model.ScormPreviousData.feedback = "liked"
+                //KnowledgeCheckItem[0].complete=true
+                //console.log(KnowledgeCheckItem)
+                //alert("cuePoint")
+                //model.ScormPreviousData.CuePoints = model.ScormPreviousData.CuePoints;
+                //alert("set scorm data")
+                for (let i: number = 0; i < KnowledgeCheckItem.length; i++) {
+                    let curKcItemData = KnowledgeCheckItem[i],
+                        curKcItemScormData: DataStructures.KcScormData = model.ScormPreviousData[curKcItemData.id];
+                    if (curKcItemScormData) {
+                        curKcItemData.complete = curKcItemScormData.c ? true : false;
+                        curKcItemData.disabled = curKcItemScormData.e ? true : false;
+                    }
+                    else {
+                        curKcItemData.complete = false;
+                        curKcItemData.disabled = false;
+                    }
+                    //KnowledgeCheckItem[i].complete=true
+                }
+                //KnowledgeCheckItem[0].complete=true
                 for (let i: number = 0; i < playlistItems.length; i++) {
                     let curVidData: DataStructures.AudioData = playlistItems[i],
                         curVidScormData: DataStructures.AudioScormData = model.ScormPreviousData[curVidData.id];
@@ -212,6 +236,7 @@ namespace HTML5AudioPlayer.Components.Models {
                 model.ScormPreviousData = {};
                 model.ScormPreviousData.cv = model.ScormPreviousData.cv || playlistItems[0].id;
                 model.ScormPreviousData.feedback = "liked"
+
 
                 playlistItems[0].currenttime = 0;
                 playlistItems[0].current = true;
