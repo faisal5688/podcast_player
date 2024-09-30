@@ -161,19 +161,22 @@ namespace HTML5AudioPlayer.Views {
                 console.log(kc)
                 kc = courseView._knowledgeCheck.model.KnowledgeChecks[courseView._knowledgeCheck.getIndex()-1];
                 courseView._player.markKcKCItemComplete(kc.id);
+                courseView._knowledgeCheck.destroy();
                 courseView.onCuePointHitList(courseModel.KnowledgeCheck.getCurrentCuePointsById(curKcId)[0],curIndex);
 
         }
 
 
-
-
         private onListKCBack(kc: DataStructures.KCData, increment?: boolean) {
             let courseView: Course = this,
                 courseModel: Models.Course = courseView.model,
-                curIndex: number = increment ? (kc.index + 2) : kc.index - 1;
-            //courseView.onCuePointHit(courseModel.KnowledgeCheck.getCurrentCuePoints(courseView._item.Id)[curIndex - 1], curIndex);
-
+                curIndex: number = increment ? (kc.index + 2) : kc.index - 1,
+                curKcId:string = "kc-00"+curIndex;
+                //alert(curKcId);
+                //kc = courseView._knowledgeCheck.model.KnowledgeChecks[courseView._knowledgeCheck.getIndex()-1];
+                //courseView._player.markKcKCItemComplete(kc.id);
+                courseView._knowledgeCheck.destroy();
+                courseView.onCuePointHitList(courseModel.KnowledgeCheck.getCurrentCuePointsById(curKcId)[0],curIndex);
         }
         @named
         private onListKCShown(kc: DataStructures.KCData): void {
@@ -190,26 +193,13 @@ namespace HTML5AudioPlayer.Views {
                 courseModel: Models.Course = courseView.model,
                 curKcId:string = "kc-00"+curIndex;
                 kc = courseView._knowledgeCheck.model.KnowledgeChecks[courseView._knowledgeCheck.getIndex()-1];
-
             console.log("******************"+kc.id)
             courseView._player.markKcKCItemComplete(kc.id);
-
             //courseModel.ScormPreviousData.CuePoints =courseModel.KnowledgeCheck.CuePoints
             courseModel.PlayerModel.sendDataToScorm();
-
             //kcItemActiveList
             courseView._knowledgeCheck.destroy();
         }
-
-
-
-
-
-
-
-
-
-
 
         @named
         private onCuePointHit(cp: DataStructures.CuePoint, index?: number): void {
@@ -225,7 +215,7 @@ namespace HTML5AudioPlayer.Views {
                     el: "#knowledge-check-container"
                 });
                 //if(index){
-                courseView._knowledgeCheck.setIndex(index)
+                courseView._knowledgeCheck.setIndex(index);
                 //}
                 courseView._knowledgeCheck.render();
                 courseView._knowledgeCheck.once(Events.EVENT_KC_SHOWN, courseView.onKCShown, courseView);

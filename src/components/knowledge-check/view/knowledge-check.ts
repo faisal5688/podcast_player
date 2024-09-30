@@ -20,10 +20,11 @@ namespace HTML5AudioPlayer.Components.Views {
             knowledgeCheckView.$el.addClass("knowledge-check-container");
             console.log("CuePoints")
             console.log(knowledgeCheckModel.CuePoints)
-            console.log("CuePoints id "+knowledgeCheckModel.Current.audio)
+            console.log("CuePoints id " + knowledgeCheckModel.Current.audio)
             console.log(knowledgeCheckModel.getCurrentCuePoints(knowledgeCheckModel.Current.audio))
             //knowledgeCheckModel.Current.total = knowledgeCheckModel.getCurrentCuePoints(knowledgeCheckModel.Current.audio).length
             //knowledgeCheckModel.Current.index =1;
+            //knowledgeCheckView.updateNextBackUI();
         }
 
         public events(): Backbone.EventsHash {
@@ -110,9 +111,9 @@ namespace HTML5AudioPlayer.Components.Views {
             //alert("question list complete")
         }
 
-        private onNext(e:any):void{
+        private onNext(e: any): void {
             let knowledgeCheckView: KnowledgeCheck = this,
-            knowledgeCheckModel: Models.KnowledgeCheck = knowledgeCheckView.model;
+                knowledgeCheckModel: Models.KnowledgeCheck = knowledgeCheckView.model;
             knowledgeCheckView.reset();
             knowledgeCheckView.$(".feedback").hide();
             knowledgeCheckView.trigger(Events.EVENT_KC_NEXT, knowledgeCheckModel.Current.index);
@@ -141,25 +142,25 @@ namespace HTML5AudioPlayer.Components.Views {
             knowledgeCheckView.$(".ck-submit-btn").attr("disabled", "true").addClass("disabled");
         }
 
-        private goNext(e:any):void{
+        private goNext(e: any): void {
             let knowledgeCheckView: KnowledgeCheck = this,
-            knowledgeCheckModel: Models.KnowledgeCheck = knowledgeCheckView.model;
+                knowledgeCheckModel: Models.KnowledgeCheck = knowledgeCheckView.model;
             knowledgeCheckView.reset();
             knowledgeCheckView.$(".feedback").hide();
             knowledgeCheckView.trigger(Events.EVENT_KC_NEXT, knowledgeCheckModel.Current);
         }
 
-        private goBack(e:any):void{
+        private goBack(e: any): void {
             let knowledgeCheckView: KnowledgeCheck = this,
-            knowledgeCheckModel: Models.KnowledgeCheck = knowledgeCheckView.model;
+                knowledgeCheckModel: Models.KnowledgeCheck = knowledgeCheckView.model;
             knowledgeCheckView.reset();
             knowledgeCheckView.$(".feedback").hide();
             knowledgeCheckView.trigger(Events.EVENT_KC_Back, knowledgeCheckModel.Current);
         }
 
-        private onClose(e:any):void{
+        private onClose(e: any): void {
             let knowledgeCheckView: KnowledgeCheck = this,
-            knowledgeCheckModel: Models.KnowledgeCheck = knowledgeCheckView.model;
+                knowledgeCheckModel: Models.KnowledgeCheck = knowledgeCheckView.model;
             knowledgeCheckView.reset();
             knowledgeCheckView.$(".feedback").hide();
             knowledgeCheckView.$(".feedback-container").hide();
@@ -256,17 +257,17 @@ namespace HTML5AudioPlayer.Components.Views {
                 knowledgeCheckView.showCorrectAnswers(DataStructures.KCResult.Correct !== result);
             }
 
-            if(knowledgeCheckModel.Current.index<knowledgeCheckModel.Current.total){
-               // alert("ck-continue-btn hide")
+            if (knowledgeCheckModel.Current.index < knowledgeCheckModel.Current.total) {
+                // alert("ck-continue-btn hide")
                 knowledgeCheckView.$(".ck-continue-btn").hide();
-                knowledgeCheckView.$(".ck-next-btn").removeClass("disabled").show();
-            }else{
+                //knowledgeCheckView.$(".ck-next-btn").removeClass("disabled").show();
+            } else {
                 //alert("ck-continue-btn show")
                 knowledgeCheckView.$(".ck-continue-btn").show();
-                knowledgeCheckView.$(".ck-next-btn").addClass("disabled").hide();
+                //knowledgeCheckView.$(".ck-next-btn").addClass("disabled").hide();
             }
 
-
+            knowledgeCheckView.updateNextBackUI();
             //knowledgeCheckView.$(".ck-next-btn").removeClass("disabled").show();
 
 
@@ -307,7 +308,7 @@ namespace HTML5AudioPlayer.Components.Views {
             let knowledgeCheckView: KnowledgeCheck = this,
                 knowledgeCheckModel: Models.KnowledgeCheck = knowledgeCheckView.model;
 
-                knowledgeCheckView.trigger(Events.EVENT_KC_COMPLETE, knowledgeCheckModel.Current);
+            knowledgeCheckView.trigger(Events.EVENT_KC_COMPLETE, knowledgeCheckModel.Current);
             knowledgeCheckView.$el.hide(200, () => {
 
             });
@@ -333,32 +334,51 @@ namespace HTML5AudioPlayer.Components.Views {
             knowledgeCheckView.$el.empty();
         }
 
-        public getCurrentCuePoints():void{
+        public getCurrentCuePoints(): void {
             let knowledgeCheckView: KnowledgeCheck = this,
                 knowledgeCheckModel: Models.KnowledgeCheck = knowledgeCheckView.model;
             //knowledgeCheckModel.getCurrentCuePoints(id)
             //alert()
         }
 
-        public setIndex(ind:number): void {
+        public setIndex(ind: number): void {
             let knowledgeCheckView: KnowledgeCheck = this,
                 knowledgeCheckModel: Models.KnowledgeCheck = knowledgeCheckView.model;
-                //knowledgeCheckModel.setIndex(ind)
-            knowledgeCheckModel.Current.index =ind;
+            //knowledgeCheckModel.setIndex(ind)
+            knowledgeCheckModel.Current.index = ind;
         }
 
         public getIndex() {
             let knowledgeCheckView: KnowledgeCheck = this,
                 knowledgeCheckModel: Models.KnowledgeCheck = knowledgeCheckView.model;
-                //knowledgeCheckModel.setIndex(ind)
+            //knowledgeCheckModel.setIndex(ind)
             return knowledgeCheckModel.Current.index;
         }
 
-        public setTotalActive(num:number): void {
+        public setTotalActive(num: number): void {
             let knowledgeCheckView: KnowledgeCheck = this,
                 knowledgeCheckModel: Models.KnowledgeCheck = knowledgeCheckView.model;
-                //knowledgeCheckModel.setIndex(ind)
-            knowledgeCheckModel.Current.total =num;
+            //knowledgeCheckModel.setIndex(ind)
+            knowledgeCheckModel.Current.total = num;
+        }
+
+        public updateNextBackUI(): void {
+            let knowledgeCheckView: KnowledgeCheck = this,
+                knowledgeCheckModel: Models.KnowledgeCheck = knowledgeCheckView.model;
+            //knowledgeCheckModel.setIndex(ind)
+
+
+            if (knowledgeCheckModel.Current.index === 1) {
+                knowledgeCheckView.$(".ck-back-btn").addClass("disabled").attr("disabled", "true")
+            } else {
+                knowledgeCheckView.$(".ck-back-btn").removeClass("disabled").removeAttr("disabled")
+            }
+
+            if (knowledgeCheckModel.Current.index === knowledgeCheckModel.Current.total) {
+                knowledgeCheckView.$(".ck-next-btn").addClass("disabled").attr("disabled", "true")
+            } else {
+                knowledgeCheckView.$(".ck-next-btn").removeClass("disabled").removeAttr("disabled")
+            }
         }
 
 
