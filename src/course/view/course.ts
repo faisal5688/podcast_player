@@ -27,9 +27,6 @@ namespace HTML5AudioPlayer.Views {
             let courseView: Course = this,
                 courseModel: Models.Course = courseView.model;
 
-
-
-
             courseView._template = HBTemplates['course'];
 
             courseView.$el.addClass("course");
@@ -60,11 +57,6 @@ namespace HTML5AudioPlayer.Views {
             courseView._player.on(Events.EVENT_LAUNCH_SURVEY, courseView.onLaunchSurvey, courseView);
             courseView._player.on(Events.EVENT_CURRENT_QUESTION, courseView.getCurrentQuestion, courseView);
             courseView._player.on(Events.EVENT_CURRENT_KCITEM, courseView.getCurrentKcItem, courseView);
-
-            //courseView._player.on(Events.EVENT_COMPLETE_QUESTION, courseView.markQuestionComplete, courseView);
-            // courseView._player.on(Events.EVENT_AUDIOPLAYER_CHANGE, courseView.onAudioChanged, courseView);
-            // courseView._player.on(Events.EVENT_AUDIOPLAYPAUSE_CHANGE, courseView.togglePlayPause, courseView);
-
 
         }
 
@@ -131,8 +123,11 @@ namespace HTML5AudioPlayer.Views {
                 });
                 //if(index){
                 courseView._knowledgeCheck.setIndex(index)
+                courseView._knowledgeCheck.checkComplete(courseView._player.checkCurKcComplete(cp.id))
+                //alert("sds"+courseView.kn)
                 //alert(courseView._player.markKcKCItemComplete)
                 //alert(courseView.kcItemActiveList())
+                courseView._player.checkCurKcComplete(cp.id);
                 courseView._knowledgeCheck.setTotalActive(courseView._player.kcItemActiveList())
                 courseView._knowledgeCheck.render();
                 courseView._knowledgeCheck.once(Events.EVENT_KC_SHOWN, courseView.onListKCShown, courseView);
@@ -152,31 +147,30 @@ namespace HTML5AudioPlayer.Views {
                 courseModel: Models.Course = courseView.model;
             courseView._item = item;
             console.log(courseView._item.Index)
-            courseView.onCuePointHitList(courseModel.KnowledgeCheck.getCurrentCuePointsById(courseView._item.Id)[0],courseView._item.Index);
+            courseView.onCuePointHitList(courseModel.KnowledgeCheck.getCurrentCuePointsById(courseView._item.Id)[0], courseView._item.Index);
         }
 
         private onListKCNext(kc: DataStructures.KCData, increment?: any) {
             let courseView: Course = this,
                 courseModel: Models.Course = courseView.model,
                 curIndex: number = increment ? (kc.index + 2) : kc.index + 1,
-                curKcId:string = "kc-00"+curIndex;
-                console.log(kc)
-                //courseView._player.markKcKCItemComplete(kc.id);
-                //courseModel.PlayerModel.sendDataToScorm();
-                kc = courseView._knowledgeCheck.model.KnowledgeChecks[courseView._knowledgeCheck.getIndex()-1];
+                curKcId: string = "kc-00" + curIndex;
+            console.log(kc)
 
-                courseView._knowledgeCheck.destroy();
-                courseView.onCuePointHitList(courseModel.KnowledgeCheck.getCurrentCuePointsById(curKcId)[0],curIndex);
+            courseView._player.markKcKCItemComplete(kc.id);
+            courseModel.PlayerModel.sendDataToScorm();
+            kc = courseView._knowledgeCheck.model.KnowledgeChecks[courseView._knowledgeCheck.getIndex() - 1];
+            courseView._knowledgeCheck.destroy();
+            courseView.onCuePointHitList(courseModel.KnowledgeCheck.getCurrentCuePointsById(curKcId)[0], curIndex);
 
         }
 
         private onListCurKCComplete(kc: DataStructures.KCData, increment?: any) {
             let courseView: Course = this,
                 courseModel: Models.Course = courseView.model;
-                console.log(kc)
-                alert()
-                courseView._player.markKcKCItemComplete(kc.id);
-                courseModel.PlayerModel.sendDataToScorm();
+            //console.log(kc)
+            courseView._player.markKcKCItemComplete(kc.id);
+            courseModel.PlayerModel.sendDataToScorm();
 
         }
 
@@ -185,12 +179,12 @@ namespace HTML5AudioPlayer.Views {
             let courseView: Course = this,
                 courseModel: Models.Course = courseView.model,
                 curIndex: number = increment ? (kc.index + 2) : kc.index - 1,
-                curKcId:string = "kc-00"+curIndex;
-                //alert(curKcId);
-                //kc = courseView._knowledgeCheck.model.KnowledgeChecks[courseView._knowledgeCheck.getIndex()-1];
-                //courseView._player.markKcKCItemComplete(kc.id);
-                courseView._knowledgeCheck.destroy();
-                courseView.onCuePointHitList(courseModel.KnowledgeCheck.getCurrentCuePointsById(curKcId)[0],curIndex);
+                curKcId: string = "kc-00" + curIndex;
+            //alert(curKcId);
+            //kc = courseView._knowledgeCheck.model.KnowledgeChecks[courseView._knowledgeCheck.getIndex()-1];
+            //courseView._player.markKcKCItemComplete(kc.id);
+            courseView._knowledgeCheck.destroy();
+            courseView.onCuePointHitList(courseModel.KnowledgeCheck.getCurrentCuePointsById(curKcId)[0], curIndex);
         }
         @named
         private onListKCShown(kc: DataStructures.KCData): void {
@@ -202,30 +196,33 @@ namespace HTML5AudioPlayer.Views {
         }
 
         @named
-        private onListKCComplete(kc: DataStructures.KCData,curIndex?:Number): void {
+        private onListKCComplete(kc: DataStructures.KCData, curIndex?: Number): void {
             let courseView: Course = this,
                 courseModel: Models.Course = courseView.model,
-                curKcId:string = "kc-00"+curIndex;
-                kc = courseView._knowledgeCheck.model.KnowledgeChecks[courseView._knowledgeCheck.getIndex()-1];
-            console.log("******************"+kc.id)
-            //courseView._player.markKcKCItemComplete(kc.id);
+                curKcId: string = "kc-00" + curIndex;
+            kc = courseView._knowledgeCheck.model.KnowledgeChecks[courseView._knowledgeCheck.getIndex() - 1];
+            console.log("******************" + kc.id)
+            courseView._player.markKcKCItemComplete(kc.id);
+            courseModel.PlayerModel.sendDataToScorm();
             //courseModel.ScormPreviousData.CuePoints =courseModel.KnowledgeCheck.CuePoints
-            //courseModel.PlayerModel.sendDataToScorm();
+
             //kcItemActiveList
             courseView._knowledgeCheck.destroy();
         }
 
         @named
-        private onListKCClose(kc: DataStructures.KCData,curIndex?:Number): void {
+        private onListKCClose(kc: DataStructures.KCData, curIndex?: Number): void {
             let courseView: Course = this,
                 courseModel: Models.Course = courseView.model,
-                curKcId:string = "kc-00"+curIndex;
-                kc = courseView._knowledgeCheck.model.KnowledgeChecks[courseView._knowledgeCheck.getIndex()-1];
+                curKcId: string = "kc-00" + curIndex;
+            kc = courseView._knowledgeCheck.model.KnowledgeChecks[courseView._knowledgeCheck.getIndex() - 1];
             courseView._knowledgeCheck.destroy();
         }
 
 
 
+
+        //Questio list code
         @named
         private onCuePointHit(cp: DataStructures.CuePoint, index?: number): void {
             let courseView: Course = this,
@@ -249,12 +246,6 @@ namespace HTML5AudioPlayer.Views {
                 courseView._knowledgeCheck.show();
             }
         }
-
-
-
-
-
-
         private getCurrentQuestion(item: Components.Models.PlaylistItem): void {
             let courseView: Course = this,
                 courseModel: Models.Course = courseView.model;
@@ -263,27 +254,13 @@ namespace HTML5AudioPlayer.Views {
 
             courseView.onCuePointHit(courseModel.KnowledgeCheck.getCurrentCuePoints(courseView._item.Id)[0], 1);
         }
-
         private onKCNext(kc: DataStructures.KCData, increment?: boolean) {
             let courseView: Course = this,
                 courseModel: Models.Course = courseView.model,
                 curIndex: number = increment ? (kc.index + 2) : kc.index + 1;
-
-            //courseView._knowledgeCheck.getIndex()
-
-            //alert(curIndex)
-            //alert(courseModel.KnowledgeCheck.getCurrentCuePoints(courseView._item.Id).length)
-            //alert(courseView._item.Id)
-
             courseView.onCuePointHit(courseModel.KnowledgeCheck.getCurrentCuePoints(courseView._item.Id)[curIndex - 1], curIndex);
 
-            //courseView._knowledgeCheck.setIndex(2)
-            //courseView._item=item;
-            // courseView.onCuePointHit(courseModel.KnowledgeCheck.getCurrentCuePoints(courseView._item.Id)[0]);
         }
-
-
-
         @named
         private onKCShown(kc: DataStructures.KCData): void {
             let courseView: Course = this,
@@ -319,13 +296,6 @@ namespace HTML5AudioPlayer.Views {
             courseView._knowledgeCheck.destroy();
         }
 
-        @named
-        // private markQuestionComplete(): void {
-        //     alert("markQuestionComplete")
-        // }~
-
-
-
 
         @named
         private onShowGlossary(): void {
@@ -342,24 +312,9 @@ namespace HTML5AudioPlayer.Views {
             Utilities.openPdf(this.model.ResourcePDF);
         }
 
-        @named
-        private onAudioChanged(): void {
-            console.log("*******************************course onAudioChanged*****************************");
-            //alert()
-            // let courseView: Course = this,
-            //     courseModel: Models.Course = courseView.model;
-            // courseView._audioPlayer.audioPlayer = courseView._player;
-            // courseView._audioPlayer.afterRender(courseView._player);
-            // courseView._player.play();
 
 
-        }
 
-        @named
-        private togglePlayPause(): void {
-            console.log("*******************************course togglePlayPause*****************************");
-
-        }
         @named
         private onVideoChanged(item: Components.Models.PlaylistItem): void {
             let courseView: Course = this,

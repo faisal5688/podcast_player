@@ -96,7 +96,6 @@ namespace HTML5AudioPlayer.Components.Views {
             audioPlayerView._playlist.on(Events.EVENT_PLAYLIST_CLOSED, audioPlayerView.onPlaylistClosed, audioPlayerView);
             audioPlayerView._playlist.on(Events.EVENT_LAUNCH_ASSESSMNET, audioPlayerView.onLaunchAssessment, audioPlayerView);
             audioPlayerView._playlist.on(Events.EVENT_LAUNCH_SURVEY, audioPlayerView.onLaunchSurvey, audioPlayerView);
-            audioPlayerView._playlist.on(Events.EVENT_AUDIOPLAYER_CHANGE, audioPlayerView.onAudioChanged, audioPlayerView);
             audioPlayerView._playlist.on(Events.EVENT_AUDIOPLAYPAUSE_CHANGE, audioPlayerView.togglePlayPause, audioPlayerView);
             audioPlayerModel.on("change:CuePoints", audioPlayerView.resetCuePointStatus, audioPlayerView);
             audioPlayerView._playlist.on(Events.EVENT_QUESTION_CLICKED, audioPlayerView.triggerQuetion, audioPlayerView);
@@ -597,6 +596,17 @@ namespace HTML5AudioPlayer.Components.Views {
             //audioPlayerModel.Playlist.enableAssessment();
         }
 
+        public checkCurKcComplete(vidId?: string): Boolean {
+            let audioPlayerView: AudioPlayer = this,
+                audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
+
+                let CurrentItem = audioPlayerModel.Playlist.KnowledgeCheckItems.filter((val) => {
+                    return val.attributes.id === vidId;
+                })[0];
+            return CurrentItem.Complete;
+
+        }
+
         public markKcKCItemComplete(vidId?: string): void {
             let audioPlayerView: AudioPlayer = this,
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
@@ -614,7 +624,9 @@ namespace HTML5AudioPlayer.Components.Views {
             //console.log("markKcKCItemComplete CurrentItem")
            // console.log(CurrentItem.Kccomplete)
             //CurrentCueItem.completed = true;
+            console.log("****************************************************")
             console.log(CurrentItem)
+
             CurrentItem.Complete = true;
 
             let curObj: DataStructures.KcScormData = audioPlayerModel.ScormPreviousData[CurrentItem.Id];
@@ -627,7 +639,6 @@ namespace HTML5AudioPlayer.Components.Views {
             curObj.c = 1;
             audioPlayerModel.ScormPreviousData[CurrentItem.Id] = curObj;
             audioPlayerModel.Playlist.enableAssessment();
-
 
         }
 
@@ -1364,11 +1375,7 @@ namespace HTML5AudioPlayer.Components.Views {
 
         }
 
-        @named
-        private onAudioChanged(item: Models.PlaylistItem): void {
-            //alert("onAudioChanged")
 
-        }
         @named
         public togglePlayPause(): void {
             let audioPlayerView: AudioPlayer = this;

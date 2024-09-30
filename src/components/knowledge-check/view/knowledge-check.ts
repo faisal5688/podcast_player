@@ -9,6 +9,8 @@ namespace HTML5AudioPlayer.Components.Views {
 
         private _template: (properties?: HandlebarsTemplates) => string;
 
+        private checkCurrItemComplete :Boolean =false;
+
         constructor(options: Backbone.ViewOptions<Models.KnowledgeCheck>) {
             super(options);
 
@@ -50,7 +52,9 @@ namespace HTML5AudioPlayer.Components.Views {
 
             knowledgeCheckView.$el.html(knowledgeCheckView._template(knowledgeCheckModel.toJSON()));
 
-            if (knowledgeCheckModel.Current.complete) {
+            //alert(knowledgeCheckModel.Current.complete)
+            if (knowledgeCheckView.checkCurrItemComplete) {
+                //alert("visited")
                 knowledgeCheckView.updateNextBackUI()
             }
             if (knowledgeCheckModel.Current.index === 1) {
@@ -384,6 +388,12 @@ namespace HTML5AudioPlayer.Components.Views {
                 knowledgeCheckModel: Models.KnowledgeCheck = knowledgeCheckView.model;
             //knowledgeCheckModel.setIndex(ind)
             knowledgeCheckModel.Current.total = num;
+        }
+
+        public checkComplete(currItem:Boolean){
+            let knowledgeCheckView: KnowledgeCheck = this,
+                knowledgeCheckModel: Models.KnowledgeCheck = knowledgeCheckView.model;
+                knowledgeCheckView.checkCurrItemComplete =currItem;
         }
 
         public updateNextBackUI(): void {
