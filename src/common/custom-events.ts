@@ -12,6 +12,8 @@ namespace HTML5AudioPlayer.Events {
     export let EVENT_ASSESSMENT_STATUS: string = "ASSESSMENT_STATUS";
     export let EVENT_ASSESSMENT_CLOSE: string = "ASSESSMENT_CLOSE";
     export let EVENT_KC_COMPLETE: string = "KC_COMPLETE";
+    export let EVENT_KC_CURCOMPLETE: string = "EVENT_KC_CURCOMPLETE";
+    export let EVENT_KC_CLOSEQUESTION: string = "EVENT_KC_CLOSEQUESTION";
     export let EVENT_SHOW_INDEX: string = "SHOW_INDEX";
     export let EVENT_SHOW_RESOURCES: string = "SHOW_RESOURCES";
     export let EVENT_SHOW_GLOSSARY: string = "SHOW_GLOSSARY";
