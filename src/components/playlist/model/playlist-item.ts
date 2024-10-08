@@ -50,6 +50,9 @@
         get Complete(): boolean { return this.get("complete"); }
         set Complete(value: boolean) { this.set("complete", value); }
 
+        get Inprogress(): boolean { return this.get("inprogress"); }
+        set Inprogress(value: boolean) { this.set("inprogress", value); }
+
         get Kccomplete(): boolean { return this.get("kccomplete"); }
         set Kccomplete(value: boolean) { this.set("kccomplete", value); }
 
@@ -92,6 +95,7 @@
             model.CurrentTime = model.CurrentTime || 0;
             model.Current = model.Current || false;
             model.Complete = model.Complete || false;
+            model.Inprogress = model.Inprogress || false;
             model.Kccomplete = model.Kccomplete || false;
             model.MicroPolls = model.MicroPolls || [];
             model.TitleEllipses = model.Title;

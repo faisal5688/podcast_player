@@ -20,6 +20,8 @@ namespace HTML5AudioPlayer.Components.Views {
             playlistItemModel.on("change:disabled", playlistItemView.render, playlistItemView);
             playlistItemModel.on("change:kccomplete", playlistItemView.render, playlistItemView);
             playlistItemModel.on("change:CurrentClicked", playlistItemView.render, playlistItemView);
+            playlistItemModel.on("change:inprogress", playlistItemView.render, playlistItemView);
+
 
 
         }
@@ -58,7 +60,8 @@ namespace HTML5AudioPlayer.Components.Views {
 
             if (playlistItemModel.CurrentClicked) {
                 playlistItemView.$el.addClass("current");
-                playlistItemView.$el.find(".audio-player-container").addClass("showPlayer")
+                playlistItemView.$el.find(".audio-player-container").addClass("showPlayer");
+
             } else {
                 playlistItemView.$el.removeClass("current");
                 playlistItemView.$el.find(".audio-player-container").removeClass("showPlayer")
@@ -71,8 +74,12 @@ namespace HTML5AudioPlayer.Components.Views {
             else {
                 playlistItemView.$el.removeClass("disabled").addClass("enabled");
             }
-
-
+            if (playlistItemModel.CurrentClicked && !playlistItemModel.Complete) {
+                playlistItemView.$el.find(".item-inpogress").show()
+            }
+            else {
+                playlistItemView.$el.find(".item-inpogress").hide()
+            }
 
             return playlistItemView;
         }
@@ -85,11 +92,24 @@ namespace HTML5AudioPlayer.Components.Views {
 
             let playlistItemView = this,
                 playlistItemModel: Models.PlaylistItem = this.model;
-            playlistItemView.$el.find(".item-complete").show()
+            playlistItemView.$el.find(".item-complete").show();
+            playlistItemView.$el.find(".item-inpogress").hide()
             //playlistItemModel.Complete=true;
 
 
         }
+
+        public renderInprogress(): void {
+
+            let playlistItemView = this,
+                playlistItemModel: Models.PlaylistItem = this.model;
+            playlistItemView.$el.find(".item-inpogress").show()
+            //playlistItemModel.Complete=true;
+
+
+        }
+
+
 
 
         @named
@@ -106,14 +126,24 @@ namespace HTML5AudioPlayer.Components.Views {
             //videoPlayerViewmodel:Models.AudioPlayer = audioPlayerView.model;
             playlistItemModel.Current = (!playlistItemModel.IsAssessment && !playlistItemModel.IsSurvey);
             //playlistItemModel.CurrentClicked = true;
+            //console.log("**************************8")
+
 
             if (playlistItemModel.Current) {
                 playlistItemView.$el.addClass("current");
                 playlistItemView.$el.find(".audio-player-container").addClass("showPlayer")
+
+                if(!playlistItemModel.Complete){
+                    playlistItemView.$el.find(".item-inpogress").show()
+                }
             }
+
+
 
             playlistItemView.trigger(Events.EVENT_ITEM_CLICKED, playlistItemModel);
             playlistItemView.trigger(Events.EVENT_INIT_PLAYER, playlistItemModel);
+
+
 
         }
         togglePlayPause1(e: MouseEvent): void {

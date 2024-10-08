@@ -230,6 +230,7 @@ namespace HTML5AudioPlayer.Components.Views {
             //playlistItemView.$el.addClass("hide");
             //console.log(item)
 
+
             if (playlistModel.CurrentItem.id === item.Id) {
                 return;
             }
@@ -251,6 +252,7 @@ namespace HTML5AudioPlayer.Components.Views {
             playlistModel.CurrentItem.CurrentClicked = true;
             playlistModel.CurrentItem.Disabled = false;
             playlistModel.CurrentListItem = item.Index;
+            playlistModel.CurrentItem.Inprogress = true;
 
             //playlistModel.CurrentItem.NumQuestions= playlistModel.CurrentItem.
 
