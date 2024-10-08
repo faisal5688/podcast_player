@@ -1381,11 +1381,11 @@ namespace HTML5AudioPlayer.Components.Views {
             let audioPlayerView: AudioPlayer = this;
             if (audioPlayerView._myPlayer.paused()) {
                 audioPlayerView._myPlayer.play();
-                $('.audio-player-template .play-pause').text('Pause');
+                $('.audio-player-template .play-pause').text('Pause').addClass("pause").removeClass("play");;
 
             } else {
                 audioPlayerView._myPlayer.pause();
-                $('.audio-player-template .play-pause').text('Play');
+                $('.audio-player-template .play-pause').text('Play').addClass("play").removeClass("pause");;
 
             }
         }
@@ -1436,10 +1436,10 @@ namespace HTML5AudioPlayer.Components.Views {
             //audioPlayerModel.Playlist.$el.hide();
             if (audioPlayerView._myPlayer.paused()) {
                 audioPlayerView._myPlayer.play();
-                $('.audio-player-template .play-pause').text('Pause');
+                $('.audio-player-template .play-pause').text('Pause').addClass("pause").removeClass("play");
             } else {
                 audioPlayerView._myPlayer.pause();
-                $('.audio-player-template .play-pause').text('Play');
+                $('.audio-player-template .play-pause').text('Play').addClass("play").removeClass("pause");
             }
         }
 
