@@ -1,0 +1,9 @@
+<svg id="outline-lock-24px" xmlns="http://www.w3.org/2000/svg" width="18.092" height="18.092" viewBox="0 0 18.092 18.092">
+  <g id="Bounding_Boxes">
+    <path id="Path_2370" data-name="Path 2370" d="M0,0H18.092V18.092H0Z" fill="none"/>
+    <path id="Path_2371" data-name="Path 2371" d="M0,0H18.092V18.092H0Z" fill="none" opacity="0.87"/>
+  </g>
+  <g id="Outline" transform="translate(3.015 0.754)">
+    <path id="Path_2372" data-name="Path 2372" d="M14.554,6.277H13.8V4.769a3.769,3.769,0,1,0-7.538,0V6.277H5.508A1.512,1.512,0,0,0,4,7.785v7.538a1.512,1.512,0,0,0,1.508,1.508h9.046a1.512,1.512,0,0,0,1.508-1.508V7.785A1.512,1.512,0,0,0,14.554,6.277ZM7.769,4.769a2.262,2.262,0,1,1,4.523,0V6.277H7.769Zm6.785,10.554H5.508V7.785h9.046Zm-4.523-2.262a1.508,1.508,0,1,0-1.508-1.508A1.512,1.512,0,0,0,10.031,13.061Z" transform="translate(-4 -1)" fill="#686868"/>
+  </g>
+</svg>

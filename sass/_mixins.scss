@@ -33,11 +33,11 @@
     position: absolute;
     background-color: $colorBlack;
     color: $colorWhite;
-    width: 40px;
     height: 18px;
     font-size: 12px;
     line-height: 18px;
     right: 0px;
+    left: 0px;
     bottom: 0px;
     text-align: center;
     font-weight: bold;
@@ -45,8 +45,7 @@
 }
 
 @mixin currentPlaylistItem {
-    background-color: $colorPurple;
-    color: $colorWhite;
+    border: 1px solid $colorCobalt;
     cursor: default;
     &:before {
         content: "";
@@ -67,6 +66,30 @@
     overflow: hidden;
 }
 
+@mixin ChapterNoFontStyle {
+    font-size: 14px;
+    line-height: 19px;
+    vertical-align: middle;
+    margin-left: 15px;
+    overflow: hidden;
+}
+
+@mixin ChapterNameFontStyle {
+    font-size: 16px;
+    line-height: 20px;
+    vertical-align: middle;
+    margin-left: 15px;
+    overflow: hidden;
+}
+
+@mixin QuestionTitleFontStyle {
+    font-size: 14px;
+    line-height: 20px;
+    vertical-align: middle;
+    margin-left: 15px;
+    overflow: hidden;
+}
+
 @mixin itemCompletion {
     background: url("../resources/image/item-complete.png") no-repeat;
     width: 17px;
@@ -75,7 +98,51 @@
     background-size: 17px 17px;
     position: absolute;
     top: 8px;
-    left: 35px;
+    right: 8px;
+}
+
+
+
+@mixin refreshBtn {
+    background: url("../resources/image/audio_controls/refresh_btn.svg") no-repeat;
+    width: 25px;
+    height: 25px;
+    background-position: center center;
+    background-size: 25px 25px;
+
+}
+
+@mixin popupCloseBtn {
+    background: url("../resources/image/popup_close_btn.svg") no-repeat;
+    width: 24px;
+    height: 24px;
+    background-position: center center;
+    background-size: 24px 24px;
+
+}
+
+@mixin chapterLockIcon {
+    position: relative;
+
+    &::after {
+        content: "";
+        background: url("../resources/image/chapter_lock_icon.svg") no-repeat;
+        width: 18px;
+        height: 18px;
+        background-position: 0 0;
+        background-size: 18px 18px;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+
+}
+
+
+@mixin KCBGImg {
+    background: url("../resources/image/KC-question-icon.png") no-repeat;
+    background-position: center center;
+    background-size: 120px 120px;
 }
 
 @mixin closeButton {
@@ -144,10 +211,12 @@
 
 @mixin submitButton {
     width: auto;
-    height: 32px;
-    font-weight: bold;
+    height: 35px;
     line-height: 5px;
+    font-weight: normal;
     border: 0;
+    font-size: $fontSizeMini;
+    border-radius: 5px;
 }
 
 @mixin underlineFromLeft {
@@ -162,7 +231,7 @@
         left: 0;
         right: 100%;
         bottom: 0;
-        background: $colorPurple;
+        background: $colorCobalt;
         height: 4px;
         -webkit-transition-property: right;
         transition-property: right;

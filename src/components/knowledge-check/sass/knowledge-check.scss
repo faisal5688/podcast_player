@@ -5,12 +5,12 @@
 .knowledge-check-container {
     position: absolute;
     width: 100%;
-    height: calc(100% - 45px);
-    top: 45px;
+    height: 100%;
+    top: 0px;
     z-index: 1;
     display: none;
     overflow-y: auto;
-    background-color: rgba($colorBlack, 0.20);
+    background-color: rgba($colorBlack, 0.60);
 
     .feedback-container {
         @include commonProperty;
@@ -80,275 +80,345 @@
 
     .knowledge-check {
         position: absolute;
-        width: 80%;
-        height: 80%;
+        width: 60%;
+        height: 58%;
         left: 0;
         top: 0;
         right: 0;
         bottom: 0;
         margin: auto;
-        background-color: $colorGrayE5;
-        padding: $fontSizeLarge;
+        background-color: $colorWhite;
+        padding: 0;
         color: $colorWhite;
+        border: 1px solid $colorCobalt;
+        border-radius: 10px;
 
-        .question-container {
-            width: $fullWidth;
+        .mCSB_container {
+            margin-right: 0px !important;
 
-            .index {
-                @include floatLeft;
-                width: 7%;
-                color: $colorBlue;
-                font-size: 54px;
-                line-height: 32px;
-                padding-top: 10px;
-                position: absolute;
-                top: 10px;
-                left: 10px;
-            }
+            .knowledge-check-header {
+                background: rgba(0, 184, 245, 0.1);
+                padding: 10px 10px 10px 20px;
+                display: flex;
 
-            .question-text {
-                @include floatLeft;
-                padding-right: 1%;
-                width: 100%;
-                box-sizing: border-box;
-                font-size: $fontSizeStandard;
-                font-weight: bold;
-                color: $colorBlue;
-                line-height: 18px;
-                padding-bottom: $fontSizeMicro;
-                text-align: justify;
-                padding: 25px 20px 22px 8%;
-            }
-        }
+                .knowledge-check-number {
+                    color: $colorBlue;
+                    font-size: 22px;
+                    padding-right: 15px;
 
-        .question-data {
-            @include floatLeft;
-            padding-left: 8%;
-            padding-right: 1%;
-            width: 100%;
-            box-sizing: border-box;
-
-            .instruction {
-                width: $fullWidth;
-                color: $colorPurple;
-                font-size: $fontSizeStandard;
-                font-style: italic;
-            }
-
-            hr {
-                @include marginCommonProperty;
-                width: 100%;
-                border-bottom: 1px solid $colorBlue;
-            }
-
-            .options {
-                padding-top: 10px;
-
-                .option {
-                    width: $fullWidth;
-                    height: auto;
-                    min-height: 30px;
-                    padding-bottom: $fontSizeMicro;
-                    position: relative;
-                    text-align: justify;
-
-                    .kc-option {
-                        background: $colorBlack;
+                    .kc-num-1 {
+                        font-size: 22px;
+                        font-weight: bold;
                     }
 
-                    [type="radio"] {
-                        &:checked+label {
-                            &:before {
-                                background: $colorWhite;
-                                height: 14px;
+                    .kc-num-2 {
+                        font-size: 16px;
+                    }
+                }
+
+                .knowledge-check-text {
+                    color: $colorBlue;
+                    font-size: 22px;
+                    font-weight: bold;
+                }
+            }
+            .knowledge-check-que-cont {
+                display: flex;
+
+                .knowledge-check-left {
+                    width: 75%;
+
+                    .question-container {
+                        width: $fullWidth;
+
+                        .index {
+                            @include floatLeft;
+                            width: 7%;
+                            color: $colorBlue;
+                            font-size: 54px;
+                            line-height: 32px;
+                            padding-top: 10px;
+                            position: absolute;
+                            top: 10px;
+                            left: 10px;
+                        }
+
+                        .question-text {
+                            padding-right: 1%;
+                            width: 100%;
+                            box-sizing: border-box;
+                            font-size: $fontSizeStandard;
+                            font-weight: bold;
+                            color: $colorGray20;
+                            line-height: 18px;
+                            padding-bottom: $fontSizeMicro;
+                            text-align: justify;
+                            padding: 25px 20px 22px 20px;
+                        }
+                    }
+
+                    .question-data {
+                        padding-left: 20px;
+                        padding-right: 1%;
+                        width: 100%;
+                        box-sizing: border-box;
+
+                        .instruction {
+                            width: $fullWidth;
+                            color: $colorPurple;
+                            font-size: $fontSizeStandard;
+                            font-style: italic;
+                            font-weight: bold;
+                            margin-bottom: 10px;
+                        }
+
+                        hr {
+                            @include marginCommonProperty;
+                            width: 100%;
+                            border-bottom: 1px solid $colorBlue;
+                        }
+
+                        .options {
+                            padding-top: 10px;
+
+                            .option {
+                                width: $fullWidth;
+                                height: auto;
+                                min-height: 30px;
+                                padding-bottom: $fontSizeMicro;
+                                position: relative;
+                                text-align: justify;
+
+                                .kc-option {
+                                    background: $colorBlack;
+                                }
+
+                                [type="radio"] {
+                                    &:checked+label {
+                                        &:before {
+                                            background: $colorWhite;
+                                            height: 17px;
+                                        }
+                                    }
+
+                                    &:not(:checked)+label {
+                                        &:before {
+                                            background: $colorWhite;
+                                            height: 17px;
+                                        }
+                                    }
+                                }
+
+                                &:not(:checked)+label {
+                                    &:before {
+                                        background: $colorWhite;
+                                    }
+                                }
+
+                                &:checked+label {
+                                    &:before {
+                                        background: $colorWhite;
+                                    }
+                                }
+
+                                &:not(:checked) {
+                                    + {
+                                        label {
+                                            padding-left: 28px;
+                                            display: inline-block;
+
+                                            &:before {
+                                                content: '';
+                                                left: 0;
+                                            }
+
+                                            &:after {
+                                                left: 5px;
+                                                left: 5px;
+                                                top: 5px;
+                                                width: 10px;
+                                                height: 10px;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                [type="checkbox"] {
+                                    padding-left: 26px;
+
+
+                                    &:checked {
+                                        + {
+                                            label {
+                                                padding-left: 28px;
+                                                display: inline-block;
+
+                                                &:before {
+                                                    content: '';
+                                                    left: 0;
+                                                }
+
+                                                &:after {
+                                                    left: 5px;
+                                                    left: 5px;
+                                                    top: 5px;
+                                                    width: 10px;
+                                                    height: 10px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                label {
+                                    font-size: $fontSizeMini;
+                                    line-height: $fontSizeMidium;
+                                    color: $colorGray20;
+                                    font-weight: bold;
+                                }
+
+                                &.correct::after {
+                                    @include tickMark;
+                                }
+
+                                &.incorrect::after {
+                                    @include crossMark;
+                                }
                             }
+
+                            @include radioButtonStyle;
+                            @include checkButtonStyle;
                         }
 
-                        &:not(:checked)+label {
-                            &:before {
-                                background: $colorWhite;
-                                height: 14px;
+                        .btn-container {
+                            margin-bottom: 25px;
+
+                            .ck-submit-btn {
+                                @include submitButton;
+                                @include underlineFromLeft;
+                                color: $colorWhite;
+                                background: rgb(112,21,234);
+                                background: linear-gradient(90deg, rgba(112,21,234,1) 0%, rgba(103,26,233,1) 20%, rgba(86,38,231,1) 40%, rgba(61,53,229,1) 60%, rgba(45,63,228,1) 80%, rgba(32,72,226,1) 100%);
+                                padding: 5px 20px;
+                                font-size: $fontSizeMini;
+                                margin-top: 10px;
+
                             }
-                        }
-                    }
 
-                    &:not(:checked)+label {
-                        &:before {
-                            background: $colorWhite;
-                        }
-                    }
-
-                    &:checked+label {
-                        &:before {
-                            background: $colorWhite;
-                        }
-                    }
-
-                    &:not(:checked) {
-                        + {
-                            label {
-                                padding-left: 28px;
-                                display: inline-block;
+                            .ck-submit-btn.disabled {
+                                background: $colorGray60;
+                                color: $colorGray94;
+                                cursor: default;
 
                                 &:before {
-                                    content: '';
-                                    left: 0;
+                                    content: "";
+                                    position: absolute;
+                                    z-index: -1;
+                                    background: none;
+                                    transition-property: none;
                                 }
 
-                                &:after {
-                                    left: 5px;
-                                    left: 5px;
-                                    top: 5px;
-                                    width: 10px;
-                                    height: 10px;
+                                &:hover:before,
+                                &:focus:before,
+                                &:active:before {
+                                    right: 0;
+                                    cursor: default;
                                 }
+                            }
+
+
+                            .ck-next-btn {
+                                @include submitButton;
+                                @include underlineFromLeft;
+                                color: $colorWhite;
+                                background: rgb(112,21,234);
+                                background: linear-gradient(90deg, rgba(112,21,234,1) 0%, rgba(103,26,233,1) 20%, rgba(86,38,231,1) 40%, rgba(61,53,229,1) 60%, rgba(45,63,228,1) 80%, rgba(32,72,226,1) 100%);
+                                padding: 5px 20px;
+                                font-size: $fontSizeMini;
+                                margin-top: 10px;
+                            }
+
+                            .ck-next-btn.disabled {
+                                background: $colorGray60;
+                                color: $colorGray94;
+                                cursor: default;
+
+                                &:before {
+                                    content: "";
+                                    position: absolute;
+                                    z-index: -1;
+                                    background: none;
+                                    transition-property: none;
+                                }
+
+                                &:hover:before,
+                                &:focus:before,
+                                &:active:before {
+                                    right: 0;
+                                    cursor: default;
+                                }
+                            }
+
+
+                            .ck-back-btn {
+                                @include submitButton;
+                                @include underlineFromLeft;
+                                color: $colorWhite;
+                                background: rgb(112,21,234);
+                                background: linear-gradient(90deg, rgba(112,21,234,1) 0%, rgba(103,26,233,1) 20%, rgba(86,38,231,1) 40%, rgba(61,53,229,1) 60%, rgba(45,63,228,1) 80%, rgba(32,72,226,1) 100%);
+                                padding: 5px 20px;
+                                font-size: $fontSizeMini;
+                                margin-top: 10px;
+                            }
+
+                            .ck-back-btn.disabled {
+                                background: $colorGray60;
+                                color: $colorGray94;
+                                cursor: default;
+
+                                &:before {
+                                    content: "";
+                                    position: absolute;
+                                    z-index: -1;
+                                    background: none;
+                                    transition-property: none;
+                                }
+
+                                &:hover:before,
+                                &:focus:before,
+                                &:active:before {
+                                    right: 0;
+                                    cursor: default;
+                                }
+                            }
+
+                            .ck-close-btn {
+                                @include popupCloseBtn;
+                                position: absolute;
+                                right: 14px;
+                                top: 14px;
+                                cursor: pointer;
+                                border: none;
                             }
                         }
                     }
-
-                    [type="checkbox"] {
-                        padding-left: 26px;
-
-
-                        &:checked {
-                            + {
-                                label {
-                                    padding-left: 28px;
-                                    display: inline-block;
-
-                                    &:before {
-                                        content: '';
-                                        left: 0;
-                                    }
-
-                                    &:after {
-                                        left: 5px;
-                                        left: 5px;
-                                        top: 5px;
-                                        width: 10px;
-                                        height: 10px;
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    label {
-                        font-size: $fontSizeStandard;
-                        color: $colorBlue;
-                        line-height: $fontSizeMidium;
-                    }
-
-                    &.correct::after {
-                        @include tickMark;
-                    }
-
-                    &.incorrect::after {
-                        @include crossMark;
-                    }
                 }
 
-                @include radioButtonStyle;
-                @include checkButtonStyle;
+                .knowledge-check-right {
+                    width: 25%;
+                    @include KCBGImg;
+                }
             }
+
+
         }
 
-        .btn-container {
-            .ck-submit-btn {
-                @include submitButton;
-                @include underlineFromLeft;
-                color: $colorWhite;
-                background-color: $colorPurple;
-                padding: 5px 20px;
-                font-size: $fontSizeStandard;
-                margin-top: 10px;
-            }
-
-            .ck-submit-btn.disabled {
-                background: $colorGray60;
-                color: $colorGray94;
-                cursor: default;
-
-                &:before {
-                    content: "";
-                    position: absolute;
-                    z-index: -1;
-                    background: none;
-                    transition-property: none;
-                }
-
-                &:hover:before,
-                &:focus:before,
-                &:active:before {
-                    right: 0;
-                    cursor: default;
-                }
-            }
 
 
-            .ck-next-btn {
-                @include submitButton;
-                @include underlineFromLeft;
-                color: $colorWhite;
-                background-color: $colorPurple;
-                padding: 5px 20px;
-                font-size: $fontSizeStandard;
-                margin-top: 10px;
-            }
-
-            .ck-next-btn.disabled {
-                background: $colorGray60;
-                color: $colorGray94;
-                cursor: default;
-
-                &:before {
-                    content: "";
-                    position: absolute;
-                    z-index: -1;
-                    background: none;
-                    transition-property: none;
-                }
-
-                &:hover:before,
-                &:focus:before,
-                &:active:before {
-                    right: 0;
-                    cursor: default;
-                }
-            }
 
 
-            .ck-back-btn {
-                @include submitButton;
-                @include underlineFromLeft;
-                color: $colorWhite;
-                background-color: $colorPurple;
-                padding: 5px 20px;
-                font-size: $fontSizeStandard;
-                margin-top: 10px;
-            }
 
-            .ck-back-btn.disabled {
-                background: $colorGray60;
-                color: $colorGray94;
-                cursor: default;
 
-                &:before {
-                    content: "";
-                    position: absolute;
-                    z-index: -1;
-                    background: none;
-                    transition-property: none;
-                }
-
-                &:hover:before,
-                &:focus:before,
-                &:active:before {
-                    right: 0;
-                    cursor: default;
-                }
-            }
-        }
     }
 }
 

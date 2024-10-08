@@ -1,30 +1,35 @@
 <div class="knowledge-check">
     <div class="knowledge-check-header">
-        {{current.index}}/{{{current.total}}}
+        <div class="knowledge-check-number"><span class="kc-num-1">{{current.index}}</span>/<span class="kc-num-2">{{{current.total}}}</span></div>
+        <div class="knowledge-check-text index">Knowledge check</div>
     </div>
-    <div class="question-container">
-        {{!--
-        <div class="index">{{current.idx}}</div> --}}
-        <div class="index">Q.</div>
-        <div class="question-text">{{{current.question}}}</div>
-    </div>
-    <div class="question-data">
-        <div class="instruction">{{{current.instruction}}}</div>
-        <hr>
-        <div class="options">
-            {{#each current.options}}
-                <div class="option">
-                    <input type="{{../current.inputtype}}" class="kc-option" name="kc-option" id="{{id}}" value={{id}}>
-                    <label for="{{id}}">{{{text}}}</label>
+    <div class="knowledge-check-que-cont">
+        <div class="knowledge-check-left">
+            <div class="question-container">
+                {{!--
+                <div class="index">{{current.idx}}</div> --}}
+                {{!-- <div class="index">Q.</div> --}}
+                <div class="question-text">{{{current.question}}}</div>
+            </div>
+            <div class="question-data">
+                <div class="instruction">{{{current.instruction}}}</div>
+                <div class="options">
+                    {{#each current.options}}
+                        <div class="option">
+                            <input type="{{../current.inputtype}}" class="kc-option" name="kc-option" id="{{id}}" value={{id}}>
+                            <label for="{{id}}">{{{text}}}</label>
+                        </div>
+                    {{/each}}
                 </div>
-            {{/each}}
+                <div class="btn-container">
+                    <button class="ck-submit-btn disabled" disabled>{{current.submit}}</button>
+                    <button class="ck-next-btn disabled" >{{current.next}}</button>
+                    <button class="ck-back-btn disabled">{{current.back}}</button>
+                    <button class="ck-close-btn disabled" disabled></button>
+                </div>
+            </div>
         </div>
-        <div class="btn-container">
-            <button class="ck-submit-btn disabled" disabled>{{current.submit}}</button>
-            <button class="ck-next-btn disabled" >{{current.next}}</button>
-            <button class="ck-back-btn disabled">{{current.back}}</button>
-            <button class="ck-close-btn disabled" disabled>X</button>
-        </div>
+        <div class="knowledge-check-right"></div>
     </div>
 </div>
 <div class="feedback-container">

@@ -19,7 +19,16 @@
         </div> --}}
         <!-- Custom Player Controls -->
         <div class="controls">
-            <button class="play-pause">Play</button>
+            <div class="track_inner_btn">
+                <button class="refresh"></button>
+                <button class="play-pause"></button>
+                <div class="bottomNav_audioSpeed" id="bottomNav_audioSpeed">
+                    <button id="navigatorAudioSpeedBtn" class="navigatorAudioSpeedBtn">1x</button>
+                    <div class="audioSpeedContent">
+                    </div>
+                </div>
+            </div>
+        </div>
 
             {{!-- <div class="pie">
                 <div id="bottomNav_pause" class="audioIcon play">
@@ -30,19 +39,15 @@
                     <a id="navigatorReplayBtn" class="navHighlight" title=""></a>
                 </div>
             </div> --}}
-
+            <div class="play_pause_btn">
             <span class="current-time">00:00</span> /
             <span class="total-time">00:00</span>
-            <input type="range" class="progress-bar" value="0" step="1" min="0" max="100" />
-            <button class="refresh">Refresh</button>
-
-
-            <div class="bottomNav_audioSpeed" id="bottomNav_audioSpeed">
-                <button id="navigatorAudioSpeedBtn" class="navigatorAudioSpeedBtn">1x</button>
-                <div class="audioSpeedContent">
-
-                </div>
             </div>
+            <input type="range" class="custom-range progress-bar" value="0" step="1" min="0" max="100" />
+
+
+
+
 
         </div>
     </div>

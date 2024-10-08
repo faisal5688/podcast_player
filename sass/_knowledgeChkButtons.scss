@@ -8,34 +8,32 @@
     [type="radio"]:checked+label,
     [type="radio"]:not(:checked)+label {
         position: relative;
-        padding-left: 28px;
+        padding-left: 32px;
         cursor: pointer;
-        line-height: 16px;
+        line-height: 20px;
         display: inline-block;
-        color: $colorBlue
-    }
+}
     [type="radio"]:checked+label:before,
     [type="radio"]:not(:checked)+label:before {
         content: '';
         position: absolute;
         left: 0;
         top: 0;
-        width: 14px;
-        height: 15px;
-        border: 1px solid #002462;
+        width: 17px;
+        height: 17px;
+        border: 2px solid $colorCobalt;
         border-radius: 100%;
-        background: #002462;
+        background: $colorCobalt;
     }
     [type="radio"]:checked+label:after,
     [type="radio"]:not(:checked)+label:after {
         content: '';
-        width: 8px;
-        height: 8px;
-        background: $colorBlue;
+        width: 10px;
+        height: 10px;
+        background: $colorCobalt;
         position: absolute;
-        top: 3px;
-        left: 3px;
-        border: 1px solid #000;
+        top: 5px;
+        left: 5px;
         border-radius: 100%;
         -webkit-transition: all 0.2s ease;
         transition: all 0.2s ease;
@@ -72,14 +70,15 @@
         position: absolute;
         left: 0;
         top: 0;
-        width: 1.25em;
-        height: 1.25em;
+        width: 17px;
+        height: 17px;
+        border: 2px solid $colorCobalt;
         background: $colorWhite;
     }
     /* checked mark aspect */
     [type="checkbox"]:not(:checked)+label:after,
     [type="checkbox"]:checked+label:after {
-        background: $colorBlue none repeat scroll 0 0;
+        background: $colorCobalt none repeat scroll 0 0;
         content: "";
         font-size: 1.3em;
         height: 7px;

@@ -15,7 +15,7 @@
     @include commonProperty;
     padding: 0;
     margin: 0;
-    background-color: $colorGray94;
+    background-color: $colorGrayE5;
     overflow: hidden;
     display: block;
 
@@ -119,6 +119,8 @@
         display: inline-flex;
         width: 95%;
         position: relative;
+        padding: 0 1.5%;
+        box-sizing: border-box;
     }
 
     .launch-holder {
