@@ -112,6 +112,28 @@
 
 }
 
+@mixin playBtn {
+    background: url("../resources/image/audio_controls/play_btn.svg") no-repeat;
+    width: 35px;
+    height: 35px;
+    background-position: center center;
+    background-size: 35px 35px;
+    font-size: 0px;
+    border: none;
+
+}
+
+@mixin pauseBtn {
+    background: url("../resources/image/audio_controls/pause_btn.svg") no-repeat;
+    width: 35px;
+    height: 35px;
+    background-position: center center;
+    background-size: 35px 35px;
+    font-size: 0px;
+    border: none;
+
+}
+
 @mixin popupCloseBtn {
     background: url("../resources/image/popup_close_btn.svg") no-repeat;
     width: 24px;
@@ -137,6 +159,17 @@
     }
 
 }
+
+@mixin rangeThumb {
+        position: relative;
+        background: url("../resources/image/audio_controls/range_thumb.png") no-repeat;
+        width: 15px;
+        height: 15px;
+        background-position: 0 0;
+        background-size: cover;
+}
+
+
 
 
 @mixin KCBGImg {
