@@ -116,7 +116,7 @@ namespace HTML5AudioPlayer.Components.Views {
 
             playlistView.$el.html(playlistView._template(playlistView.model.toJSON()));
 
-            let playlistInner: JQuery = playlistView.$el.find(".playlist-inner");
+            let playlistInner: JQuery = playlistView.$el.find(".playlist-list");
 
             for (let i = 0; i < playlistView._playlistItems.length; i++) {
                 let playlistItem: PlaylistItem = playlistView._playlistItems[i];
@@ -131,7 +131,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 questionlistInner.append(playlistQuestionItem.render().$el);
             }
 
-            let KnowledgeCheckLisInner: JQuery = playlistView.$el.find(".knowledge-check-list-inner");
+            let KnowledgeCheckLisInner: JQuery = playlistView.$el.find(".knowledge-checklist-list");
             for (let i = 0; i < playlistView._knowledgeCheckItems.length; i++) {
                 let knowledgeCheckItem: KnowledgeCheckItem = playlistView._knowledgeCheckItems[i];
 
