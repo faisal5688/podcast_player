@@ -5,5 +5,11 @@
       <stop offset="1" stop-color="#1e49e2"/>
     </linearGradient>
   </defs>
-  <circle id="Ellipse_7" data-name="Ellipse 7" cx="20" cy="20" r="20" fill="url(#linear-gradient)"/>
+  <g id="Group_776" data-name="Group 776" transform="translate(-371 -492)">
+    <circle id="Ellipse_7" data-name="Ellipse 7" cx="20" cy="20" r="20" transform="translate(371 492)" fill="url(#linear-gradient)"/>
+    <g id="Group_3" data-name="Group 3" transform="translate(387.396 505)">
+      <line id="Line_4" data-name="Line 4" y2="15" transform="translate(-0.396)" fill="none" stroke="#fff" stroke-width="3"/>
+      <line id="Line_5" data-name="Line 5" y2="15" transform="translate(7.604)" fill="none" stroke="#fff" stroke-width="3"/>
+    </g>
+  </g>
 </svg>

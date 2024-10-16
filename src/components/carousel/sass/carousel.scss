@@ -1,11 +1,11 @@
 .carousel-container {
     // width: 300px;
-    width: calc(100% - 5%);
+    width: calc(100% - 4%);
     // height: 200px;
     height: auto;
     overflow: hidden;
     position: relative;
-    padding: 1.5%;
+    padding: 15px;
     box-sizing: border-box;
   }
 
@@ -13,6 +13,7 @@
     display: flex;
     // width: 900px; /* 3 slides * 300px */
     width: 300%;
+    max-height: 263px;
     transition: transform 0.5s ease-in-out;
   }
 

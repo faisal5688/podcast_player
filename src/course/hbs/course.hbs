@@ -2,9 +2,25 @@
     {{#if ShowExitButton}}
         <div class="exit-button" title="Exit">EXIT</div>
     {{/if}}
+    {{#if HideGlossaryBtn}} {{else}}
+        <div class="glossary-button">
+            <img src="resources/image/shell_glossary_icon.svg" alt="Glossary" />
+            <h4>{{{GlossaryBtnText}}}</h4>
+        </div>
+    {{/if}}
+    {{#if ShowResourceBtn}}
+        <div class="resource-button">
+            <img src="resources/image/shell_resources_icon.svg" alt="" />
+            <h4>{{{ResourceBtnText}}}</h4>
+        </div>
+    {{/if}}
     {{#if help}}
         {{#if help.show}}
-            <div class="help-button" title="{{help.tooltip}}"><img src="{{help.icon}}" onload="SVGInject(this)" /></div>
+            {{!-- <div class="help-button" title="{{help.tooltip}}"><img src="{{help.icon}}" onload="SVGInject(this)" /></div> --}}
+            <div class="help-button">
+                <img src="resources/image/shell_help_icon.svg" alt="" />
+            <h4>{{{HelpBtnText}}}</h4>
+        </div>
         {{/if}}
     {{/if}}
 
@@ -14,18 +30,8 @@
             <h4>{{{IndexBtnText}}}</h4>
         </div>
     {{/if}}
-    {{#if ShowResourceBtn}}
-        <div class="resource-button">
-            <img src="resources/image/index-button-icon.png" alt="" />
-            <h4>{{{ResourceBtnText}}}</h4>
-        </div>
-    {{/if}}
-    {{#if HideGlossaryBtn}} {{else}}
-        <div class="glossary-button">
-            <img src="resources/image/glossary-button-icon.png" alt="" />
-            <h4>{{{GlossaryBtnText}}}</h4>
-        </div>
-    {{/if}}
+
+
 
 </div>
 

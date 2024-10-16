@@ -91,14 +91,19 @@
 }
 
 @mixin itemCompletion {
-    background: url("../resources/image/item-complete.png") no-repeat;
-    width: 17px;
-    height: 17px;
+    background: url("../resources/image/chapter_complete_icon.svg") no-repeat;
+    width: 11px;
+    height: 11px;
     background-position: center center;
-    background-size: 17px 17px;
-    position: absolute;
-    top: 8px;
-    right: 8px;
+    background-size: 11px 11px;
+}
+
+@mixin itemInprogress {
+    background: url("../resources/image/chapter_inprogress_icon.svg") no-repeat;
+    width: 11px;
+    height: 11px;
+    background-position: center center;
+    background-size: 11px 11px;
 }
 
 
@@ -149,6 +154,23 @@
     &::after {
         content: "";
         background: url("../resources/image/chapter_lock_icon.svg") no-repeat;
+        width: 18px;
+        height: 18px;
+        background-position: 0 0;
+        background-size: 18px 18px;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+
+}
+
+@mixin chapterUnlockIcon {
+    position: relative;
+
+    &::after {
+        content: "";
+        background: url("../resources/image/chapter_unlock_icon.svg") no-repeat;
         width: 18px;
         height: 18px;
         background-position: 0 0;

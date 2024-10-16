@@ -5,8 +5,8 @@
     {{/if}}
 </div>
 <div class="right-content">
-    <span class="item-complete" {{#if complete}}{{else}} style="display:none" {{/if}}></span>
-    <span class="item-inpogress" {{#if inprogress}}{{else}} style="display:none" {{/if}}>inprogress</span>
+    <div class="item-complete" {{#if complete}}{{else}} style="display:none" {{/if}}><span class="complete-status-text">Completed</span><span class="complete-status-icon"></span></div>
+    <div class="item-inpogress" {{#if inprogress}}{{else}} style="display:none" {{/if}}><span class="inpro-status-text">In Progress</span><span class="inpro-status-icon"></span></div>
     <div class="item-index">{{srNumbar}}</div>
     <div class="item-title">{{TitleEllipses}}</div>
 </div>

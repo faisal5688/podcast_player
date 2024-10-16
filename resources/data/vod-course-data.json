@@ -10,12 +10,13 @@
     "glossarypdf": "resources/pdfs/glossary.pdf",
     "commlostmsg": "The communication with server that tracks your progress has failed. Further course progress will be lost. Please relaunch the course to continue and track your progress.",
     "ShowLauncher": false,
-    "ShowExitButton": true,
+    "ShowExitButton": false,
 
-    "HideIndexBtn": false,
+    "HideIndexBtn": true,
     "IndexBtnText": "Index",
-    "ShowResourceBtn": false,
-    "ResourceBtnText": "Resource",
+    "ShowResourceBtn": true,
+    "ResourceBtnText": "Resources",
+    "HelpBtnText": "Help",
     "HideGlossaryBtn": false,
     "GlossaryBtnText": "Glossary",
 
