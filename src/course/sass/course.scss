@@ -229,13 +229,14 @@
 // mobile protrait
 @media only screen and (min-width: 320px) and (max-width: 767px) {
     .course {
-
+        overflow: auto;
         .course-leftpanel {
             display: none;
         }
 
         .carousel-container {
             width: 100%;
+            overflow: auto;
         }
         .course-body {
             width: 100%;

@@ -289,6 +289,8 @@
 // mobile protrait
 @media only screen and (min-width: 320px) and (max-width: 767px) {
     .audio-player {
+        overflow: auto;
+
         .player-container {
             width: 100%;
             padding: 0px;

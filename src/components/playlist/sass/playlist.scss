@@ -109,7 +109,7 @@
     height: calc(100% - 20px);
     position: relative;
     opacity: 1;
-    padding-top: 10px;
+    padding-top: 0px;
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 
     &.no-cpe {
@@ -118,19 +118,14 @@
         }
 
         .playlist {
+            .playlist-inner {
+                height: $fullHeight;
+                width: 60%;
+            }
 
-            .playlist-left-right {
-                display: flex;
-
-                .playlist-inner {
-                    height: $fullHeight;
-                    width: 60%;
-                }
-
-                .questionlist-inner {
-                    height: $fullHeight;
-                    width: 40%;
-                }
+            .questionlist-inner {
+                height: $fullHeight;
+                width: 40%;
             }
         }
     }
@@ -214,543 +209,565 @@
         width: 100%;
         display: inline-flex;
         flex-wrap: wrap;
+        align-content: flex-start;
 
-        .playlist-inner {
-            height: calc(100% - 52px);
-            // background: $colorWhite;
-            width: 70%;
+        .playlist-left-right {
+            display: flex;
 
-            .playlist-item {
-                cursor: pointer;
-                display: inline-flex;
-                padding: 0px;
-                margin-bottom: 15px;
-                width: calc(100% - 10px);
-                height: auto;
-                position: relative;
-                background: $colorWhite;
-                box-shadow: 0px 3px 6px #00000029;
-                color: $colorGray20;
-                border-radius: 10px;
-                flex-wrap: wrap;
-                box-sizing: border-box;
+            .playlist-inner {
+                height: calc(100% - 52px);
+                // background: $colorWhite;
+                width: 70%;
 
-                &.enabled {
-                    // @include underlineFromLeft;
+                .playlist-title {
+                    font-size: $fontSizeStandard;
+                    color: $colorCobaltBlue;
+                    font-weight: bold;
+                    padding-bottom: 5px;
+                    margin-bottom: 10px;
+                    border-bottom: 2px solid #CACACA;
                 }
 
-                &.current {
-                    cursor: default !important;
-                    @include currentPlaylistItem;
+                .playlist-item {
+                    cursor: pointer;
+                    display: inline-flex;
+                    padding: 0px;
+                    margin-bottom: 15px;
+                    width: calc(100% - 10px);
+                    height: auto;
+                    position: relative;
+                    background: $colorWhite;
+                    box-shadow: 0px 3px 6px #00000029;
+                    color: $colorGray20;
+                    border-radius: 10px;
+                    flex-wrap: wrap;
+                    box-sizing: border-box;
+
+                    &.enabled {
+                        // @include underlineFromLeft;
+                    }
+
+                    &.current {
+                        cursor: default !important;
+                        @include currentPlaylistItem;
+
+                        .left-content {
+                            width: 90px;
+                            height: 90px;
+                        }
+
+                    }
+
+                    &.hide {
+                        display: none;
+                    }
+
+                    &.disabled {
+                        cursor: default;
+                        color: $colorGray60;
+                        @include grayscale;
+                        @include chapterLockIcon;
+
+
+                        .right-content {
+                            .item-index {
+                                color: $colorSacramentoGreen;
+                            }
+                            .item-title {
+                                color: $colorSacramentoGreen;
+                            }
+                        }
+                    }
 
                     .left-content {
                         width: 90px;
-                        height: 90px;
+                        height: 62px;
+                        position: relative;
+                        border-radius: 6px;
+                        margin: 10px 0 15px 10px;
+                        overflow: hidden;
+                        @include linearBg;
+
+                        .vid-thumbnail {
+                            width: 67px;
+                            @include centerAlign;
+                        }
+
+                        .duration {
+                            @include videoDurationProperty;
+                        }
                     }
 
-                }
-
-                &.hide {
-                    display: none;
-                }
-
-                &.disabled {
-                    cursor: default;
-                    color: $colorGray60;
-                    @include grayscale;
-                    @include chapterLockIcon;
-
-
                     .right-content {
-                        .item-index {
-                            color: $colorSacramentoGreen;
+                        width: calc(100% - 100px);
+                        position: relative;
+
+                        .item-complete {
+                            display: flex;
+                            justify-content: flex-end;
+                            align-items: center;
+                            position: absolute;
+                            right: 10px;
+                            top: 10px;
+
+                            .complete-status-text {
+                                font-size: 14px;
+                                color: $colorCobaltBlue;
+                                font-style: italic;
+                                padding-right: 10px;
+                            }
+                            .complete-status-icon {
+                                @include itemCompletion;
+                                margin-top: 4px;
+                            }
                         }
+
+                        .item-inpogress {
+                            display: flex;
+                            justify-content: flex-end;
+                            align-items: center;
+                            position: absolute;
+                            right: 10px;
+                            top: 10px;
+
+                            .inpro-status-text {
+                                font-size: 14px;
+                                color: $colorCobaltBlue;
+                                font-style: italic;
+                                padding-right: 10px;
+                            }
+                            .inpro-status-icon {
+                                @include itemInprogress;
+                                margin-top: 4px;
+                            }
+                        }
+
+                        .item-index {
+                            @include ChapterNoFontStyle;
+                            padding: 10px 0 2px 0;
+                            font-weight: bold;
+                            color: $colorCobaltBlue;
+                        }
+
                         .item-title {
-                            color: $colorSacramentoGreen;
-                        }
-                    }
-                }
-
-                .left-content {
-                    width: 90px;
-                    height: 62px;
-                    background: rgb(92,33,232);
-background: linear-gradient(90deg, rgba(92,33,232,1) 0%, rgba(88,36,232,1) 20%, rgba(78,42,231,1) 40%, rgba(67,49,230,1) 60%, rgba(59,55,229,1) 80%, rgba(54,58,228,1) 100%);
-                    position: relative;
-                    border-radius: 6px;
-                    margin: 10px 0 15px 10px;
-                    overflow: hidden;
-
-                    .vid-thumbnail {
-                        width: 67px;
-                        @include centerAlign;
-                    }
-
-                    .duration {
-                        @include videoDurationProperty;
-                    }
-                }
-
-                .right-content {
-                    width: calc(100% - 100px);
-                    position: relative;
-
-                    .item-complete {
-                        display: flex;
-                        justify-content: flex-end;
-                        align-items: center;
-                        position: absolute;
-                        right: 10px;
-                        top: 10px;
-
-                        .complete-status-text {
-                            font-size: 14px;
+                            @include ChapterNameFontStyle;
+                            font-weight: bold;
                             color: $colorCobaltBlue;
-                            font-style: italic;
-                            padding-right: 10px;
-                        }
-                        .complete-status-icon {
-                            @include itemCompletion;
-                            margin-top: 4px;
                         }
                     }
 
-                    .item-inpogress {
-                        display: flex;
-                        justify-content: flex-end;
-                        align-items: center;
-                        position: absolute;
-                        right: 10px;
-                        top: 10px;
+                    .audio-player-container {
+                        display: none;
+                        // height: 40px;
+                        width: 100%;
+                        background: rgba($color: #00B8F5, $alpha: 0.1);
+                        position: relative;
+                        bottom: 0;
+                        height: 0px;
+                        // transition: 0 0.5s ease;
 
-                        .inpro-status-text {
-                            font-size: 14px;
-                            color: $colorCobaltBlue;
-                            font-style: italic;
-                            padding-right: 10px;
+                        &.showPlayer {
+                            display: block;
+                            height: 50px;
+                            -webkit-animation: toAnimateDown 0.3s 1 ease-in;
+                            animation: toAnimateDown 0.3s 1 ease-in;
                         }
-                        .inpro-status-icon {
-                            @include itemInprogress;
-                            margin-top: 4px;
-                        }
-                    }
 
-                    .item-index {
-                        @include ChapterNoFontStyle;
-                        padding: 10px 0 2px 0;
-                        font-weight: bold;
-                        color: $colorCobaltBlue;
-                    }
+                            .controls {
 
-                    .item-title {
-                        @include ChapterNameFontStyle;
-                        font-weight: bold;
-                        color: $colorCobaltBlue;
-                    }
-                }
+                                .track_inner_btn {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    width: 100%;
+                                    height: 50px;
+                                    padding-top: 2px;
+                                }
 
-                .audio-player-container {
-                    display: none;
-                    // height: 40px;
-                    width: 100%;
-                    background: rgba($color: #00B8F5, $alpha: 0.1);
-                    position: relative;
-                    bottom: 0;
-                    height: 0px;
-                    // transition: 0 0.5s ease;
+                            }
+                            .refresh {
+                            @include refreshBtn;
+                            border: none;
+                            cursor: pointer;
+                            }
 
-                    &.showPlayer {
-                        display: block;
-                        height: 50px;
-                        -webkit-animation: toAnimateDown 0.3s 1 ease-in;
-                        animation: toAnimateDown 0.3s 1 ease-in;
-                    }
+                            .play-pause {
+                                margin: 0 10px;
+                                cursor: pointer;
 
-                        .controls {
+                                &.play {
+                                    @include playBtn;
+                                }
 
-                            .track_inner_btn {
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
+                                &.pause {
+                                    @include pauseBtn;
+                                }
+                            }
+
+                            .play_pause_btn {
+                                position: absolute;
+                                right: 15px;
+                                top: 17px;
+                                color: $colorCobaltBlue;
+                            }
+
+                            input[type="range"] {
+                                /* removing default appearance */
+                                -webkit-appearance: none;
+                                appearance: none;
+                                /* custom design */
                                 width: 100%;
-                                height: 50px;
-                                padding-top: 2px;
+                                cursor: pointer;
+                                outline: none;
+                                /* increasing height to fit thumb better */
+                                height: 13px; /* Same height as the thumb */
+                                background: transparent;
+                                position: absolute;
+                                top: -11px;
+                                left: 0;
+                                right: 0;
+                                overflow: hidden;
                             }
 
-                        }
-                        .refresh {
-                           @include refreshBtn;
-                           border: none;
-                           cursor: pointer;
-                        }
-
-                        .play-pause {
-                            margin: 0 10px;
-                            cursor: pointer;
-
-                            &.play {
-                                @include playBtn;
-                            }
-
-                            &.pause {
-                                @include pauseBtn;
-                            }
-                        }
-
-                        .play_pause_btn {
-                            position: absolute;
-                            right: 15px;
-                            top: 17px;
-                            color: $colorCobaltBlue;
-                        }
-
-                        input[type="range"] {
-                            /* removing default appearance */
-                            -webkit-appearance: none;
-                            appearance: none;
-                            /* custom design */
-                            width: 100%;
-                            cursor: pointer;
-                            outline: none;
-                            /* increasing height to fit thumb better */
-                            height: 13px; /* Same height as the thumb */
-                            background: transparent;
-                            position: absolute;
-                            top: -11px;
-                            left: 0;
-                            right: 0;
-                            overflow: hidden;
-                        }
-
-                        /* Track: webkit browsers */
-                        input[type="range"]::-webkit-slider-runnable-track {
-                            height: 13px; /* Track height */
-                            background: #707070;
-                            background: rgba($color: #707070, $alpha: 0.3);
-                            border-radius: 1.5px;
-                            position: relative;
-                            top: 50%;
-                            transform: translateY(-50%); /* Vertically center the track within the range */
-                        }
-
-                        /* Track: Mozilla Firefox */
-                        input[type="range"]::-moz-range-track {
-                            height: 13px; /* Track height */
-                            background: rgba($color: #707070, $alpha: 0.3);
-                            border-radius: 1.5px;
-                            position: relative;
-                            top: 50%;
-                            transform: translateY(-50%); /* Vertically center the track */
-                        }
-
-                        /* Thumb: webkit */
-                        input[type="range"]::-webkit-slider-thumb {
-                            /* removing default appearance */
-                            -webkit-appearance: none;
-                            appearance: none;
-                            /* thumb design */
-                            height: 13px;
-                            width: 13px;
-                            /* box-shadow aligned with track and progress */
-                            box-shadow: -555px 0 0 545px #3B37E5; /* Adjust the range width dynamically */
-                            position: relative;
-                            border-radius: 100%;
-                            top: 50%;
-                            transform: translateY(-50%); /* Center the thumb */
-                            z-index: 1;
-                            @include rangeThumb;
-                        }
-
-
-                        /* Thumb: Firefox */
-                        input[type="range"]::-moz-range-thumb {
-                            height: 13px;
-                            width: 13px;
-                            background-color: #fff;
-                            /* box-shadow aligned with track and progress */
-                            box-shadow: -555px 0 0 545px #3B37E5; /* Adjust the range width dynamically */
-                            position: relative;
-                            border-radius: 100%;
-                            top: 50%;
-                            transform: translateY(-50%); /* Center the thumb */
-                            z-index: 1;
-                            @include rangeThumb;
-                        }
-
-
-
-
-
-                    .audio-player-template {
-                        .controls {
-                            .bottomNav_audioSpeed {
+                            /* Track: webkit browsers */
+                            input[type="range"]::-webkit-slider-runnable-track {
+                                height: 13px; /* Track height */
+                                background: #707070;
+                                background: rgba($color: #707070, $alpha: 0.3);
+                                border-radius: 1.5px;
                                 position: relative;
-                                display: inline-block;
+                                top: 50%;
+                                transform: translateY(-50%); /* Vertically center the track within the range */
+                            }
 
-                                .navigatorAudioSpeedBtn {
-                                    background: none;
-                                    color: #333333;
-                                    border: none;
-                                    padding: 0;
-                                    font: inherit;
-                                    cursor: pointer;
-                                    outline: inherit;
-                                    font-size: 16px;
-                                    width: 50px;
-                                    height: 38px;
-                                    text-align: center;
+                            /* Track: Mozilla Firefox */
+                            input[type="range"]::-moz-range-track {
+                                height: 13px; /* Track height */
+                                background: rgba($color: #707070, $alpha: 0.3);
+                                border-radius: 1.5px;
+                                position: relative;
+                                top: 50%;
+                                transform: translateY(-50%); /* Vertically center the track */
+                            }
 
-                                }
-                                &.navigatorAudioSpeedBtn:hover {
-                                    background: #00b8f5;
-                                    border-radius: 5px;
-                                    height: 38px;
-                                    font-weight: bold;
-                                }
-                                &.navigatorAudioSpeedBtn.disabled {
-                                    cursor: default;
-                                }
-                                &.navigatorAudioSpeedBtn.disabled:hover {
-                                    background: none;
-                                    font-weight: normal;
-                                }
+                            /* Thumb: webkit */
+                            input[type="range"]::-webkit-slider-thumb {
+                                /* removing default appearance */
+                                -webkit-appearance: none;
+                                appearance: none;
+                                /* thumb design */
+                                height: 13px;
+                                width: 13px;
+                                /* box-shadow aligned with track and progress */
+                                box-shadow: -555px 0 0 545px #3B37E5; /* Adjust the range width dynamically */
+                                position: relative;
+                                border-radius: 100%;
+                                top: 50%;
+                                transform: translateY(-50%); /* Center the thumb */
+                                z-index: 1;
+                                @include rangeThumb;
+                            }
 
-                                .audioSpeedContent {
-                                    display: none;
-                                    position: absolute;
-                                    background-color: #00338d;
-                                    color: blue;
-                                    min-width: 52px;
-                                    /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
-                                    z-index: 1;
-                                    bottom: 41px;
-                                    /* Position the dropdown content above the button */
-                                    left: -1px;
 
-                                    a {
-                                        color: $colorGray20;
-                                        padding: 0px 5px;
-                                        text-decoration: none;
-                                        display: block;
+                            /* Thumb: Firefox */
+                            input[type="range"]::-moz-range-thumb {
+                                height: 13px;
+                                width: 13px;
+                                background-color: #fff;
+                                /* box-shadow aligned with track and progress */
+                                box-shadow: -555px 0 0 545px #3B37E5; /* Adjust the range width dynamically */
+                                position: relative;
+                                border-radius: 100%;
+                                top: 50%;
+                                transform: translateY(-50%); /* Center the thumb */
+                                z-index: 1;
+                                @include rangeThumb;
+                            }
+
+
+
+
+
+                        .audio-player-template {
+                            .controls {
+                                .bottomNav_audioSpeed {
+                                    position: relative;
+                                    display: inline-block;
+
+                                    .navigatorAudioSpeedBtn {
+                                        background: none;
+                                        color: #333333;
+                                        border: none;
+                                        padding: 0;
+                                        font: inherit;
+                                        cursor: pointer;
+                                        outline: inherit;
+                                        font-size: 16px;
+                                        width: 50px;
+                                        height: 38px;
                                         text-align: center;
-                                        font-size: 12px;
-                                        background-color: $colorWhite;
-                                    }
-                                }
 
+                                    }
+                                    &.navigatorAudioSpeedBtn:hover {
+                                        background: #00b8f5;
+                                        border-radius: 5px;
+                                        height: 38px;
+                                        font-weight: bold;
+                                    }
+                                    &.navigatorAudioSpeedBtn.disabled {
+                                        cursor: default;
+                                    }
+                                    &.navigatorAudioSpeedBtn.disabled:hover {
+                                        background: none;
+                                        font-weight: normal;
+                                    }
+
+                                    .audioSpeedContent {
+                                        display: none;
+                                        position: absolute;
+                                        background-color: #00338d;
+                                        color: blue;
+                                        min-width: 52px;
+                                        /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
+                                        z-index: 1;
+                                        bottom: 41px;
+                                        /* Position the dropdown content above the button */
+                                        left: -1px;
+
+                                        a {
+                                            color: $colorGray20;
+                                            padding: 0px 5px;
+                                            text-decoration: none;
+                                            display: block;
+                                            text-align: center;
+                                            font-size: 12px;
+                                            background-color: $colorWhite;
+                                        }
+                                    }
+
+                                }
                             }
                         }
+
+
                     }
 
 
+
+
                 }
-
-
-
 
             }
 
-        }
+            .questionlist-inner {
+                height: calc(100% - 52px);
+                width: 30%;
 
-        .questionlist-inner {
-            height: calc(100% - 52px);
-            width: 30%;
-
-            .questionlist-item {
-                cursor: pointer;
-                display: inline-flex;
-                padding: 5px;
-                margin-bottom: 1px;
-                width: calc(100% - 10px);
-                height: auto;
-                position: relative;
-                background: $colorWhite;
-                box-shadow: 0px 6px 10px -8px #000;
-                color: $colorGray20;
-                flex-wrap: wrap;
-
-                &.enabled {
-                    // @include underlineFromLeft;
-                }
-
-                &.current {
-                    cursor: default !important;
-                    @include currentPlaylistItem;
-
-                }
-
-                &.hide {
-                    display: none;
-                }
-
-                &.disabled {
-                    cursor: default;
-                    color: $colorGray60;
-                    @include grayscale;
-                }
-
-                .left-content {
-                    width: 10%;
-                    height: 50px;
-                    background-color: #000;
+                .questionlist-item {
+                    cursor: pointer;
+                    display: inline-flex;
+                    padding: 5px;
+                    margin-bottom: 1px;
+                    width: calc(100% - 10px);
+                    height: auto;
                     position: relative;
-                    margin: auto;
-                    overflow: hidden;
+                    background: $colorWhite;
+                    box-shadow: 0px 6px 10px -8px #000;
+                    color: $colorGray20;
+                    flex-wrap: wrap;
 
-                    .vid-thumbnail {
-                        width: 67px;
-                        @include centerAlign;
+                    &.enabled {
+                        // @include underlineFromLeft;
                     }
 
-                    .duration {
-                        @include videoDurationProperty;
-                    }
-                }
+                    &.current {
+                        cursor: default !important;
+                        @include currentPlaylistItem;
 
-                .right-content {
-                    width: 90%;
-                    position: relative;
-
-                    .item-complete {
-                        @include itemCompletion;
-                        left: 200px;
                     }
 
-                    .item-index {
-                        @include ItemFontStyle;
-                        padding: 10px 0 2px 0;
-                        font-weight: bold;
-                        height: 16px;
+                    &.hide {
+                        display: none;
                     }
 
-                    .item-title {
-                        @include ItemFontStyle;
-                        font-weight: normal;
-                        height: 32px;
+                    &.disabled {
+                        cursor: default;
+                        color: $colorGray60;
+                        @include grayscale;
                     }
-                }
 
-                .audio-player-container {
-                    display: none;
-                    // height: 40px;
-                    width: 100%;
-                    background: grey;
-                    position: relative;
-                    bottom: 0;
-                    height: 0px;
-                    // transition: 0 0.5s ease;
-
-                    &.showPlayer {
-                        display: block;
+                    .left-content {
+                        width: 10%;
                         height: 50px;
-                        -webkit-animation: toAnimateDown 0.3s 1 ease-in;
-                        animation: toAnimateDown 0.3s 1 ease-in;
+                        background-color: #000;
+                        position: relative;
+                        margin: auto;
+                        overflow: hidden;
+
+                        .vid-thumbnail {
+                            width: 67px;
+                            @include centerAlign;
+                        }
+
+                        .duration {
+                            @include videoDurationProperty;
+                        }
                     }
-
-
-
-                }
-
-
-
-
-            }
-        }
-
-        .knowledge-check-list-inner {
-            height: calc(100% - 52px);
-            width: 30%;
-
-            .knowledge-check-item{
-                cursor: pointer;
-                display: inline-flex;
-                padding: 5px;
-                margin-bottom: 15px;
-                width: calc(100% - 10px);
-                height: auto;
-                position: relative;
-                // background: $colorWhite;
-                background: $colorWhite;
-                box-shadow: 0px 3px 6px #00000029;
-                color: $colorGray20;
-                border-radius: 10px;
-                flex-wrap: wrap;
-
-                &.enabled {
-                    background: $colorBlue;
-                    color: $colorWhite;
-                    // @include underlineFromLeft;
-                    @include chapterUnlockIcon;
 
                     .right-content {
+                        width: 90%;
+                        position: relative;
+
+                        .item-complete {
+                            @include itemCompletion;
+                            left: 200px;
+                        }
+
                         .item-index {
-                            color: $colorWhite;
+                            @include ItemFontStyle;
+                            padding: 10px 0 2px 0;
+                            font-weight: bold;
+                            height: 16px;
+                        }
+
+                        .item-title {
+                            @include ItemFontStyle;
+                            font-weight: normal;
+                            height: 32px;
                         }
                     }
+
+                    .audio-player-container {
+                        display: none;
+                        // height: 40px;
+                        width: 100%;
+                        background: grey;
+                        position: relative;
+                        bottom: 0;
+                        height: 0px;
+                        // transition: 0 0.5s ease;
+
+                        &.showPlayer {
+                            display: block;
+                            height: 50px;
+                            -webkit-animation: toAnimateDown 0.3s 1 ease-in;
+                            animation: toAnimateDown 0.3s 1 ease-in;
+                        }
+
+
+
+                    }
+
+
+
+
+                }
+            }
+
+            .knowledge-check-list-inner {
+                height: calc(100% - 52px);
+                width: 30%;
+
+                .knowledge-checklist-title {
+                    font-size: $fontSizeStandard;
+                    color: $colorCobaltBlue;
+                    font-weight: bold;
+                    padding-bottom: 5px;
+                    margin-bottom: 10px;
+                    border-bottom: 2px solid #CACACA;
                 }
 
-                &.current {
-                    cursor: default !important;
-                    @include currentPlaylistItem;
-
-                }
-
-                &.hide {
-                    display: none;
-                }
-
-                &.disabled {
-                    cursor: default;
-                    color: $colorGray60;
-                    @include grayscale;
-                    @include chapterLockIcon;
-                }
-
-                .left-content {
-                    width: 10%;
-                    height: 50px;
-                    background-color: #000;
+                .knowledge-check-item{
+                    cursor: pointer;
+                    display: inline-flex;
+                    padding: 5px;
+                    margin-bottom: 15px;
+                    width: calc(100% - 10px);
+                    height: auto;
                     position: relative;
-                    margin: auto;
-                    overflow: hidden;
+                    // background: $colorWhite;
+                    background: $colorWhite;
+                    box-shadow: 0px 3px 6px #00000029;
+                    color: $colorGray20;
+                    border-radius: 10px;
+                    flex-wrap: wrap;
 
-                    .vid-thumbnail {
-                        width: 67px;
-                        @include centerAlign;
+                    &.enabled {
+                        background: $colorBlue;
+                        color: $colorWhite;
+                        // @include underlineFromLeft;
+                        @include chapterUnlockIcon;
+
+                        .right-content {
+                            .item-index {
+                                color: $colorWhite;
+                            }
+                        }
                     }
 
-                    .duration {
-                        @include videoDurationProperty;
+                    &.current {
+                        cursor: default !important;
+                        @include currentPlaylistItem;
+
                     }
+
+                    &.hide {
+                        display: none;
+                    }
+
+                    &.disabled {
+                        cursor: default;
+                        color: $colorGray60;
+                        @include grayscale;
+                        @include chapterLockIcon;
+                    }
+
+                    .left-content {
+                        width: 10%;
+                        height: 50px;
+                        background-color: #000;
+                        position: relative;
+                        margin: auto;
+                        overflow: hidden;
+
+                        .vid-thumbnail {
+                            width: 67px;
+                            @include centerAlign;
+                        }
+
+                        .duration {
+                            @include videoDurationProperty;
+                        }
+                    }
+
+                    .right-content {
+                        width: 100%;
+                        position: relative;
+                        padding-right: 10%;
+
+                        .item-complete {
+                            @include itemCompletion;
+                        }
+
+                        .item-index {
+                            padding: 10px 0 2px 0;
+                            @include QuestionTitleFontStyle;
+                            font-weight: bold;
+                            color: $colorCobaltBlue;
+                            height: 60px;
+                        }
+
+                        .item-title {
+                            @include ItemFontStyle;
+                            font-weight: normal;
+                            height: 32px;
+                        }
+                    }
+
+
+
+
                 }
-
-                .right-content {
-                    width: 100%;
-                    position: relative;
-                    padding-right: 10%;
-
-                    .item-complete {
-                        @include itemCompletion;
-                    }
-
-                    .item-index {
-                        padding: 10px 0 2px 0;
-                        @include QuestionTitleFontStyle;
-                        font-weight: bold;
-                        color: $colorCobaltBlue;
-                        height: 60px;
-                    }
-
-                    .item-title {
-                        @include ItemFontStyle;
-                        font-weight: normal;
-                        height: 32px;
-                    }
-                }
-
-
-
-
             }
         }
     }
@@ -803,11 +820,45 @@ background: linear-gradient(90deg, rgba(92,33,232,1) 0%, rgba(88,36,232,1) 20%, 
         }
 
         .playlist {
-            background-color: $colorWhite;
-            padding-top: 40px;
+            padding-top: 0px;
 
-            .playlist-inner {
-                height: calc(100% - 80px);
+            .playlist-left-right {
+                flex-direction: column;
+                padding-top: 10px;
+
+                .playlist-inner {
+                    height: auto;
+                    width: 100%;
+
+                    .playlist-item {
+
+                        &.current {
+                            flex-direction: column;
+                            align-items: center;
+
+                            .left-content {
+                                width: 142px;
+                                height: 142px;
+
+                                .vid-thumbnail {
+                                    width: 142px;
+                                }
+                            }
+
+                            .right-content {
+                                width: 100%;
+                                padding: 0 10px;
+                                box-sizing: border-box;
+                            }
+
+                        }
+                    }
+                }
+
+                .knowledge-check-list-inner {
+                    height: auto;
+                    width: 100%;
+                }
             }
         }
 
@@ -823,6 +874,7 @@ background: linear-gradient(90deg, rgba(92,33,232,1) 0%, rgba(88,36,232,1) 20%, 
             position: absolute;
             top: 0;
             z-index: 1;
+            display: none;
 
             .close-button {
                 @include closeButton;
@@ -871,7 +923,8 @@ background: linear-gradient(90deg, rgba(92,33,232,1) 0%, rgba(88,36,232,1) 20%, 
             padding-top: 40px;
 
             .playlist-inner {
-                height: calc(100% - 80px);
+                height: auto;
+
             }
         }
 
