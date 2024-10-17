@@ -89,8 +89,11 @@ namespace HTML5AudioPlayer.Components.Views {
         }
 
         updateSlidePosition() {
-            const offset = this.currentSlideIndex * -300; // 300px width per slide
-            this.$('.carousel-content').css('transform', `translateX(${offset}px)`);
+            //alert(this.currentSlideIndex)
+            let carouselView = this,
+                carouselModel: Models.Carousel = this.model;
+            const offset = -this.currentSlideIndex * (100/carouselView._crouselItems.length); // 300px width per slide
+            this.$('.carousel-content').css('transform', `translateX(${offset}%)`);
 
             // Update active state for indicators
             this.$('.carousel-indicators button').removeClass('active');
