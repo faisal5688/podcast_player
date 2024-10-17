@@ -809,7 +809,7 @@
         position: absolute;
         left: 0%;
         z-index: 1;
-        height: 100%;
+        height: auto;
 
         &.no-cpe {
             .playlist {
@@ -821,13 +821,13 @@
 
         .playlist {
             padding-top: 0px;
+            height: auto;
 
             .playlist-left-right {
                 flex-direction: column;
                 padding-top: 10px;
 
                 .playlist-inner {
-                    height: auto;
                     width: 100%;
 
                     .playlist-item {
@@ -839,6 +839,7 @@
                             .left-content {
                                 width: 142px;
                                 height: 142px;
+                                margin: 25px 0 5px 10px;
 
                                 .vid-thumbnail {
                                     width: 142px;
@@ -849,6 +850,22 @@
                                 width: 100%;
                                 padding: 0 10px;
                                 box-sizing: border-box;
+
+                                .item-inpogress {
+                                    top: -170px;
+                                }
+                                .item-complete {
+                                    top: -170px;
+                                }
+
+                                .item-index {
+                                    margin-left: 0;
+                                }
+                                .item-title {
+                                    font-size: $fontSizeMini;
+                                    margin-left: 0;
+                                    margin-bottom: 15px;
+                                }
                             }
 
                         }
@@ -909,6 +926,7 @@
         position: absolute;
         left: 0%;
         z-index: 1;
+        height: auto;
 
         &.no-cpe {
             .playlist {
@@ -919,12 +937,62 @@
         }
 
         .playlist {
-            background-color: $colorWhite;
-            padding-top: 40px;
+            padding-top: 0px;
+            height: auto;
 
-            .playlist-inner {
-                height: auto;
+            .playlist-left-right {
+                flex-direction: column;
+                padding-top: 10px;
 
+                .playlist-inner {
+                    width: 100%;
+
+                    .playlist-item {
+
+                        &.current {
+                            flex-direction: column;
+                            align-items: center;
+
+                            .left-content {
+                                width: 142px;
+                                height: 142px;
+                                margin: 25px 0 5px 10px;
+
+                                .vid-thumbnail {
+                                    width: 142px;
+                                }
+                            }
+
+                            .right-content {
+                                width: 100%;
+                                padding: 0 10px;
+                                box-sizing: border-box;
+
+                                .item-inpogress {
+                                    top: -170px;
+                                }
+                                .item-complete {
+                                    top: -170px;
+                                }
+
+                                .item-index {
+                                    margin-left: 0;
+                                }
+                                .item-title {
+                                    font-size: $fontSizeMini;
+                                    margin-left: 0;
+                                    margin-bottom: 15px;
+                                }
+                            }
+
+                        }
+                    }
+                }
+
+                .knowledge-check-list-inner {
+                    height: auto;
+                    width: 100%;
+                }
             }
         }
 
@@ -940,6 +1008,7 @@
             position: absolute;
             top: 0;
             z-index: 1;
+            display: none;
 
             .close-button {
                 @include closeButton;

@@ -175,3 +175,11 @@ html body {
 .mCSB_container {
     margin-right: 15px !important;
 }
+
+
+// Mobile both (Landscape and Portrait)
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .mCSB_container {
+        margin-right: 0px !important;
+    }
+}

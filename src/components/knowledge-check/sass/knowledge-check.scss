@@ -428,32 +428,25 @@
 // mobile both
 @media only screen and (min-width: 320px) and (max-width: 767px) {
     .knowledge-check-container {
-        height: calc(100% - 40px);
-        top: 40px;
-
         .knowledge-check {
-            position: absolute;
-            width: calc(100% - 40px);
-            height: calc(100% - 40px);
-            left: 0;
-            top: 0;
-            background-color: $colorBlue;
-            padding: $fontSizeLarge;
-            color: $colorWhite;
+            width: 100%;
+            height: 100%;
+            border-radius: 0px;
 
-            .question-container {
-                .index {
-                    width: 7%;
-                    font-size: 50px;
-                    line-height: $fontSizeExtraLarge;
+            .mCSB_container {
+
+                .knowledge-check-que-cont {
+                    flex-direction: column-reverse;
+
+                    .knowledge-check-left {
+                        width: 100%;
+                    }
+
+                    .knowledge-check-right {
+                        width: 100%;
+                        height: 136px;
+                    }
                 }
-            }
-        }
-
-        .feedback-container {
-            .feedback {
-                min-height: 140px;
-                width: 80%;
             }
         }
     }
@@ -461,32 +454,13 @@
 
 // Mobile Landscape
 @media only screen and (max-width: 767px) and (orientation: landscape) {
-    .knowledge-check-container {
-        height: calc(100% - 40px);
-        top: 40px;
 
-        .knowledge-check {
-            width: calc(100% - 40px);
-            height: calc(100% - 40px);
-
-            .question-data {
-                padding-left: 10%;
-            }
-        }
-
-        .feedback-container {
-            .feedback {
-                width: calc(100% - 90px);
-                transform: translate(-50%, -10%);
-            }
-        }
-    }
 }
 
 // iPad landscape
 @media only screen and (max-width: 1024px) and (orientation: landscape) {
     .knowledge-check-container {
-        top: 40px;
+
 
         .knowledge-check {
             .question-container {
@@ -541,19 +515,3 @@
     }
 }
 
-// custom css
-@media screen and (max-width: 768px) {
-    .knowledge-check-container {
-        .knowledge-check {
-            .question-container {
-                .question-text {
-                    padding: 25px 1% 22px 70px;
-                }
-            }
-
-            .question-data {
-                padding-left: 70px;
-            }
-        }
-    }
-}
