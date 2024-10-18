@@ -105,8 +105,8 @@ namespace HTML5AudioPlayer.Views {
         public afterRender(): void {
             let courseView: Course = this;
             courseView._player.afterRender();
-
             courseView.$("#carousel-container").append(courseView._carousel.render().$el);
+            courseView._carousel.afterRender()
         }
 
         @named

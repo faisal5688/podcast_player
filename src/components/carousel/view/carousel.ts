@@ -10,6 +10,7 @@ namespace HTML5AudioPlayer.Components.Views {
 
         private _crouselItems: CarouselItem[];
         private currentSlideIndex: number;
+        private parentWidth: number;
         Visible: any;
 
         constructor(options: any) {
@@ -23,7 +24,6 @@ namespace HTML5AudioPlayer.Components.Views {
             carouselView._crouselItems = new Array<CarouselItem>();
 
             for (let i = 0; i < carouselModel.CarouselItems.length; i++) {
-
                 let carouselItemView = new CarouselItem({
                     id: _.uniqueId("carousel-item"),
                     className: "carousel-item",
@@ -62,14 +62,28 @@ namespace HTML5AudioPlayer.Components.Views {
                 indicatorsContainer.append(`<button class="${isActive}" data-index="${i}"></button>`);
             }
 
+            carouselView.parentWidth = carouselViewInner.outerWidth();
+            // alert(carouselView.parentWidth)
+            //$('.carousel-slide').css("width",$("#carousel-content").outerWidth());
 
 
             // Render circular navigation buttons
             //carouselView.renderIndicators();
             carouselView.updateSlidePosition();
-
+            carouselView.afterRender();
             return carouselView;
         }
+
+        @named
+        public afterRender(): void {
+            let carouselView = this,
+                carouselModel: Models.Carousel = this.model;
+            let carouselViewSlide: JQuery = carouselView.$el.find(".carousel-slide"),
+                carouselViewInner: JQuery = carouselView.$el.find("#carousel-content");
+            carouselViewSlide.css("width", carouselViewInner.outerWidth());
+        }
+
+
 
 
         @named
@@ -79,9 +93,9 @@ namespace HTML5AudioPlayer.Components.Views {
             // let audioPlayerView: AudioPlayer = this,
             //     audioPlayerModel: Models.AudioPlayer = audioPlayerView.model,
             //     playerContainer: JQuery = audioPlayerView.$(".player-container"),
-            let menuPanel:JQuery = $("#course-leftpanel"),
-             visible: boolean = menuPanel.is(':visible');
-             //alert(visible)
+            let menuPanel: JQuery = $("#course-leftpanel"),
+                visible: boolean = menuPanel.is(':visible');
+            //alert(visible)
 
             // if (Utilities.isiPad()) {
             //     if (Utilities.readDeviceOrientation() === "Portrait") {
@@ -125,12 +139,12 @@ namespace HTML5AudioPlayer.Components.Views {
         public toggle(): void {
             let carouselView = this,
                 carouselModel: Models.Carousel = this.model
-                let menuPanel:JQuery = $("#course-leftpanel"),
+            let menuPanel: JQuery = $("#course-leftpanel"),
                 visible: boolean = menuPanel.is(':visible');
-                //playlistContainer: JQuery = playlistView.$el.parent();
+            //playlistContainer: JQuery = playlistView.$el.parent();
 
             if (!visible) {
-               // alert()
+                // alert()
                 menuPanel.one(Events.CSS_ANIMATION_END, function () {
                     menuPanel.removeClass("to-animate-right").addClass("animate-right");
                     carouselView.trigger(Events.EVENT_PLAYLIST_ANIMATION_END);
@@ -171,7 +185,7 @@ namespace HTML5AudioPlayer.Components.Views {
             //alert(this.currentSlideIndex)
             let carouselView = this,
                 carouselModel: Models.Carousel = this.model;
-            const offset = -this.currentSlideIndex * (100/carouselView._crouselItems.length); // 300px width per slide
+            const offset = -this.currentSlideIndex * (100); // 300px width per slide
             this.$('.carousel-content').css('transform', `translateX(${offset}%)`);
 
             // Update active state for indicators
