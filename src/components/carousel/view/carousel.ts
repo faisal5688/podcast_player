@@ -10,6 +10,7 @@ namespace HTML5AudioPlayer.Components.Views {
 
         private _crouselItems: CarouselItem[];
         private currentSlideIndex: number;
+        Visible: any;
 
         constructor(options: any) {
             super(options);
@@ -30,6 +31,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 });
 
                 carouselView._crouselItems.push(carouselItemView);
+                carouselItemView.on(Events.EVENT_CLICK_MENU, carouselView.toggleMenulist, carouselView);
             }
         }
 
@@ -67,6 +69,83 @@ namespace HTML5AudioPlayer.Components.Views {
             carouselView.updateSlidePosition();
 
             return carouselView;
+        }
+
+
+        @named
+        private toggleMenulist(): void {
+            let carouselView = this,
+                carouselModel: Models.Carousel = this.model;
+            // let audioPlayerView: AudioPlayer = this,
+            //     audioPlayerModel: Models.AudioPlayer = audioPlayerView.model,
+            //     playerContainer: JQuery = audioPlayerView.$(".player-container"),
+            let menuPanel:JQuery = $("#course-leftpanel"),
+             visible: boolean = menuPanel.is(':visible');
+             //alert(visible)
+
+            // if (Utilities.isiPad()) {
+            //     if (Utilities.readDeviceOrientation() === "Portrait") {
+            //         carouselView.once(Events.EVENT_PLAYLIST_ANIMATION_END, function () {
+            //             menuPanel.off(Events.CSS_ANIMATION_END);
+            //             if (menuPanel.hasClass("to-full-width")) {
+            //                 menuPanel.removeClass("to-full-width").addClass("fullWidth");
+            //             }
+            //             if (menuPanel.hasClass("to-small-width")) {
+            //                 menuPanel.removeClass("to-small-width fullWidth");
+            //             }
+            //         });
+            //     }
+            // }
+            // if (visible) {
+            //     if (Utilities.isiPhone()) {
+            //         // audioPlayerView._playerPausedOnShowPlaylist = audioPlayerView._myPlayer.paused();
+            //         // if (!audioPlayerView._playerPausedOnShowPlaylist) {
+            //         //     audioPlayerView.pause();
+            //         // }
+            //     }
+            //     else {
+            //         menuPanel.one(Events.CSS_ANIMATION_END, function (evt) {
+            //             menuPanel.removeClass("to-full-width").addClass("fullWidth");
+            //         })
+            //             .removeClass("fullWidth")
+            //             .addClass("to-full-width");
+            //     }
+            // }
+            // else {
+            //     //if (!Utilities.isiPhone()) {
+            //         menuPanel.one(Events.CSS_ANIMATION_END, function (evt) {
+            //             menuPanel.removeClass("to-small-width");
+            //         })
+            //             .removeClass("fullWidth")
+            //             .addClass("to-small-width");
+            //     //}
+            // }
+            carouselView.toggle();
+        }
+        public toggle(): void {
+            let carouselView = this,
+                carouselModel: Models.Carousel = this.model
+                let menuPanel:JQuery = $("#course-leftpanel"),
+                visible: boolean = menuPanel.is(':visible');
+                //playlistContainer: JQuery = playlistView.$el.parent();
+
+            if (!visible) {
+               // alert()
+                menuPanel.one(Events.CSS_ANIMATION_END, function () {
+                    menuPanel.removeClass("to-animate-right").addClass("animate-right");
+                    carouselView.trigger(Events.EVENT_PLAYLIST_ANIMATION_END);
+                    $(".course-leftpanel-overlay").show();
+                })
+                    .addClass("to-animate-right");
+            } else {
+                menuPanel.one(Events.CSS_ANIMATION_END, function () {
+                    menuPanel.removeClass("to-animate-left").removeClass("animate-right");
+                    carouselView.trigger(Events.EVENT_PLAYLIST_ANIMATION_END);
+                    $(".course-leftpanel-overlay").hide();
+                })
+                    .addClass("to-animate-left");
+            }
+            carouselView.Visible = !carouselView.Visible;
         }
 
         renderIndicators() {

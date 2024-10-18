@@ -1,4 +1,9 @@
+<div id="course-leftpanel-overlay" class="course-leftpanel-overlay"></div>
 <div id="course-leftpanel" class="course-leftpanel">
+    <div class="close-outer">
+        <div class="menu-text">Menu</div>
+        <div class="close-button"></div>
+    </div>
     {{#if ShowExitButton}}
         <div class="exit-button" title="Exit">EXIT</div>
     {{/if}}
@@ -19,8 +24,8 @@
             {{!-- <div class="help-button" title="{{help.tooltip}}"><img src="{{help.icon}}" onload="SVGInject(this)" /></div> --}}
             <div class="help-button">
                 <img src="resources/image/shell_help_icon.svg" alt="" />
-            <h4>{{{HelpBtnText}}}</h4>
-        </div>
+                <h4>{{{HelpBtnText}}}</h4>
+            </div>
         {{/if}}
     {{/if}}
 
@@ -30,9 +35,6 @@
             <h4>{{{IndexBtnText}}}</h4>
         </div>
     {{/if}}
-
-
-
 </div>
 
 {{!-- <div id="course-header" class="course-header{{#if ShowExitButton}} show-exit{{/if}}">
