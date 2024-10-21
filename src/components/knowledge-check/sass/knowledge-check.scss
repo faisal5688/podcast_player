@@ -25,6 +25,8 @@
             min-height: 120px;
             padding: $fontSizeLarge;
             transform: translate(-50%, -50%);
+            border: 1px solid $colorCobalt;
+            border-radius: 10px;
             z-index: 1;
 
             hr {
@@ -45,6 +47,14 @@
                 padding-bottom: $fontSizeMicro;
             }
 
+            .ck-close-btn {
+                @include popupCloseBtn;
+                position: absolute;
+                right: 14px;
+                top: 14px;
+                cursor: pointer;
+                border: none;
+            }
             .btn-container {
                 color: $colorWhite;
                 padding-top: 10px;
@@ -80,8 +90,8 @@
 
     .knowledge-check {
         position: absolute;
-        width: 60%;
-        height: 58%;
+        width: 100%;
+        height: 100%;
         left: 0;
         top: 0;
         right: 0;
@@ -491,8 +501,8 @@
 // iPad portrait
 @media only screen and (min-width: 768px) and (orientation: portrait) {
     .knowledge-check-container {
-        height: calc(100% - 45px);
-        top: 45px;
+        // height: calc(100% - 45px);
+        // top: 45px;
 
         .knowledge-check {
             .question-container {
@@ -515,3 +525,11 @@
     }
 }
 
+@media screen and (min-width: 1900px) {
+    .knowledge-check-container {
+        .knowledge-check {
+            width: 60%;
+            height: 58%;
+        }
+    }
+}

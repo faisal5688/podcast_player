@@ -153,6 +153,15 @@ background: linear-gradient(90deg, rgba(92,33,232,1) 0%, rgba(88,36,232,1) 20%, 
 
 }
 
+@mixin menuBtn {
+    background: url("../resources/image/menu_btn.svg") no-repeat;
+    width: 24px;
+    height: 24px;
+    background-position: center center;
+    background-size: 24px 24px;
+
+}
+
 @mixin chapterLockIcon {
     position: relative;
 
@@ -249,7 +258,7 @@ background: linear-gradient(90deg, rgba(92,33,232,1) 0%, rgba(88,36,232,1) 20%, 
     font-size: 18px;
     color: $colorTertiaryRed;
     height: 15px;
-    left: -22px;
+    left: -16px;
     position: absolute;
     top: -3px;
     width: 15px;
@@ -262,7 +271,7 @@ background: linear-gradient(90deg, rgba(92,33,232,1) 0%, rgba(88,36,232,1) 20%, 
     font-size: 18px;
     color: $colorTertiaryLightGreen;
     height: 15px;
-    left: -22px;
+    left: -16px;
     position: absolute;
     top: -3px;
     width: 15px;

@@ -41,30 +41,30 @@
             {
                 "id": "01",
                 "title": "Slide 1",
-                "description": "<div class='car_img'></div><div class='car_txt1'>Audio Podcast</div><div class='car_txt2'>AI is transforming financial reporting and auditing</div><div class='car_txt3'>AI is transforming financial reporting and auditing</div>",
+                "description": "<div class='car_img'><img src='resources/image/kpmg-logo-white.svg'></div><div class='car_txt1'>Audio Podcast 1</div><div class='car_txt2'>AI is transforming financial reporting and auditing</div><div class='car_txt3'>2 Chapters</div>",
                 "preview": "resources/image/carousel/part1_0.png",
                 "subtitle": "Slide 1"
             },
             {
                 "id": "02",
                 "title": "Slide 2",
-                "description": "Slide 2",
+                "description": "<div class='car_img'><img src='resources/image/kpmg-logo-white.svg'></div><div class='car_txt1'>Audio Podcast 2</div><div class='car_txt2'>AI is transforming financial reporting and auditing</div><div class='car_txt3'>2 Chapters</div>",
                 "preview": "resources/image/carousel/part1_1.png",
                 "subtitle": "Slide 2"
             },
             {
                 "id": "03",
                 "title": "Slide 3",
-                "description": "Slide 3",
+                "description": "<div class='car_img'><img src='resources/image/kpmg-logo-white.svg'></div><div class='car_txt1'>Audio Podcast 3</div><div class='car_txt2'>AI is transforming financial reporting and auditing</div><div class='car_txt3'>2 Chapters</div>",
                 "preview": "resources/image/carousel/part1_2.png",
                 "subtitle": "Slide 3"
             },
             {
-                "id": "03",
-                "title": "Slide 3",
-                "description": "Slide 3",
+                "id": "04",
+                "title": "Slide 4",
+                "description": "<div class='car_img'><img src='resources/image/kpmg-logo-white.svg'></div><div class='car_txt1'>Audio Podcast 4</div><div class='car_txt2'>AI is transforming financial reporting and auditing</div><div class='car_txt3'>2 Chapters</div>",
                 "preview": "resources/image/carousel/part1_2.png",
-                "subtitle": "Slide 3"
+                "subtitle": "Slide 4"
             }
         ]
     },
