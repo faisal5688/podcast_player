@@ -11,6 +11,139 @@
     }
 }
 
+@keyframes toAnimateRight {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes toAnimateRight {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+
+@keyframes toAnimateLeft {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes toAnimateLeft {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes toAnimateRightMob {
+    from {
+        left: 100%;
+    }
+
+    to {
+        left: 0px;
+    }
+}
+
+@-webkit-keyframes toAnimateRightMob {
+    from {
+        left: 100%;
+    }
+
+    to {
+        left: 0px;
+    }
+}
+
+@keyframes toAnimateLeftMob {
+    from {
+        left: 0px;
+    }
+
+    to {
+        left: 100%;
+    }
+}
+
+@-webkit-keyframes toAnimateLeftMob {
+    from {
+        left: 0px;
+    }
+
+    to {
+        left: 100%;
+    }
+}
+
+@keyframes toAnimateRightMobile {
+    from {
+        left: -100%;
+    }
+
+    to {
+        left: -15%;
+    }
+}
+
+@-webkit-keyframes toAnimateRightMobile {
+    from {
+        left: -100%;
+    }
+
+    to {
+        left: -15%;
+    }
+}
+
+
+@keyframes toAnimateLeftMobile {
+    from {
+        left: -15%;
+    }
+
+    to {
+        left: -100%;
+    }
+}
+
+@-webkit-keyframes toAnimateLeftMobile {
+    from {
+        left: -15%;
+    }
+
+    to {
+        left: -100%;
+    }
+}
+
+
+@keyframes toAnimateDown {
+    from {
+        height: 0px;
+    }
+
+    to {
+        height: 50px;
+    }
+}
+
 .course {
     @include commonProperty;
     padding: 0;
@@ -27,7 +160,22 @@
         float: left;
     }
 
+    .course-leftpanel-overlay {
+        background-color: rgba(0, 0, 0, 0.5);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        float: left;
+        left: 0;
+        z-index: 999;
+        display: none;
+    }
+
     .course-leftpanel {
+        .close-outer {
+            display: none;
+        }
+
         .glossary-button {
             display: flex;
             justify-content: center;
@@ -94,6 +242,33 @@
             .help-button {
                 right: 70px;
             }
+        }
+
+        &.animate-right {
+            opacity: 0;
+        }
+
+        &.to-animate-right {
+            -webkit-animation: toAnimateRight 0.3s 1 ease-in;
+            animation: toAnimateRight 0.3s 1 ease-in;
+        }
+
+        &.to-animate-left {
+            -webkit-animation: toAnimateLeft 0.3s 1 ease-in;
+            animation: toAnimateLeft 0.3s 1 ease-in;
+        }
+
+        &.to-full-width {
+            width: 75%;
+            -webkit-animation: toFullWidth 0.3s 1 ease-in;
+            animation: toFullWidth 0.3s 1 ease-in;
+        }
+
+        &.to-small-width {
+
+            width: 100%;
+            -webkit-animation: toSmallWidth 0.3s 1 ease-in;
+            animation: toSmallWidth 0.3s 1 ease-in;
         }
     }
 
@@ -232,17 +407,56 @@
         overflow: auto;
         .course-leftpanel {
             display: none;
+            position: absolute;
+            width: 100%;
+            left: -100%;
+            z-index: 999;
+
+            .close-outer {
+                width: 100%;
+                height: 40px;
+                background: transparent;
+                position: absolute;
+                top: 0;
+                z-index: 1;
+                display: block;
+
+                .close-button {
+                    @include closeButton;
+                }
+            }
+
+            &.animate-right {
+                opacity: 1;
+                display: block;
+                left: -15%;
+            }
+
+            &.to-animate-right {
+                opacity: 1;
+                display: block;
+                -webkit-animation: toAnimateRightMobile 0.3s 1 ease-in;
+                animation: toAnimateRightMobile 0.3s 1 ease-in;
+            }
+
+            &.to-animate-left {
+                opacity: 1;
+                -webkit-animation: toAnimateLeftMobile 0.3s 1 ease-in;
+                animation: toAnimateLeftMobile 0.3s 1 ease-in;
+            }
         }
 
         .carousel-container {
             width: 100%;
             overflow: auto;
         }
+
         .course-body {
             width: 100%;
             padding: 0 15px;
             height: 95%;
         }
+
         .launch-holder {
 
             .launch-title {
@@ -273,11 +487,45 @@
     .course {
         .course-leftpanel {
             display: none;
+
+            .close-outer {
+                width: 100%;
+                height: 40px;
+                background: transparent;
+                position: absolute;
+                top: 0;
+                z-index: 1;
+                display: block;
+
+                .close-button {
+                    @include closeButton;
+                }
+            }
+
+            &.animate-right {
+                opacity: 1;
+                left: 0;
+                display: block;
+            }
+
+            &.to-animate-right {
+                opacity: 1;
+                display: block;
+                -webkit-animation: toAnimateRightMobile 0.3s 1 ease-in;
+                animation: toAnimateRightMobile 0.3s 1 ease-in;
+            }
+
+            &.to-animate-left {
+                opacity: 1;
+                -webkit-animation: toAnimateLeftMobile 0.3s 1 ease-in;
+                animation: toAnimateLeftMobile 0.3s 1 ease-in;
+            }
         }
 
         .carousel-container {
             width: 100%;
         }
+
         .course-body {
             width: 100%;
             padding: 0 15px;

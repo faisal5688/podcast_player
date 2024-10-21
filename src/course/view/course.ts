@@ -38,6 +38,7 @@ namespace HTML5AudioPlayer.Views {
             courseView._carousel = new Components.Views.Carousel({
                 model: courseModel.CarouselModel
             });
+           //courseView._carousel.on(Events.EVENT_PLAYLIST_CLOSED, courseView.onPlaylistClosed, courseView);
 
             // courseView._knowledgeCheckList = new Components.Views.KnowledgeCheckList({
             //     model: courseModel.KnowledgeCheck
@@ -66,10 +67,23 @@ namespace HTML5AudioPlayer.Views {
                 'click .help-button': 'onOpenHelp',
                 'click .exit-button': 'onCourseExit',
 
+
+                'click .close-button': 'onClosePlaylist',
                 'click .index-button': 'onShowIndex',
                 'click .glossary-button': 'onShowGlossary',
                 'click .resource-button': 'onShowResource',
             }
+        }
+
+        onClosePlaylist(): void {
+            //let playlistView: Playlist = this;
+
+            // playlistView.$el.parent().removeClass("animateRight");
+            // playlistView.$el.parent().addClass("animateLeft");
+            let courseView = this,
+                courseModel: Models.Course = courseView.model;
+
+            courseView._carousel.toggle();
         }
 
         @named
@@ -91,8 +105,8 @@ namespace HTML5AudioPlayer.Views {
         public afterRender(): void {
             let courseView: Course = this;
             courseView._player.afterRender();
-
             courseView.$("#carousel-container").append(courseView._carousel.render().$el);
+            courseView._carousel.afterRender()
         }
 
         @named

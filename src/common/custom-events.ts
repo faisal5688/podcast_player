@@ -32,6 +32,7 @@ namespace HTML5AudioPlayer.Events {
     export let EVENT_CURRENT_QUESTION: string = "getCurrentQuestion";
     export let EVENT_CURRENT_KCITEM: string = "getCurrentKcitem";
     export let EVENT_COMPLETE_QUESTION: string = "EVENT_COMPLETE_QUESTION";
+    export let EVENT_CLICK_MENU: string = "EVENT_CLICK_MENU";
 
 
 

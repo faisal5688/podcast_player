@@ -58,6 +58,13 @@
                 "description": "Slide 3",
                 "preview": "resources/image/carousel/part1_2.png",
                 "subtitle": "Slide 3"
+            },
+            {
+                "id": "03",
+                "title": "Slide 3",
+                "description": "Slide 3",
+                "preview": "resources/image/carousel/part1_2.png",
+                "subtitle": "Slide 3"
             }
         ]
     },

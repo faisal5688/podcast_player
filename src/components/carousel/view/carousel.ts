@@ -10,6 +10,8 @@ namespace HTML5AudioPlayer.Components.Views {
 
         private _crouselItems: CarouselItem[];
         private currentSlideIndex: number;
+        private parentWidth: number;
+        Visible: any;
 
         constructor(options: any) {
             super(options);
@@ -22,7 +24,6 @@ namespace HTML5AudioPlayer.Components.Views {
             carouselView._crouselItems = new Array<CarouselItem>();
 
             for (let i = 0; i < carouselModel.CarouselItems.length; i++) {
-
                 let carouselItemView = new CarouselItem({
                     id: _.uniqueId("carousel-item"),
                     className: "carousel-item",
@@ -30,6 +31,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 });
 
                 carouselView._crouselItems.push(carouselItemView);
+                carouselItemView.on(Events.EVENT_CLICK_MENU, carouselView.toggleMenulist, carouselView);
             }
         }
 
@@ -60,13 +62,104 @@ namespace HTML5AudioPlayer.Components.Views {
                 indicatorsContainer.append(`<button class="${isActive}" data-index="${i}"></button>`);
             }
 
+            carouselView.parentWidth = carouselViewInner.outerWidth();
+            // alert(carouselView.parentWidth)
+            //$('.carousel-slide').css("width",$("#carousel-content").outerWidth());
 
 
             // Render circular navigation buttons
             //carouselView.renderIndicators();
             carouselView.updateSlidePosition();
-
+            carouselView.afterRender();
             return carouselView;
+        }
+
+        @named
+        public afterRender(): void {
+            let carouselView = this,
+                carouselModel: Models.Carousel = this.model;
+            let carouselViewSlide: JQuery = carouselView.$el.find(".carousel-slide"),
+                carouselViewInner: JQuery = carouselView.$el.find("#carousel-content");
+            carouselViewSlide.css("width", carouselViewInner.outerWidth());
+        }
+
+
+
+
+        @named
+        private toggleMenulist(): void {
+            let carouselView = this,
+                carouselModel: Models.Carousel = this.model;
+            // let audioPlayerView: AudioPlayer = this,
+            //     audioPlayerModel: Models.AudioPlayer = audioPlayerView.model,
+            //     playerContainer: JQuery = audioPlayerView.$(".player-container"),
+            let menuPanel: JQuery = $("#course-leftpanel"),
+                visible: boolean = menuPanel.is(':visible');
+            //alert(visible)
+
+            // if (Utilities.isiPad()) {
+            //     if (Utilities.readDeviceOrientation() === "Portrait") {
+            //         carouselView.once(Events.EVENT_PLAYLIST_ANIMATION_END, function () {
+            //             menuPanel.off(Events.CSS_ANIMATION_END);
+            //             if (menuPanel.hasClass("to-full-width")) {
+            //                 menuPanel.removeClass("to-full-width").addClass("fullWidth");
+            //             }
+            //             if (menuPanel.hasClass("to-small-width")) {
+            //                 menuPanel.removeClass("to-small-width fullWidth");
+            //             }
+            //         });
+            //     }
+            // }
+            // if (visible) {
+            //     if (Utilities.isiPhone()) {
+            //         // audioPlayerView._playerPausedOnShowPlaylist = audioPlayerView._myPlayer.paused();
+            //         // if (!audioPlayerView._playerPausedOnShowPlaylist) {
+            //         //     audioPlayerView.pause();
+            //         // }
+            //     }
+            //     else {
+            //         menuPanel.one(Events.CSS_ANIMATION_END, function (evt) {
+            //             menuPanel.removeClass("to-full-width").addClass("fullWidth");
+            //         })
+            //             .removeClass("fullWidth")
+            //             .addClass("to-full-width");
+            //     }
+            // }
+            // else {
+            //     //if (!Utilities.isiPhone()) {
+            //         menuPanel.one(Events.CSS_ANIMATION_END, function (evt) {
+            //             menuPanel.removeClass("to-small-width");
+            //         })
+            //             .removeClass("fullWidth")
+            //             .addClass("to-small-width");
+            //     //}
+            // }
+            carouselView.toggle();
+        }
+        public toggle(): void {
+            let carouselView = this,
+                carouselModel: Models.Carousel = this.model
+            let menuPanel: JQuery = $("#course-leftpanel"),
+                visible: boolean = menuPanel.is(':visible');
+            //playlistContainer: JQuery = playlistView.$el.parent();
+
+            if (!visible) {
+                // alert()
+                menuPanel.one(Events.CSS_ANIMATION_END, function () {
+                    menuPanel.removeClass("to-animate-right").addClass("animate-right");
+                    carouselView.trigger(Events.EVENT_PLAYLIST_ANIMATION_END);
+                    $(".course-leftpanel-overlay").show();
+                })
+                    .addClass("to-animate-right");
+            } else {
+                menuPanel.one(Events.CSS_ANIMATION_END, function () {
+                    menuPanel.removeClass("to-animate-left").removeClass("animate-right");
+                    carouselView.trigger(Events.EVENT_PLAYLIST_ANIMATION_END);
+                    $(".course-leftpanel-overlay").hide();
+                })
+                    .addClass("to-animate-left");
+            }
+            carouselView.Visible = !carouselView.Visible;
         }
 
         renderIndicators() {
@@ -92,7 +185,7 @@ namespace HTML5AudioPlayer.Components.Views {
             //alert(this.currentSlideIndex)
             let carouselView = this,
                 carouselModel: Models.Carousel = this.model;
-            const offset = -this.currentSlideIndex * (100/carouselView._crouselItems.length); // 300px width per slide
+            const offset = -this.currentSlideIndex * (100); // 300px width per slide
             this.$('.carousel-content').css('transform', `translateX(${offset}%)`);
 
             // Update active state for indicators
