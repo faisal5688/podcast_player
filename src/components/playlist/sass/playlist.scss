@@ -829,6 +829,7 @@
 
                 .playlist-inner {
                     width: 100%;
+                    height: 500px;
 
                     .playlist-item {
 
@@ -868,6 +869,17 @@
                                 }
                             }
 
+                        }
+
+                        .right-content {
+
+                            .item-index {
+                                padding-right: 5px;
+                            }
+                            .item-title {
+                                font-size: $fontSizeMini;
+                                padding-right: 5px;
+                            }
                         }
                     }
                 }
