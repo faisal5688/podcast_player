@@ -41,7 +41,7 @@
             {
                 "id": "01",
                 "title": "Slide 1",
-                "description": "Slide 1",
+                "description": "<div class='car_img'></div><div class='car_txt1'>Audio Podcast</div><div class='car_txt2'>AI is transforming financial reporting and auditing</div><div class='car_txt3'>AI is transforming financial reporting and auditing</div>",
                 "preview": "resources/image/carousel/part1_0.png",
                 "subtitle": "Slide 1"
             },

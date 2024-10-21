@@ -217,8 +217,8 @@ background: linear-gradient(90deg, rgba(92,33,232,1) 0%, rgba(88,36,232,1) 20%, 
     &:before {
         background: none;
         content: "\2A2F";
-        font-size: 36px;
-        color: #666666;
+        font-size: 33px;
+        color: $colorWhite;
         position: absolute;
         cursor: pointer;
         top: -10px;

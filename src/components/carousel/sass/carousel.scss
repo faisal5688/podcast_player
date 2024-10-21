@@ -7,6 +7,10 @@
     position: relative;
     padding: 15px 15px 0 15px;
     box-sizing: border-box;
+
+    & > div {
+        overflow-x: hidden;
+    }
 }
 
 .carousel-content {
@@ -36,6 +40,12 @@
         position: absolute;
         border: 1px solid white;
         display: none;
+    }
+
+    .carousel-txt-cont {
+        position: absolute;
+        top: 0;
+        left: 0;
     }
 }
 

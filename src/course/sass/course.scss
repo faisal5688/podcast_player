@@ -412,6 +412,51 @@
             left: -100%;
             z-index: 999;
 
+            .glossary-button {
+                justify-content: flex-start;
+                margin: 45px 20px 0px 21%;
+                padding: 0;
+                box-sizing: border-box;
+                border-top: 2px solid rgba($color: #1E49E2, $alpha: 0.5);
+
+                h4 {
+                    display: block;
+                    color: $colorWhite;
+                    padding-left: 15px;
+                    font-size: $fontSizeMini;
+                }
+            }
+
+            .resource-button {
+                justify-content: flex-start;
+                margin: 0px 20px 0px 21%;
+                box-sizing: border-box;
+                border-top: 2px solid rgba($color: #1E49E2, $alpha: 0.5);
+
+                h4 {
+                    display: block;
+                    color: $colorWhite;
+                    padding-left: 15px;
+                    font-size: $fontSizeMini;
+                }
+            }
+
+            .help-button {
+                justify-content: flex-start;
+                margin: 0px 20px 0px 21%;
+                box-sizing: border-box;
+                position: relative;
+                bottom: auto;
+                border-top: 2px solid rgba($color: #1E49E2, $alpha: 0.5);
+
+                h4 {
+                    display: block;
+                    color: $colorWhite;
+                    padding-left: 15px;
+                    font-size: $fontSizeMini;
+                }
+            }
+
             .close-outer {
                 width: 100%;
                 height: 40px;
@@ -421,6 +466,13 @@
                 z-index: 1;
                 display: block;
 
+                .menu-text {
+                    display: block;
+                    color: $colorWhite;
+                    font-size: $fontSizeLarge;
+                    font-weight: bold;
+                    margin: 8px 0 0 21%;
+                }
                 .close-button {
                     @include closeButton;
                 }
@@ -488,6 +540,18 @@
         .course-leftpanel {
             display: none;
 
+            .glossary-button {
+                margin: 45px 20px 0px 3%;
+            }
+
+            .resource-button {
+                margin: 0px 20px 0px 3%;
+            }
+
+            .help-button {
+                margin: 0px 20px 0px 3%;
+            }
+
             .close-outer {
                 width: 100%;
                 height: 40px;
@@ -496,6 +560,10 @@
                 top: 0;
                 z-index: 1;
                 display: block;
+
+                .menu-text {
+                    margin: 8px 0 0 3%;
+                }
 
                 .close-button {
                     @include closeButton;
