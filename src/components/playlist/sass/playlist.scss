@@ -432,6 +432,27 @@
                                 border: none;
                                 cursor: pointer;
                                 margin: 0 10px;
+
+                                &.captions-enabled {
+                                    //background: url(../resources/image/captions_icon.png) no-repeat 0 0;
+
+                                    opacity: 1;
+                                    &:hover {
+                                        opacity: 0.5;
+                                        //opacity: 1;
+                                        //background: url(../resources/image/captions_icon.png) no-repeat -40px 0;
+                                    }
+                                }
+
+                                &.captions-disabled {
+                                    //background: url(../resources/image/captions_icon.png) no-repeat -80px 0;
+
+                                    opacity: 0.5;
+                                    &:hover {
+                                        opacity: 1;
+                                        //background: url(../resources/image/captions_icon.png) no-repeat -120px 0;
+                                    }
+                                }
                             }
 
                             .audio_on_off {
