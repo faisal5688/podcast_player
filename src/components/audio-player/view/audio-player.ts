@@ -108,6 +108,8 @@ namespace HTML5AudioPlayer.Components.Views {
             audioPlayerView._playlist.on(Events.EVENT_ITEM_SPEEDLIST, audioPlayerView.onItemClickedSpeedList, audioPlayerView);
             audioPlayerView._playlist.on(Events.EVENT_ITEM_CLICKED_SPEED, audioPlayerView.onItemClickedSpeed, audioPlayerView);
 
+            audioPlayerView._playlist.on(Events.EVENT_ITEM_CC, audioPlayerView.onItemClickedCc, audioPlayerView);
+
 
 
 
@@ -420,6 +422,12 @@ namespace HTML5AudioPlayer.Components.Views {
                     audioPlayerView.toggleCaptions();
                 },
                 function () {
+                    //alert(audioPlayerModel.CaptionsEnabled)
+                    if(audioPlayerModel.CaptionsEnabled){
+                        $(".cc_text_btn").addClass("captions-enabled").removeClass("captions-disabled");
+                    }else{
+                        $(".cc_text_btn").addClass("captions-disabled").removeClass("captions-enabled");
+                    }
                     return "vjs-icon-toggle-captions vjs-control vjs-button " + (audioPlayerModel.CaptionsEnabled ? "captions-enabled" : "captions-disabled");
                 });
 
@@ -1089,19 +1097,28 @@ namespace HTML5AudioPlayer.Components.Views {
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model,
                 captionBtn: JQuery = audioPlayerView.$(".vjs-control-bar .vjs-icon-toggle-captions");
 
+
             audioPlayerModel.CaptionsEnabled = !audioPlayerModel.CaptionsEnabled;
+            //alert(audioPlayerModel.CaptionsEnabled)
             Utilities.consoleTrace("Show Captions: ", audioPlayerModel.CaptionsEnabled);
+            //alert(audioPlayerModel.CaptionsEnabled)
             if (audioPlayerModel.CaptionsEnabled) {
                 if (audioPlayerView._currentTextTrack) {
+                    $(".cc_text_main").show();
                     audioPlayerView._currentTextTrack.mode = "showing";
                 }
                 captionBtn.addClass("captions-enabled").removeClass("captions-disabled");
+                $(".cc_text_btn").addClass("captions-enabled").removeClass("captions-disabled");
+
             }
             else {
                 if (audioPlayerView._currentTextTrack) {
+                    $(".cc_text_main").hide();
                     audioPlayerView._currentTextTrack.mode = "hidden";
                 }
+
                 captionBtn.removeClass("captions-enabled").addClass("captions-disabled");
+                $(".cc_text_btn").removeClass("captions-enabled").addClass("captions-disabled");
             }
         }
 
@@ -1109,13 +1126,25 @@ namespace HTML5AudioPlayer.Components.Views {
         private onCueChange(): void {
             let audioPlayerView: AudioPlayer = this,
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model,
+                //textTrackDisplay: JQuery = audioPlayerView.$(".cc_text_inner"),
                 textTrackDisplay: JQuery = audioPlayerView.$(".vjs-text-track-display"),
+
                 cueText: string = textTrackDisplay.text(),
                 newMode: string = (audioPlayerModel.CaptionsEnabled ? "showing" : "hidden");
+
+                //console
+                //alert(newMode)
+                $(".cc_text_main .cc_text_inner").html(textTrackDisplay.text())
 
             if (newMode !== audioPlayerView._currentTextTrack.mode) {
                 audioPlayerView._currentTextTrack.mode = newMode;
             }
+
+            // if(audioPlayerView._currentTextTrack.mode=="showing"){
+            //     $(".cc_text_main").show();
+            // }else{
+            //     $(".cc_text_main").hide();
+            // }
 
             if (cueText.trim()) {
                 textTrackDisplay.removeClass("empty-captions");
@@ -1241,6 +1270,10 @@ namespace HTML5AudioPlayer.Components.Views {
             audioPlayerView.resetMicroPollStatus();
             audioPlayerView.enable();
         }
+
+
+
+
 
         @named
         private restartVideo() {
@@ -1449,6 +1482,14 @@ namespace HTML5AudioPlayer.Components.Views {
             let audioPlayerView: AudioPlayer = this,
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
             audioPlayerView.restartVideo()
+        }
+
+        @named
+        private onItemClickedCc(): void {
+            //alert("onItemClickedRefresh")
+            let audioPlayerView: AudioPlayer = this,
+                audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
+            audioPlayerView.toggleCaptions();
         }
 
         @named

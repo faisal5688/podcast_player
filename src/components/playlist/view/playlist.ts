@@ -58,6 +58,8 @@ namespace HTML5AudioPlayer.Components.Views {
                 playlistItemView.on(Events.EVENT_ITEM_CLICKED_SPEEDLIST, playlistView.speedListAudio, playlistView);
                 playlistItemView.on(Events.EVENT_ITEM_CLICKED_SPEED, playlistView.speedClickAudio, playlistView);
 
+                playlistItemView.on(Events.EVENT_ITEM_CLICKED_CC, playlistView.ccAudio, playlistView);
+
                 playlistModel.enableAssessment();
                 //playlistItemView.afterRender()
 
@@ -371,6 +373,13 @@ namespace HTML5AudioPlayer.Components.Views {
             console.log("refreshAudio")
             let playlistView: Playlist = this;
             playlistView.trigger(Events.EVENT_ITEM_REFRESH);
+
+        }
+
+        ccAudio(): void {
+            console.log("refreshAudio")
+            let playlistView: Playlist = this;
+            playlistView.trigger(Events.EVENT_ITEM_CC);
 
         }
         seekAudio(time: any): void {

@@ -33,7 +33,11 @@ namespace HTML5AudioPlayer.Components.Views {
                 'click .refresh': 'refreshAudio',
                 'input .progress-bar': 'seekAudio',
                 'click .navigatorAudioSpeedBtn': 'speedAudio',
-                'a .audioSpeedContent': 'speedContentAudio'
+                'a .audioSpeedContent': 'speedContentAudio',
+
+                'click .cc_text_btn': 'ccAudio',
+
+
 
             };
         }
@@ -191,6 +195,15 @@ namespace HTML5AudioPlayer.Components.Views {
             let playlistItemView: PlaylistItem = this,
                 playlistItemModel: Models.PlaylistItem = playlistItemView.model;
             playlistItemView.trigger(Events.EVENT_ITEM_CLICKED_SPEEDLIST, playlistItemModel);
+        }
+
+
+        ccAudio(e: MouseEvent): void {
+            e.stopPropagation();
+            let playlistItemView: PlaylistItem = this,
+                playlistItemModel: Models.PlaylistItem = playlistItemView.model;
+            playlistItemView.trigger(Events.EVENT_ITEM_CLICKED_CC, playlistItemModel);
+
         }
 
 
