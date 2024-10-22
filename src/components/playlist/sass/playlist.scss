@@ -418,6 +418,14 @@
                                 border: none;
                                 cursor: pointer;
                                 margin: 0 10px;
+
+                                &.chapt-enabled {
+                                    opacity: 1;
+                                }
+
+                                &.chapt-disabled {
+                                    opacity: 0.5;
+                                }
                             }
 
                             .next_chapt_btn {
@@ -425,6 +433,14 @@
                                 border: none;
                                 cursor: pointer;
                                 margin: 0 10px;
+
+                                &.chapt-enabled {
+                                    opacity: 1;
+                                }
+
+                                &.chapt-disabled {
+                                    opacity: 0.5;
+                                }
                             }
 
                             .cc_text_btn {

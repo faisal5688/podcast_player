@@ -109,6 +109,9 @@ namespace HTML5AudioPlayer.Components.Views {
             audioPlayerView._playlist.on(Events.EVENT_ITEM_CLICKED_SPEED, audioPlayerView.onItemClickedSpeed, audioPlayerView);
 
             audioPlayerView._playlist.on(Events.EVENT_ITEM_CC, audioPlayerView.onItemClickedCc, audioPlayerView);
+            audioPlayerView._playlist.on(Events.EVENT_ITEM_TRANSCRIPT, audioPlayerView.onItemClickedTranscript, audioPlayerView);
+            audioPlayerView._playlist.on(Events.EVENT_ITEM_BACKAUDIO, audioPlayerView.onItemClickedBackaudio, audioPlayerView);
+            audioPlayerView._playlist.on(Events.EVENT_ITEM_NEXTAUDIO, audioPlayerView.onItemClickedNextaudio, audioPlayerView);
 
 
 
@@ -1491,6 +1494,32 @@ namespace HTML5AudioPlayer.Components.Views {
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
             audioPlayerView.toggleCaptions();
         }
+
+        @named
+        private onItemClickedTranscript(): void {
+            //alert("onItemClickedRefresh")
+            let audioPlayerView: AudioPlayer = this,
+                audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
+            audioPlayerView.showTranscript();
+        }
+        @named
+        private onItemClickedBackaudio(): void {
+            //alert("onItemClickedRefresh")
+            let audioPlayerView: AudioPlayer = this,
+                audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
+           // audioPlayerView.showTranscript();
+           alert("Back")
+        }
+        @named
+        private onItemClickedNextaudio(): void {
+            //alert("onItemClickedRefresh")
+            let audioPlayerView: AudioPlayer = this,
+                audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
+           // audioPlayerView.showTranscript();
+           alert("next")
+        }
+
+       // transcript_btn
 
         @named
         private onItemClickedSeek(event: MouseEvent): void {
