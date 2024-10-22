@@ -51,8 +51,10 @@
             //KnowledgeCheckItemView.$el.addClass("disabled").removeClass("enabled");
             if (KnowledgeCheckItemModel.Complete) {
                 KnowledgeCheckItemView.$el.find(".item-complete").show()
+                KnowledgeCheckItemView.$el.addClass("kc-complete")
             }else {
                 KnowledgeCheckItemView.$el.find(".item-complete").hide()
+                KnowledgeCheckItemView.$el.removeClass("kc-complete")
             }
 
             // if (KnowledgeCheckItemModel.Enable) {

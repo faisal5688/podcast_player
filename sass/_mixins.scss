@@ -122,6 +122,60 @@ background: linear-gradient(90deg, rgba(92,33,232,1) 0%, rgba(88,36,232,1) 20%, 
 
 }
 
+@mixin transcriptBtn {
+    background: url("../resources/image/audio_controls/transcript_btn.svg") no-repeat;
+    width: 18px;
+    height: 17px;
+    background-position: center center;
+    background-size: 18px 17px;
+
+}
+
+@mixin backChaptBtn {
+    background: url("../resources/image/audio_controls/back_chapt_btn.svg") no-repeat;
+    width: 23px;
+    height: 14px;
+    background-position: center center;
+    background-size: 23px 14px;
+
+}
+
+@mixin nextChaptBtn {
+    background: url("../resources/image/audio_controls/next_chapt_btn.svg") no-repeat;
+    width: 23px;
+    height: 14px;
+    background-position: center center;
+    background-size: 23px 14px;
+
+}
+
+@mixin ccTextBtn {
+    background: url("../resources/image/audio_controls/cc_text_btn.svg") no-repeat;
+    width: 16px;
+    height: 14px;
+    background-position: center center;
+    background-size: 16px 14px;
+
+}
+
+@mixin audioOnBtn {
+    background: url("../resources/image/audio_controls/audio_on_btn.svg") no-repeat;
+    width: 15px;
+    height: 14px;
+    background-position: center center;
+    background-size: 15px 14px;
+
+}
+
+@mixin audioOffBtn {
+    background: url("../resources/image/audio_controls/audio_off_btn.svg") no-repeat;
+    width: 15px;
+    height: 14px;
+    background-position: center center;
+    background-size: 15px 14px;
+
+}
+
 @mixin playBtn {
     background: url("../resources/image/audio_controls/play_btn.svg") no-repeat;
     width: 35px;
