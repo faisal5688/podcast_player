@@ -138,7 +138,7 @@ namespace HTML5AudioPlayer.Components.Views {
             //knowledgeCheckView.hide();
             // setTimeout(() => {
             //     audioPlayerModel._startPlayingOnError = true;
-            //     audioPlayerView.changeVideo(audioPlayerView.model.Playlist.CurrentItem);
+            //     audioPlayerView.changeAudio(audioPlayerView.model.Playlist.CurrentItem);
             // }, 500);
             // setTimeout(()=>{
 
