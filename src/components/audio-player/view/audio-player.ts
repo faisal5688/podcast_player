@@ -1537,31 +1537,30 @@ namespace HTML5AudioPlayer.Components.Views {
             let audioPlayerView: AudioPlayer = this,
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
             // audioPlayerView.showTranscript();
-            if ($(".audio_on_off").hasClass('audio_on')) {
-                // If the button has 'audio_on' class, remove it and add 'audio_off'
-                $(".audio_on_off").removeClass('audio_on').addClass('audio_off');
-                console.log('Audio turned off');
-                audioPlayerView._myPlayer.muted(true);
-                //alert(audioPlayerView._myPlayer.muted(true))
-                //audioPlayerModel.PlayerOptions.muted=true;
-            } else {
-                // If the button doesn't have 'audio_on', add it and remove 'audio_off'
-                $(".audio_on_off").removeClass('audio_off').addClass('audio_on');
-                console.log('Audio turned on');
-                audioPlayerView._myPlayer.muted(false);
-            }
-
-            // if (audioPlayerView._myPlayer.muted()) {
-            //     // If currently muted, unmute the player and change button text
-            //     audioPlayerView._myPlayer.muted(false);
-            //     $(this).text('Mute');
-            //     console.log('Audio unmuted');
-            // } else {
-            //     // If not muted, mute the player and change button text
+            // if ($(".audio_on_off").hasClass('audio_on')) {
+            //     // If the button has 'audio_on' class, remove it and add 'audio_off'
+            //     $(".audio_on_off").removeClass('audio_on').addClass('audio_off');
+            //     console.log('Audio turned off');
             //     audioPlayerView._myPlayer.muted(true);
-            //     $(this).text('Unmute');
-            //     console.log('Audio muted');
+
+            // } else {
+            //     // If the button doesn't have 'audio_on', add it and remove 'audio_off'
+            //     $(".audio_on_off").removeClass('audio_off').addClass('audio_on');
+            //     console.log('Audio turned on');
+            //     audioPlayerView._myPlayer.muted(false);
             // }
+           // alert(audioPlayerView._myPlayer.muted())
+
+            if (audioPlayerView._myPlayer.muted()) {
+                // If currently muted, unmute the player and change button text
+                audioPlayerView._myPlayer.muted(false);
+                $(".audio_on_off").removeClass('audio_off').addClass('audio_on');
+            } else {
+                // If not muted, mute the player and change button text
+                audioPlayerView._myPlayer.muted(true);
+                $(".audio_on_off").removeClass('audio_on').addClass('audio_off');
+
+            }
         }
 
         // transcript_btn
