@@ -38,6 +38,7 @@ namespace HTML5AudioPlayer.Components.Views {
             'seeking': () => void;
             'seeked': () => void;
             'playing': () => void;
+            'muted': () => void;
         };
 
         // This is used to store player play/pause status while opening and closing playlist on iPhone.
@@ -71,7 +72,8 @@ namespace HTML5AudioPlayer.Components.Views {
                 'error': audioPlayerView.onError.bind(audioPlayerView),
                 'seeking': audioPlayerView.onSeeking.bind(audioPlayerView),
                 'seeked': audioPlayerView.onSeeked.bind(audioPlayerView),
-                'playing': audioPlayerView.onPlaying.bind(audioPlayerView)
+                'playing': audioPlayerView.onPlaying.bind(audioPlayerView),
+                'muted': audioPlayerView.onMuted.bind(audioPlayerView)
             };
 
             audioPlayerView._playlist = new Playlist({
@@ -112,6 +114,7 @@ namespace HTML5AudioPlayer.Components.Views {
             audioPlayerView._playlist.on(Events.EVENT_ITEM_TRANSCRIPT, audioPlayerView.onItemClickedTranscript, audioPlayerView);
             audioPlayerView._playlist.on(Events.EVENT_ITEM_BACKAUDIO, audioPlayerView.onItemClickedBackaudio, audioPlayerView);
             audioPlayerView._playlist.on(Events.EVENT_ITEM_NEXTAUDIO, audioPlayerView.onItemClickedNextaudio, audioPlayerView);
+            audioPlayerView._playlist.on(Events.EVENT_ITEM_ONOFFAUDIO, audioPlayerView.onItemClickedOnoffaudio, audioPlayerView);
 
 
 
@@ -239,6 +242,12 @@ namespace HTML5AudioPlayer.Components.Views {
             if (curTime < 0.1) {
                 audioPlayerView.triggerCuepoint(DataStructures.KCWhen.Start);
             }
+        }
+
+        @named
+        private onMuted(state:Boolean):void{
+            let audioPlayerView: AudioPlayer = this;
+            //audioPlayerView._myPlayer.muted()
         }
 
         @named
@@ -426,9 +435,9 @@ namespace HTML5AudioPlayer.Components.Views {
                 },
                 function () {
                     //alert(audioPlayerModel.CaptionsEnabled)
-                    if(audioPlayerModel.CaptionsEnabled){
+                    if (audioPlayerModel.CaptionsEnabled) {
                         $(".cc_text_btn").addClass("captions-enabled").removeClass("captions-disabled");
-                    }else{
+                    } else {
                         $(".cc_text_btn").addClass("captions-disabled").removeClass("captions-enabled");
                     }
                     return "vjs-icon-toggle-captions vjs-control vjs-button " + (audioPlayerModel.CaptionsEnabled ? "captions-enabled" : "captions-disabled");
@@ -582,7 +591,7 @@ namespace HTML5AudioPlayer.Components.Views {
 
         public kcItemActiveList(): number {
             let audioPlayerView: AudioPlayer = this,
-            audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
+                audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
             return audioPlayerModel.Playlist.kcItemActiveList();
         }
 
@@ -611,9 +620,9 @@ namespace HTML5AudioPlayer.Components.Views {
             let audioPlayerView: AudioPlayer = this,
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
 
-                let CurrentItem = audioPlayerModel.Playlist.KnowledgeCheckItems.filter((val) => {
-                    return val.attributes.id === vidId;
-                })[0];
+            let CurrentItem = audioPlayerModel.Playlist.KnowledgeCheckItems.filter((val) => {
+                return val.attributes.id === vidId;
+            })[0];
             return CurrentItem.Complete;
 
         }
@@ -633,7 +642,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 return val.id === vidId;
             })[0];
             //console.log("markKcKCItemComplete CurrentItem")
-           // console.log(CurrentItem.Kccomplete)
+            // console.log(CurrentItem.Kccomplete)
             //CurrentCueItem.completed = true;
             console.log("****************************************************")
             console.log(CurrentItem)
@@ -783,7 +792,7 @@ namespace HTML5AudioPlayer.Components.Views {
                         if (!cp.triggered) {
                             cp.triggered = true;
                             cp.visited = true;
-                           // alert(cp.id)
+                            alert(cp.id)
                             Utilities.consoleTrace("Trigger cue point event for: ", cp.id, audioPlayerView.cid, currentTime);
                             audioPlayerView.trigger(Events.EVENT_CUEPOINT_HIT, cp);
                             //alert("CP")
@@ -1137,9 +1146,9 @@ namespace HTML5AudioPlayer.Components.Views {
                 cueText: string = textTrackDisplay.text(),
                 newMode: string = (audioPlayerModel.CaptionsEnabled ? "showing" : "hidden");
 
-                //console
-                //alert(newMode)
-                $(".cc_text_main .cc_text_inner").html(textTrackDisplay.text())
+            //console
+            //alert(newMode)
+            $(".cc_text_main .cc_text_inner").html(textTrackDisplay.text())
 
             if (newMode !== audioPlayerView._currentTextTrack.mode) {
                 audioPlayerView._currentTextTrack.mode = newMode;
@@ -1510,19 +1519,52 @@ namespace HTML5AudioPlayer.Components.Views {
             //alert("onItemClickedRefresh")
             let audioPlayerView: AudioPlayer = this,
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
-           // audioPlayerView.showTranscript();
-           alert("Back")
+            // audioPlayerView.showTranscript();
+            alert("Back")
         }
         @named
         private onItemClickedNextaudio(): void {
             //alert("onItemClickedRefresh")
             let audioPlayerView: AudioPlayer = this,
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
-           // audioPlayerView.showTranscript();
-           alert("next")
+            // audioPlayerView.showTranscript();
+            alert("next")
         }
 
-       // transcript_btn
+        @named
+        private onItemClickedOnoffaudio(): void {
+            //alert("onItemClickedRefresh")
+            let audioPlayerView: AudioPlayer = this,
+                audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
+            // audioPlayerView.showTranscript();
+            if ($(".audio_on_off").hasClass('audio_on')) {
+                // If the button has 'audio_on' class, remove it and add 'audio_off'
+                $(".audio_on_off").removeClass('audio_on').addClass('audio_off');
+                console.log('Audio turned off');
+                audioPlayerView._myPlayer.muted(true);
+                //alert(audioPlayerView._myPlayer.muted(true))
+                //audioPlayerModel.PlayerOptions.muted=true;
+            } else {
+                // If the button doesn't have 'audio_on', add it and remove 'audio_off'
+                $(".audio_on_off").removeClass('audio_off').addClass('audio_on');
+                console.log('Audio turned on');
+                audioPlayerView._myPlayer.muted(false);
+            }
+
+            // if (audioPlayerView._myPlayer.muted()) {
+            //     // If currently muted, unmute the player and change button text
+            //     audioPlayerView._myPlayer.muted(false);
+            //     $(this).text('Mute');
+            //     console.log('Audio unmuted');
+            // } else {
+            //     // If not muted, mute the player and change button text
+            //     audioPlayerView._myPlayer.muted(true);
+            //     $(this).text('Unmute');
+            //     console.log('Audio muted');
+            // }
+        }
+
+        // transcript_btn
 
         @named
         private onItemClickedSeek(event: MouseEvent): void {
@@ -1571,6 +1613,7 @@ namespace HTML5AudioPlayer.Components.Views {
 
             }
             audioPlayerView._myPlayer.paused()
+            audioPlayerView._myPlayer.muted(false);
 
         }
 
