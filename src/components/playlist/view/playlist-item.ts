@@ -33,8 +33,12 @@ namespace HTML5AudioPlayer.Components.Views {
                 'click .refresh': 'refreshAudio',
                 'input .progress-bar': 'seekAudio',
                 'click .navigatorAudioSpeedBtn': 'speedAudio',
-                'a .audioSpeedContent': 'speedContentAudio'
+                'a .audioSpeedContent': 'speedContentAudio',
 
+                'click .cc_text_btn': 'ccAudio',
+                'click .transcript_btn': 'transcriptAudio',
+                'click .back_chapt_btn': 'backAudio',
+                'click .next_chapt_btn': 'nextAudio',
             };
         }
 
@@ -42,8 +46,8 @@ namespace HTML5AudioPlayer.Components.Views {
             let playlistItemView = this,
                 playlistItemModel: Models.PlaylistItem = this.model;
 
-                console.log("playlistItemModel")
-                console.log(playlistItemModel)
+            console.log("playlistItemModel")
+            console.log(playlistItemModel)
 
 
             playlistItemView.$el.html(playlistItemView._template(playlistItemModel.toJSON()));
@@ -81,6 +85,9 @@ namespace HTML5AudioPlayer.Components.Views {
                 playlistItemView.$el.find(".item-inpogress").hide()
             }
 
+            playlistItemView.updateNextBack();
+            //alert(playlistItemModel.Index)
+
             return playlistItemView;
         }
 
@@ -95,7 +102,25 @@ namespace HTML5AudioPlayer.Components.Views {
             playlistItemView.$el.find(".item-complete").show();
             playlistItemView.$el.find(".item-inpogress").hide()
             //playlistItemModel.Complete=true;
+            playlistItemView.updateNextBack();
 
+
+        }
+
+        public updateNextBack(): void {
+            let playlistItemView = this,
+                playlistItemModel: Models.PlaylistItem = this.model;
+            if (playlistItemModel.Complete) {
+                playlistItemView.$el.find(".next_chapt_btn").addClass("chapt-enabled").removeClass("chapt-disabled");
+            } else {
+                playlistItemView.$el.find(".next_chapt_btn").removeClass("chapt-enabled").addClass("chapt-disabled");
+            }
+
+            if (parseInt(playlistItemModel.Index) > 1) {
+                playlistItemView.$el.find(".back_chapt_btn").addClass("chapt-enabled").removeClass("chapt-disabled");
+            } else {
+                playlistItemView.$el.find(".back_chapt_btn").removeClass("chapt-enabled").addClass("chapt-disabled");
+            }
 
         }
 
@@ -133,13 +158,10 @@ namespace HTML5AudioPlayer.Components.Views {
                 playlistItemView.$el.addClass("current");
                 playlistItemView.$el.find(".audio-player-container").addClass("showPlayer")
 
-                if(!playlistItemModel.Complete){
+                if (!playlistItemModel.Complete) {
                     playlistItemView.$el.find(".item-inpogress").show()
                 }
             }
-
-
-
             playlistItemView.trigger(Events.EVENT_ITEM_CLICKED, playlistItemModel);
             playlistItemView.trigger(Events.EVENT_INIT_PLAYER, playlistItemModel);
 
@@ -180,7 +202,7 @@ namespace HTML5AudioPlayer.Components.Views {
             e.stopPropagation();
             $('.audioSpeedContent').toggle();
             let playlistItemView: PlaylistItem = this,
-            playlistItemModel: Models.PlaylistItem = playlistItemView.model;
+                playlistItemModel: Models.PlaylistItem = playlistItemView.model;
             playlistItemView.trigger(Events.EVENT_ITEM_CLICKED_SPEED, playlistItemModel);
 
 
@@ -192,6 +214,51 @@ namespace HTML5AudioPlayer.Components.Views {
                 playlistItemModel: Models.PlaylistItem = playlistItemView.model;
             playlistItemView.trigger(Events.EVENT_ITEM_CLICKED_SPEEDLIST, playlistItemModel);
         }
+
+
+        ccAudio(e: MouseEvent): void {
+            e.stopPropagation();
+            let playlistItemView: PlaylistItem = this,
+                playlistItemModel: Models.PlaylistItem = playlistItemView.model;
+            playlistItemView.trigger(Events.EVENT_ITEM_CLICKED_CC, playlistItemModel);
+
+        }
+        transcriptAudio(e: MouseEvent): void {
+            e.stopPropagation();
+            let playlistItemView: PlaylistItem = this,
+                playlistItemModel: Models.PlaylistItem = playlistItemView.model;
+            playlistItemView.trigger(Events.EVENT_ITEM_CLICKED_TRANSCRIPT, playlistItemModel);
+
+        }
+
+        backAudio(e: MouseEvent): void {
+            e.stopPropagation();
+            let playlistItemView: PlaylistItem = this,
+                playlistItemModel: Models.PlaylistItem = playlistItemView.model,
+                curItem : number = parseInt(playlistItemModel.Index);
+                if($(e.currentTarget).hasClass("chapt-enabled")){
+                    $(".playlist-item").eq(curItem-2).trigger("click")
+                }
+
+
+            //playlistItemView.trigger(Events.EVENT_ITEM_CLICKED_BACKAUDIO, playlistItemModel);
+
+        }
+
+        nextAudio(e: MouseEvent): void {
+            e.stopPropagation();
+            let playlistItemView: PlaylistItem = this,
+                playlistItemModel: Models.PlaylistItem = playlistItemView.model,
+                curItem : number = parseInt(playlistItemModel.Index);
+                if($(e.currentTarget).hasClass("chapt-enabled")){
+                    $(".playlist-item").eq(curItem).trigger("click")
+                }
+                //playlistItemView.$el.eq(1).trigger("click");
+
+            //playlistItemView.trigger(Events.EVENT_ITEM_CLICKED_NEXTAUDIO, playlistItemModel);
+
+        }
+
 
 
     }

@@ -58,6 +58,11 @@ namespace HTML5AudioPlayer.Components.Views {
                 playlistItemView.on(Events.EVENT_ITEM_CLICKED_SPEEDLIST, playlistView.speedListAudio, playlistView);
                 playlistItemView.on(Events.EVENT_ITEM_CLICKED_SPEED, playlistView.speedClickAudio, playlistView);
 
+                playlistItemView.on(Events.EVENT_ITEM_CLICKED_CC, playlistView.ccAudio, playlistView);
+                playlistItemView.on(Events.EVENT_ITEM_CLICKED_TRANSCRIPT, playlistView.transcriptAudio, playlistView);
+                playlistItemView.on(Events.EVENT_ITEM_CLICKED_BACKAUDIO, playlistView.backAudio, playlistView);
+                playlistItemView.on(Events.EVENT_ITEM_CLICKED_NEXTAUDIO, playlistView.nextAudio, playlistView);
+
                 playlistModel.enableAssessment();
                 //playlistItemView.afterRender()
 
@@ -371,6 +376,31 @@ namespace HTML5AudioPlayer.Components.Views {
             console.log("refreshAudio")
             let playlistView: Playlist = this;
             playlistView.trigger(Events.EVENT_ITEM_REFRESH);
+
+        }
+
+        ccAudio(): void {
+            console.log("ccAudio")
+            let playlistView: Playlist = this;
+            playlistView.trigger(Events.EVENT_ITEM_CC);
+
+        }
+        transcriptAudio(): void {
+            console.log("transcriptAudio")
+            let playlistView: Playlist = this;
+            playlistView.trigger(Events.EVENT_ITEM_TRANSCRIPT);
+
+        }
+        backAudio(): void {
+            console.log("transcriptAudio")
+            let playlistView: Playlist = this;
+            playlistView.trigger(Events.EVENT_ITEM_BACKAUDIO);
+
+        }
+        nextAudio(): void {
+            console.log("transcriptAudio")
+            let playlistView: Playlist = this;
+            playlistView.trigger(Events.EVENT_ITEM_NEXTAUDIO);
 
         }
         seekAudio(time: any): void {
