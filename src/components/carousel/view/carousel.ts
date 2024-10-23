@@ -33,6 +33,8 @@ namespace HTML5AudioPlayer.Components.Views {
                 carouselView._crouselItems.push(carouselItemView);
                 carouselItemView.on(Events.EVENT_CLICK_MENU, carouselView.toggleMenulist, carouselView);
             }
+
+            $(window).on('resize', carouselView.afterResize);
         }
 
         public events() {
@@ -81,6 +83,12 @@ namespace HTML5AudioPlayer.Components.Views {
             let carouselViewSlide: JQuery = carouselView.$el.find(".carousel-slide"),
                 carouselViewInner: JQuery = carouselView.$el.find("#carousel-content");
             carouselViewSlide.css("width", carouselViewInner.outerWidth());
+        }
+
+        @named
+        public afterResize():void{
+            $('.carousel-slide').css("width",$("#carousel-content").outerWidth());
+
         }
 
 

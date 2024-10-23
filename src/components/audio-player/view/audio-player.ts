@@ -479,7 +479,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 videoChanged: boolean = (audioPlayerModel._prevItemId !== audioPlayerModel.Playlist.CurrentItem.Id),
                 currentTime = audioPlayerView._myPlayer.currentTime();
 
-            console.log("onAudioTimeUpdate")
+            //console.log("onAudioTimeUpdate")
             audioPlayerView.updateProgress(audioPlayerView._myPlayer)
             if (videoChanged) {
                 Utilities.consoleTrace("Got time update after video changed, don't do anything.");
@@ -783,6 +783,7 @@ namespace HTML5AudioPlayer.Components.Views {
                         if (!cp.triggered) {
                             cp.triggered = true;
                             cp.visited = true;
+                           // alert(cp.id)
                             Utilities.consoleTrace("Trigger cue point event for: ", cp.id, audioPlayerView.cid, currentTime);
                             audioPlayerView.trigger(Events.EVENT_CUEPOINT_HIT, cp);
                             //alert("CP")
@@ -918,6 +919,7 @@ namespace HTML5AudioPlayer.Components.Views {
             }
             audioPlayerView.enable();
             audioPlayerModel.Playlist.enableAssessment();
+            $('.audio-player-template .play-pause').text('Play').addClass("play").removeClass("pause");
             //alert(1)
         }
 
@@ -1285,6 +1287,7 @@ namespace HTML5AudioPlayer.Components.Views {
             audioPlayerView.resetCuePointStatus();
             audioPlayerView.resetMicroPollStatus();
             audioPlayerView._myPlayer.play();
+            $('.audio-player-template .play-pause').text('Pause').addClass("pause").removeClass("play");
         }
 
         @named
@@ -1417,11 +1420,11 @@ namespace HTML5AudioPlayer.Components.Views {
             let audioPlayerView: AudioPlayer = this;
             if (audioPlayerView._myPlayer.paused()) {
                 audioPlayerView._myPlayer.play();
-                $('.audio-player-template .play-pause').text('Pause').addClass("pause").removeClass("play");;
+                $('.audio-player-template .play-pause').text('Pause').addClass("pause").removeClass("play");
 
             } else {
                 audioPlayerView._myPlayer.pause();
-                $('.audio-player-template .play-pause').text('Play').addClass("play").removeClass("pause");;
+                $('.audio-player-template .play-pause').text('Play').addClass("play").removeClass("pause");
 
             }
         }
@@ -1572,7 +1575,7 @@ namespace HTML5AudioPlayer.Components.Views {
         }
 
         private onItemClickedSpeedList(): void {
-            alert("onItemClickedSpeedList")
+            //alert("onItemClickedSpeedList")
         }
 
         private onItemClickedSpeed(): void {

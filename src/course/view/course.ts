@@ -114,7 +114,7 @@ namespace HTML5AudioPlayer.Views {
             let courseView: Course = this,
                 courseModel: Models.Course = courseView.model;
             Utilities.consoleTrace("Cuepoint hit: ", cp, courseView.cid);
-            //alert("cp "+cp.id)
+            ///alert("cp "+cp.id)
             courseView._player.enableKcItem(cp.id);
             courseModel.PlayerModel.sendDataToScorm();
 
