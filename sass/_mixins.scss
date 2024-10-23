@@ -250,6 +250,23 @@ background: linear-gradient(90deg, rgba(92,33,232,1) 0%, rgba(88,36,232,1) 20%, 
 
 }
 
+@mixin chapterCompleteIcon {
+    position: relative;
+
+    &::after {
+        content: "";
+        background: url("../resources/image/chapter_complete_icon.svg") no-repeat;
+        width: 11px;
+        height: 11px;
+        background-position: 0 0;
+        background-size: 11px 11px;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+
+}
+
 @mixin rangeThumb {
         position: relative;
         background: url("../resources/image/audio_controls/range_thumb.png") no-repeat;

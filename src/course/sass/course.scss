@@ -317,7 +317,7 @@
     }
 
     .course-body {
-        height: calc(80% - 45px);
+        height: calc(100% - 210px);
         display: inline-flex;
         width: 96%;
         position: relative;
@@ -405,6 +405,7 @@
 @media only screen and (min-width: 320px) and (max-width: 767px) {
     .course {
         overflow: auto;
+
         .course-leftpanel {
             display: none;
             position: absolute;
@@ -653,6 +654,14 @@
                 right: 10%;
                 bottom: 10%;
             }
+        }
+    }
+}
+
+@media screen and (min-width: 1900px) {
+    .course {
+        .course-body {
+            height: calc(100% - 285px);
         }
     }
 }

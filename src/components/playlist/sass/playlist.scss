@@ -106,7 +106,7 @@
 .playlist-container {
     float: left;
     width: 100%;
-    height: calc(100% - 20px);
+    height: 100%;
     position: relative;
     opacity: 1;
     padding-top: 0px;
@@ -213,12 +213,14 @@
 
         .playlist-left-right {
             display: flex;
+            height: 100%;
 
             .playlist-inner {
                 // height: calc(100% - 52px);
                 height: 100%;
                 // background: $colorWhite;
                 width: 70%;
+                margin-right: 15px;
 
                 .playlist-title {
                     font-size: $fontSizeStandard;
@@ -724,8 +726,9 @@
             }
 
             .knowledge-check-list-inner {
-                height: calc(100% - 52px);
+                height: 100%;
                 width: 30%;
+                overflow: auto;
 
                 .knowledge-checklist-title {
                     font-size: $fontSizeStandard;
@@ -756,6 +759,17 @@
                         color: $colorWhite;
                         // @include underlineFromLeft;
                         @include chapterUnlockIcon;
+
+                        &.kc-complete {
+                            background: $colorWhite;
+                            @include chapterCompleteIcon;
+
+                            .right-content {
+                                .item-index {
+                                    color: $colorCobaltBlue;
+                                }
+                            }
+                        }
 
                         .right-content {
                             .item-index {
@@ -888,7 +902,7 @@
 
                 .playlist-inner {
                     width: 100%;
-                    height: 500px;
+                    height: auto;
 
                     .playlist-item {
 
@@ -1149,7 +1163,7 @@
         margin: 0px 10px 10px 10px;
         padding-top: 5px;
         width: calc(100% - 20px);
-        height: calc(20% - 15px);
+        // height: calc(20% - 15px);
         right: 0px;
         display: block;
 

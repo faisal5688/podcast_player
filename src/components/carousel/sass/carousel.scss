@@ -13,7 +13,7 @@
     box-sizing: border-box;
 
     & > div {
-        overflow-x: hidden;
+        overflow: hidden;
     }
 }
 
@@ -49,11 +49,15 @@
     .carousel-txt-cont {
         position: absolute;
         top: 0;
+        bottom: 0;
         // left: 0;
-        padding: 15px 15px 20px 15px;
+        padding: 15px 15px 20px 30px;
         color: $colorWhite;
         text-align: left;
-        width: 93%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
 
         .car_img {
             padding-bottom: 10px;
@@ -80,6 +84,8 @@
             border-radius: 15px;
             border: 1px solid $colorPacificBlue;
             display: inline-block;
+            width: 15%;
+            text-align: center;
         }
     }
 }
@@ -142,13 +148,15 @@
                 display: block;
                 z-index: 1;
                 // left: 20px;
-                top: 20px;
+                top: 25px;
+                margin-left: 20px;
             }
 
             .carousel-txt-cont {
                 width: 100%;
                 box-sizing: border-box;
                 padding: 20px 10px 5px 20px;
+                justify-content: flex-start;
 
                 .car_img {
                     padding-left: 50px;
@@ -159,6 +167,9 @@
                 }
                 .car_txt2 {
                     font-size: 28px;
+                }
+                .car_txt3 {
+                    width: 36%;
                 }
             }
         }
