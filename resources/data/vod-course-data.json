@@ -259,7 +259,7 @@
                 "audio": "aud-000",
                 "time": "end",
                 "title": "Chapter 01: 3. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
-                "question": "This is KC 3. Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.",
+                "question": "This is KC 3.",
                 "instruction": "Select an answer and click Submit.",
                 "type": "mcss",
                 "attempts": 2,
@@ -268,19 +268,19 @@
                 ],
                 "options": [{
                         "id": "1",
-                        "text": "Option 1. Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus."
+                        "text": "Option 1."
                     },
                     {
                         "id": "2",
-                        "text": "Option 2. Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus."
+                        "text": "Option 2."
                     },
                     {
                         "id": "3",
-                        "text": "Option 3. Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus."
+                        "text": "Option 3."
                     },
                     {
                         "id": "4",
-                        "text": "Option 4. Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus."
+                        "text": "Option 4."
                     }
                 ],
                 "feedback": {
@@ -314,7 +314,7 @@
                 "audio": "aud-002",
                 "time": "10",
                 "title": "Chapter 03: 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
-                "question": "This is KC 4. Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.",
+                "question": "This is KC 4.",
                 "instruction": "Select all applicable answers and click Submit.",
                 "type": "mcms",
                 "attempts": 1,
@@ -324,27 +324,27 @@
                 ],
                 "options": [{
                         "id": "1",
-                        "text": "Option 1. Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus."
+                        "text": "Option 1."
                     },
                     {
                         "id": "2",
-                        "text": "Option 2. Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus."
+                        "text": "Option 2."
                     },
                     {
                         "id": "3",
-                        "text": "Option 3. Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus."
+                        "text": "Option 3."
                     },
                     {
                         "id": "4",
-                        "text": "Option 4. Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus."
+                        "text": "Option 4."
                     }
                 ],
                 "feedback": {
                     "title": "Feedback",
                     "generic": {
-                        "correct": "That's correct. Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.",
-                        "incorrect": "That's incorrect. Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.",
-                        "partial": "That's partially correct. Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus.Fusce vulputate dui sit amet diam tincidunt vestibulum. Etiam varius sagittis eros id rutrum. Nunc sodales felis a augue venenatis consectetur. Quisque non malesuada lacus."
+                        "correct": "That's correct. Fusce vulputate dui sit amet diam tincidunt vestibulum.",
+                        "incorrect": "That's incorrect. Fusce vulputate dui sit amet diam tincidunt vestibulum.",
+                        "partial": "That's partially correct. Fusce vulputate dui sit amet diam tincidunt vestibulum."
                     }
                 },
                 "submit": "Submit",

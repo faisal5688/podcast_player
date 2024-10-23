@@ -149,8 +149,17 @@ background: linear-gradient(90deg, rgba(92,33,232,1) 0%, rgba(88,36,232,1) 20%, 
 
 }
 
-@mixin ccTextBtn {
+@mixin ccTextDisableBtn {
     background: url("../resources/image/audio_controls/cc_text_btn.svg") no-repeat;
+    width: 16px;
+    height: 14px;
+    background-position: center center;
+    background-size: 16px 14px;
+
+}
+
+@mixin ccTextEnableBtn {
+    background: url("../resources/image/audio_controls/cc_text_enabled_btn.svg") no-repeat;
     width: 16px;
     height: 14px;
     background-position: center center;

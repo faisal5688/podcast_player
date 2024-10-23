@@ -446,12 +446,12 @@
                             }
 
                             .cc_text_btn {
-                                @include ccTextBtn;
                                 border: none;
                                 cursor: pointer;
                                 margin: 0 10px;
 
                                 &.captions-enabled {
+                                    @include ccTextEnableBtn;
                                     //background: url(../resources/image/captions_icon.png) no-repeat 0 0;
 
                                     opacity: 1;
@@ -463,6 +463,7 @@
                                 }
 
                                 &.captions-disabled {
+                                    @include ccTextDisableBtn;
                                     //background: url(../resources/image/captions_icon.png) no-repeat -80px 0;
 
                                     opacity: 0.5;
@@ -988,6 +989,7 @@
                             }
                             .item-title {
                                 font-size: $fontSizeMini;
+                                line-height: 16px;
                                 padding-right: 5px;
                             }
                         }

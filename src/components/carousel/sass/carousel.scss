@@ -84,7 +84,8 @@
             border-radius: 15px;
             border: 1px solid $colorPacificBlue;
             display: inline-block;
-            width: 15%;
+            max-width: 120px;
+            box-sizing: border-box;
             text-align: center;
         }
     }
@@ -168,9 +169,6 @@
                 .car_txt2 {
                     font-size: 28px;
                 }
-                .car_txt3 {
-                    width: 36%;
-                }
             }
         }
 
@@ -178,6 +176,11 @@
             transform: none;
             left: auto;
             right: 5%;
+
+            button {
+                width: 10px;
+                height: 10px;
+            }
         }
     }
 }
