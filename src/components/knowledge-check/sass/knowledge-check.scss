@@ -162,7 +162,7 @@
                             color: $colorGray20;
                             line-height: 18px;
                             padding-bottom: $fontSizeMicro;
-                            text-align: justify;
+                            text-align: left;
                             padding: 25px 20px 22px 20px;
                         }
                     }
@@ -473,6 +473,49 @@
 
 // Mobile Landscape
 @media only screen and (max-width: 767px) and (orientation: landscape) {
+
+}
+
+// mobile Landscape
+@media only screen and (min-width: 1px) and (max-width: 767px) and (orientation: landscape) {
+    .knowledge-check-container {
+
+        .knowledge-check {
+
+            .mCSB_container {
+
+                .knowledge-check-que-cont {
+
+                    .knowledge-check-left {
+
+                        .question-container {
+
+                            .question-text {
+                                font-size: 12px;
+                                line-height: 16px;
+                            }
+                        }
+
+                        .question-data {
+                            .instruction {
+                                font-size: 12px;
+                                line-height: 16px;
+                            }
+                            .options {
+
+                                .option {
+
+                                    label {
+                                        font-size: 16px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 
 }
 

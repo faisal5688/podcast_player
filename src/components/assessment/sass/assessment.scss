@@ -5,8 +5,8 @@
 .assessment-container {
     position: absolute;
     width: 100%;
-    height: calc(100% - 45px);
-    top: 45px;
+    height: 100%;
+    top: 0px;
     z-index: 1;
     display: none;
     overflow-y: auto;
@@ -179,10 +179,10 @@
                 font-size: $fontSizeStandard;
                 font-weight: bold;
                 color: $colorBlue;
-                line-height: 18px;
+                line-height: 20px;
                 padding: 25px 50px 25px 8%;
                 margin-top: 0px;
-                text-align: justify;
+                text-align: left;
                 box-sizing: border-box;
             }
         }
@@ -219,7 +219,7 @@
                 padding-right: 0px;
                 padding-bottom: $fontSizeMicro;
                 position: relative;
-                text-align: justify;
+                text-align: left;
                 display: flex;
 
                 .ck-option {
@@ -260,7 +260,7 @@
                         + {
                             label {
                                 &:before {
-                                    height: 14px;
+                                    height: 17px;
                                     background: $colorWhite;
                                 }
 
@@ -273,7 +273,7 @@
                         + {
                             label {
                                 &:before {
-                                    height: $fontSizeMini;
+                                    height: 17px;
                                     background: $colorWhite;
                                 }
 
@@ -632,8 +632,8 @@
 // mobile both
 @media only screen and (min-width: 320px) and (max-width: 767px) {
     .assessment-container {
-        height: calc(100% - 40px);
-        top: 40px;
+        height: 100%;
+        top: 0px;
 
         .assessment {
             position: absolute;
@@ -645,6 +645,8 @@
             color: $colorWhite;
 
             .question-container {
+                margin-top: 30px;
+
                 .page-number {
                     width: 7%;
                     top: 10px;
@@ -670,12 +672,12 @@
 // Mobile Landscape
 @media only screen and (max-width: 767px) and (orientation: landscape) {
     .assessment-container {
-        height: calc(100% - 40px);
-        top: 40px;
+        height: 100%;
+        top: 0px;
 
         .assessment {
             width: calc(100% - 40px);
-            height: calc(100% - 40px);
+            height: 100%;
 
             .question-data {
                 padding-left: 10%;
@@ -694,7 +696,7 @@
 // iPad landscape
 @media only screen and (max-width: 1024px) and (orientation: landscape) {
     .assessment-container {
-        top: 40px;
+        top: 0px;
 
         .assessment {
             .question-container {
@@ -763,7 +765,7 @@
 
                 .rightBox {
                     width: 100%;
-                    height: 410px;
+                    height: 438px;
                     display: block;
                     background: $colorBlue;
                     color: $colorWhite;
@@ -782,7 +784,7 @@
         .assessment {
             .question-container {
                 .question-text {
-                    padding: 25px 20px 45px 90px;
+                    padding: 25px 20px 25px 90px;
                 }
 
                 .page-number {
@@ -796,7 +798,7 @@
         }
 
         .assesmentShadow {
-            height: 680px;
+            height: 378px;
 
             .resultMain {
                 height: 522px;

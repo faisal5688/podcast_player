@@ -118,11 +118,11 @@
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
-    display: flex;
+    display: block;
 }
 
 .carousel-indicators button {
-    width: 15px;
+    width: 10px;
     height: 15px;
     border-radius: 50%;
     background-color: transparent;
@@ -179,7 +179,7 @@
 
             button {
                 width: 10px;
-                height: 10px;
+                height: 20px;
             }
         }
     }

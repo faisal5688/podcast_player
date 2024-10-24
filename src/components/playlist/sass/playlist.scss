@@ -1110,6 +1110,7 @@
                     width: 100%;
 
                     .playlist-item {
+                        min-height: 100px;
 
                         &.current {
                             flex-direction: column;
@@ -1148,12 +1149,35 @@
                             }
 
                         }
+
+                        .right-content {
+
+                            .item-index {
+                                font-size: 12px;
+                                line-height: 16px;
+                            }
+
+                            .item-title {
+                                font-size: 12px;
+                                line-height: 16px;
+                            }
+                        }
                     }
                 }
 
                 .knowledge-check-list-inner {
                     height: auto;
                     width: 100%;
+
+                    .knowledge-check-item {
+
+                        .right-content {
+
+                            .item-index {
+                                font-size: 18px;
+                            }
+                        }
+                    }
                 }
             }
         }
