@@ -119,6 +119,7 @@ namespace HTML5AudioPlayer.Components.Views {
             knowledgeCheckView.reset();
             knowledgeCheckView.$(".feedback").hide();
             knowledgeCheckView.closeQuetion();
+
         }
 
         private onContinue(e: any): void {
@@ -180,9 +181,10 @@ namespace HTML5AudioPlayer.Components.Views {
         private onClose(e: any): void {
             let knowledgeCheckView: KnowledgeCheck = this,
                 knowledgeCheckModel: Models.KnowledgeCheck = knowledgeCheckView.model;
-            knowledgeCheckView.reset();
+            //knowledgeCheckView.reset();
             knowledgeCheckView.$(".feedback").hide();
             knowledgeCheckView.$(".feedback-container").hide();
+            knowledgeCheckView.$('input[name=kc-option]').prop('disabled', true);
             //knowledgeCheckView.trigger(Events.EVENT_KC_NEXT, knowledgeCheckModel.Current);
         }
 
@@ -226,6 +228,8 @@ namespace HTML5AudioPlayer.Components.Views {
             knowledgeCheckView.$(".feedback-container").fadeIn(200);
             knowledgeCheckView.$(".question-data .ck-close-btn").removeAttr("disabled").removeClass("disabled");
             knowledgeCheckView.$(".ck-submit-btn").attr("disabled", "true").addClass("disabled");
+            //knowledgeCheckView.$('input[name=kc-option]').prop("checked", true).prop('disabled', true);
+
 
             if (DataStructures.KCFeedbackType.Generic === knowledgeCheckModel.Current.feedback.type) {
 
@@ -265,7 +269,7 @@ namespace HTML5AudioPlayer.Components.Views {
             }
 
             if (remainingAttempts) {
-                knowledgeCheckView.$(".ck-try-again-btn").show();
+                knowledgeCheckView.$(".ck-try-again-btn").hide();
                 knowledgeCheckView.$(".ck-continue-btn").hide();
             }
             else {
