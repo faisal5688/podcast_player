@@ -227,7 +227,10 @@ namespace HTML5AudioPlayer.Views {
             courseView._player.markKcKCItemComplete(kc.id);
             courseModel.PlayerModel.sendDataToScorm();
             //courseModel.ScormPreviousData.CuePoints =courseModel.KnowledgeCheck.CuePoints
-
+            if (courseView.wasPlaying) {
+                courseView._player.play();
+                courseView.wasPlaying = false;
+            }
             //kcItemActiveList
             courseView._knowledgeCheck.destroy();
         }
