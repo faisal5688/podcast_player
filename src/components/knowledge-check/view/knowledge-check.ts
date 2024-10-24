@@ -184,7 +184,8 @@ namespace HTML5AudioPlayer.Components.Views {
             //knowledgeCheckView.reset();
             knowledgeCheckView.$(".feedback").hide();
             knowledgeCheckView.$(".feedback-container").hide();
-            knowledgeCheckView.$('input[name=kc-option]').prop('disabled', true);
+            knowledgeCheckView.$('input[name=kc-option]').prop('disabled', true).closest('label').addClass('disabled-label');;
+            knowledgeCheckView.$('label').addClass('disabled-label');
             //knowledgeCheckView.trigger(Events.EVENT_KC_NEXT, knowledgeCheckModel.Current);
         }
 
