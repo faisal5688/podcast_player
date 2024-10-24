@@ -177,3 +177,18 @@
         }
     }
 }
+
+// custom
+@media screen and (max-width: 768px) {
+
+    .modal-background {
+
+        &.fade {
+
+            .modal-dialog {
+                width: 85%;
+            }
+        }
+    }
+
+}

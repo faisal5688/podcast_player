@@ -113,7 +113,7 @@
                     }
 
                     .instText {
-                        color: $colorPurple;
+                        font-weight: bold;
                         font-style: italic;
                     }
                 }
@@ -176,7 +176,7 @@
             .question-text {
                 @include floatLeft;
                 width: 100%;
-                font-size: $fontSizeStandard;
+                font-size: $fontSizeStandard !important;
                 font-weight: bold;
                 color: $colorBlue;
                 line-height: 20px;
@@ -675,12 +675,24 @@
         height: 100%;
         top: 0px;
 
+        .startAssessment {
+
+            .startAssessment-container {
+
+                .rightBox {
+                    height: 490px;
+                }
+            }
+        }
+
         .assessment {
             width: calc(100% - 40px);
             height: 100%;
 
             .question-data {
                 padding-left: 10%;
+                width: 97%;
+
             }
         }
 
@@ -713,6 +725,7 @@
 
             .question-data {
                 padding-left: 8%;
+                width: 97%;
             }
         }
 
@@ -741,6 +754,7 @@
 
             .question-data {
                 padding-left: 10%;
+                width: 97%;
             }
         }
 
@@ -765,7 +779,7 @@
 
                 .rightBox {
                     width: 100%;
-                    height: 438px;
+                    height: 490px;
                     display: block;
                     background: $colorBlue;
                     color: $colorWhite;
@@ -782,9 +796,12 @@
         }
 
         .assessment {
+            height: 100%;
+
             .question-container {
                 .question-text {
                     padding: 25px 20px 25px 90px;
+                    line-height: 18px;
                 }
 
                 .page-number {
@@ -794,6 +811,10 @@
                         font-size: 55px;
                     }
                 }
+            }
+
+            .question-data {
+                width: 97%;
             }
         }
 
@@ -868,6 +889,16 @@
         }
 
 
+    }
+
+    .modal-background {
+
+        &.fade {
+
+            .modal-dialog {
+                width: 85%;
+            }
+        }
     }
 
 }

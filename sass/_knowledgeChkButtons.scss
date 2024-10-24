@@ -12,6 +12,7 @@
         cursor: pointer;
         line-height: 20px;
         display: inline-block;
+        font-size: 16px !important;
 }
     [type="radio"]:checked+label:before,
     [type="radio"]:not(:checked)+label:before {
@@ -112,3 +113,20 @@
         color: $colorGray94;
     }
 }
+
+
+
+// @media only screen and (min-width: 725px) and (max-width: 740px) and (orientation: landscape) {
+//     .assessment-container {
+
+//         .assessment {
+
+//             .options {
+
+//                 &[type=radio]:not(:checked) {
+
+//                 }
+//             }
+//         }
+//     }
+// }
