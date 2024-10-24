@@ -73,9 +73,9 @@
         "completiondelta": 5,
         "continueOnFocusout": true,
         "messages": {
-            "nosupport": "To view this video please enable JavaScript, and consider upgrading to a web browser that <a href='http://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>",
-            "loading": "Please wait video is loading...",
-            "seeking": "Please wait, video is seeking...",
+            "nosupport": "To view this Audio please enable JavaScript, and consider upgrading to a web browser that <a href='http://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>",
+            "loading": "Please wait Audio is loading...",
+            "seeking": "Please wait, Audio is seeking...",
             "failTitle": "",
             "failMessage": "An error has occured while playing the video.<BR>Please click Retry to reload the video.",
             "buttons": [{
@@ -262,7 +262,7 @@
                 "question": "This is KC 3.",
                 "instruction": "Select an answer and click Submit.",
                 "type": "mcss",
-                "attempts": 2,
+                "attempts": 1,
                 "correct": [
                     "4"
                 ],

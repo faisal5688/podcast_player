@@ -218,7 +218,7 @@ namespace HTML5AudioPlayer.Components.Models {
                             model.supposedCurrentTime = curVidData.currenttime;
                         }
                     }
-                    // if course mode is CPE, then enable the item only if previous video is complete.
+                    // if course mode is CPE, then enable the item only if previous Audio is complete.
                     curVidData.disabled = (model.CourseMode === DataStructures.CourseMode.CPE) ? !prevVidComplete : false;
                     // then set the prevVidComplete to current video's complete status
                     // to use for next item.
