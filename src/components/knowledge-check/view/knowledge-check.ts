@@ -63,6 +63,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 knowledgeCheckView.$(".ck-back-btn").removeClass("disabled").removeAttr("disabled")
             }
             knowledgeCheckView.$(".question-data .ck-close-btn").removeClass("disabled").removeAttr("disabled");
+            knowledgeCheckView.updateNextBackUI();
             return knowledgeCheckView;
         }
 
@@ -224,6 +225,7 @@ namespace HTML5AudioPlayer.Components.Views {
 
             knowledgeCheckView.$(".feedback-container").fadeIn(200);
             knowledgeCheckView.$(".question-data .ck-close-btn").removeAttr("disabled").removeClass("disabled");
+            knowledgeCheckView.$(".ck-submit-btn").attr("disabled", "true").addClass("disabled");
 
             if (DataStructures.KCFeedbackType.Generic === knowledgeCheckModel.Current.feedback.type) {
 

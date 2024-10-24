@@ -20,6 +20,7 @@ namespace HTML5AudioPlayer.Views {
         private _survey: Components.Views.Survey;
         private _carousel: Components.Views.Carousel;
         private _item: Components.Models.PlaylistItem;
+        private wasPlaying = false;
 
         constructor(options: any) {
             super(options);
@@ -127,7 +128,10 @@ namespace HTML5AudioPlayer.Views {
             let courseView: Course = this,
                 courseModel: Models.Course = courseView.model;
             Utilities.consoleTrace("Cuepoint hit: ", cp, courseView.cid);
-            courseView._player.pause();
+            if (!courseView._player.paused()) {
+                courseView._player.pause();
+                courseView.wasPlaying = true;
+            }
             if ((courseModel.CourseMode === DataStructures.CourseMode.CPE) &&
                 courseModel.KnowledgeCheck.Enabled) {
                 courseModel.KnowledgeCheck.setCurrentKC(cp.id);
@@ -169,10 +173,10 @@ namespace HTML5AudioPlayer.Views {
                 courseModel: Models.Course = courseView.model,
                 curIndex: number = increment ? (kc.index + 2) : kc.index + 1,
                 curKcId: string = "kc-00" + curIndex;
-            console.log(kc)
+            //console.log(kc)
 
-            courseView._player.markKcKCItemComplete(kc.id);
-            courseModel.PlayerModel.sendDataToScorm();
+            //courseView._player.markKcKCItemComplete(kc.id);
+           //courseModel.PlayerModel.sendDataToScorm();
             kc = courseView._knowledgeCheck.model.KnowledgeChecks[courseView._knowledgeCheck.getIndex() - 1];
             courseView._knowledgeCheck.destroy();
             courseView.onCuePointHitList(courseModel.KnowledgeCheck.getCurrentCuePointsById(curKcId)[0], curIndex);
@@ -231,6 +235,10 @@ namespace HTML5AudioPlayer.Views {
                 curKcId: string = "kc-00" + curIndex;
             kc = courseView._knowledgeCheck.model.KnowledgeChecks[courseView._knowledgeCheck.getIndex() - 1];
             courseView._knowledgeCheck.destroy();
+            if (courseView.wasPlaying) {
+                courseView._player.play();
+                courseView.wasPlaying = false;
+            }
         }
 
 
