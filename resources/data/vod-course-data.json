@@ -139,7 +139,7 @@
 
             {
                 "id": "assessment",
-                "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+                "title": "Assessment",
                 "isAssessment": true,
                 "thumbnail": "resources/image/thumbs/assessment.png"
             }
