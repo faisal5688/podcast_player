@@ -51,6 +51,8 @@ namespace HTML5AudioPlayer.Events {
 
 
 
+
+
     export let EVENT_ITEM_CLICKED_TOGGLE: string = "item-click-playPause";
     export let EVENT_ITEM_CLICKED_REFRESH: string = "item-click-refresh";
     export let EVENT_ITEM_CLICKED_SEEK: string = "item-click-seek";
@@ -73,6 +75,7 @@ namespace HTML5AudioPlayer.Events {
     export let EVENT_KC_NEXT: string = "KC_NEXT";
     export let EVENT_KC_Back: string = "KC_Back";
 
+    export let EVENT_TOGGLEMENU: string = "EVENT_TOGGLEMENU";
 
 
 

@@ -142,6 +142,7 @@ namespace HTML5AudioPlayer.Components.Views {
             //             .addClass("to-small-width");
             //     //}
             // }
+            carouselView.trigger(Events.EVENT_TOGGLEMENU, carouselModel);
             carouselView.toggle();
         }
         public toggle(): void {
