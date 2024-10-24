@@ -10,11 +10,11 @@
     z-index: 1;
     display: none;
     overflow-y: auto;
-    background-color: rgba($colorBlack, 0.60);
+    background-color: rgba(0, 0, 0, 0.6);
 
     .feedback-container {
         @include commonProperty;
-        background-color: rgba(255, 255, 255, 0.5);
+        background-color: rgba(0, 0, 0, 0.3);
         z-index: 0;
         overflow: hidden;
 

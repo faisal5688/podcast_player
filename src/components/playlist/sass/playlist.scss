@@ -426,6 +426,7 @@
 
                                 &.chapt-disabled {
                                     opacity: 0.5;
+                                    cursor: default;
                                 }
                             }
 
@@ -441,6 +442,7 @@
 
                                 &.chapt-disabled {
                                     opacity: 0.5;
+                                    cursor: default;
                                 }
                             }
 
@@ -520,7 +522,7 @@
                                 background: transparent;
                                 position: absolute;
                                 top: -11px;
-                                left: 0;
+                                left: -2px;
                                 right: 0;
                                 overflow: hidden;
                             }
