@@ -81,6 +81,7 @@ interface VideoJSPlayer {
 	textTracks(): TextTrackList;
 	videoWidth(): number;
 	videoHeight(): number;
+    muted(muted?: boolean): boolean;
 	one(evtName: string, callback: any);
 	error_: {
 		code: number;

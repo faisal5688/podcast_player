@@ -116,7 +116,7 @@ namespace HTML5AudioPlayer.Components.Models {
             //model.Playlist.CuePoints = model.CuePoints;
 
             // TEMP Change for Video Autoplay
-            //model.PlayerOptions.muted = false;
+            model.PlayerOptions.muted = false;
             model.PlayerOptions.autoplay = false;
 
             //model.Poster = model.Playlist.CurrentItem.PreviewImage;

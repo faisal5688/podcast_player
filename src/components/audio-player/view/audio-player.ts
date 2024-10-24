@@ -38,6 +38,7 @@ namespace HTML5AudioPlayer.Components.Views {
             'seeking': () => void;
             'seeked': () => void;
             'playing': () => void;
+            'muted': () => void;
         };
 
         // This is used to store player play/pause status while opening and closing playlist on iPhone.
@@ -71,7 +72,8 @@ namespace HTML5AudioPlayer.Components.Views {
                 'error': audioPlayerView.onError.bind(audioPlayerView),
                 'seeking': audioPlayerView.onSeeking.bind(audioPlayerView),
                 'seeked': audioPlayerView.onSeeked.bind(audioPlayerView),
-                'playing': audioPlayerView.onPlaying.bind(audioPlayerView)
+                'playing': audioPlayerView.onPlaying.bind(audioPlayerView),
+                'muted': audioPlayerView.onMuted.bind(audioPlayerView)
             };
 
             audioPlayerView._playlist = new Playlist({
@@ -89,7 +91,7 @@ namespace HTML5AudioPlayer.Components.Views {
             console.log(audioPlayerModel.Playlist)
 
 
-            audioPlayerView._playlist.on(Events.EVENT_SELECTION_CHANGE, audioPlayerView.onVideoChanged, audioPlayerView);
+            audioPlayerView._playlist.on(Events.EVENT_SELECTION_CHANGE, audioPlayerView.onAudioChanged, audioPlayerView);
             audioPlayerView._playlist.on(Events.EVENT_SHOW_GLOSSARY, audioPlayerView.onShowGlossary, audioPlayerView);
             audioPlayerView._playlist.on(Events.EVENT_SHOW_INDEX, audioPlayerView.onShowIndex, audioPlayerView);
             audioPlayerView._playlist.on(Events.EVENT_SHOW_RESOURCES, audioPlayerView.onShowResource, audioPlayerView);
@@ -112,6 +114,7 @@ namespace HTML5AudioPlayer.Components.Views {
             audioPlayerView._playlist.on(Events.EVENT_ITEM_TRANSCRIPT, audioPlayerView.onItemClickedTranscript, audioPlayerView);
             audioPlayerView._playlist.on(Events.EVENT_ITEM_BACKAUDIO, audioPlayerView.onItemClickedBackaudio, audioPlayerView);
             audioPlayerView._playlist.on(Events.EVENT_ITEM_NEXTAUDIO, audioPlayerView.onItemClickedNextaudio, audioPlayerView);
+            audioPlayerView._playlist.on(Events.EVENT_ITEM_ONOFFAUDIO, audioPlayerView.onItemClickedOnoffaudio, audioPlayerView);
 
 
 
@@ -152,8 +155,7 @@ namespace HTML5AudioPlayer.Components.Views {
             // let crouserContainer: JQuery = audioPlayerView.$(".carousel-container");
             // crouserContainer.append(this._crousel.render().$el);
 
-            // console.log("audioPlayerModel.CuePoints")
-            // console.log(audioPlayerModel.CuePoints)
+
             return audioPlayerView;
         }
 
@@ -242,6 +244,12 @@ namespace HTML5AudioPlayer.Components.Views {
         }
 
         @named
+        private onMuted(state:Boolean):void{
+            let audioPlayerView: AudioPlayer = this;
+            //audioPlayerView._myPlayer.muted()
+        }
+
+        @named
         private onVisibilitychange(): void {
             let audioPlayerView: AudioPlayer = this;
             Utilities.consoleLog("visibilityState: ", document.visibilityState);
@@ -312,7 +320,7 @@ namespace HTML5AudioPlayer.Components.Views {
                         audioPlayerView.enable(false, "Retrying manually.");
                         setTimeout(() => {
                             audioPlayerModel._startPlayingOnError = true;
-                            audioPlayerView.changeVideo(audioPlayerView.model.Playlist.CurrentItem);
+                            audioPlayerView.changeAudio(audioPlayerView.model.Playlist.CurrentItem);
                         }, 500);
                     }
                 });
@@ -327,7 +335,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 // wait for half a second before retrying...
                 setTimeout(() => {
                     audioPlayerModel._startPlayingOnError = true;
-                    audioPlayerView.changeVideo(audioPlayerView.model.Playlist.CurrentItem);
+                    audioPlayerView.changeAudio(audioPlayerView.model.Playlist.CurrentItem);
                 }, 500);
             }
         }
@@ -341,7 +349,9 @@ namespace HTML5AudioPlayer.Components.Views {
             audioPlayerView.addScrubRestricter(audioPlayerView._myPlayer);
 
             audioPlayerView.addButtonsToPlayer();
+            console.log("updateTexttrack 1");
             audioPlayerView.updateTexttrack();
+
             // audioPlayerView._myPlayer.play();
         }
 
@@ -406,7 +416,7 @@ namespace HTML5AudioPlayer.Components.Views {
 
             audioPlayerView.addPlayerButton(audioPlayerView._myPlayer, "replayButton", "Rewind",
                 function (): void {
-                    audioPlayerView.restartVideo();
+                    audioPlayerView.restartAudio();
                 },
                 function () {
                     return "vjs-icon-replay vjs-control vjs-button";
@@ -426,9 +436,9 @@ namespace HTML5AudioPlayer.Components.Views {
                 },
                 function () {
                     //alert(audioPlayerModel.CaptionsEnabled)
-                    if(audioPlayerModel.CaptionsEnabled){
+                    if (audioPlayerModel.CaptionsEnabled) {
                         $(".cc_text_btn").addClass("captions-enabled").removeClass("captions-disabled");
-                    }else{
+                    } else {
                         $(".cc_text_btn").addClass("captions-disabled").removeClass("captions-enabled");
                     }
                     return "vjs-icon-toggle-captions vjs-control vjs-button " + (audioPlayerModel.CaptionsEnabled ? "captions-enabled" : "captions-disabled");
@@ -479,7 +489,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 videoChanged: boolean = (audioPlayerModel._prevItemId !== audioPlayerModel.Playlist.CurrentItem.Id),
                 currentTime = audioPlayerView._myPlayer.currentTime();
 
-            console.log("onAudioTimeUpdate")
+            //console.log("onAudioTimeUpdate")
             audioPlayerView.updateProgress(audioPlayerView._myPlayer)
             if (videoChanged) {
                 Utilities.consoleTrace("Got time update after video changed, don't do anything.");
@@ -582,7 +592,7 @@ namespace HTML5AudioPlayer.Components.Views {
 
         public kcItemActiveList(): number {
             let audioPlayerView: AudioPlayer = this,
-            audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
+                audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
             return audioPlayerModel.Playlist.kcItemActiveList();
         }
 
@@ -611,9 +621,9 @@ namespace HTML5AudioPlayer.Components.Views {
             let audioPlayerView: AudioPlayer = this,
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
 
-                let CurrentItem = audioPlayerModel.Playlist.KnowledgeCheckItems.filter((val) => {
-                    return val.attributes.id === vidId;
-                })[0];
+            let CurrentItem = audioPlayerModel.Playlist.KnowledgeCheckItems.filter((val) => {
+                return val.attributes.id === vidId;
+            })[0];
             return CurrentItem.Complete;
 
         }
@@ -633,7 +643,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 return val.id === vidId;
             })[0];
             //console.log("markKcKCItemComplete CurrentItem")
-           // console.log(CurrentItem.Kccomplete)
+            // console.log(CurrentItem.Kccomplete)
             //CurrentCueItem.completed = true;
             console.log("****************************************************")
             console.log(CurrentItem)
@@ -779,10 +789,13 @@ namespace HTML5AudioPlayer.Components.Views {
 
                     delta = Math.abs(currentTime - cp.time);
 
+
+
                     if ((cp.time === currentTime) || (delta <= audioPlayerModel.CuePointDelta)) {
                         if (!cp.triggered) {
                             cp.triggered = true;
                             cp.visited = true;
+                            //alert(cp.id)
                             Utilities.consoleTrace("Trigger cue point event for: ", cp.id, audioPlayerView.cid, currentTime);
                             audioPlayerView.trigger(Events.EVENT_CUEPOINT_HIT, cp);
                             //alert("CP")
@@ -918,6 +931,7 @@ namespace HTML5AudioPlayer.Components.Views {
             }
             audioPlayerView.enable();
             audioPlayerModel.Playlist.enableAssessment();
+            $('.audio-player-template .play-pause').text('Play').addClass("play").removeClass("pause");
             //alert(1)
         }
 
@@ -950,33 +964,32 @@ namespace HTML5AudioPlayer.Components.Views {
         }
 
         @named
-        private onVideoChanged(item: Models.PlaylistItem): void {
-            //alert("onVideoChanged 1")
+        private onAudioChanged(item: Models.PlaylistItem): void {
             let audioPlayerView: AudioPlayer = this;
 
-            Utilities.consoleLog("Video Changed to: " + item.Id);
+            Utilities.consoleLog("Audio Changed to: " + item.Id);
 
             audioPlayerView.enable(false);
 
-            // if video is playing, pause the video and make any changes only after video is paused
+            // if Audio is playing, pause the Audio and make any changes only after Audio is paused
             if (audioPlayerView._myPlayer.paused()) {
-                Utilities.consoleTrace("Player paused, safe to change the video.");
-                audioPlayerView.changeVideo(item);
+                Utilities.consoleTrace("Player paused, safe to change the Audio.");
+                audioPlayerView.changeAudio(item);
             }
             else {
-                Utilities.consoleTrace("Player not paused, first pause the video and then change the video.");
+                Utilities.consoleTrace("Player not paused, first pause the Audio and then change the Audio.");
                 audioPlayerView._myPlayer.one('pause', function (): void {
-                    audioPlayerView.changeVideo(item);
+                    audioPlayerView.changeAudio(item);
                 });
             }
             audioPlayerView.pause();
         }
 
         @named
-        private changeVideo(item: Models.PlaylistItem): void {
+        private changeAudio(item: Models.PlaylistItem): void {
             let audioPlayerView: AudioPlayer = this,
                 audioPlayerModel: Models.AudioPlayer = this.model,
-                updatingSameVideo: boolean = (audioPlayerModel._prevItemId === audioPlayerModel.Playlist.CurrentItem.Id);
+                updatingSameAudio: boolean = (audioPlayerModel._prevItemId === audioPlayerModel.Playlist.CurrentItem.Id);
 
             audioPlayerView._myPlayer.src(item.Url);
             item.NumQuestions = audioPlayerModel.CuePoints.length;
@@ -984,14 +997,15 @@ namespace HTML5AudioPlayer.Components.Views {
             Utilities.consoleTrace("Prev Item: ", audioPlayerModel._prevItemId,
                 ", Current Item: ", item.Id);
 
-            // only if not updating to current video.
-            if (!updatingSameVideo) {
+            // only if not updating to current Audio.
+            if (!updatingSameAudio) {
                 Utilities.consoleTrace("Changed to: ", item);
                 audioPlayerModel._prevItemId = item.Id;
                 //audioPlayerModel.Poster = item.PreviewImage;
                 //audioPlayerView._myPlayer.poster(audioPlayerModel.Poster);
                 audioPlayerView.updateAudioDesc();
-                audioPlayerView.updateTexttrack();
+
+
 
                 audioPlayerModel.maxVisitedTime = item.CurrentTime;
                 audioPlayerModel.lastUpdateTime = audioPlayerModel.maxVisitedTime;
@@ -1000,7 +1014,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 audioPlayerModel.ScormPreviousData.feedback = "liked"
                 let scorm: Utilities.ScormWrapper = Utilities.ScormWrapper.Instance,
                     scormData: string = JSON.stringify(audioPlayerModel.ScormPreviousData);
-                Utilities.consoleTrace("Updating current video to scorm: ", scormData);
+                Utilities.consoleTrace("Updating current Audio to scorm: ", scormData);
                 if (scorm.setLessonLocation(scormData)) {
                     if (!scorm.commit()) {
                         Utilities.consoleWarn("Warning: Failed to COMMIT the set value to scorm. value: ", scormData);
@@ -1010,6 +1024,8 @@ namespace HTML5AudioPlayer.Components.Views {
                     Utilities.consoleWarn("Failed to set value to scorm. Value: ", scormData);
                 }
                 audioPlayerView.trigger(Events.EVENT_SELECTION_CHANGE, item);
+                console.log("updateTexttrack 2");
+               audioPlayerView.updateTexttrack();
                 //audioPlayerView.trigger(Events.EVENT_AUDIOPLAYER_CHANGE, item);
 
             }
@@ -1056,7 +1072,12 @@ namespace HTML5AudioPlayer.Components.Views {
                 textTracks: TextTrackList = null;
 
             if (audioPlayerView._currentTextTrack) {
-                audioPlayerView._currentTextTrack.off('cuechange');
+                if (audioPlayerView._currentTextTrack) {
+                    //audioPlayerView._currentTextTrack.removeEventListener('cuechange', audioPlayerView.onCueChange);
+                    audioPlayerView._currentTextTrack.off('cuechange', audioPlayerView.onCueChange);
+                } else {
+                    console.error('Text track is not available.');
+                }
                 audioPlayerView._myPlayer.removeRemoteTextTrack(audioPlayerView._currentTextTrack);
             }
 
@@ -1072,9 +1093,17 @@ namespace HTML5AudioPlayer.Components.Views {
                     default: audioPlayerModel.CaptionsEnabled
                 }, true);
                 textTracks = audioPlayerView._myPlayer.textTracks();
+                console.log("textTracks")
+                console.log(textTracks.length)
+                console.log(textTracks)
                 if (textTracks && textTracks.length > 0) {
                     audioPlayerView._currentTextTrack = textTracks[0];
-                    audioPlayerView._currentTextTrack.on('cuechange', audioPlayerView.onCueChange.bind(audioPlayerView));
+                    if (audioPlayerView._currentTextTrack) {
+                        audioPlayerView._currentTextTrack.on('cuechange', audioPlayerView.onCueChange.bind(audioPlayerView));
+                        //audioPlayerView._currentTextTrack.addEventListener('cuechange', audioPlayerView.onCueChange.bind(audioPlayerView));
+                    } else {
+                        console.error('Text track is not available.');
+                    }
                 }
                 audioPlayerView.$(".vjs-control-bar .vjs-icon-toggle-captions").removeClass("hide");
                 audioPlayerView.$(".vjs-control-bar .vjs-icon-tumblr").addClass("hide");
@@ -1127,6 +1156,7 @@ namespace HTML5AudioPlayer.Components.Views {
 
         @named
         private onCueChange(): void {
+            console.log("onCueChange")
             let audioPlayerView: AudioPlayer = this,
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model,
                 //textTrackDisplay: JQuery = audioPlayerView.$(".cc_text_inner"),
@@ -1135,9 +1165,9 @@ namespace HTML5AudioPlayer.Components.Views {
                 cueText: string = textTrackDisplay.text(),
                 newMode: string = (audioPlayerModel.CaptionsEnabled ? "showing" : "hidden");
 
-                //console
-                //alert(newMode)
-                $(".cc_text_main .cc_text_inner").html(textTrackDisplay.text())
+            //console
+            //console.log(newMode)
+            $(".cc_text_main .cc_text_inner").html(textTrackDisplay.text())
 
             if (newMode !== audioPlayerView._currentTextTrack.mode) {
                 audioPlayerView._currentTextTrack.mode = newMode;
@@ -1155,6 +1185,8 @@ namespace HTML5AudioPlayer.Components.Views {
             else {
                 textTrackDisplay.addClass("empty-captions");
             }
+
+
         }
 
         @named
@@ -1162,7 +1194,7 @@ namespace HTML5AudioPlayer.Components.Views {
             let audioPlayerView: AudioPlayer = this,
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model,
                 audioContainer: JQuery = audioPlayerView.$(".audio-container"),
-                videoElement: JQuery = audioPlayerView.$(".video-js .vjs-tech"),
+                audioElement: JQuery = audioPlayerView.$(".video-js .vjs-tech"),
                 width: number = audioContainer.width(),
                 videoWidth: number = audioPlayerView._myPlayer.videoWidth(),
                 height: number = audioContainer.height(),
@@ -1180,13 +1212,13 @@ namespace HTML5AudioPlayer.Components.Views {
             );
 
             if (videoWidth < 1000) {
-                videoElement.css({
+                audioElement.css({
                     "max-width": videoWidth,
                     "max-height": videoHeight
                 }).addClass("center-align");
             }
             else {
-                videoElement.css({
+                audioElement.css({
                     "max-width": '',
                     "max-height": ''
                 }).addClass("center-align");
@@ -1279,12 +1311,13 @@ namespace HTML5AudioPlayer.Components.Views {
 
 
         @named
-        private restartVideo() {
+        private restartAudio() {
             let audioPlayerView: AudioPlayer = this;
             audioPlayerView._myPlayer.currentTime(0);
             audioPlayerView.resetCuePointStatus();
             audioPlayerView.resetMicroPollStatus();
             audioPlayerView._myPlayer.play();
+            $('.audio-player-template .play-pause').text('Pause').addClass("pause").removeClass("play");
         }
 
         @named
@@ -1417,11 +1450,11 @@ namespace HTML5AudioPlayer.Components.Views {
             let audioPlayerView: AudioPlayer = this;
             if (audioPlayerView._myPlayer.paused()) {
                 audioPlayerView._myPlayer.play();
-                $('.audio-player-template .play-pause').text('Pause').addClass("pause").removeClass("play");;
+                $('.audio-player-template .play-pause').text('Pause').addClass("pause").removeClass("play");
 
             } else {
                 audioPlayerView._myPlayer.pause();
-                $('.audio-player-template .play-pause').text('Play').addClass("play").removeClass("pause");;
+                $('.audio-player-template .play-pause').text('Play').addClass("play").removeClass("pause");
 
             }
         }
@@ -1484,7 +1517,7 @@ namespace HTML5AudioPlayer.Components.Views {
             //alert("onItemClickedRefresh")
             let audioPlayerView: AudioPlayer = this,
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
-            audioPlayerView.restartVideo()
+            audioPlayerView.restartAudio()
         }
 
         @named
@@ -1507,19 +1540,35 @@ namespace HTML5AudioPlayer.Components.Views {
             //alert("onItemClickedRefresh")
             let audioPlayerView: AudioPlayer = this,
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
-           // audioPlayerView.showTranscript();
-           alert("Back")
+            // audioPlayerView.showTranscript();
+            alert("Back")
         }
         @named
         private onItemClickedNextaudio(): void {
             //alert("onItemClickedRefresh")
             let audioPlayerView: AudioPlayer = this,
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
-           // audioPlayerView.showTranscript();
-           alert("next")
+            // audioPlayerView.showTranscript();
+            alert("next")
         }
 
-       // transcript_btn
+        @named
+        private onItemClickedOnoffaudio(): void {
+            //alert("onItemClickedRefresh")
+            let audioPlayerView: AudioPlayer = this,
+                audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
+
+            if (audioPlayerView._myPlayer.muted()) {
+                audioPlayerView._myPlayer.muted(false);
+                $(".audio_on_off").removeClass('audio_off').addClass('audio_on');
+            } else {
+                audioPlayerView._myPlayer.muted(true);
+                $(".audio_on_off").removeClass('audio_on').addClass('audio_off');
+
+            }
+        }
+
+        // transcript_btn
 
         @named
         private onItemClickedSeek(event: MouseEvent): void {
@@ -1568,11 +1617,12 @@ namespace HTML5AudioPlayer.Components.Views {
 
             }
             audioPlayerView._myPlayer.paused()
+            audioPlayerView._myPlayer.muted(false);
 
         }
 
         private onItemClickedSpeedList(): void {
-            alert("onItemClickedSpeedList")
+            //alert("onItemClickedSpeedList")
         }
 
         private onItemClickedSpeed(): void {

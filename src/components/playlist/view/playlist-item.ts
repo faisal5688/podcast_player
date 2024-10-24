@@ -39,6 +39,10 @@ namespace HTML5AudioPlayer.Components.Views {
                 'click .transcript_btn': 'transcriptAudio',
                 'click .back_chapt_btn': 'backAudio',
                 'click .next_chapt_btn': 'nextAudio',
+                'click .audio_on_off': 'onoffAudio',
+
+
+
             };
         }
 
@@ -256,6 +260,19 @@ namespace HTML5AudioPlayer.Components.Views {
                 //playlistItemView.$el.eq(1).trigger("click");
 
             //playlistItemView.trigger(Events.EVENT_ITEM_CLICKED_NEXTAUDIO, playlistItemModel);
+
+        }
+
+        onoffAudio(e: MouseEvent): void {
+            e.stopPropagation();
+            let playlistItemView: PlaylistItem = this,
+                playlistItemModel: Models.PlaylistItem = playlistItemView.model,
+                curItem : number = parseInt(playlistItemModel.Index);
+                if($(e.currentTarget).hasClass("chapt-enabled")){
+                    $(".playlist-item").eq(curItem).trigger("click")
+                }
+
+            playlistItemView.trigger(Events.EVENT_ITEM_CLICKED_ONOFFAUDIO, playlistItemModel);
 
         }
 

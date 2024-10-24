@@ -62,6 +62,9 @@ namespace HTML5AudioPlayer.Components.Views {
                 playlistItemView.on(Events.EVENT_ITEM_CLICKED_TRANSCRIPT, playlistView.transcriptAudio, playlistView);
                 playlistItemView.on(Events.EVENT_ITEM_CLICKED_BACKAUDIO, playlistView.backAudio, playlistView);
                 playlistItemView.on(Events.EVENT_ITEM_CLICKED_NEXTAUDIO, playlistView.nextAudio, playlistView);
+                playlistItemView.on(Events.EVENT_ITEM_CLICKED_ONOFFAUDIO, playlistView.onoffAudio, playlistView);
+
+
 
                 playlistModel.enableAssessment();
                 //playlistItemView.afterRender()
@@ -321,6 +324,13 @@ namespace HTML5AudioPlayer.Components.Views {
             playlistModel.Visible = !playlistModel.Visible;
         }
 
+        onoffAudio(): void {
+            console.log("onoffAudio")
+            let playlistView: Playlist = this;
+            playlistView.trigger(Events.EVENT_ITEM_ONOFFAUDIO);
+
+        }
+
         onClosePlaylist(): void {
             let playlistView: Playlist = this;
 
@@ -403,6 +413,8 @@ namespace HTML5AudioPlayer.Components.Views {
             playlistView.trigger(Events.EVENT_ITEM_NEXTAUDIO);
 
         }
+
+
         seekAudio(time: any): void {
             console.log("seekAudio")
             let playlistView: Playlist = this,

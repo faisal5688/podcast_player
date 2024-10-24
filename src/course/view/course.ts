@@ -50,7 +50,7 @@ namespace HTML5AudioPlayer.Views {
 
 
             courseView._player.on(Events.EVENT_CUEPOINT_HIT, courseView.onCuePointHitPlaying, courseView);
-            courseView._player.on(Events.EVENT_SELECTION_CHANGE, courseView.onVideoChanged, courseView);
+            courseView._player.on(Events.EVENT_SELECTION_CHANGE, courseView.onAudioChanged, courseView);
             courseView._player.on(Events.EVENT_SHOW_GLOSSARY, courseView.onShowGlossary, courseView);
             courseView._player.on(Events.EVENT_SHOW_INDEX, courseView.onShowIndex, courseView);
             courseView._player.on(Events.EVENT_SHOW_RESOURCES, courseView.onShowResource, courseView);
@@ -114,7 +114,7 @@ namespace HTML5AudioPlayer.Views {
             let courseView: Course = this,
                 courseModel: Models.Course = courseView.model;
             Utilities.consoleTrace("Cuepoint hit: ", cp, courseView.cid);
-            //alert("cp "+cp.id)
+            ///alert("cp "+cp.id)
             courseView._player.enableKcItem(cp.id);
             courseModel.PlayerModel.sendDataToScorm();
 
@@ -330,7 +330,7 @@ namespace HTML5AudioPlayer.Views {
 
 
         @named
-        private onVideoChanged(item: Components.Models.PlaylistItem): void {
+        private onAudioChanged(item: Components.Models.PlaylistItem): void {
             let courseView: Course = this,
                 courseModel: Models.Course = courseView.model;
             if (courseModel.CourseMode === DataStructures.CourseMode.CPE && courseModel.KnowledgeCheck.Enabled) {
