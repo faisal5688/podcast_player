@@ -63,6 +63,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 playlistItemView.on(Events.EVENT_ITEM_CLICKED_BACKAUDIO, playlistView.backAudio, playlistView);
                 playlistItemView.on(Events.EVENT_ITEM_CLICKED_NEXTAUDIO, playlistView.nextAudio, playlistView);
                 playlistItemView.on(Events.EVENT_ITEM_CLICKED_ONOFFAUDIO, playlistView.onoffAudio, playlistView);
+                //playlistItemView.on(Events.EVENT_ITEM_CLICKED_ONOFFAUDIO, playlistView.autoAdvanceAudio, playlistView);
 
 
 
@@ -195,9 +196,15 @@ namespace HTML5AudioPlayer.Components.Views {
                 }
                 else {
                     playlistView.onItemClicked(nextItem);
+                    setTimeout(function(){
+                        //audioPlayerView.play();
+                    },500)
                 }
             }
         }
+
+
+
 
         public onQuesClicked(item: Models.PlaylistItem): void {
             let playlistView: Playlist = this,
@@ -289,7 +296,7 @@ namespace HTML5AudioPlayer.Components.Views {
         //     alert("onItemClickedSeek")
         // }
 
-        private getNextItem(index: number, increment?: boolean): Models.PlaylistItem {
+        public getNextItem(index: number, increment?: boolean): Models.PlaylistItem {
             let playlistView: Playlist = this,
                 playlistModel: Models.Playlist = playlistView.model,
                 curIndex = increment ? (index + 2) : index + 1;
