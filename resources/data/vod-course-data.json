@@ -208,14 +208,14 @@
                 "continue": "Continue",
                 "tryagain": "Try Again",
                 "next": "Next",
-                "back":"back"
+                "back":"Back"
             },
             {
                 "id": "kc-002",
                 "audio": "aud-000",
                 "time": "10",
                 "title": "Chapter 01: 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
-                "question": "This is KC 2.",
+                "question": "2. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud?",
                 "instruction": "Select all applicable answers and click Submit.",
                 "type": "mcms",
                 "attempts": 1,
@@ -259,7 +259,7 @@
                 "audio": "aud-000",
                 "time": "end",
                 "title": "Chapter 01: 3. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
-                "question": "This is KC 3.",
+                "question": "3. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud?",
                 "instruction": "Select an answer and click Submit.",
                 "type": "mcss",
                 "attempts": 1,
@@ -314,7 +314,7 @@
                 "audio": "aud-002",
                 "time": "10",
                 "title": "Chapter 03: 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
-                "question": "This is KC 4.",
+                "question": "4. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud?",
                 "instruction": "Select all applicable answers and click Submit.",
                 "type": "mcms",
                 "attempts": 1,
@@ -469,11 +469,11 @@
                                                 "choicesWidth": "700",
                                                 "choice": [{
                                                         "correct": "0",
-                                                        "cdata-section": "Loan commitments that the entity does not designate as financial liabilities at fair value through profit or loss"
+                                                        "cdata-section": "Loan commitments that the entity does not designate as financial liabilities"
                                                     },
                                                     {
                                                         "correct": "0",
-                                                        "cdata-section": "Forward contract between an acquirer and a selling shareholder that will result in a business combination"
+                                                        "cdata-section": "Forward contract between an acquirer and a selling shareholder"
                                                     },
                                                     {
                                                         "correct": "1",
@@ -860,19 +860,19 @@
                                                 "choicesWidth": "700",
                                                 "choice": [{
                                                         "correct": "0",
-                                                        "cdata-section": "A contract that includes both a non-derivative host contract and one or more embedded derivatives"
+                                                        "cdata-section": "A contract that includes both a non-derivative host contract"
                                                     },
                                                     {
                                                         "correct": "1",
-                                                        "cdata-section": "A financial instrument that causes modifications to some or all of the cash flows that would otherwise be required by the contract, according to a specified financial variable or non-financial variable that is not specific to a party to the contract"
+                                                        "cdata-section": "A financial instrument that causes modifications to some or all of the cash flows"
                                                     },
                                                     {
                                                         "correct": "0",
-                                                        "cdata-section": "A financial instrument, whose value changes in response to a variable, requires no initial or minimal net investment, and is settled at a future date"
+                                                        "cdata-section": "A financial instrument, whose value changes in response to a variable"
                                                     },
                                                     {
                                                         "correct": "0",
-                                                        "cdata-section": "A contract entered into held for the purpose of the receipt or delivery of a non-financial item in accordance with the entity's expected purchase, sale, or usage requirements"
+                                                        "cdata-section": "A contract entered into held for the purpose of the receipt"
                                                     }
                                                 ]
                                             },
@@ -963,19 +963,19 @@
                                                 "choicesWidth": "700",
                                                 "choice": [{
                                                         "correct": "1",
-                                                        "cdata-section": "When they are 'net settled' in accordance with the IFRS 9 definition and do not meet the own use exemption"
+                                                        "cdata-section": "When they are 'net settled' in accordance with the IFRS 9 definition"
                                                     },
                                                     {
                                                         "correct": "0",
-                                                        "cdata-section": "When they are not 'net settled' in accordance with the IFRS 9 definition and do not meet the own use exemption"
+                                                        "cdata-section": "When they are not 'net settled' in accordance with the IFRS 9 definition"
                                                     },
                                                     {
                                                         "correct": "0",
-                                                        "cdata-section": "When they are not 'net settled' in accordance with the IFRS 9 definition and meet the own use exemption"
+                                                        "cdata-section": "When they are not 'net settled' in accordance with the IFRS 9 definition"
                                                     },
                                                     {
                                                         "correct": "0",
-                                                        "cdata-section": "When they are 'net settled' in accordance with the IFRS 9 definition and meet the own use exemption"
+                                                        "cdata-section": "When they are 'net settled' in accordance with the IFRS 9 definition"
                                                     }
                                                 ]
                                             },
@@ -1367,7 +1367,7 @@
                                                     },
                                                     {
                                                         "correct": "1",
-                                                        "cdata-section": "The embedded derivative would be accounted for as a derivative if it were freestanding and it is not closely related to the economic characteristics of the host."
+                                                        "cdata-section": "The embedded derivative would be accounted for as a derivative."
                                                     }
                                                 ]
                                             },
@@ -1655,11 +1655,11 @@
                                                     },
                                                     {
                                                         "correct": "0",
-                                                        "cdata-section": "A financial guarantee held to receive a payment reimbursing for the loss due to a customer non-payment."
+                                                        "cdata-section": "A financial guarantee held to receive a payment reimbursing for the loss"
                                                     },
                                                     {
                                                         "correct": "1",
-                                                        "cdata-section": "A forward contract to purchase shares of a private entity at a future date, with zero initial investment."
+                                                        "cdata-section": "A forward contract to purchase shares of a private entity at a future date."
                                                     },
                                                     {
                                                         "correct": "0",
@@ -1727,7 +1727,7 @@
                                             "width": "500",
                                             "cdata-section": "<bodyAssess><B>Question: m01_q01_q18</B></bodyAssess>"
                                         },
-                                        "question": "An entity enters into a contract to purchase sugar from a supplier. The entity will pay a fixed amount in US dollars at a future date on delivery of the goods.<BR>Which of the following should the entity consider when determining if the embedded foreign currency derivative is separated from the host contract? ",
+                                        "question": "An entity enters into a contract to purchase sugar from a supplier. The entity will pay a fixed amount in US dollars at a future date on delivery of the goods.",
                                         "instruction": "Check the correct option and select Submit.",
                                         "MCQ": {
                                             "category": "MCSS",
@@ -2043,19 +2043,19 @@
                                                 "choicesWidth": "700",
                                                 "choice": [{
                                                         "correct": "0",
-                                                        "cdata-section": "IFRS requires reassessment of embedded derivatives throughout the life of the contract."
+                                                        "cdata-section": "response 1"
                                                     },
                                                     {
                                                         "correct": "0",
-                                                        "cdata-section": "IFRS requires reassessment of embedded derivatives at least quarterly for non-public entities and at least monthly for public entities."
+                                                        "cdata-section": "response 2"
                                                     },
                                                     {
                                                         "correct": "0",
-                                                        "cdata-section": "IFRS requires reassessment of embedded derivatives quarterly regardless of whether the entity is subject to interim reporting."
+                                                        "cdata-section": "response 3"
                                                     },
                                                     {
                                                         "correct": "1",
-                                                        "cdata-section": "IFRS requires reassessment of embedded derivatives when the changes in the terms of the contract significantly modify the cash flows under the contract."
+                                                        "cdata-section": "response 4"
                                                     }
                                                 ]
                                             },

@@ -27,9 +27,10 @@
         .startAssessment-container {
             width: 100%;
             height: 100%;
-            background: $colorGrayE5;
+            background: $colorWhite;
             color: $colorBlue;
             display: table;
+            border-radius: 10px;
 
 
 
@@ -46,6 +47,7 @@
                 background-image: url(../resources/image/assessmentImage.png);
                 background-repeat: no-repeat, repeat;
                 background-size: cover;
+                border-radius: 10px 0 0 10px;
             }
 
             .rightBox {
@@ -53,19 +55,19 @@
                 display: table-cell;
                 vertical-align: top;
                 padding-bottom: $fontSizeLarge;
-                padding-left: $fontSizeLarge;
-                padding-right: $fontSizeLarge;
-                padding-top: 12px;
+                padding-left: 0;
+                padding-right: 0;
+                padding-top: 0;
                 position: relative;
                 border: 0px solid $colorBlue;
                 width: 59%;
 
                 .title {
-                    float: left;
-                    font-size: $fontSizeLarge;
-                    margin-right: 30px;
-                    color: $colorBlue;
+                    background: rgba(0, 184, 245, 0.1);
+                    padding: 10px 10px 10px 20px;
                     width: 100%;
+                    font-size: 22px;
+                    font-weight: bold;
                 }
 
                 .startAssessmentLine {
@@ -73,29 +75,29 @@
                     float: left;
                     opacity: 0.5;
                     border-bottom: 1px solid $colorBlue;
+                    display: none;
                 }
 
                 .closeBtn {
-                    padding: 5px;
+                    @include popupCloseBtn;
                     position: absolute;
-                    right: 1%;
-                    top: 1%;
+                    right: 14px;
+                    top: 14px;
                     cursor: pointer;
-                    // display: none;
-
-                    font-size: 25px;
-                    padding: 5px 15px;
-                    background-color: #00338d;
-                    color: #ffffff;
+                    border: none;
                 }
 
                 .start-btn {
-                    padding: 5px 25px;
+                    padding: 8px 20px;
                     float: left;
                     margin-top: 30px;
-                    background: $colorPurple;
+                    margin-left: 20px;
+                    background: rgb(112,21,234);
+                    background: linear-gradient(90deg, rgba(112,21,234,1) 0%, rgba(103,26,233,1) 20%, rgba(86,38,231,1) 40%, rgba(61,53,229,1) 60%, rgba(45,63,228,1) 80%, rgba(32,72,226,1) 100%);
                     color: $colorWhite;
                     font-size: $fontSizeStandard;
+                    font-weight: bold;
+                    border-radius: 5px;
                     cursor: pointer;
 
                     &.disabled {
@@ -107,6 +109,7 @@
 
                 .content {
                     font-size: $fontSizeStandard;
+                    padding: 20px 20px 0;
 
                     p {
                         margin: 0px
@@ -115,6 +118,7 @@
                     .instText {
                         font-weight: bold;
                         font-style: italic;
+                        color: $colorPurple;
                     }
                 }
             }
@@ -123,26 +127,26 @@
 
     .assessment {
         position: absolute;
-        width: 80%;
-        height: 80%;
+        width: 60%;
+        height: 55%;
         left: 0;
         top: 0;
         right: 0;
         bottom: 0;
         margin: auto;
-        padding: 20px;
-        background-color: #dddddd;
-        color: $colorWhite;
+        padding: 0px;
+        background-color: $colorWhite;
+        border-radius: 10px;
+        // color: $colorWhite;
         display: none;
 
         .assessmentCloseBtn {
+            @include popupCloseBtn;
             position: absolute;
-            right: 0px;
+            right: 14px;
+            top: 14px;
             cursor: pointer;
-            font-size: 25px;
-            top: 0%;
-            padding: 5px 15px;
-            background-color: $colorBlue;
+            border: none;
         }
 
         .question-container {
@@ -158,6 +162,7 @@
                 position: absolute;
                 top: 25px;
                 left: 10px;
+                display: none;
             }
 
             .question-number {
@@ -174,22 +179,19 @@
             }
 
             .question-text {
-                @include floatLeft;
+                background: rgba(0, 184, 245, 0.1);
+                padding: 15px 40px 15px 20px;
                 width: 100%;
-                font-size: $fontSizeStandard !important;
+                font-size: $fontSizeMidium;
                 font-weight: bold;
                 color: $colorBlue;
-                line-height: 20px;
-                padding: 25px 50px 25px 8%;
-                margin-top: 0px;
-                text-align: left;
                 box-sizing: border-box;
             }
         }
 
         .question-data {
             @include floatLeft;
-            padding-left: 8%;
+            padding: 20px;
             width: 100%;
             box-sizing: border-box;
 
@@ -197,9 +199,9 @@
                 font-style: italic;
                 width: $fullWidth;
                 color: $colorPurple;
+                font-weight: bold;
                 font-size: $fontSizeStandard;
                 margin-bottom: $fontSizeLarge;
-                border-bottom: 1px solid $colorBlue;
                 padding-bottom: 8px;
             }
 
@@ -291,13 +293,21 @@
         .btn-container {
             .ck-back-btn,
             .ck-submit-btn {
-                @include submitButton;
-                @include underlineFromLeft;
+                padding: 10px 20px;
+                margin-top: 25px;
+                margin-left: 0px;
+                background: rgb(112,21,234);
+                background: linear-gradient(90deg, rgba(112,21,234,1) 0%, rgba(103,26,233,1) 20%, rgba(86,38,231,1) 40%, rgba(61,53,229,1) 60%, rgba(45,63,228,1) 80%, rgba(32,72,226,1) 100%);
                 color: $colorWhite;
-                background-color: $colorPurple;
-                padding: 5px 20px;
-                margin-top: $fontSizeLarge;
-                font-size: $fontSizeStandard;
+                font-size: $fontSizeMini;
+                font-weight: normal;
+                border-radius: 5px;
+                cursor: pointer;
+                border: none;
+                display: block;
+            }
+            .ck-back-btn {
+                padding: 10px 27px;
             }
             .ck-back-btn.disabled,
             .ck-submit-btn.disabled {
@@ -390,29 +400,33 @@
         margin: auto;
         border: 0px solid $colorMediumBlue;
         color: $colorWhite;
-        background-color: $colorGrayE5;
+        background-color: $colorWhite;
+        border-radius: 10px;
 
         .assessmentHeader {
-            color: $colorWhite;
-            text-align: center;
-            background-color: $colorPurple;
-            height: 60px;
+            background: rgba(0, 184, 245, 0.1);
+            padding: 10px 10px 10px 20px;
+            width: 100%;
+            font-size: 22px;
+            font-weight: bold;
+            height: 32px;
             display: flex;
             justify-content: center;
             align-items: center;
 
             .closeBtn {
-                padding: 5px;
+                @include popupCloseBtn;
                 position: absolute;
-                right: 1%;
-                top: 1%;
+                right: 14px;
+                top: 14px;
                 cursor: pointer;
-                font-size: $fontSizeBitLarger;
+                border: none;
             }
 
             .titleText {
-                color: $colorWhite;
-                font-size: $fontSizeMidium;
+                color: $colorBlue;
+                font-size: 22px;
+                font-weight: bold;
                 text-align: center;
             }
         }
@@ -454,8 +468,9 @@
                 overflow: auto;
                 position: relative;
                 width: 63%;
-                background: $colorWhite;
+                background: rgba(0, 184, 245, 0.1);
                 left: 20%;
+                border-radius: 10px;
 
                 .resultgrad {
                     float: left;
@@ -494,6 +509,7 @@
                             background: $colorPurple;
                             border: 1px solid #94a3b5;
                             height: 35px;
+                            border-radius: 5px;
                         }
 
                         .result {
@@ -645,7 +661,7 @@
             color: $colorWhite;
 
             .question-container {
-                margin-top: 30px;
+                margin-top: 0px;
 
                 .page-number {
                     width: 7%;
@@ -690,8 +706,8 @@
             height: 100%;
 
             .question-data {
-                padding-left: 10%;
-                width: 97%;
+                padding-left: 20px;
+                width: 100%;
 
             }
         }
@@ -721,11 +737,37 @@
                         left: 0;
                     }
                 }
+                .question-text {
+                    line-height: 18px;
+                    font-size: 16px;
+                }
             }
 
             .question-data {
-                padding-left: 8%;
-                width: 97%;
+                padding-left: 20px;
+                width: 100%;
+
+                .instruction {
+                    margin-bottom: 10px;
+                }
+            }
+
+            .options {
+
+                .option {
+                    padding-bottom: 5px;
+                }
+            }
+
+            .btn-container {
+
+                .ck-submit-btn {
+                    margin-top: 15px;
+                    display: inline-block;
+                }
+                .ck-back-btn {
+                    display: inline-block;
+                }
             }
         }
 
@@ -753,8 +795,8 @@
             }
 
             .question-data {
-                padding-left: 10%;
-                width: 97%;
+                padding-left: 20px;
+                width: 100%;
             }
         }
 
@@ -770,21 +812,24 @@
 @media screen and (max-width: 768px) {
     .assessment-container {
         .startAssessment {
+            margin: 20px auto;
+
             .startAssessment-container {
                 .leftBox {
                     width: 100%;
                     display: block;
                     height: 300px;
+                    border-radius: 10px 10px 0 0;
                 }
 
                 .rightBox {
                     width: 100%;
                     height: 490px;
                     display: block;
-                    background: $colorBlue;
-                    color: $colorWhite;
+                    // background: $colorBlue;
+                    // color: $colorWhite;
                     box-sizing: border-box;
-                    padding: 20px;
+                    padding: 0px;
 
                     .start-btn {
                         top: auto;
@@ -800,8 +845,8 @@
 
             .question-container {
                 .question-text {
-                    padding: 25px 20px 25px 90px;
-                    line-height: 18px;
+                    // padding: 25px 20px 25px 90px;
+                    line-height: 22px;
                 }
 
                 .page-number {
@@ -814,12 +859,19 @@
             }
 
             .question-data {
-                width: 97%;
+                width: 100%;
             }
         }
 
         .assesmentShadow {
-            height: 378px;
+            height: 605px;
+            margin: 20px auto;
+            width: 91%;
+
+            .assessmentHeader {
+                padding: 25px 10px 25px 20px;
+                box-sizing: border-box;
+            }
 
             .resultMain {
                 height: 522px;
@@ -912,7 +964,7 @@
                 cursor: pointer;
                 font-size: 25px;
                 top: 0%;
-                padding: 5px 15px;
+                padding: 0;
                 background-color: #00338d;
             }
             .leftBox {
@@ -923,8 +975,8 @@
             .rightBox {
                 width: 100%;
                 height: 387px;
-                background: $colorBlue;
-                color: $colorWhite;
+                // background: $colorBlue;
+                // color: $colorWhite;
                 box-sizing: border-box;
                 padding: 20px;
 

@@ -337,68 +337,74 @@
                             }
 
 
-                            .ck-next-btn {
-                                @include submitButton;
-                                @include underlineFromLeft;
-                                color: $colorWhite;
-                                background: rgb(112,21,234);
-                                background: linear-gradient(90deg, rgba(112,21,234,1) 0%, rgba(103,26,233,1) 20%, rgba(86,38,231,1) 40%, rgba(61,53,229,1) 60%, rgba(45,63,228,1) 80%, rgba(32,72,226,1) 100%);
-                                padding: 5px 20px;
-                                font-size: $fontSizeMini;
-                                margin-top: 10px;
-                            }
+                            .btn_back_next_cont {
+                                display: block;
+                                padding: 18px 0 2px 0;
 
-                            .ck-next-btn.disabled {
-                                background: $colorGray60;
-                                color: $colorGray94;
-                                cursor: default;
-
-                                &:before {
-                                    content: "";
-                                    position: absolute;
-                                    z-index: -1;
-                                    background: none;
-                                    transition-property: none;
+                                .ck-next-btn {
+                                    @include submitButton;
+                                    @include underlineFromLeft;
+                                    color: $colorWhite;
+                                    background: rgb(112,21,234);
+                                    background: linear-gradient(90deg, rgba(112,21,234,1) 0%, rgba(103,26,233,1) 20%, rgba(86,38,231,1) 40%, rgba(61,53,229,1) 60%, rgba(45,63,228,1) 80%, rgba(32,72,226,1) 100%);
+                                    padding: 5px 20px;
+                                    font-size: $fontSizeMini;
+                                    margin-top: 10px;
+                                    margin-right: 5px;
                                 }
 
-                                &:hover:before,
-                                &:focus:before,
-                                &:active:before {
-                                    right: 0;
+                                .ck-next-btn.disabled {
+                                    background: $colorGray60;
+                                    color: $colorGray94;
                                     cursor: default;
-                                }
-                            }
 
+                                    &:before {
+                                        content: "";
+                                        position: absolute;
+                                        z-index: -1;
+                                        background: none;
+                                        transition-property: none;
+                                    }
 
-                            .ck-back-btn {
-                                @include submitButton;
-                                @include underlineFromLeft;
-                                color: $colorWhite;
-                                background: rgb(112,21,234);
-                                background: linear-gradient(90deg, rgba(112,21,234,1) 0%, rgba(103,26,233,1) 20%, rgba(86,38,231,1) 40%, rgba(61,53,229,1) 60%, rgba(45,63,228,1) 80%, rgba(32,72,226,1) 100%);
-                                padding: 5px 20px;
-                                font-size: $fontSizeMini;
-                                margin-top: 10px;
-                            }
-
-                            .ck-back-btn.disabled {
-                                background: $colorGray60;
-                                color: $colorGray94;
-                                cursor: default;
-
-                                &:before {
-                                    content: "";
-                                    position: absolute;
-                                    z-index: -1;
-                                    background: none;
-                                    transition-property: none;
+                                    &:hover:before,
+                                    &:focus:before,
+                                    &:active:before {
+                                        right: 0;
+                                        cursor: default;
+                                    }
                                 }
 
-                                &:hover:before,
-                                &:focus:before,
-                                &:active:before {
-                                    right: 0;
+
+                                .ck-back-btn {
+                                    @include submitButton;
+                                    @include underlineFromLeft;
+                                    color: $colorWhite;
+                                    background: rgb(112,21,234);
+                                    background: linear-gradient(90deg, rgba(112,21,234,1) 0%, rgba(103,26,233,1) 20%, rgba(86,38,231,1) 40%, rgba(61,53,229,1) 60%, rgba(45,63,228,1) 80%, rgba(32,72,226,1) 100%);
+                                    padding: 5px 20px;
+                                    font-size: $fontSizeMini;
+                                    margin-top: 10px;
+                                }
+
+                                .ck-back-btn.disabled {
+                                    background: $colorGray60;
+                                    color: $colorGray94;
                                     cursor: default;
+
+                                    &:before {
+                                        content: "";
+                                        position: absolute;
+                                        z-index: -1;
+                                        background: none;
+                                        transition-property: none;
+                                    }
+
+                                    &:hover:before,
+                                    &:focus:before,
+                                    &:active:before {
+                                        right: 0;
+                                        cursor: default;
+                                    }
                                 }
                             }
 
@@ -581,7 +587,7 @@
     .knowledge-check-container {
         .knowledge-check {
             width: 60%;
-            height: 58%;
+            height: 64%;
         }
     }
 }
