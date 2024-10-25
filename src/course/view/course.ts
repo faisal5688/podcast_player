@@ -40,6 +40,7 @@ namespace HTML5AudioPlayer.Views {
                 model: courseModel.CarouselModel
             });
            //courseView._carousel.on(Events.EVENT_PLAYLIST_CLOSED, courseView.onPlaylistClosed, courseView);
+           courseView._carousel.on(Events.EVENT_TOGGLEMENU, courseView.togglemenu, courseView);
 
             // courseView._knowledgeCheckList = new Components.Views.KnowledgeCheckList({
             //     model: courseModel.KnowledgeCheck
@@ -83,7 +84,10 @@ namespace HTML5AudioPlayer.Views {
             // playlistView.$el.parent().addClass("animateLeft");
             let courseView = this,
                 courseModel: Models.Course = courseView.model;
-
+                if (courseView.wasPlaying) {
+                    courseView._player.play();
+                    courseView.wasPlaying = false;
+                }
             courseView._carousel.toggle();
         }
 
@@ -223,7 +227,10 @@ namespace HTML5AudioPlayer.Views {
             courseView._player.markKcKCItemComplete(kc.id);
             courseModel.PlayerModel.sendDataToScorm();
             //courseModel.ScormPreviousData.CuePoints =courseModel.KnowledgeCheck.CuePoints
-
+            if (courseView.wasPlaying) {
+                courseView._player.play();
+                courseView.wasPlaying = false;
+            }
             //kcItemActiveList
             courseView._knowledgeCheck.destroy();
         }
@@ -533,6 +540,17 @@ namespace HTML5AudioPlayer.Views {
                     Utilities.consoleWarn("Failed to close the window. Error:", err);
                 }
             }
+        }
+
+        @named
+        private togglemenu(): void {
+            let courseView: Course = this,
+                courseModel: Models.Course = courseView.model;
+                //alert(!courseView._player.paused())
+                if (!courseView._player.paused()) {
+                    courseView._player.pause();
+                    courseView.wasPlaying = true;
+                }
         }
     }
 }

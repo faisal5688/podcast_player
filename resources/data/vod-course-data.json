@@ -92,7 +92,7 @@
 
         "HideCaptionsOnLaunch": true,
         "HidePlaylist": false,
-        "AutoAdvanceToNext": false,
+        "AutoAdvanceToNext": true,
         "options": {
             "playbackRates": [0.7,1, 1.5]
         },

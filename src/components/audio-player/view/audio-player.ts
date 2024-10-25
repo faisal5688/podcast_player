@@ -241,10 +241,12 @@ namespace HTML5AudioPlayer.Components.Views {
             if (curTime < 0.1) {
                 audioPlayerView.triggerCuepoint(DataStructures.KCWhen.Start);
             }
+
+            //audioPlayerView.updateTexttrack()
         }
 
         @named
-        private onMuted(state:Boolean):void{
+        private onMuted(state: Boolean): void {
             let audioPlayerView: AudioPlayer = this;
             //audioPlayerView._myPlayer.muted()
         }
@@ -351,6 +353,7 @@ namespace HTML5AudioPlayer.Components.Views {
             audioPlayerView.addButtonsToPlayer();
             console.log("updateTexttrack 1");
             audioPlayerView.updateTexttrack();
+            //audioPlayerView.updateTexttrack();
 
             // audioPlayerView._myPlayer.play();
         }
@@ -489,7 +492,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 videoChanged: boolean = (audioPlayerModel._prevItemId !== audioPlayerModel.Playlist.CurrentItem.Id),
                 currentTime = audioPlayerView._myPlayer.currentTime();
 
-            //console.log("onAudioTimeUpdate")
+            console.log(audioPlayerView._myPlayer.textTracks())
             audioPlayerView.updateProgress(audioPlayerView._myPlayer)
             if (videoChanged) {
                 Utilities.consoleTrace("Got time update after video changed, don't do anything.");
@@ -497,7 +500,7 @@ namespace HTML5AudioPlayer.Components.Views {
             }
 
             if (audioPlayerView._myPlayer.seeking()) {
-                Utilities.consoleTrace("Video is seeking, not updating max time. Current Value: " + audioPlayerModel.maxVisitedTime);
+                Utilities.consoleTrace("Audio is seeking, not updating max time. Current Value: " + audioPlayerModel.maxVisitedTime);
                 return;
             }
 
@@ -896,7 +899,13 @@ namespace HTML5AudioPlayer.Components.Views {
         @named
         private onVideoEnded(e: Event): void {
             let audioPlayerView: AudioPlayer = this,
-                audioPlayerModel: Models.AudioPlayer = this.model;
+                audioPlayerModel: Models.AudioPlayer = this.model,
+                playList = audioPlayerModel.Playlist.PlaylistItems,
+                sormPreviousData = audioPlayerModel.ScormPreviousData,
+                lastPlayListItem = playList[playList.length - 1],
+                curIndex: number = parseInt(audioPlayerModel.Playlist.CurrentItem.Index),
+                nextItem = audioPlayerView._playlist.getNextItem(curIndex);
+
 
             audioPlayerView.enable(false);
             audioPlayerModel.supposedCurrentTime = 0;
@@ -924,15 +933,20 @@ namespace HTML5AudioPlayer.Components.Views {
 
             audioPlayerModel.Playlist.CurrentItem.CurrentClicked = true;
             audioPlayerModel.Playlist.CurrentItem.Complete = true;
-
             audioPlayerView.enableNext();
             if (audioPlayerModel.AutoAdvanceToNext) {
-                audioPlayerView.next();
+                if(nextItem.Id!="assessment" && nextItem.Id!="survey"){
+                    audioPlayerView.next();
+                    setTimeout(function () {
+                        audioPlayerView.play();
+                        $('.audio-player-template .play-pause').text('Pause').addClass("pause").removeClass("play");
+                    }, 500)
+                }
+
             }
             audioPlayerView.enable();
             audioPlayerModel.Playlist.enableAssessment();
             $('.audio-player-template .play-pause').text('Play').addClass("play").removeClass("pause");
-            //alert(1)
         }
 
         private onLaunchAssessment(): void {
@@ -1025,7 +1039,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 }
                 audioPlayerView.trigger(Events.EVENT_SELECTION_CHANGE, item);
                 console.log("updateTexttrack 2");
-               audioPlayerView.updateTexttrack();
+                audioPlayerView.updateTexttrack();
                 //audioPlayerView.trigger(Events.EVENT_AUDIOPLAYER_CHANGE, item);
 
             }
@@ -1094,6 +1108,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 }, true);
                 textTracks = audioPlayerView._myPlayer.textTracks();
                 console.log("textTracks")
+                console.log(audioPlayerView._myPlayer)
                 console.log(textTracks.length)
                 console.log(textTracks)
                 if (textTracks && textTracks.length > 0) {
@@ -1135,6 +1150,7 @@ namespace HTML5AudioPlayer.Components.Views {
             Utilities.consoleTrace("Show Captions: ", audioPlayerModel.CaptionsEnabled);
             //alert(audioPlayerModel.CaptionsEnabled)
             if (audioPlayerModel.CaptionsEnabled) {
+                //alert(audioPlayerView._currentTextTrack)
                 if (audioPlayerView._currentTextTrack) {
                     $(".cc_text_main").show();
                     audioPlayerView._currentTextTrack.mode = "showing";
@@ -1203,6 +1219,22 @@ namespace HTML5AudioPlayer.Components.Views {
             audioPlayerModel.duration = audioPlayerView._myPlayer.duration();
             audioPlayerModel.Playlist.CurrentItem.NumQuestions = audioPlayerModel.CuePoints.length;
 
+            //audioPlayerView._myPlayer.textTracks()
+
+            console.log('Loaded metadata');
+            var tracks = audioPlayerView._myPlayer.textTracks();
+            console.log('Text tracks after metadata loaded:', tracks);
+
+            //console.log("updateTexttrack 3");
+            //audioPlayerView.updateTexttrack();
+
+            // if (tracks.length === 0) {
+            //     audioPlayerView._myPlayer.on('play', function() {
+            //         console.log('Text tracks after play:', audioPlayerView._myPlayer.textTracks().length);
+            //     });
+            // }
+
+
 
             Utilities.consoleTrace(
                 "Container Width: ", width,
@@ -1269,12 +1301,12 @@ namespace HTML5AudioPlayer.Components.Views {
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
 
             if (audioPlayerModel.seekingFirstTime) {
-                Utilities.consoleTrace("Video seeking started for the first time, don't do anything.");
+                Utilities.consoleTrace("Audio seeking started for the first time, don't do anything.");
             }
             else {
-                Utilities.consoleTrace("Video seeking started...");
+                Utilities.consoleTrace("Audio seeking started...");
 
-                audioPlayerView.enable(false, "Please wait, video is seeking...");
+                audioPlayerView.enable(false, "Please wait, Audio is seeking...");
             }
         }
 
@@ -1402,7 +1434,7 @@ namespace HTML5AudioPlayer.Components.Views {
                     $("#uiBlocker .loading-text").html(message);
                 }
                 else {
-                    $("#uiBlocker .loading-text").html("Please wait video is loading...");
+                    $("#uiBlocker .loading-text").html("Please wait Audio is loading...");
                 }
                 $("#uiBlocker").show();
             }
@@ -1439,7 +1471,7 @@ namespace HTML5AudioPlayer.Components.Views {
         @named
         public next(flag?: boolean): void {
             let audioPlayerView: AudioPlayer = this;
-
+            //alert()
             audioPlayerView._playlist.next(flag);
 
         }
@@ -1525,6 +1557,8 @@ namespace HTML5AudioPlayer.Components.Views {
             //alert("onItemClickedRefresh")
             let audioPlayerView: AudioPlayer = this,
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
+
+            //audioPlayerView.updateTexttrack();
             audioPlayerView.toggleCaptions();
         }
 
@@ -1533,6 +1567,7 @@ namespace HTML5AudioPlayer.Components.Views {
             //alert("onItemClickedRefresh")
             let audioPlayerView: AudioPlayer = this,
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
+
             audioPlayerView.showTranscript();
         }
         @named
