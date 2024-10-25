@@ -323,7 +323,7 @@ namespace HTML5AudioPlayer.Components.Views {
             let knowledgeCheckView: KnowledgeCheck = this,
                 knowledgeCheckModel: Models.KnowledgeCheck = knowledgeCheckView.model;
 
-            knowledgeCheckView.$el.show(200, () => {
+            knowledgeCheckView.$el.fadeIn(200, () => {
                 knowledgeCheckView.trigger(Events.EVENT_KC_SHOWN, knowledgeCheckModel.Current);
             });
         }
@@ -333,7 +333,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 knowledgeCheckModel: Models.KnowledgeCheck = knowledgeCheckView.model;
 
             knowledgeCheckView.trigger(Events.EVENT_KC_COMPLETE, knowledgeCheckModel.Current);
-            knowledgeCheckView.$el.hide(200, () => {
+            knowledgeCheckView.$el.fadeOut(200, () => {
 
             });
         }
@@ -344,7 +344,7 @@ namespace HTML5AudioPlayer.Components.Views {
 
 
             knowledgeCheckView.trigger(Events.EVENT_KC_CLOSEQUESTION, knowledgeCheckModel.Current);
-            knowledgeCheckView.$el.hide(200, () => {
+            knowledgeCheckView.$el.fadeOut(200, () => {
 
             });
         }

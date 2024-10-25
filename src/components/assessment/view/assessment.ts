@@ -245,7 +245,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 assessmentModel: Models.Assessment = assessmentView.model;
 
             assessmentModel.UserAnswers=[]
-            assessmentView.$el.hide(200, () => {
+            assessmentView.$el.fadeOut(200, () => {
                 assessmentView.trigger(Events.EVENT_ASSESSMENT_COMPLETE, assessmentModel.currentQuestionData);
             });
         }
@@ -264,7 +264,7 @@ namespace HTML5AudioPlayer.Components.Views {
 
         public show(): void {
             let assessmentView: Assessment = this;
-            assessmentView.$el.show(200);
+            assessmentView.$el.fadeIn(200);
         }
 
         public destroy(): void {
