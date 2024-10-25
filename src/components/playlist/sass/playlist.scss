@@ -467,7 +467,7 @@
                                     @include ccTextDisableBtn;
                                     //background: url(../resources/image/captions_icon.png) no-repeat -80px 0;
 
-                                    opacity: 0.5;
+                                    // opacity: 0.5;
                                     &:hover {
                                         opacity: 1;
                                         //background: url(../resources/image/captions_icon.png) no-repeat -120px 0;
@@ -524,6 +524,7 @@
                                 top: -11px;
                                 left: -2px;
                                 right: 0;
+                                border-radius: 10px;
                                 overflow: hidden;
                             }
 
@@ -632,6 +633,8 @@
                                         /* Position the dropdown content above the button */
                                         left: -8px;
                                         border: 1px solid $colorCobaltBlue;
+                                        background: $colorWhite;
+                                        border-radius: 10px;
 
                                         a {
                                             color: $colorBlack;
@@ -641,6 +644,7 @@
                                             text-align: center;
                                             font-size: 12px;
                                             background-color: $colorWhite;
+                                            border-radius: 10px;
 
                                         }
                                     }

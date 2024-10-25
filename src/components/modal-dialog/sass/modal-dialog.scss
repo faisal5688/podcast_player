@@ -40,8 +40,14 @@
             overflow: hidden;
 
             .modal-header {
-                padding: 10px;
-                border-bottom: 1px solid rgba(71, 10, 104, 0.5);
+                background: rgba(0, 184, 245, 0.1);
+                padding: 5px 10px 5px 10px;
+                width: 100%;
+                font-size: 18px;
+                text-align: center;
+                font-weight: bold;
+                color: #00338d;
+                box-sizing: border-box;
 
                 .modal-title {
                     font-weight: bold;
@@ -146,24 +152,28 @@
                 position: absolute;
                 bottom: 0;
                 width: 100%;
-                padding-bottom: 5px;
+                padding-bottom: 15px;
 
                 .modal-button {
                     display: inline-block;
                     padding: 7px 20px;
                     text-transform: uppercase;
-                    cursor: pointer;
-                    outline: 0;
-                    margin: 10px;
-                    border: none;
-                    width: 100px;
-                    border-radius: 2px;
-                    background-color: $colorPurple;
+                    padding: 10px 20px;
+                    margin-top: 25px;
+                    margin-left: 10px;
+                    min-width: 97px;
+                    background: rgb(112,21,234);
+                    background: linear-gradient(90deg, rgba(112,21,234,1) 0%, rgba(103,26,233,1) 20%, rgba(86,38,231,1) 40%, rgba(61,53,229,1) 60%, rgba(45,63,228,1) 80%, rgba(32,72,226,1) 100%);
                     color: $colorWhite;
+                    font-size: $fontSizeMini;
+                    font-weight: normal;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    border: none;
 
-                    &:hover {
-                        background-color: $colorPurple;
-                    }
+                    // &:hover {
+                    //     background-color: $colorPurple;
+                    // }
 
                     &.hidden {
                         display: none;
