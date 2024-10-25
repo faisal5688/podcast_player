@@ -939,6 +939,8 @@ namespace HTML5AudioPlayer.Components.Views {
                     audioPlayerView.next();
                     setTimeout(function () {
                         audioPlayerView.play();
+                        $(".audio-player-container").eq(parseInt(audioPlayerModel.Playlist.CurrentItem.Index)-1).parent().addClass("current");
+                        $(".audio-player-container").eq(parseInt(audioPlayerModel.Playlist.CurrentItem.Index)-1).addClass("showPlayer");
                         $('.audio-player-template .play-pause').text('Pause').addClass("pause").removeClass("play");
                     }, 500)
                 }

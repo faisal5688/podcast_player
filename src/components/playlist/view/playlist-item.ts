@@ -65,7 +65,7 @@ namespace HTML5AudioPlayer.Components.Views {
             // }
             // if (playlistItemModel.Current) {
             // }
-
+            //alert("CurrentClicked")
             if (playlistItemModel.CurrentClicked) {
                 playlistItemView.$el.addClass("current");
                 playlistItemView.$el.find(".audio-player-container").addClass("showPlayer");
