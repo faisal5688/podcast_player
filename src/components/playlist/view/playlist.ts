@@ -168,6 +168,14 @@ namespace HTML5AudioPlayer.Components.Views {
             } catch (err) {
                 Utilities.consoleError("Failed to apply scrollbar to '.playlist-inner': ", err.message, err.stack);
             }
+
+            try {
+                playlistView.$(".knowledge-check-list-inner").mCustomScrollbar({
+                    theme: "kpmg-blue"
+                });
+            } catch (err) {
+                Utilities.consoleError("Failed to apply scrollbar to '.playlist-inner': ", err.message, err.stack);
+            }
         }
 
         public next(flag?: boolean): void {
