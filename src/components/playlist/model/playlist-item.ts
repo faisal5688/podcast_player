@@ -80,6 +80,8 @@
         get Total(): number { return this.get("total"); }
         set Total(value: number) { this.set("total", value); }
 
+        get Totalitems(): number { return this.get("Totalitems"); }
+        set Totalitems(value: number) { this.set("Totalitems", value); }
 
         get QuesDescription(): string { return this.get("quesDescription"); }
         set QuesDescription(value: string) { this.set("quesDescription", value); }
@@ -93,6 +95,7 @@
             let model: PlaylistItem = this;
             model.NumQuestions = model.NumQuestions || 0;
             model.CurrentTime = model.CurrentTime || 0;
+            model.Total= model.Total || 0;
             model.Current = model.Current || false;
             model.Complete = model.Complete || false;
             model.Inprogress = model.Inprogress || false;

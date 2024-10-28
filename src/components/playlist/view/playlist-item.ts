@@ -2,17 +2,12 @@
 namespace HTML5AudioPlayer.Components.Views {
 
     export class PlaylistItem extends Backbone.View<Models.PlaylistItem> {
-
         private _template: (properties?: HandlebarsTemplates) => string;
-
         constructor(options: any) {
             super(options);
-
             let playlistItemView: PlaylistItem = this,
                 playlistItemModel: Models.PlaylistItem = this.model;
-
             playlistItemView._template = HBTemplates['playlist-item'];
-
             //alert(playlistItemModel)
             // playlistItemModel.on("change:numQuestions", playlistItemView.render, playlistItemModel);
             playlistItemModel.on("change:complete", playlistItemView.reRender, playlistItemView);
@@ -21,11 +16,7 @@ namespace HTML5AudioPlayer.Components.Views {
             playlistItemModel.on("change:kccomplete", playlistItemView.render, playlistItemView);
             playlistItemModel.on("change:CurrentClicked", playlistItemView.render, playlistItemView);
             playlistItemModel.on("change:inprogress", playlistItemView.render, playlistItemView);
-
-
-
         }
-
         events(): Backbone.EventsHash {
             return {
                 'click': 'onLeftClick',
@@ -39,21 +30,14 @@ namespace HTML5AudioPlayer.Components.Views {
                 'click .transcript_btn': 'transcriptAudio',
                 'click .back_chapt_btn': 'backAudio',
                 'click .next_chapt_btn': 'nextAudio',
-                'click .audio_on_off': 'onoffAudio',
-
-
-
+                'click .audio_on_off': 'onoffAudio'
             };
         }
-
         public render() {
             let playlistItemView = this,
                 playlistItemModel: Models.PlaylistItem = this.model;
-
             console.log("playlistItemModel")
-            console.log(playlistItemModel)
-
-
+            console.log(playlistItemModel);
             playlistItemView.$el.html(playlistItemView._template(playlistItemModel.toJSON()));
             // if (playlistItemModel.Current) {
             //     playlistItemView.$el.addClass("current");
@@ -88,10 +72,8 @@ namespace HTML5AudioPlayer.Components.Views {
             else {
                 playlistItemView.$el.find(".item-inpogress").hide()
             }
-
             playlistItemView.updateNextBack();
-            //alert(playlistItemModel.Index)
-
+            //alert(playlistItemModel.Index);
             return playlistItemView;
         }
 
@@ -100,86 +82,64 @@ namespace HTML5AudioPlayer.Components.Views {
             //this.reRender();
         }
         public reRender(): void {
-
             let playlistItemView = this,
                 playlistItemModel: Models.PlaylistItem = this.model;
             playlistItemView.$el.find(".item-complete").show();
             playlistItemView.$el.find(".item-inpogress").hide()
             //playlistItemModel.Complete=true;
             playlistItemView.updateNextBack();
-
-
         }
-
         public updateNextBack(): void {
             let playlistItemView = this,
                 playlistItemModel: Models.PlaylistItem = this.model;
-            if (playlistItemModel.Complete) {
+            if (playlistItemModel.Complete && parseInt(playlistItemModel.Index) != playlistItemModel.Totalitems) {
                 playlistItemView.$el.find(".next_chapt_btn").addClass("chapt-enabled").removeClass("chapt-disabled");
             } else {
                 playlistItemView.$el.find(".next_chapt_btn").removeClass("chapt-enabled").addClass("chapt-disabled");
             }
-
+            //alert(playlistItemModel.Totalitems)
+            //alert(playlistItemModel.Index)
             if (parseInt(playlistItemModel.Index) > 1) {
                 playlistItemView.$el.find(".back_chapt_btn").addClass("chapt-enabled").removeClass("chapt-disabled");
             } else {
                 playlistItemView.$el.find(".back_chapt_btn").removeClass("chapt-enabled").addClass("chapt-disabled");
             }
-
         }
-
         public renderInprogress(): void {
-
             let playlistItemView = this,
                 playlistItemModel: Models.PlaylistItem = this.model;
             playlistItemView.$el.find(".item-inpogress").show()
             //playlistItemModel.Complete=true;
-
-
         }
-
-
-
-
         @named
         private onLeftClick(e: MouseEvent): void {
             let playlistItemView: PlaylistItem = this,
                 playlistItemModel: Models.PlaylistItem = playlistItemView.model;
             Utilities.consoleTrace("Item clicked: ", playlistItemModel.Id);
-
             if (playlistItemModel.Disabled) {
                 return;
             }
-
             //let audioPlayerView: AudioPlayer = this,
             //videoPlayerViewmodel:Models.AudioPlayer = audioPlayerView.model;
             playlistItemModel.Current = (!playlistItemModel.IsAssessment && !playlistItemModel.IsSurvey);
             //playlistItemModel.CurrentClicked = true;
-            //console.log("**************************8")
-
-
+            //console.log("**************************8");
             if (playlistItemModel.Current) {
                 playlistItemView.$el.addClass("current");
-                playlistItemView.$el.find(".audio-player-container").addClass("showPlayer")
-
+                playlistItemView.$el.find(".audio-player-container").addClass("showPlayer");
                 if (!playlistItemModel.Complete) {
-                    playlistItemView.$el.find(".item-inpogress").show()
+                    playlistItemView.$el.find(".item-inpogress").show();
                 }
             }
             playlistItemView.trigger(Events.EVENT_ITEM_CLICKED, playlistItemModel);
             playlistItemView.trigger(Events.EVENT_INIT_PLAYER, playlistItemModel);
-
-
-
         }
         togglePlayPause1(e: MouseEvent): void {
             e.stopPropagation();
-
             //console.log("togglePlayPause");
             let playlistItemView: PlaylistItem = this,
                 playlistItemModel: Models.PlaylistItem = playlistItemView.model;
             playlistItemView.trigger(Events.EVENT_ITEM_CLICKED_TOGGLE, playlistItemModel);
-
         }
         refreshAudio(e: MouseEvent): void {
             e.stopPropagation();
@@ -193,23 +153,18 @@ namespace HTML5AudioPlayer.Components.Views {
             const input = e.target as HTMLInputElement;
             let currentTime = parseInt(input.value)
             //console.log("seekAudio")
-            //alert("input "+)
-
+            //alert("input "+);
             let playlistItemView: PlaylistItem = this,
                 playlistItemModel: Models.PlaylistItem = playlistItemView.model;
             playlistItemModel.CurrentTime = currentTime;
             playlistItemView.trigger(Events.EVENT_ITEM_CLICKED_SEEK, playlistItemModel);
-
         }
-
         speedAudio(e): void {
             e.stopPropagation();
             $('.audioSpeedContent').toggle();
             let playlistItemView: PlaylistItem = this,
                 playlistItemModel: Models.PlaylistItem = playlistItemView.model;
             playlistItemView.trigger(Events.EVENT_ITEM_CLICKED_SPEED, playlistItemModel);
-
-
         }
         speedContentAudio(e): void {
             e.stopPropagation();
@@ -217,66 +172,50 @@ namespace HTML5AudioPlayer.Components.Views {
             let playlistItemView: PlaylistItem = this,
                 playlistItemModel: Models.PlaylistItem = playlistItemView.model;
             playlistItemView.trigger(Events.EVENT_ITEM_CLICKED_SPEEDLIST, playlistItemModel);
-        }
-
-
+        };
         ccAudio(e: MouseEvent): void {
             e.stopPropagation();
             let playlistItemView: PlaylistItem = this,
                 playlistItemModel: Models.PlaylistItem = playlistItemView.model;
             playlistItemView.trigger(Events.EVENT_ITEM_CLICKED_CC, playlistItemModel);
 
-        }
+        };
         transcriptAudio(e: MouseEvent): void {
             e.stopPropagation();
             let playlistItemView: PlaylistItem = this,
                 playlistItemModel: Models.PlaylistItem = playlistItemView.model;
             playlistItemView.trigger(Events.EVENT_ITEM_CLICKED_TRANSCRIPT, playlistItemModel);
-
-        }
-
+        };
         backAudio(e: MouseEvent): void {
             e.stopPropagation();
             let playlistItemView: PlaylistItem = this,
                 playlistItemModel: Models.PlaylistItem = playlistItemView.model,
-                curItem : number = parseInt(playlistItemModel.Index);
-                if($(e.currentTarget).hasClass("chapt-enabled")){
-                    $(".playlist-item").eq(curItem-2).trigger("click")
-                }
-
-
+                curItem: number = parseInt(playlistItemModel.Index);
+            if ($(e.currentTarget).hasClass("chapt-enabled")) {
+                $(".playlist-item").eq(curItem - 2).trigger("click")
+            }
             //playlistItemView.trigger(Events.EVENT_ITEM_CLICKED_BACKAUDIO, playlistItemModel);
-
         }
-
         nextAudio(e: MouseEvent): void {
             e.stopPropagation();
             let playlistItemView: PlaylistItem = this,
                 playlistItemModel: Models.PlaylistItem = playlistItemView.model,
-                curItem : number = parseInt(playlistItemModel.Index);
-                if($(e.currentTarget).hasClass("chapt-enabled")){
-                    $(".playlist-item").eq(curItem).trigger("click")
-                }
-                //playlistItemView.$el.eq(1).trigger("click");
-
+                curItem: number = parseInt(playlistItemModel.Index);
+            if ($(e.currentTarget).hasClass("chapt-enabled")) {
+                $(".playlist-item").eq(curItem).trigger("click")
+            }
+            //playlistItemView.$el.eq(1).trigger("click");
             //playlistItemView.trigger(Events.EVENT_ITEM_CLICKED_NEXTAUDIO, playlistItemModel);
-
         }
-
         onoffAudio(e: MouseEvent): void {
             e.stopPropagation();
             let playlistItemView: PlaylistItem = this,
                 playlistItemModel: Models.PlaylistItem = playlistItemView.model,
-                curItem : number = parseInt(playlistItemModel.Index);
-                if($(e.currentTarget).hasClass("chapt-enabled")){
-                    $(".playlist-item").eq(curItem).trigger("click")
-                }
-
+                curItem: number = parseInt(playlistItemModel.Index);
+            if ($(e.currentTarget).hasClass("chapt-enabled")) {
+                $(".playlist-item").eq(curItem).trigger("click")
+            }
             playlistItemView.trigger(Events.EVENT_ITEM_CLICKED_ONOFFAUDIO, playlistItemModel);
-
         }
-
-
-
     }
 }

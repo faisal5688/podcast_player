@@ -46,6 +46,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 //     playlistModel.PlaylistItems[i].Disabled =false;
                 // }
                 playlistModel.PlaylistItems[i].CurrentClicked=false;
+                playlistModel.PlaylistItems[i].Totalitems = playlistModel.PlaylistItems.length;
                 playlistView._playlistItems.push(playlistItemView);
                 playlistItemView.on(Events.EVENT_ITEM_CLICKED, playlistView.onItemClicked, playlistView);
 
