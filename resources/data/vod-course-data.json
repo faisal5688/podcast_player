@@ -89,10 +89,9 @@
             ]
         },
         "playlistStartIndex": 0,
-
         "HideCaptionsOnLaunch": true,
         "HidePlaylist": false,
-        "AutoAdvanceToNext": true,
+        "AutoAdvanceToNext": false,
         "options": {
             "playbackRates": [0.7,1, 1.5]
         },
