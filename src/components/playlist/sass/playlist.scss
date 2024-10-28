@@ -769,9 +769,8 @@
             }
 
             .knowledge-check-list-inner {
-                height: 100%;
                 width: 30%;
-                overflow: auto;
+                height: calc(100% - 105px);
 
                 .knowledge-checklist-title {
                     font-size: $fontSizeStandard;
@@ -930,6 +929,9 @@
         &.no-cpe {
             .playlist {
                 .playlist-inner {
+                    height: calc(100% - 40px);
+                }
+                .knowledge-check-list-inner {
                     height: calc(100% - 40px);
                 }
             }
@@ -1100,6 +1102,9 @@
                 .playlist-inner {
                     height: calc(100% - 40px);
                 }
+                .knowledge-check-list-inner {
+                    height: calc(100% - 40px);
+                }
             }
         }
 
@@ -1239,6 +1244,9 @@
         &.no-cpe {
             .playlist {
                 .playlist-inner {
+                    height: 100%;
+                }
+                .knowledge-check-list-inner {
                     height: 100%;
                 }
             }
