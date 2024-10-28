@@ -220,10 +220,12 @@ namespace HTML5AudioPlayer.Components.Models {
             let assessmentItem = this.PlaylistItems.filter(function (val: PlaylistItem): boolean {
                 return val.IsAssessment;
             })[0];
-            if(model.isItemComplete() && model.isKClistComplete()){
-                assessmentItem.Disabled=false;
-            }else{
-                assessmentItem.Disabled=true;
+            if(assessmentItem){
+                if(model.isItemComplete() && model.isKClistComplete()){
+                    assessmentItem.Disabled=false;
+                }else{
+                    assessmentItem.Disabled=true;
+                }
             }
 
             console.log("PlaylistItems")
