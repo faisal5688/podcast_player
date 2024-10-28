@@ -252,7 +252,7 @@
                 "continue": "Continue",
                 "tryagain": "Try Again",
                 "next": "Next",
-                "back":"back"
+                "back":"Back"
             },
             {
                 "id": "kc-003",
@@ -307,7 +307,7 @@
                 "continue": "Continue",
                 "tryagain": "Try Again",
                 "next": "Next",
-                "back":"back"
+                "back":"Back"
             },
             {
                 "id": "kc-004",
@@ -351,7 +351,7 @@
                 "continue": "Continue",
                 "tryagain": "Try Again",
                 "next": "Next",
-                "back":"back"
+                "back":"Back"
             }
         ]
     },
