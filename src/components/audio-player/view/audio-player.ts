@@ -19,6 +19,7 @@ namespace HTML5AudioPlayer.Components.Views {
         private _currentTextTrack: any;
         private _playingonMinimize: boolean;
         private _questionlistItem: QuestionlistItem;
+        private captions = []; // Define captions array globally
 
 
 
@@ -344,7 +345,8 @@ namespace HTML5AudioPlayer.Components.Views {
 
         @named
         private onReady(e: Event): void {
-            let audioPlayerView: AudioPlayer = this;
+            let audioPlayerView: AudioPlayer = this,
+                audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
 
             Utilities.consoleLog("Player Ready...");
 
@@ -356,7 +358,96 @@ namespace HTML5AudioPlayer.Components.Views {
             //audioPlayerView.updateTexttrack();
 
             // audioPlayerView._myPlayer.play();
+            //setInterval(audioPlayerView.updateCaptions, 500); // Poll every 500ms
+            audioPlayerView.loadCaptions(audioPlayerModel.Subtitle); // Replace 'captions.vtt' with your VTT file path
+            //audioPlayerView._myPlayer.on('timeupdate', audioPlayerView.updateCaptions);
+            //audioPlayerView._myPlayer.on('timeupdate', audioPlayerView._videoEventListners.timeupdate);
         }
+
+
+        // Function to load and parse the .vtt file
+        @named
+        private async loadCaptions(url): Promise<void> {
+            try {
+                const response = await fetch(url);
+                const vttText = await response.text();
+                console.log("vttText")
+                console.log(vttText)
+                this.parseVTT(vttText);
+            } catch (error) {
+                console.error('Error loading captions:', error);
+            }
+        };
+
+        // Parse VTT file and store cues
+        @named
+        private parseVTT(vttText: string): void {
+            const lines = vttText.split('\n');
+            let cue: { start: number; end: number; text: string } | null = null;
+
+            lines.forEach((line) => {
+                // Check if the line contains the cue timing information
+                if (line.includes('-->')) {
+                    const [start, end] = line.split(' --> ');
+                    cue = { start: this.timeToSeconds(start), end: this.timeToSeconds(end), text: '' };
+                } else if (line.trim() === '') {
+                    // If cue is not null, push it to captions
+                    if (cue) {
+                        this.captions.push(cue);
+                        cue = null; // Reset cue after adding
+                    }
+                } else {
+                    // Ensure cue is defined before trying to access cue.text
+
+                    if (cue) {
+                        cue.text += line.trim() + ' ';
+                        console.log("cue.text")
+                        console.log(cue.text)
+                    }
+                }
+            });
+
+            // Check if there's a cue that hasn't been pushed after the last line
+            if (cue) {
+                this.captions.push(cue);
+            }
+        }
+
+
+        // Convert time format to seconds
+        @named
+        private timeToSeconds(time) {
+            const [hours, minutes, seconds] = time.split(':');
+            return parseFloat(hours) * 3600 + parseFloat(minutes) * 60 + parseFloat(seconds);
+        };
+
+        // Update captions based on current video time
+        @named
+        private updateCaptions() : void {
+            let audioPlayerView: AudioPlayer = this,
+                audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
+                console.log("**************************************************************")
+                console.log(audioPlayerView._myPlayer.currentTime())
+                let customCCDiv = document.getElementById('cc_text_inner');
+                let _currentTime = audioPlayerView._myPlayer.currentTime()
+                let currentCaption = this.captions.find(
+                  (cue) => _currentTime >= cue.start && _currentTime <= cue.end
+                );
+
+                if (currentCaption && audioPlayerModel.CaptionsEnabled) {
+                   // console.log()
+                  customCCDiv.textContent = currentCaption.text;
+                  $(".cc_text_main .cc_text_inner").html(currentCaption.text)
+                  //console.log("customCCDiv.textContent "+audioPlayerModel.CaptionsEnabled)
+                  //console.log(customCCDiv.textContent)
+                  customCCDiv.style.display = 'block';
+                  $(".cc_text_main").show()
+                  $(".cc_text_inner").show()
+                } else {
+                    //$(".cc_text_main").hide()
+                  customCCDiv.style.display = 'none';
+                }
+        };
 
         @named
         private addScrubRestricter(player: any): void {
@@ -493,6 +584,11 @@ namespace HTML5AudioPlayer.Components.Views {
                 currentTime = audioPlayerView._myPlayer.currentTime();
 
             console.log(audioPlayerView._myPlayer.textTracks())
+            let textTrackDisplay: JQuery = audioPlayerView.$(".vjs-text-track-display");
+            $(".cc_text_main .cc_text_inner").html(textTrackDisplay.text())
+            if (Utilities.isiOS()) {
+                audioPlayerView.updateCaptions()
+            }
             audioPlayerView.updateProgress(audioPlayerView._myPlayer)
             if (videoChanged) {
                 Utilities.consoleTrace("Got time update after video changed, don't do anything.");
@@ -935,13 +1031,14 @@ namespace HTML5AudioPlayer.Components.Views {
             audioPlayerModel.Playlist.CurrentItem.Complete = true;
             audioPlayerView.enableNext();
             if (audioPlayerModel.AutoAdvanceToNext) {
-                if(nextItem.Id!="assessment" && nextItem.Id!="survey"){
+                if (nextItem.Id != "assessment" && nextItem.Id != "survey") {
                     audioPlayerView.next();
                     setTimeout(function () {
                         audioPlayerView.play();
-                        $(".audio-player-container").eq(parseInt(audioPlayerModel.Playlist.CurrentItem.Index)-1).parent().addClass("current");
-                        $(".audio-player-container").eq(parseInt(audioPlayerModel.Playlist.CurrentItem.Index)-1).addClass("showPlayer");
+                        $(".audio-player-container").eq(parseInt(audioPlayerModel.Playlist.CurrentItem.Index) - 1).parent().addClass("current");
+                        $(".audio-player-container").eq(parseInt(audioPlayerModel.Playlist.CurrentItem.Index) - 1).addClass("showPlayer");
                         $('.audio-player-template .play-pause').text('Pause').addClass("pause").removeClass("play");
+                        //$(".audio-player-container").eq(parseInt(audioPlayerModel.Playlist.CurrentItem.Index)-1).find('.play-pause').trigger("click")
                     }, 500)
                 }
 
@@ -1100,7 +1197,7 @@ namespace HTML5AudioPlayer.Components.Views {
             if (audioPlayerModel.Playlist.CurrentItem.Subtitle) {
                 audioPlayerModel.Subtitle = audioPlayerModel.Playlist.CurrentItem.Subtitle;
                 Utilities.consoleTrace("Updating Subtitle to:", audioPlayerModel.Subtitle);
-                audioPlayerView._myPlayer.addRemoteTextTrack({
+                const textTrack = audioPlayerView._myPlayer.addRemoteTextTrack({
                     kind: "captions",
                     mode: (audioPlayerModel.CaptionsEnabled ? "showing" : "hidden"),
                     srclang: "en",
@@ -1110,18 +1207,27 @@ namespace HTML5AudioPlayer.Components.Views {
                 }, true);
                 textTracks = audioPlayerView._myPlayer.textTracks();
                 console.log("textTracks")
-                console.log(audioPlayerView._myPlayer)
-                console.log(textTracks.length)
-                console.log(textTracks)
-                if (textTracks && textTracks.length > 0) {
-                    audioPlayerView._currentTextTrack = textTracks[0];
-                    if (audioPlayerView._currentTextTrack) {
-                        audioPlayerView._currentTextTrack.on('cuechange', audioPlayerView.onCueChange.bind(audioPlayerView));
-                        //audioPlayerView._currentTextTrack.addEventListener('cuechange', audioPlayerView.onCueChange.bind(audioPlayerView));
-                    } else {
-                        console.error('Text track is not available.');
+                //console.log(audioPlayerView._myPlayer)
+                //console.log(textTracks.length)
+                console.log(textTracks[0])
+                if (textTrack) {
+                    textTracks = audioPlayerView._myPlayer.textTracks();
+                    console.log("Text Tracks:", textTracks);
+                    if (textTracks && textTracks.length > 0) {
+                        audioPlayerView._currentTextTrack = textTracks[0];
+                        if (audioPlayerView._currentTextTrack) {
+                            audioPlayerView._currentTextTrack.on('cuechange', audioPlayerView.onCueChange.bind(audioPlayerView));
+                            //audioPlayerView._currentTextTrack.addEventListener('cuechange', audioPlayerView.onCueChange.bind(audioPlayerView));
+                        } else {
+                            console.error('Text track is not available.');
+                        }
+                    }else {
+                        console.error('No text tracks found.');
                     }
+                }else {
+                    console.error('Failed to add remote text track.');
                 }
+
                 audioPlayerView.$(".vjs-control-bar .vjs-icon-toggle-captions").removeClass("hide");
                 audioPlayerView.$(".vjs-control-bar .vjs-icon-tumblr").addClass("hide");
             }

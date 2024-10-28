@@ -76,7 +76,7 @@
         right: 0%;
         top: 60%;
         // bottom: 9%;
-        display: none !important; //hide audio player
+        display: hide !important; //hide audio player
 
         .audio-container {
             height: 80%;
@@ -472,6 +472,33 @@
                         }
                     }
                 }
+            }
+        }
+    }
+}
+
+.vjs-text-track-display {
+    &.empty-captions {
+        :first-child {
+            :first-child {
+                :first-child {
+                    padding: 0;
+                }
+            }
+        }
+    }
+
+    div {
+        font-size: 1.2em !important;
+        font-family: Arial !important;
+    }
+
+    :first-child {
+        :first-child {
+            :first-child {
+                background-color: rgba(0, 0, 0, 0.5) !important;
+                border-radius: 5px;
+                padding: 0 10px;
             }
         }
     }
