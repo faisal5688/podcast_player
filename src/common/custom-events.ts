@@ -24,6 +24,7 @@ namespace HTML5AudioPlayer.Events {
     export let EVENT_MODAL_CLOSED: string = "modal-closed";
     export let EVENT_LAUNCH_ASSESSMNET: string = "LAUNCH_ASSESSMNET";
     export let EVENT_LAUNCH_SURVEY: string = "LAUNCH_SURVEY";
+    export let EVENT_LAUNCH_FEEDBACK: string = "EVENT_LAUNCH_FEEDBACK";
     export let EVENT_QUESTION_ANSWERED: string = "QUESTION_ANSWERED";
     export let EVENT_SURVEY_COMPLETED: string = "SURVEY_STATUS";
     export let EVENT_AUDIOPLAYER_CHANGE: string = "audioPlayer-change";

@@ -34,6 +34,21 @@
             }
         ]
     },
+
+    "feedbackPopup": {
+        "heading": "Confirm",
+        "content": "Did you like this course?",
+        "buttons": [{
+                "id": "like",
+                "name": "Like"
+            },
+            {
+                "id": "dislike",
+                "name": "Dislike"
+            }
+        ]
+    },
+
     "carousel": {
         "hasCarousel": true,
         "hasBackButton": true,
@@ -135,7 +150,6 @@
                 "total":1,
                 "quesDescription": "Fusce vulputate dui sit amet diam tincidunt vestibulum."
             },
-
             {
                 "id": "assessment",
                 "title": "Assessment",
@@ -413,7 +427,7 @@
                                             "choices": {
                                                 "choice": [{
                                                         "correct": "1",
-                                                        "cdata-section": "Contracts to purchase a non-financial item for speculative purposes that is readily convertible to cash"
+                                                        "cdata-section": "Answer Contracts to purchase a non-financial item for speculative purposes that is readily convertible to cash"
                                                     },
                                                     {
                                                         "correct": "0",
@@ -476,7 +490,7 @@
                                                     },
                                                     {
                                                         "correct": "1",
-                                                        "cdata-section": "A commitment to provide a loan at below-market interest rate"
+                                                        "cdata-section": "Answer A commitment to provide a loan at below-market interest rate"
                                                     },
                                                     {
                                                         "correct": "0",
@@ -572,7 +586,7 @@
                                                     },
                                                     {
                                                         "correct": "1",
-                                                        "cdata-section": "Forward contracts with a financial underlying"
+                                                        "cdata-section": "Answer Forward contracts with a financial underlying"
                                                     },
                                                     {
                                                         "correct": "0",
@@ -679,7 +693,7 @@
                                                     },
                                                     {
                                                         "correct": "1",
-                                                        "cdata-section": "90-day LIBOR rate"
+                                                        "cdata-section": "Answer 90-day LIBOR rate"
                                                     }
                                                 ]
                                             },
@@ -767,7 +781,7 @@
                                                     },
                                                     {
                                                         "correct": "1",
-                                                        "cdata-section": "Regular way contracts"
+                                                        "cdata-section": "Answer Regular way contracts"
                                                     },
                                                     {
                                                         "correct": "0",
@@ -863,7 +877,7 @@
                                                     },
                                                     {
                                                         "correct": "1",
-                                                        "cdata-section": "A financial instrument that causes modifications to some or all of the cash flows"
+                                                        "cdata-section": "Answer A financial instrument that causes modifications to some or all of the cash flows"
                                                     },
                                                     {
                                                         "correct": "0",
@@ -962,7 +976,7 @@
                                                 "choicesWidth": "700",
                                                 "choice": [{
                                                         "correct": "1",
-                                                        "cdata-section": "When they are 'net settled' in accordance with the IFRS 9 definition"
+                                                        "cdata-section": "Answer When they are 'net settled' in accordance with the IFRS 9 definition"
                                                     },
                                                     {
                                                         "correct": "0",
@@ -1062,7 +1076,7 @@
                                                     },
                                                     {
                                                         "correct": "1",
-                                                        "cdata-section": "A forward to purchase copper"
+                                                        "cdata-section": "Answer A forward to purchase copper"
                                                     },
                                                     {
                                                         "correct": "0",
@@ -1158,7 +1172,7 @@
                                                     },
                                                     {
                                                         "correct": "1",
-                                                        "cdata-section": "Contracts to buy or sell natural gas"
+                                                        "cdata-section": "Answer Contracts to buy or sell natural gas"
                                                     },
                                                     {
                                                         "correct": "0",
@@ -1258,7 +1272,7 @@
                                                     },
                                                     {
                                                         "correct": "1",
-                                                        "cdata-section": "Embedded derivative in a debt instrument related to the creditworthiness of the issuer"
+                                                        "cdata-section": "Answer Embedded derivative in a debt instrument related to the creditworthiness of the issuer"
                                                     },
                                                     {
                                                         "correct": "0",
@@ -1366,7 +1380,7 @@
                                                     },
                                                     {
                                                         "correct": "1",
-                                                        "cdata-section": "The embedded derivative would be accounted for as a derivative."
+                                                        "cdata-section": "Answer The embedded derivative would be accounted for as a derivative."
                                                     }
                                                 ]
                                             },
@@ -1458,7 +1472,7 @@
                                                     },
                                                     {
                                                         "correct": "1",
-                                                        "cdata-section": "The embedded derivative is closely related to the host instrument."
+                                                        "cdata-section": "Answer The embedded derivative is closely related to the host instrument."
                                                     },
                                                     {
                                                         "correct": "0",
@@ -1554,7 +1568,7 @@
                                                     },
                                                     {
                                                         "correct": "1",
-                                                        "cdata-section": "Interest payments indexed to the credit risk of A Corp. based on a predefined formula"
+                                                        "cdata-section": "Answer Interest payments indexed to the credit risk of A Corp. based on a predefined formula"
                                                     },
                                                     {
                                                         "correct": "0",
@@ -1658,7 +1672,7 @@
                                                     },
                                                     {
                                                         "correct": "1",
-                                                        "cdata-section": "A forward contract to purchase shares of a private entity at a future date."
+                                                        "cdata-section": "Answer A forward contract to purchase shares of a private entity at a future date."
                                                     },
                                                     {
                                                         "correct": "0",
@@ -1758,7 +1772,7 @@
                                                     },
                                                     {
                                                         "correct": "1",
-                                                        "cdata-section": "If the payments are denominated in a functional currency of either party of the contract"
+                                                        "cdata-section": "Answer If the payments are denominated in a functional currency of either party of the contract"
                                                     }
                                                 ]
                                             },
@@ -1842,7 +1856,7 @@
                                                 "choicesWidth": "700",
                                                 "choice": [{
                                                         "correct": "1",
-                                                        "cdata-section": "A forward contract to purchase 5,000 tons of steel to be used in production"
+                                                        "cdata-section": "Answer A forward contract to purchase 5,000 tons of steel to be used in production"
                                                     },
                                                     {
                                                         "correct": "0",
@@ -1950,7 +1964,7 @@
                                                     },
                                                     {
                                                         "correct": "1",
-                                                        "cdata-section": "When there is a revision to the contract terms that cause a significant modification to the cash flows under the contract"
+                                                        "cdata-section": "Answer When there is a revision to the contract terms that cause a significant modification to the cash flows under the contract"
                                                     },
                                                     {
                                                         "correct": "0",
@@ -2054,7 +2068,7 @@
                                                     },
                                                     {
                                                         "correct": "1",
-                                                        "cdata-section": "response 4"
+                                                        "cdata-section": "Answer response 4"
                                                     }
                                                 ]
                                             },
@@ -2138,7 +2152,7 @@
                                                 "choicesWidth": "700",
                                                 "choice": [{
                                                         "correct": "1",
-                                                        "cdata-section": "When the entity first becomes a party to the contract"
+                                                        "cdata-section": "Answer When the entity first becomes a party to the contract"
                                                     },
                                                     {
                                                         "correct": "0",
