@@ -423,30 +423,30 @@ namespace HTML5AudioPlayer.Components.Views {
 
         // Update captions based on current video time
         @named
-        private updateCaptions() : void {
+        private updateCaptions(): void {
             let audioPlayerView: AudioPlayer = this,
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
-                //console.log("**************************************************************")
-                //console.log(audioPlayerView._myPlayer.currentTime())
-                let customCCDiv = document.getElementById('cc_text_inner');
-                let _currentTime = audioPlayerView._myPlayer.currentTime()
-                let currentCaption = this.captions.find(
-                  (cue) => _currentTime >= cue.start && _currentTime <= cue.end
-                );
+            console.log("**************************************************************")
+            //console.log(audioPlayerView._myPlayer.currentTime())
+            let customCCDiv = document.getElementById('cc_text_inner');
+            let _currentTime = audioPlayerView._myPlayer.currentTime()
+            let currentCaption = this.captions.find(
+                (cue) => _currentTime >= cue.start && _currentTime <= cue.end
+            );
 
-                if (currentCaption && audioPlayerModel.CaptionsEnabled) {
-                   // console.log()
-                  customCCDiv.textContent = currentCaption.text;
-                  $(".cc_text_main .cc_text_inner").html(currentCaption.text)
-                  //console.log("customCCDiv.textContent "+audioPlayerModel.CaptionsEnabled)
-                  //console.log(customCCDiv.textContent)
-                  customCCDiv.style.display = 'block';
-                  $(".cc_text_main").show()
-                  $(".cc_text_inner").show()
-                } else {
-                    //$(".cc_text_main").hide()
-                  customCCDiv.style.display = 'none';
-                }
+            if (currentCaption && audioPlayerModel.CaptionsEnabled) {
+                // console.log()
+                customCCDiv.textContent = currentCaption.text;
+                $(".cc_text_main .cc_text_inner").html(currentCaption.text)
+                //console.log("customCCDiv.textContent "+audioPlayerModel.CaptionsEnabled)
+                //console.log(customCCDiv.textContent)
+                customCCDiv.style.display = 'block';
+                $(".cc_text_main").show()
+                $(".cc_text_inner").show()
+            } else {
+                //$(".cc_text_main").hide()
+                customCCDiv.style.display = 'none';
+            }
         };
 
         @named
@@ -583,11 +583,17 @@ namespace HTML5AudioPlayer.Components.Views {
                 videoChanged: boolean = (audioPlayerModel._prevItemId !== audioPlayerModel.Playlist.CurrentItem.Id),
                 currentTime = audioPlayerView._myPlayer.currentTime();
 
-            console.log(audioPlayerView._myPlayer.textTracks())
+            //console.log(audioPlayerView._myPlayer.textTracks())
             let textTrackDisplay: JQuery = audioPlayerView.$(".vjs-text-track-display");
             $(".cc_text_main .cc_text_inner").html(textTrackDisplay.text())
-            if (Utilities.isiOS()) {
-                audioPlayerView.updateCaptions()
+
+            //if (Utilities.isiOS() || Utilities.isiPad()) {
+
+            //}
+            let textTracks = audioPlayerView._myPlayer.textTracks();
+           // console.log("Text Tracks:", textTracks[0].id);
+            if (textTracks[0].id=="") {
+                audioPlayerView.updateCaptions();
             }
             audioPlayerView.updateProgress(audioPlayerView._myPlayer)
             if (videoChanged) {
@@ -744,8 +750,8 @@ namespace HTML5AudioPlayer.Components.Views {
             //console.log("markKcKCItemComplete CurrentItem")
             // console.log(CurrentItem.Kccomplete)
             //CurrentCueItem.completed = true;
-            console.log("****************************************************")
-            console.log(CurrentItem)
+            //console.log("****************************************************")
+            //console.log(CurrentItem)
 
             CurrentItem.Complete = true;
 
@@ -1206,13 +1212,13 @@ namespace HTML5AudioPlayer.Components.Views {
                     default: audioPlayerModel.CaptionsEnabled
                 }, true);
                 textTracks = audioPlayerView._myPlayer.textTracks();
-                console.log("textTracks")
+                //console.log("textTracks")
                 //console.log(audioPlayerView._myPlayer)
                 //console.log(textTracks.length)
-                console.log(textTracks[0])
+                //console.log(textTracks[0])
                 if (textTrack) {
                     textTracks = audioPlayerView._myPlayer.textTracks();
-                    console.log("Text Tracks:", textTracks);
+                    //console.log("Text Tracks:", textTracks);
                     if (textTracks && textTracks.length > 0) {
                         audioPlayerView._currentTextTrack = textTracks[0];
                         if (audioPlayerView._currentTextTrack) {
@@ -1221,10 +1227,10 @@ namespace HTML5AudioPlayer.Components.Views {
                         } else {
                             console.error('Text track is not available.');
                         }
-                    }else {
+                    } else {
                         console.error('No text tracks found.');
                     }
-                }else {
+                } else {
                     console.error('Failed to add remote text track.');
                 }
 
