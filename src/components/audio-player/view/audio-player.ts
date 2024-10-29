@@ -371,8 +371,8 @@ namespace HTML5AudioPlayer.Components.Views {
             try {
                 const response = await fetch(url);
                 const vttText = await response.text();
-                console.log("vttText")
-                console.log(vttText)
+                //console.log("vttText")
+                //console.log(vttText)
                 this.parseVTT(vttText);
             } catch (error) {
                 console.error('Error loading captions:', error);
@@ -426,8 +426,8 @@ namespace HTML5AudioPlayer.Components.Views {
         private updateCaptions() : void {
             let audioPlayerView: AudioPlayer = this,
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
-                console.log("**************************************************************")
-                console.log(audioPlayerView._myPlayer.currentTime())
+                //console.log("**************************************************************")
+                //console.log(audioPlayerView._myPlayer.currentTime())
                 let customCCDiv = document.getElementById('cc_text_inner');
                 let _currentTime = audioPlayerView._myPlayer.currentTime()
                 let currentCaption = this.captions.find(
