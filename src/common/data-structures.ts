@@ -116,7 +116,6 @@ namespace HTML5AudioPlayer.DataStructures {
         isAssessment: boolean;
         isSurvey: boolean;
         hiddenInPlaylist: boolean;
-        hasQuestion:boolean;
         quesDescription: string;
         microPolls: MicroPoll[];
         numQuestions:number;
@@ -135,7 +134,6 @@ namespace HTML5AudioPlayer.DataStructures {
         disabled: boolean;
         isAssessment: boolean;
         hiddenInPlaylist: boolean;
-        hasQuestion:boolean;
         quesDescription: string;
         numQuestions:number;
     }

@@ -28,9 +28,7 @@
             let KnowledgeCheckItemView = this,
                 KnowledgeCheckItemModel: Models.KnowledgeCheckItem = this.model;
             //console.log("KnowledgeCheckItemModel")
-            console.log(KnowledgeCheckItemModel)
-
-
+            //console.log(KnowledgeCheckItemModel)
             KnowledgeCheckItemView.$el.html(KnowledgeCheckItemView._template(KnowledgeCheckItemModel.toJSON()));
             // if (KnowledgeCheckItemModel.Current) {
             //     KnowledgeCheckItemView.$el.addClass("current");

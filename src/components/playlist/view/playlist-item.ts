@@ -119,11 +119,7 @@ namespace HTML5AudioPlayer.Components.Views {
             if (playlistItemModel.Disabled) {
                 return;
             }
-            //let audioPlayerView: AudioPlayer = this,
-            //videoPlayerViewmodel:Models.AudioPlayer = audioPlayerView.model;
             playlistItemModel.Current = (!playlistItemModel.IsAssessment && !playlistItemModel.IsSurvey);
-            //playlistItemModel.CurrentClicked = true;
-            //console.log("**************************8");
             if (playlistItemModel.Current) {
                 playlistItemView.$el.addClass("current");
                 playlistItemView.$el.find(".audio-player-container").addClass("showPlayer");
@@ -136,7 +132,6 @@ namespace HTML5AudioPlayer.Components.Views {
         }
         togglePlayPause1(e: MouseEvent): void {
             e.stopPropagation();
-            //console.log("togglePlayPause");
             let playlistItemView: PlaylistItem = this,
                 playlistItemModel: Models.PlaylistItem = playlistItemView.model;
             playlistItemView.trigger(Events.EVENT_ITEM_CLICKED_TOGGLE, playlistItemModel);
@@ -152,8 +147,7 @@ namespace HTML5AudioPlayer.Components.Views {
             e.stopPropagation();
             const input = e.target as HTMLInputElement;
             let currentTime = parseInt(input.value)
-            //console.log("seekAudio")
-            //alert("input "+);
+
             let playlistItemView: PlaylistItem = this,
                 playlistItemModel: Models.PlaylistItem = playlistItemView.model;
             playlistItemModel.CurrentTime = currentTime;
@@ -204,7 +198,6 @@ namespace HTML5AudioPlayer.Components.Views {
             if ($(e.currentTarget).hasClass("chapt-enabled")) {
                 $(".playlist-item").eq(curItem).trigger("click")
             }
-            //playlistItemView.$el.eq(1).trigger("click");
             //playlistItemView.trigger(Events.EVENT_ITEM_CLICKED_NEXTAUDIO, playlistItemModel);
         }
         onoffAudio(e: MouseEvent): void {

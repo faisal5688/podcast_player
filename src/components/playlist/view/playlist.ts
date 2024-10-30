@@ -8,7 +8,6 @@ namespace HTML5AudioPlayer.Components.Views {
         private _template: (properties?: HandlebarsTemplates) => string;
 
         private _playlistItems: PlaylistItem[];
-        private _playlistQuestions: QuestionlistItem[];
        private _knowledgeCheckItems :KnowledgeCheckItem[];
 
         constructor(options: Backbone.ViewOptions<Models.Playlist>) {
@@ -21,7 +20,6 @@ namespace HTML5AudioPlayer.Components.Views {
             playlistView._template = HBTemplates['playlist'];
 
             playlistView._playlistItems = new Array<PlaylistItem>();
-            playlistView._playlistQuestions = new Array<QuestionlistItem>();
             playlistView._knowledgeCheckItems = new Array<KnowledgeCheckItem>();
 
             // playlistView._KnowledgeCheckList = new KnowledgeCheckList({
@@ -73,21 +71,7 @@ namespace HTML5AudioPlayer.Components.Views {
 
             }
 
-            for (let i = 0; i < playlistModel.QuestionlistItems.length; i++) {
-                playlistView.model.enableKc(playlistModel.QuestionlistItems[i].Id);
-                playlistView.model.completeKc(playlistModel.QuestionlistItems[i].Id);
-                //playlistView.model.getNumQuestions(playlistModel.QuestionlistItems[i].Id,i)
-                let QuestionlistItemView = new QuestionlistItem({
-                    id: _.uniqueId("questionlist-item"),
-                    className: "questionlist-item",
-                    model: playlistModel.QuestionlistItems[i]
-                });
-                //if (playlistModel.QuestionlistItems[i].HasQuestion) {
-                //playlistModel.PlaylistItems[i].NumQuestions = 0;
-                playlistView._playlistQuestions.push(QuestionlistItemView);
-                QuestionlistItemView.on(Events.EVENT_ITEM_CLICKED, playlistView.onQuesClicked, playlistView);
-                // }
-            }
+
 
             //alert(COURSE_MODEL.KnowledgeCheck.CuePoints)
             for (let i = 0; i < playlistModel.KnowledgeCheckItems.length; i++) {
@@ -134,12 +118,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 playlistInner.append(playlistItem.render().$el);
             }
 
-            let questionlistInner: JQuery = playlistView.$el.find(".questionlist-inner");
-            for (let i = 0; i < playlistView._playlistQuestions.length; i++) {
-                let playlistQuestionItem: QuestionlistItem = playlistView._playlistQuestions[i];
 
-                questionlistInner.append(playlistQuestionItem.render().$el);
-            }
 
             let KnowledgeCheckLisInner: JQuery = playlistView.$el.find(".knowledge-checklist-list");
             for (let i = 0; i < playlistView._knowledgeCheckItems.length; i++) {
@@ -147,9 +126,6 @@ namespace HTML5AudioPlayer.Components.Views {
 
                 KnowledgeCheckLisInner.append(knowledgeCheckItem.render().$el);
             }
-
-            //KnowledgeCheckLisInner.append(this._knowledgeCheckItems.render().$el);
-
 
             return playlistView;
         }
@@ -245,16 +221,6 @@ namespace HTML5AudioPlayer.Components.Views {
             let playlistView: Playlist = this,
                 playlistModel: Models.Playlist = playlistView.model;
 
-
-            // playlistView.$('.play-pause').on('click', playlistView.togglePlayPause.bind(playlistView));
-            // playlistView.$('.refresh').on('click', playlistView.refreshAudio.bind(playlistView));
-            // playlistView.$('.progress-bar').on('input', playlistView.seekAudio.bind(playlistView));
-
-            //playlistModel.
-            //playlistItemView.$el.addClass("hide");
-            //console.log(item)
-
-
             if (playlistModel.CurrentItem.id === item.Id) {
                 return;
             }
@@ -278,32 +244,9 @@ namespace HTML5AudioPlayer.Components.Views {
             playlistModel.CurrentListItem = item.Index;
             playlistModel.CurrentItem.Inprogress = true;
 
-            //playlistModel.CurrentItem.NumQuestions= playlistModel.CurrentItem.
-
-            //alert(playlistModel.isLastAudio())
-
-            //alert(playlistModel.isItemComplete())
-            //alert(playlistModel.isKcComplete())
-
             playlistView.trigger(Events.EVENT_SELECTION_CHANGE, item);
-            //playlistView.trigger(Events.EVENT_AUDIOPLAYER_CHANGE, item);
-            //playlistView.trigger(Events.EVENT_AUDIOPLAYPAUSE_CHANGE, item);
-
-
-
 
         }
-
-        // public onItemClickedToggle(item: Models.PlaylistItem): void {
-        //     alert("onItemClickedToggle");
-        // }
-
-        // public onItemClickedRefresh(item: Models.PlaylistItem): void {
-        //     alert("onItemClickedRefresh")
-        // }
-        // public onItemClickedSeek(item: Models.PlaylistItem): void {
-        //     alert("onItemClickedSeek")
-        // }
 
         public getNextItem(index: number, increment?: boolean): Models.PlaylistItem {
             let playlistView: Playlist = this,
@@ -350,8 +293,7 @@ namespace HTML5AudioPlayer.Components.Views {
         onClosePlaylist(): void {
             let playlistView: Playlist = this;
 
-            // playlistView.$el.parent().removeClass("animateRight");
-            // playlistView.$el.parent().addClass("animateLeft");
+
             playlistView.trigger(Events.EVENT_PLAYLIST_CLOSED);
         }
 
@@ -376,15 +318,15 @@ namespace HTML5AudioPlayer.Components.Views {
         enableNext(curVidId: string): void {
             let playlistView: Playlist = this;
             playlistView.model.enableNext(curVidId);
-            playlistView.enableNextKc(curVidId)
+            //playlistView.enableNextKc(curVidId)
 
         }
 
-        enableNextKc(curVidId: string): void {
-            let playlistView: Playlist = this;
-            playlistView.model.enableNextKc(curVidId);
+        // enableNextKc(curVidId: string): void {
+        //     let playlistView: Playlist = this;
+        //     playlistView.model.enableNextKc(curVidId);
 
-        }
+        // }
 
         onInitPlayer(): void {
             let playlistView: Playlist = this;

@@ -121,8 +121,6 @@
                 "preview": "resources/image/previews/part1_0.png",
                 "thumbnail": "resources/image/thumbs/part1_0.png",
                 "duration": "15 mins",
-                "hasQuestion":true,
-                "total":3,
                 "quesDescription": "Fusce vulputate dui sit amet diam tincidunt vestibulum."
             },
             {
@@ -146,8 +144,6 @@
                 "preview": "resources/image/previews/part1_0.png",
                 "thumbnail": "resources/image/thumbs/part1_0.png",
                 "duration": "10 mins",
-                "hasQuestion":true,
-                "total":1,
                 "quesDescription": "Fusce vulputate dui sit amet diam tincidunt vestibulum."
             },
             {

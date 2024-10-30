@@ -1,5 +1,4 @@
 ﻿/// <reference path="playlist-item.ts" />
-/// <reference path="queslist-item.ts" />
 /// <reference path="knowledge-check-item.ts" />
 
 namespace HTML5AudioPlayer.Components.Models {
@@ -9,17 +8,12 @@ namespace HTML5AudioPlayer.Components.Models {
         get PlaylistItems(): PlaylistItem[] { return this.get("playlistItems"); }
         set PlaylistItems(value: PlaylistItem[]) { this.set("playlistItems", value); }
 
-        get QuestionlistItems(): QuestionlistItem[] { return this.get("questionlistItems"); }
-        set QuestionlistItems(value: QuestionlistItem[]) { this.set("questionlistItems", value); }
 
         get KnowledgeCheckItems(): KnowledgeCheckItem[] { return this.get("KnowledgeCheckItems"); }
         set KnowledgeCheckItems(value: KnowledgeCheckItem[]) { this.set("KnowledgeCheckItems", value); }
 
         get CurrentItem(): PlaylistItem { return this.get("currentitem"); }
         set CurrentItem(value: PlaylistItem) { this.set("currentitem", value); }
-
-        get CurrentQuesItem(): QuestionlistItem { return this.get("currentQuesItem"); }
-        set CurrentQuesItem(value: QuestionlistItem) { this.set("currentQuesItem", value); }
 
         get CurrentListItem(): string { return this.get("currentListItem"); }
         set CurrentListItem(value: string) { this.set("currentListItem", value); }
@@ -62,8 +56,6 @@ namespace HTML5AudioPlayer.Components.Models {
 
             model.PlaylistItems = new Array<PlaylistItem>();
 
-            model.QuestionlistItems = new Array<QuestionlistItem>();
-
             model.KnowledgeCheckItems = new Array<KnowledgeCheckItem>();
 
 
@@ -83,43 +75,9 @@ namespace HTML5AudioPlayer.Components.Models {
                     (idx < 9 ? "0" + (idx + 1) : "" + (idx + 1))
 
                 model.PlaylistItems.push(playlistItem);
-
-
-                let questionlistItem:QuestionlistItem = new QuestionlistItem(audioData[i]),
-                    qidx: number = (model.PlaylistStartIndex ? model.PlaylistStartIndex + i : i),
-                    qindex: string = (qidx < 9 ? "0" + (qidx + 1) : "" + (qidx + 1));
-
-                    // if(QuestionlistItem.HasQuestion){
-                    //     qItemCount++;
-                    // }
-
-                    if (questionlistItem.HiddenInPlaylist) {
-                        qItemCount++;
-                    }
-
-                    questionlistItem.Index = qindex;
-
-                    questionlistItem.SrNumbar = qItemCount ?
-                    (qidx < 9 ? "0" + ((qidx - qItemCount) + 1) : "" + ((qidx - qItemCount) + 1)) :
-                    (qidx < 9 ? "0" + (qidx + 1) : "" + (qidx + 1))
-
-                if(questionlistItem.HasQuestion){
-                    model.QuestionlistItems.push(questionlistItem);
-                }
-
-
-
-                // if(playlistItem.IsAssessment && this.isKcComplete()){
-                //     playlistItem.Disabled=false;
-                // }
-
                 if (playlistItem.Current) {
                     model.CurrentItem = playlistItem;
                 }
-
-                // if (questionlistItem.Current) {
-                //     model.CurrentQuesItem = questionlistItem;
-                // }
             }
 
 
@@ -194,27 +152,6 @@ namespace HTML5AudioPlayer.Components.Models {
 
         }
 
-        public enableNextKc(curVidId: string): void {
-            let model: Playlist = this;
-            let CurrentItem = this.QuestionlistItems.filter(function (val: QuestionlistItem): boolean {
-                return val.Id === curVidId;
-            })[0];
-
-
-            if(CurrentItem){
-                //console.log("CurrentItem ")
-                //console.log(CurrentItem)
-                //CurrentItem.Complete=true;
-                CurrentItem.Disabled=false;
-                //this.CurrentItem.Current = true;
-            }
-
-            model.enableAssessment();
-
-
-
-        }
-
         public enableAssessment():void{
             let model: Playlist = this;
             let assessmentItem = this.PlaylistItems.filter(function (val: PlaylistItem): boolean {
@@ -232,53 +169,7 @@ namespace HTML5AudioPlayer.Components.Models {
             console.log(model.PlaylistItems)
         }
 
-        public completeKc(curVidId: string): void {
-            let CurrentItem = this.PlaylistItems.filter(function (val: PlaylistItem): boolean {
-                return val.Id === curVidId;
-            })[0];
-            let CurrentQuestion = this.QuestionlistItems.filter(function (val: QuestionlistItem): boolean {
-                return val.Id === curVidId;
-            })[0];
-            // console.log("CurrentItem")
-            // console.log(CurrentItem)
-            // console.log("CurrentQuestion")
-            // console.log(CurrentQuestion)
-            if(CurrentItem){
-                if(CurrentItem.Kccomplete){
-                    CurrentQuestion.Kccomplete=true;
-                }
-            }
 
-        }
-
-        public enableKc(curVidId: string): void {
-
-            let CurrentItem = this.QuestionlistItems.filter(function (val: QuestionlistItem): boolean {
-                return val.Id === curVidId;
-            })[0];
-
-            if(CurrentItem){
-                if(CurrentItem.Complete){
-                    //CurrentItem.Complete=true;
-                    CurrentItem.Disabled=false;
-                }else{
-                    //CurrentItem.Complete=false;
-                    CurrentItem.Disabled=true;
-                }
-
-                //this.CurrentItem.Current = true;
-            }
-        }
-        // public getNumQuestions(curVidId: string,numQuestions:number): void {
-        //     let CurrentItem = this.QuestionlistItems.filter(function (val: QuestionlistItem): boolean {
-        //         return val.Id === curVidId;
-        //     })[0];
-
-        //     if(CurrentItem){
-        //         CurrentItem.NumQuestions=numQuestions;
-        //         //this.CurrentItem.Current = true;
-        //     }
-        // }
         public isLastAudio(): boolean {
             let model: Playlist = this,
                 lastItem: PlaylistItem = model.PlaylistItems[model.PlaylistItems.length - 1];
@@ -295,15 +186,6 @@ namespace HTML5AudioPlayer.Components.Models {
             }
             return (lastItem.Complete);
         }
-        public isKcComplete(): boolean {
-            let model: Playlist = this;
-            let KClength:number = this.QuestionlistItems.filter(function (val: QuestionlistItem): boolean {
-                return val.Kccomplete;
-            }).length;
-            //let model: Models.AudioPlayer = this;
-            return (KClength === model.QuestionlistItems.length);
-        }
-
         public isKClistComplete(): boolean {
             let model: Playlist = this;
             let KClength:number = this.KnowledgeCheckItems.filter(function (val: KnowledgeCheckItem): boolean {

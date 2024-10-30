@@ -18,7 +18,6 @@ namespace HTML5AudioPlayer.Components.Views {
         public _myPlayer: VideoJSPlayer;
         private _currentTextTrack: any;
         private _playingonMinimize: boolean;
-        private _questionlistItem: QuestionlistItem;
         private captions = []; // Define captions array globally
 
 
@@ -85,11 +84,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 model: audioPlayerModel.Playlist
             });
 
-            // audioPlayerView._questionlistItem = new QuestionlistItem({
-            //     id: _.uniqueId("playlist"),
-            //     className: "playlist",
-            //     model: audioPlayerModel.Playlist
-            // });
+
             console.log("audioPlayerModel.Playlist")
             console.log(audioPlayerModel.Playlist)
 
@@ -118,21 +113,6 @@ namespace HTML5AudioPlayer.Components.Views {
             audioPlayerView._playlist.on(Events.EVENT_ITEM_BACKAUDIO, audioPlayerView.onItemClickedBackaudio, audioPlayerView);
             audioPlayerView._playlist.on(Events.EVENT_ITEM_NEXTAUDIO, audioPlayerView.onItemClickedNextaudio, audioPlayerView);
             audioPlayerView._playlist.on(Events.EVENT_ITEM_ONOFFAUDIO, audioPlayerView.onItemClickedOnoffaudio, audioPlayerView);
-
-
-
-
-            // audioPlayerView._crousel = new Carousel({
-            //     id: _.uniqueId("Carousel"),
-            //     className: "Carousel",
-            //     model: audioPlayerModel.Carousel
-            // });
-
-            // console.log("audioPlayerModel.Carousel")
-            // console.log(audioPlayerModel.Carousel)
-
-            // audioPlayerView._playlist[0]
-            // audioPlayerModel.Playlist.CurrentItem.NumQuestions = 5;
         }
 
         @named
@@ -152,35 +132,16 @@ namespace HTML5AudioPlayer.Components.Views {
                 audioPlayerView.$(".player-container").addClass("fullWidth");
             }
             playlistContainer.append(this._playlist.render().$el);
-
-            //audioPlayerView.model.Playlist.num
-
-            // let crouserContainer: JQuery = audioPlayerView.$(".carousel-container");
-            // crouserContainer.append(this._crousel.render().$el);
-
-
             return audioPlayerView;
         }
 
         @named
         public afterRender(): void {
             let audioPlayerView: AudioPlayer = this;
-
-
             audioPlayerView.initPlayer();
-
             audioPlayerView._playlist.afterRender();
-
-            // audioPlayerView._crousel.afterRender();
             audioPlayerView.updateAudioDesc();
 
-            //alert("afterRender")
-
-            //let playlistItemView = this;
-            //playlistItemModel: Models.PlaylistItem = this.model;
-            //playlistItemView.$el.removeClass("current");
-            // let audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
-            // audioPlayerView.model.Playlist.$el.removeClass("current");
         }
 
         public myPlayer(): VideoJSPlayer {
@@ -368,13 +329,8 @@ namespace HTML5AudioPlayer.Components.Views {
             audioPlayerView.addButtonsToPlayer();
             console.log("updateTexttrack 1");
             audioPlayerView.updateTexttrack();
-            //audioPlayerView.updateTexttrack();
-
-            // audioPlayerView._myPlayer.play();
-            //setInterval(audioPlayerView.updateCaptions, 500); // Poll every 500ms
             audioPlayerView.loadCaptions(audioPlayerModel.Subtitle); // Replace 'captions.vtt' with your VTT file path
-            //audioPlayerView._myPlayer.on('timeupdate', audioPlayerView.updateCaptions);
-            //audioPlayerView._myPlayer.on('timeupdate', audioPlayerView._videoEventListners.timeupdate);
+
         }
 
 
@@ -414,8 +370,8 @@ namespace HTML5AudioPlayer.Components.Views {
 
                     if (cue) {
                         cue.text += line.trim() + ' ';
-                        console.log("cue.text")
-                        console.log(cue.text)
+                        //console.log("cue.text")
+                        //console.log(cue.text)
                     }
                 }
             });
@@ -439,7 +395,7 @@ namespace HTML5AudioPlayer.Components.Views {
         private updateCaptions(): void {
             let audioPlayerView: AudioPlayer = this,
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
-            console.log("**************************************************************")
+            //console.log("**************************************************************")
             //console.log(audioPlayerView._myPlayer.currentTime())
             let customCCDiv = document.getElementById('cc_text_inner');
             let _currentTime = audioPlayerView._myPlayer.currentTime()
@@ -648,11 +604,8 @@ namespace HTML5AudioPlayer.Components.Views {
                     curObj.c = 1;
                     //audioPlayerModel.Playlist.CurrentItem.Complete = true;
                     //audioPlayerModel.Playlist.enableAssessment();
-                    //alert(4)
-                    //audioPlayerModel.Playlist.QuestionlistItems[0].Complete=true;
 
                 }
-                //}
                 curObj.t = parseFloat(audioPlayerModel.maxVisitedTime.toFixed(2));
 
                 curObj.n = audioPlayerModel.CuePoints.length;
@@ -695,19 +648,6 @@ namespace HTML5AudioPlayer.Components.Views {
             curObj.n = audioPlayerModel.CuePoints.length;
         }
 
-        // public enableAssessment():void{
-        //     let audioPlayerView: AudioPlayer = this,
-        //         audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
-        //     let assessmentItem = audioPlayerModel.Playlist.PlaylistItems.filter((val) => {
-        //         return val.IsAssessment;
-        //     })[0];
-        //     if(audioPlayerModel.Playlist.isItemComplete() && audioPlayerModel.Playlist.isKcComplete()){
-        //         assessmentItem.Disabled=false;
-        //     }else{
-        //         assessmentItem.Disabled=true;
-        //     }
-        // }
-
         public kcItemActiveList(): number {
             let audioPlayerView: AudioPlayer = this,
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
@@ -730,9 +670,7 @@ namespace HTML5AudioPlayer.Components.Views {
             curObj.e = 1;
             audioPlayerModel.ScormPreviousData[CurrentItem.Id] = curObj;
             CurrentItem.Disabled = false;
-            //alert()
-            //audioPlayerModel.Playlist.completeKc(vidId);
-            //audioPlayerModel.Playlist.enableAssessment();
+
         }
 
         public checkCurKcComplete(vidId?: string): Boolean {
@@ -751,8 +689,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
 
             console.log(vidId)
-            //console.log(audioPlayerModel.Playlist.KnowledgeCheckItems)
-            //console.log(audioPlayerModel.CuePoints)
+
             let CurrentItem = audioPlayerModel.Playlist.KnowledgeCheckItems.filter((val) => {
                 return val.attributes.id === vidId;
             })[0];
@@ -760,11 +697,7 @@ namespace HTML5AudioPlayer.Components.Views {
             let CurrentCueItem = audioPlayerModel.CuePoints.filter((val) => {
                 return val.id === vidId;
             })[0];
-            //console.log("markKcKCItemComplete CurrentItem")
-            // console.log(CurrentItem.Kccomplete)
-            //CurrentCueItem.completed = true;
-            //console.log("****************************************************")
-            //console.log(CurrentItem)
+
 
             CurrentItem.Complete = true;
 
@@ -787,13 +720,9 @@ namespace HTML5AudioPlayer.Components.Views {
             let CurrentItem = audioPlayerModel.Playlist.PlaylistItems.filter((val) => {
                 return val.Id === vidId;
             })[0];
-            console.log(vidId)
-
-            console.log("CurrentItem")
-            console.log(CurrentItem)
-
-
-
+           // console.log(vidId)
+            //console.log("CurrentItem")
+           // console.log(CurrentItem)
             let curObj: DataStructures.AudioScormData = audioPlayerModel.ScormPreviousData[CurrentItem.Id];
 
             if (!curObj) {
@@ -806,9 +735,7 @@ namespace HTML5AudioPlayer.Components.Views {
 
             curObj.k = 1;
             CurrentItem.Kccomplete = true;
-            audioPlayerModel.Playlist.completeKc(vidId);
             audioPlayerModel.Playlist.enableAssessment();
-            //alert(vidId)
         }
 
         @named
@@ -866,29 +793,11 @@ namespace HTML5AudioPlayer.Components.Views {
 
         private triggerQuetion(item: Models.PlaylistItem) {
             let audioPlayerView: AudioPlayer = this;
-            // audioPlayerModel: Models.AudioPlayer = this.model,
-            //cp: DataStructures.CuePoint = null,
-            //delta: number = 0;
-
-            // alert()
-            //cp = audioPlayerModel.CuePoints[0];
-            //Utilities.consoleTrace("cp",cp)
-            //audioPlayerView.trigger(Events.EVENT_CUEPOINT_HIT, cp);
-            //alert("cp")
             audioPlayerView.trigger(Events.EVENT_CURRENT_QUESTION, item);
 
         };
         private triggerKcItem(item: Models.PlaylistItem) {
             let audioPlayerView: AudioPlayer = this;
-            // audioPlayerModel: Models.AudioPlayer = this.model,
-            //cp: DataStructures.CuePoint = null,
-            //delta: number = 0;
-
-            // alert()
-            //cp = audioPlayerModel.CuePoints[0];
-            //Utilities.consoleTrace("cp",cp)
-            //audioPlayerView.trigger(Events.EVENT_CUEPOINT_HIT, cp);
-            //alert("cp")
             audioPlayerView.trigger(Events.EVENT_CURRENT_KCITEM, item);
 
         };
@@ -904,11 +813,7 @@ namespace HTML5AudioPlayer.Components.Views {
             if (audioPlayerModel.CuePoints) {
                 for (let i: number = 0; i < audioPlayerModel.CuePoints.length; i++) {
                     cp = audioPlayerModel.CuePoints[i];
-
                     delta = Math.abs(currentTime - cp.time);
-
-
-
                     if ((cp.time === currentTime) || (delta <= audioPlayerModel.CuePointDelta)) {
                         if (!cp.triggered) {
                             cp.triggered = true;
@@ -941,12 +846,6 @@ namespace HTML5AudioPlayer.Components.Views {
                         cp.triggered = false;
                         //cp.visited = true;
                     }
-
-                    // let curObj: DataStructures.AudioScormData = audioPlayerModel.ScormPreviousData[audioPlayerModel.Playlist.CurrentItem.Id];
-
-                    // if ((curObj.k == 1)) {
-                    //     cp.visited = true;
-                    // }
                 }
             }
         }
@@ -1028,20 +927,6 @@ namespace HTML5AudioPlayer.Components.Views {
             audioPlayerModel.supposedCurrentTime = 0;
 
             audioPlayerView.openMicroPoll();
-
-            // if (audioPlayerModel.hasEndKC()) {
-            //     audioPlayerView.enable();
-            //     audioPlayerView.triggerCuepoint(DataStructures.KCWhen.End);
-            //     audioPlayerView.resetCuePointStatus();
-            // }
-            // else {
-            //     audioPlayerView.enableNext();
-            //     if (audioPlayerModel.AutoAdvanceToNext) {
-            //         audioPlayerView.next();
-            //     }
-            //     audioPlayerView.enable();
-            // }
-
             if (audioPlayerModel.hasEndKC()) {
                 //audioPlayerView.enable();
                 audioPlayerView.triggerCuepoint(DataStructures.KCWhen.End);
@@ -1239,13 +1124,8 @@ namespace HTML5AudioPlayer.Components.Views {
                     default: audioPlayerModel.CaptionsEnabled
                 }, true);
                 textTracks = audioPlayerView._myPlayer.textTracks();
-                //console.log("textTracks")
-                //console.log(audioPlayerView._myPlayer)
-                //console.log(textTracks.length)
-                //console.log(textTracks[0])
                 if (textTrack) {
                     textTracks = audioPlayerView._myPlayer.textTracks();
-                    //console.log("Text Tracks:", textTracks);
                     if (textTracks && textTracks.length > 0) {
                         audioPlayerView._currentTextTrack = textTracks[0];
                         if (audioPlayerView._currentTextTrack) {
@@ -1287,11 +1167,8 @@ namespace HTML5AudioPlayer.Components.Views {
 
 
             audioPlayerModel.CaptionsEnabled = !audioPlayerModel.CaptionsEnabled;
-            //alert(audioPlayerModel.CaptionsEnabled)
             Utilities.consoleTrace("Show Captions: ", audioPlayerModel.CaptionsEnabled);
-            //alert(audioPlayerModel.CaptionsEnabled)
             if (audioPlayerModel.CaptionsEnabled) {
-                //alert(audioPlayerView._currentTextTrack)
                 if (audioPlayerView._currentTextTrack) {
                     $(".cc_text_main").show();
                     audioPlayerView._currentTextTrack.mode = "showing";
@@ -1313,28 +1190,17 @@ namespace HTML5AudioPlayer.Components.Views {
 
         @named
         private onCueChange(): void {
-            console.log("onCueChange")
             let audioPlayerView: AudioPlayer = this,
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model,
-                //textTrackDisplay: JQuery = audioPlayerView.$(".cc_text_inner"),
                 textTrackDisplay: JQuery = audioPlayerView.$(".vjs-text-track-display"),
 
                 cueText: string = textTrackDisplay.text(),
                 newMode: string = (audioPlayerModel.CaptionsEnabled ? "showing" : "hidden");
-
-            //console
-            //console.log(newMode)
             $(".cc_text_main .cc_text_inner").html(textTrackDisplay.text())
 
             if (newMode !== audioPlayerView._currentTextTrack.mode) {
                 audioPlayerView._currentTextTrack.mode = newMode;
             }
-
-            // if(audioPlayerView._currentTextTrack.mode=="showing"){
-            //     $(".cc_text_main").show();
-            // }else{
-            //     $(".cc_text_main").hide();
-            // }
 
             if (cueText.trim()) {
                 textTrackDisplay.removeClass("empty-captions");
@@ -1370,17 +1236,6 @@ namespace HTML5AudioPlayer.Components.Views {
             console.log('Loaded metadata');
             var tracks = audioPlayerView._myPlayer.textTracks();
             console.log('Text tracks after metadata loaded:', tracks);
-
-            //console.log("updateTexttrack 3");
-            //audioPlayerView.updateTexttrack();
-
-            // if (tracks.length === 0) {
-            //     audioPlayerView._myPlayer.on('play', function() {
-            //         console.log('Text tracks after play:', audioPlayerView._myPlayer.textTracks().length);
-            //     });
-            // }
-
-
 
             Utilities.consoleTrace(
                 "Container Width: ", width,
@@ -1667,15 +1522,7 @@ namespace HTML5AudioPlayer.Components.Views {
             return minutes + ':' + (sec < 10 ? '0' : '') + sec;
         }
 
-        // @named
-        // public onAudioEnd(event:Event): void {
-        //     event.stopPropagation();
-        //     if (this.playPauseBtn && this.progressBar && this.currentTimeDisplay) {
-        //         this.playPauseBtn.text('Play');
-        //         this.progressBar.val('0');
-        //         this.currentTimeDisplay.text('00:00');
-        //     }
-        // }
+
 
 
 
@@ -1725,7 +1572,7 @@ namespace HTML5AudioPlayer.Components.Views {
             let audioPlayerView: AudioPlayer = this,
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
             // audioPlayerView.showTranscript();
-            alert("Back")
+            //alert("Back")
         }
         @named
         private onItemClickedNextaudio(): void {
@@ -1733,7 +1580,7 @@ namespace HTML5AudioPlayer.Components.Views {
             let audioPlayerView: AudioPlayer = this,
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
             // audioPlayerView.showTranscript();
-            alert("next")
+            //alert("next")
         }
 
         @named
@@ -1783,9 +1630,7 @@ namespace HTML5AudioPlayer.Components.Views {
                     Utilities.consoleTrace("Not Seeking video to max time as (current time - max time) delta is small: " + delta);
                 }
             }
-            //const input = event.target as HTMLInputElement;
-            // audioPlayerView._myPlayer.currentTime(seekTo);
-            //alert(audioPlayerModel.Playlist.CurrentItem.CurrentTime)
+
         }
         @named
         private onItemInitPlayer(): void {
@@ -1810,8 +1655,7 @@ namespace HTML5AudioPlayer.Components.Views {
         }
 
         private onItemClickedSpeed(): void {
-            // alert("onItemClickedSpeed");
-            // $('.audioSpeedContent').toggle();
+
             $('.audioSpeedContent').empty()
             let audioPlayerView: AudioPlayer = this,
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;

@@ -157,18 +157,12 @@ namespace HTML5AudioPlayer.Components.Models {
                 playlistItems: DataStructures.AudioData[] = options.playlist,
                 KnowledgeCheckItem: DataStructures.KCData[] = kcdata,
                 //cuePoint : DataStructures.KCData[]=kcdata,
-                //QuestionlistItem: DataStructures.AudioData[] = options.playlist,
                 prevVidComplete: boolean = true;
 
             if (model.ScormPreviousData) {
                 Utilities.consoleTrace("Applying SCORM Data: ", model.ScormPreviousData);
                 model.ScormPreviousData.cv = model.ScormPreviousData.cv || playlistItems[0].id;
                 //model.ScormPreviousData.feedback = "liked"
-                //KnowledgeCheckItem[0].complete=true
-                //console.log(KnowledgeCheckItem)
-                //alert("cuePoint")
-                //model.ScormPreviousData.CuePoints = model.ScormPreviousData.CuePoints;
-                //alert("set scorm data")
                 if(model.ScormPreviousData.feedback){
                     model.ScormPreviousData.feedback=model.ScormPreviousData.feedback;
                 }

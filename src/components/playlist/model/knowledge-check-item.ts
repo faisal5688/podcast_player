@@ -76,8 +76,6 @@
         // get MicroPolls(): DataStructures.MicroPoll[] { return this.get("microPolls"); }
         // set MicroPolls(value: DataStructures.MicroPoll[]) { this.set("microPolls", value); }
 
-        get HasQuestion(): boolean { return this.get("hasQuestion"); }
-        set HasQuestion(value: boolean) { this.set("hasQuestion", value); }
 
         get Total(): number { return this.get("total"); }
         set Total(value: number) { this.set("total", value); }
