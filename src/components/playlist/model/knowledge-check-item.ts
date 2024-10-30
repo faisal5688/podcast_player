@@ -93,8 +93,8 @@
 
         constructor(options:any) {
             super(options);
-            console.log("KnowledgeCheckItem")
-            console.log(options)
+            //console.log("KnowledgeCheckItem")
+            //console.log(options)
             let model: KnowledgeCheckItem = this;
             model.CurrentTime = model.CurrentTime || 0;
             model.Current = model.Current || false;

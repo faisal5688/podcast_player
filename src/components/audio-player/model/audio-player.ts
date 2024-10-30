@@ -72,6 +72,8 @@ namespace HTML5AudioPlayer.Components.Models {
         public _retries: number;
         public numQuestions: number;
 
+
+
         constructor(options: any, kcdata?: any) {
             super(options);
 
@@ -167,6 +169,9 @@ namespace HTML5AudioPlayer.Components.Models {
                 //alert("cuePoint")
                 //model.ScormPreviousData.CuePoints = model.ScormPreviousData.CuePoints;
                 //alert("set scorm data")
+                if(model.ScormPreviousData.feedback){
+                    model.ScormPreviousData.feedback=model.ScormPreviousData.feedback;
+                }
                 for (let i: number = 0; i < KnowledgeCheckItem.length; i++) {
                     let curKcItemData = KnowledgeCheckItem[i],
                         curKcItemScormData: DataStructures.KcScormData = model.ScormPreviousData[curKcItemData.id];
@@ -226,6 +231,7 @@ namespace HTML5AudioPlayer.Components.Models {
                 }
             }
             else {
+
                 for (let i: number = 0; i < playlistItems.length; i++) {
                     let curVidData: DataStructures.AudioData = playlistItems[i];
                     curVidData.currenttime = 0;
@@ -235,7 +241,7 @@ namespace HTML5AudioPlayer.Components.Models {
                 }
                 model.ScormPreviousData = {};
                 model.ScormPreviousData.cv = model.ScormPreviousData.cv || playlistItems[0].id;
-                //model.ScormPreviousData.feedback = "liked"
+                //model.ScormPreviousData.feedback = ""
 
 
                 playlistItems[0].currenttime = 0;

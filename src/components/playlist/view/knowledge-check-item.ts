@@ -27,7 +27,7 @@
         public render() {
             let KnowledgeCheckItemView = this,
                 KnowledgeCheckItemModel: Models.KnowledgeCheckItem = this.model;
-            console.log("KnowledgeCheckItemModel")
+            //console.log("KnowledgeCheckItemModel")
             console.log(KnowledgeCheckItemModel)
 
 

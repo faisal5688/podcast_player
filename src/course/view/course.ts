@@ -28,6 +28,8 @@ namespace HTML5AudioPlayer.Views {
             let courseView: Course = this,
                 courseModel: Models.Course = courseView.model;
 
+
+            courseModel.setCourseView(courseView);
             courseView._template = HBTemplates['course'];
 
             courseView.$el.addClass("course");
@@ -58,16 +60,18 @@ namespace HTML5AudioPlayer.Views {
             courseView._player.on(Events.EVENT_SHOW_RESOURCES, courseView.onShowResource, courseView);
             courseView._player.on(Events.EVENT_LAUNCH_ASSESSMNET, courseView.onLaunchAssessment, courseView);
             courseView._player.on(Events.EVENT_LAUNCH_SURVEY, courseView.onLaunchSurvey, courseView);
-            courseView._player.on(Events.EVENT_LAUNCH_FEEDBACK, courseView.onLaunchFeedback, courseView);
+
             courseView._player.on(Events.EVENT_CURRENT_QUESTION, courseView.getCurrentQuestion, courseView);
             courseView._player.on(Events.EVENT_CURRENT_KCITEM, courseView.getCurrentKcItem, courseView);
+
+
 
         }
 
         public events(): Backbone.EventsHash {
             return {
                 'click .launch-button': 'onLaunchCourse',
-                'click .help-button': 'onLaunchFeedback', //onOpenHelp
+                'click .help-button': 'onOpenHelp', //onOpenHelp
                 'click .exit-button': 'onCourseExit',
 
 
@@ -416,7 +420,7 @@ namespace HTML5AudioPlayer.Views {
             }
         }
 
-        private onLaunchFeedback(): void {
+        public onLaunchFeedback(): void {
             let courseView: Course = this,
                 courseModel: Models.Course = courseView.model;
             if (courseModel.FeedbackPopup) {
@@ -462,6 +466,9 @@ namespace HTML5AudioPlayer.Views {
 
 
         private onOpenHelp(): void {
+            let courseView: Course = this,
+                courseModel: Models.Course = courseView.model;
+
             Utilities.openPdf(this.model.Help.url);
         }
 

@@ -103,7 +103,7 @@ namespace HTML5AudioPlayer.Models {
         get ShowResourceBtn(): boolean { return this.get("ShowResourceBtn"); }
         set ShowResourceBtn(value: boolean) { this.set("ShowResourceBtn", value); }
 
-
+        private _courseView: Views.Course;
 
         constructor(options: any) {
             super(options);
@@ -147,6 +147,8 @@ namespace HTML5AudioPlayer.Models {
             model.PlayerModel = new Components.Models.AudioPlayer(model.PlayerData,model.KnowledgecheckItemData.knowledgechecksdata);
             model.PlayerModel.on(Events.EVENT_SAVE_COURSE_DATA, model.onSendDataToScorm, model);
             model.PlayerModel.once(Events.EVENT_MARK_COURSE_COMPLETE, model.onMarkCourseComplete, model);
+            //model.PlayerModel.once(Events.EVENT_LAUNCH_FEEDBACK, options.onLaunchFeedback);
+
 
 
             model.CarouselModel = new Components.Models.Carousel(model.Carousel);
@@ -195,6 +197,10 @@ namespace HTML5AudioPlayer.Models {
             ) {
                 model.Survey = new Components.Models.Survey(options.surveyData);
             }
+        }
+
+        public setCourseView(courseView: Views.Course): void {
+            this._courseView = courseView;
         }
 
         @named
@@ -258,7 +264,15 @@ namespace HTML5AudioPlayer.Models {
             }
             //alert("onMarkCourseComplete")
             model.CourseComplete = true;
+            if (this._courseView) {
+                //alert()
+                if(!model.ScormPreviousData.feedback){
 
+                    this._courseView.onLaunchFeedback();
+                }
+            } else {
+                console.warn("Course view is not set.");
+            }
             if (model.scorm.setCompletionStatus(status.Completed)) {
                 if (!model.scorm.commit()) {
                     Utilities.consoleWarn("Warning: Failed to COMMIT the set completed to scorm...");

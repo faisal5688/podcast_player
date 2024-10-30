@@ -101,7 +101,6 @@ namespace HTML5AudioPlayer.Components.Views {
             audioPlayerView._playlist.on(Events.EVENT_PLAYLIST_CLOSED, audioPlayerView.onPlaylistClosed, audioPlayerView);
             audioPlayerView._playlist.on(Events.EVENT_LAUNCH_ASSESSMNET, audioPlayerView.onLaunchAssessment, audioPlayerView);
             audioPlayerView._playlist.on(Events.EVENT_LAUNCH_SURVEY, audioPlayerView.onLaunchSurvey, audioPlayerView);
-            audioPlayerView._playlist.on(Events.EVENT_LAUNCH_FEEDBACK, audioPlayerView.onLaunchFeedback, audioPlayerView);
             audioPlayerView._playlist.on(Events.EVENT_AUDIOPLAYPAUSE_CHANGE, audioPlayerView.togglePlayPause, audioPlayerView);
             audioPlayerModel.on("change:CuePoints", audioPlayerView.resetCuePointStatus, audioPlayerView);
             audioPlayerView._playlist.on(Events.EVENT_QUESTION_CLICKED, audioPlayerView.triggerQuetion, audioPlayerView);
@@ -606,7 +605,7 @@ namespace HTML5AudioPlayer.Components.Views {
             //}
             let textTracks = audioPlayerView._myPlayer.textTracks();
            // console.log("Text Tracks:", textTracks[0].id);
-            if (textTracks[0].id=="") {
+            if (textTracks && textTracks[0].id=="") {
                 audioPlayerView.updateCaptions();
             }
             audioPlayerView.updateProgress(audioPlayerView._myPlayer)
@@ -1082,7 +1081,6 @@ namespace HTML5AudioPlayer.Components.Views {
 
         private onLaunchFeedback(): void {
             let audioPlayerView: AudioPlayer = this;
-            audioPlayerView.trigger(Events.EVENT_LAUNCH_FEEDBACK);
         }
 
 
