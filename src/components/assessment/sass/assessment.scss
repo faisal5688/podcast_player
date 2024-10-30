@@ -748,7 +748,7 @@
                 width: 100%;
 
                 .instruction {
-                    margin-bottom: 10px;
+                    margin-bottom: 5px;
                 }
             }
 
@@ -756,16 +756,32 @@
 
                 .option {
                     padding-bottom: 5px;
+
+                    // label {
+                    //     font-size: 14px !important;
+                    // }
+
+                    [type="radio"] {
+                        &:checked+label {
+                            font-size: 14px !important;
+                        }
+
+                        &:not(:checked)+label {
+                            font-size: 14px !important;
+                        }
+                    }
+
                 }
             }
 
             .btn-container {
 
                 .ck-submit-btn {
-                    margin-top: 15px;
+                    margin-top: 5px;
                     display: inline-block;
                 }
                 .ck-back-btn {
+                    margin-top: 5px;
                     display: inline-block;
                 }
             }
@@ -840,13 +856,16 @@
             }
         }
 
+
         .assessment {
             height: 100%;
+            min-height: 300px;
 
             .question-container {
                 .question-text {
                     // padding: 25px 20px 25px 90px;
                     line-height: 22px;
+                    padding: 15px 40px 15px 10px;
                 }
 
                 .page-number {
@@ -860,6 +879,14 @@
 
             .question-data {
                 width: 100%;
+                overflow-y: auto;
+                padding: 10px;
+
+                .btn-container {
+                    .ck-submit-btn {
+                        margin-top: 5px;
+                    }
+                }
             }
         }
 
