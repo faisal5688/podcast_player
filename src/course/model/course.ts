@@ -77,7 +77,11 @@ namespace HTML5AudioPlayer.Models {
 
         get ShowLauncher(): boolean { return this.get("ShowLauncher"); }
         get ShowExitButton(): boolean { return this.get("ShowExitButton"); }
+
         get ExitPopup(): DataStructures.ModalDialogOptions { return this.get("exitPopup"); }
+
+        get FeedbackPopup(): DataStructures.ModalDialogOptions { return this.get("feedbackPopup"); }
+
         get Help(): DataStructures.HelpData { return this.get("help"); }
 
         get hasCarousel(): boolean { return this.get("hasCarousel"); }
@@ -252,7 +256,7 @@ namespace HTML5AudioPlayer.Models {
                 // don't set completion here if assessment is present.
                 return;
             }
-
+            //alert("onMarkCourseComplete")
             model.CourseComplete = true;
 
             if (model.scorm.setCompletionStatus(status.Completed)) {

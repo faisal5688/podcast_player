@@ -39,8 +39,8 @@ namespace HTML5AudioPlayer.Views {
             courseView._carousel = new Components.Views.Carousel({
                 model: courseModel.CarouselModel
             });
-           //courseView._carousel.on(Events.EVENT_PLAYLIST_CLOSED, courseView.onPlaylistClosed, courseView);
-           courseView._carousel.on(Events.EVENT_TOGGLEMENU, courseView.togglemenu, courseView);
+            //courseView._carousel.on(Events.EVENT_PLAYLIST_CLOSED, courseView.onPlaylistClosed, courseView);
+            courseView._carousel.on(Events.EVENT_TOGGLEMENU, courseView.togglemenu, courseView);
 
             // courseView._knowledgeCheckList = new Components.Views.KnowledgeCheckList({
             //     model: courseModel.KnowledgeCheck
@@ -58,6 +58,7 @@ namespace HTML5AudioPlayer.Views {
             courseView._player.on(Events.EVENT_SHOW_RESOURCES, courseView.onShowResource, courseView);
             courseView._player.on(Events.EVENT_LAUNCH_ASSESSMNET, courseView.onLaunchAssessment, courseView);
             courseView._player.on(Events.EVENT_LAUNCH_SURVEY, courseView.onLaunchSurvey, courseView);
+            courseView._player.on(Events.EVENT_LAUNCH_FEEDBACK, courseView.onLaunchFeedback, courseView);
             courseView._player.on(Events.EVENT_CURRENT_QUESTION, courseView.getCurrentQuestion, courseView);
             courseView._player.on(Events.EVENT_CURRENT_KCITEM, courseView.getCurrentKcItem, courseView);
 
@@ -66,7 +67,7 @@ namespace HTML5AudioPlayer.Views {
         public events(): Backbone.EventsHash {
             return {
                 'click .launch-button': 'onLaunchCourse',
-                'click .help-button': 'onOpenHelp',
+                'click .help-button': 'onLaunchFeedback', //onOpenHelp
                 'click .exit-button': 'onCourseExit',
 
 
@@ -84,10 +85,10 @@ namespace HTML5AudioPlayer.Views {
             // playlistView.$el.parent().addClass("animateLeft");
             let courseView = this,
                 courseModel: Models.Course = courseView.model;
-                if (courseView.wasPlaying) {
-                    courseView._player.play();
-                    courseView.wasPlaying = false;
-                }
+            if (courseView.wasPlaying) {
+                courseView._player.play();
+                courseView.wasPlaying = false;
+            }
             courseView._carousel.toggle();
         }
 
@@ -180,7 +181,7 @@ namespace HTML5AudioPlayer.Views {
             //console.log(kc)
 
             //courseView._player.markKcKCItemComplete(kc.id);
-           //courseModel.PlayerModel.sendDataToScorm();
+            //courseModel.PlayerModel.sendDataToScorm();
             kc = courseView._knowledgeCheck.model.KnowledgeChecks[courseView._knowledgeCheck.getIndex() - 1];
             courseView._knowledgeCheck.destroy();
             courseView.onCuePointHitList(courseModel.KnowledgeCheck.getCurrentCuePointsById(curKcId)[0], curIndex);
@@ -415,6 +416,51 @@ namespace HTML5AudioPlayer.Views {
             }
         }
 
+        private onLaunchFeedback(): void {
+            let courseView: Course = this,
+                courseModel: Models.Course = courseView.model;
+            if (courseModel.FeedbackPopup) {
+                let modal: Components.Models.ModalDialog = new Components.Models.ModalDialog({
+                    "heading": courseModel.FeedbackPopup.heading,
+                    "hasclose": false,
+                    "hasProgressbar": false,
+                    "content": courseModel.FeedbackPopup.content,
+                    "buttons": courseModel.FeedbackPopup.buttons
+                }),
+                    modalView: Components.Views.ModalDialog = new Components.Views.ModalDialog({
+                        model: modal
+                    }),
+                    wasPlaying = false;
+
+                // if (!courseView._player.paused()) {
+                //     courseView._player.pause();
+                //     wasPlaying = true;
+                // }
+
+                modalView.once(Events.EVENT_MODAL_CLOSED, function (buttonID: string) {
+                    if (buttonID === "like") {
+                        courseModel.ScormPreviousData.feedback = "liked"
+                    }
+                    else {
+                        if (buttonID === "dislike") {
+                            courseModel.ScormPreviousData.feedback = "disliked"
+                        }
+                    }
+                });
+                modalView.showModal();
+            }
+            else {
+                try {
+                    window.close();
+                }
+                catch (err) {
+                    Utilities.consoleWarn("Failed to close the window. Error:", err);
+                }
+            }
+        }
+
+
+
         private onOpenHelp(): void {
             Utilities.openPdf(this.model.Help.url);
         }
@@ -546,11 +592,11 @@ namespace HTML5AudioPlayer.Views {
         private togglemenu(): void {
             let courseView: Course = this,
                 courseModel: Models.Course = courseView.model;
-                //alert(!courseView._player.paused())
-                if (!courseView._player.paused()) {
-                    courseView._player.pause();
-                    courseView.wasPlaying = true;
-                }
+            //alert(!courseView._player.paused())
+            if (!courseView._player.paused()) {
+                courseView._player.pause();
+                courseView.wasPlaying = true;
+            }
         }
     }
 }

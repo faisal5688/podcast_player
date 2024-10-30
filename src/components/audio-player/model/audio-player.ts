@@ -161,7 +161,7 @@ namespace HTML5AudioPlayer.Components.Models {
             if (model.ScormPreviousData) {
                 Utilities.consoleTrace("Applying SCORM Data: ", model.ScormPreviousData);
                 model.ScormPreviousData.cv = model.ScormPreviousData.cv || playlistItems[0].id;
-                model.ScormPreviousData.feedback = "liked"
+                //model.ScormPreviousData.feedback = "liked"
                 //KnowledgeCheckItem[0].complete=true
                 //console.log(KnowledgeCheckItem)
                 //alert("cuePoint")
@@ -235,7 +235,7 @@ namespace HTML5AudioPlayer.Components.Models {
                 }
                 model.ScormPreviousData = {};
                 model.ScormPreviousData.cv = model.ScormPreviousData.cv || playlistItems[0].id;
-                model.ScormPreviousData.feedback = "liked"
+                //model.ScormPreviousData.feedback = "liked"
 
 
                 playlistItems[0].currenttime = 0;

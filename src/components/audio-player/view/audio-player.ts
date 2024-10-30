@@ -40,6 +40,7 @@ namespace HTML5AudioPlayer.Components.Views {
             'seeked': () => void;
             'playing': () => void;
             'muted': () => void;
+            'ratechange':()=>void;
         };
 
         // This is used to store player play/pause status while opening and closing playlist on iPhone.
@@ -74,7 +75,8 @@ namespace HTML5AudioPlayer.Components.Views {
                 'seeking': audioPlayerView.onSeeking.bind(audioPlayerView),
                 'seeked': audioPlayerView.onSeeked.bind(audioPlayerView),
                 'playing': audioPlayerView.onPlaying.bind(audioPlayerView),
-                'muted': audioPlayerView.onMuted.bind(audioPlayerView)
+                'muted': audioPlayerView.onMuted.bind(audioPlayerView),
+                'ratechange': audioPlayerView.onRateChange.bind(audioPlayerView)
             };
 
             audioPlayerView._playlist = new Playlist({
@@ -99,6 +101,7 @@ namespace HTML5AudioPlayer.Components.Views {
             audioPlayerView._playlist.on(Events.EVENT_PLAYLIST_CLOSED, audioPlayerView.onPlaylistClosed, audioPlayerView);
             audioPlayerView._playlist.on(Events.EVENT_LAUNCH_ASSESSMNET, audioPlayerView.onLaunchAssessment, audioPlayerView);
             audioPlayerView._playlist.on(Events.EVENT_LAUNCH_SURVEY, audioPlayerView.onLaunchSurvey, audioPlayerView);
+            audioPlayerView._playlist.on(Events.EVENT_LAUNCH_FEEDBACK, audioPlayerView.onLaunchFeedback, audioPlayerView);
             audioPlayerView._playlist.on(Events.EVENT_AUDIOPLAYPAUSE_CHANGE, audioPlayerView.togglePlayPause, audioPlayerView);
             audioPlayerModel.on("change:CuePoints", audioPlayerView.resetCuePointStatus, audioPlayerView);
             audioPlayerView._playlist.on(Events.EVENT_QUESTION_CLICKED, audioPlayerView.triggerQuetion, audioPlayerView);
@@ -212,6 +215,7 @@ namespace HTML5AudioPlayer.Components.Views {
             audioPlayerView._myPlayer.on('timeupdate', audioPlayerView._videoEventListners.timeupdate);
             audioPlayerView._myPlayer.on('seeking', audioPlayerView._videoEventListners.seeking);
             audioPlayerView._myPlayer.on('seeked', audioPlayerView._videoEventListners.seeked);
+            audioPlayerView._myPlayer.on('ratechange', audioPlayerView._videoEventListners.ratechange);
 
             if (!audioPlayerModel.ContinueOnFocusout) {
                 $(document).on('visibilitychange', audioPlayerView.onVisibilitychange.bind(audioPlayerView));
@@ -244,6 +248,16 @@ namespace HTML5AudioPlayer.Components.Views {
             }
 
             //audioPlayerView.updateTexttrack()
+        }
+
+        @named
+        private onRateChange():void{
+            let videoPlayerView: AudioPlayer = this;
+
+           let val = videoPlayerView._myPlayer.playbackRate();
+            sessionStorage.setItem('playbackRate', val.toString());
+            $('.navigatorAudioSpeedBtn').text(val.toString() + 'x');
+            Utilities.consoleLog("RateChange!", val);
         }
 
         @named
@@ -1008,6 +1022,8 @@ namespace HTML5AudioPlayer.Components.Views {
                 curIndex: number = parseInt(audioPlayerModel.Playlist.CurrentItem.Index),
                 nextItem = audioPlayerView._playlist.getNextItem(curIndex);
 
+                audioPlayerView._myPlayer.off('ratechange', audioPlayerView._videoEventListners.ratechange);
+
 
             audioPlayerView.enable(false);
             audioPlayerModel.supposedCurrentTime = 0;
@@ -1064,6 +1080,13 @@ namespace HTML5AudioPlayer.Components.Views {
             audioPlayerView.trigger(Events.EVENT_LAUNCH_SURVEY);
         }
 
+        private onLaunchFeedback(): void {
+            let audioPlayerView: AudioPlayer = this;
+            audioPlayerView.trigger(Events.EVENT_LAUNCH_FEEDBACK);
+        }
+
+
+
         @named
         private OnStalled(evt: any): void {
             Utilities.consoleTrace("The browser is trying to get media data, but data is not available. Waiting for the connection.");
@@ -1091,6 +1114,7 @@ namespace HTML5AudioPlayer.Components.Views {
             audioPlayerView.enable(false);
 
             // if Audio is playing, pause the Audio and make any changes only after Audio is paused
+            audioPlayerView._myPlayer.off('ratechange', audioPlayerView._videoEventListners.ratechange);
             if (audioPlayerView._myPlayer.paused()) {
                 Utilities.consoleTrace("Player paused, safe to change the Audio.");
                 audioPlayerView.changeAudio(item);
@@ -1102,6 +1126,11 @@ namespace HTML5AudioPlayer.Components.Views {
                 });
             }
             audioPlayerView.pause();
+            let storedRate =  sessionStorage.getItem('playbackRate');
+            if(storedRate){
+                audioPlayerView._myPlayer.playbackRate(Number(storedRate));
+            }
+            Utilities.consoleLog("VideoChanged!", storedRate);
         }
 
         @named
@@ -1130,7 +1159,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 audioPlayerModel.lastUpdateTime = audioPlayerModel.maxVisitedTime;
                 // save to scorm.
                 audioPlayerModel.ScormPreviousData.cv = item.Id;
-                audioPlayerModel.ScormPreviousData.feedback = "liked"
+                //audioPlayerModel.ScormPreviousData.feedback = "liked"
                 let scorm: Utilities.ScormWrapper = Utilities.ScormWrapper.Instance,
                     scormData: string = JSON.stringify(audioPlayerModel.ScormPreviousData);
                 Utilities.consoleTrace("Updating current Audio to scorm: ", scormData);
@@ -1332,7 +1361,12 @@ namespace HTML5AudioPlayer.Components.Views {
 
             audioPlayerModel.duration = audioPlayerView._myPlayer.duration();
             audioPlayerModel.Playlist.CurrentItem.NumQuestions = audioPlayerModel.CuePoints.length;
-
+            audioPlayerView._myPlayer.on('ratechange', audioPlayerView._videoEventListners.ratechange);
+            let storedRate =  sessionStorage.getItem('playbackRate');
+            if(storedRate){
+                audioPlayerView._myPlayer.playbackRate(Number(storedRate));
+            }
+            Utilities.consoleLog("MetaDataLoaded!", storedRate);
             //audioPlayerView._myPlayer.textTracks()
 
             console.log('Loaded metadata');
@@ -1463,7 +1497,10 @@ namespace HTML5AudioPlayer.Components.Views {
             audioPlayerView.resetCuePointStatus();
             audioPlayerView.resetMicroPollStatus();
             audioPlayerView._myPlayer.play();
+
             $('.audio-player-template .play-pause').text('Pause').addClass("pause").removeClass("play");
+            audioPlayerView._myPlayer.off('ratechange', audioPlayerView._videoEventListners.ratechange);
+            audioPlayerView._myPlayer.on('ratechange', audioPlayerView._videoEventListners.ratechange);
         }
 
         @named
