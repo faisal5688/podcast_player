@@ -9,6 +9,14 @@ namespace HTML5AudioPlayer.Components.Models {
         set PlaylistItems(value: PlaylistItem[]) { this.set("playlistItems", value); }
 
 
+        get Chapters(): string { return this.get("chapters"); }
+        set Chapters(value: string) { this.set("chapters", value); }
+
+        get Questions(): string { return this.get("questions"); }
+        set Questions(value: string) { this.set("questions", value); }
+
+
+
         get KnowledgeCheckItems(): KnowledgeCheckItem[] { return this.get("KnowledgeCheckItems"); }
         set KnowledgeCheckItems(value: KnowledgeCheckItem[]) { this.set("KnowledgeCheckItems", value); }
 
@@ -52,14 +60,14 @@ namespace HTML5AudioPlayer.Components.Models {
                 audioData: DataStructures.AudioData[] = options.audioData,
                 kcdata:DataStructures.KCData[]= options.kcdata,
                 hideItemCount = 0,
+                titlesData:DataStructures.Titles = options.Titles,
                 qItemCount = 0;
+                model.Chapters= titlesData.chapters;
+                model.Questions = titlesData.questions;
 
             model.PlaylistItems = new Array<PlaylistItem>();
 
             model.KnowledgeCheckItems = new Array<KnowledgeCheckItem>();
-
-
-
 
             for (let i = 0; i < audioData.length; i++) {
                 let playlistItem: PlaylistItem = new PlaylistItem(audioData[i]),

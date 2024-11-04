@@ -110,6 +110,7 @@ namespace HTML5AudioPlayer.Components.Models {
                 ResourceBtnText: options.ResourceBtnText,
                 ScormPreviousData: model.ScormPreviousData,
                 kcdata: kcdata,
+                Titles:options.titles
             });
 
 

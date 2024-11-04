@@ -152,7 +152,12 @@
                 "isAssessment": true,
                 "thumbnail": "resources/image/thumbs/assessment.png"
             }
-        ]
+        ],
+        "titles":{
+            "chapters":"Chapters",
+            "questions":"Questions"
+        }
+
     },
     "help": {
         "show": true,
@@ -160,6 +165,7 @@
         "icon": "resources/image/icon_help.svg",
         "url": "resources/pdfs/help.pdf"
     },
+
     "knowledgechecks": {
         "enabled": true,
         "cuepointdelta": 0.2,

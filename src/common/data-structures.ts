@@ -80,7 +80,8 @@ namespace HTML5AudioPlayer.DataStructures {
         completiondelta: number;
         playlist: AudioData[];
         options: options[];
-        kcList : kcDate[]
+        kcList : kcDate[];
+        titles:Titles[];
         //slides : Carousel;
         ScormPreviousData: any;
         coursemode: CourseMode;
@@ -97,6 +98,11 @@ namespace HTML5AudioPlayer.DataStructures {
     }
 
     export class kcDate {
+    }
+
+    export class Titles{
+        chapters: string;
+        questions: string;
     }
 
     export class AudioData {

@@ -97,6 +97,8 @@ namespace HTML5AudioPlayer.Models {
         get HideGlossaryBtn(): boolean { return this.get("HideGlossaryBtn"); }
         set HideGlossaryBtn(value: boolean) { this.set("HideGlossaryBtn", value); }
 
+
+
         get GlossaryBtnText(): string { return this.get("GlossaryBtnText"); }
         set GlossaryBtnText(value: string) { this.set("GlossaryBtnText", value); }
 
