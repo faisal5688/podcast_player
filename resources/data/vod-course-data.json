@@ -120,7 +120,7 @@
                 "transcript": "resources/audio/part1_0.pdf",
                 "preview": "resources/image/previews/part1_0.png",
                 "thumbnail": "resources/image/thumbs/part1_0.png",
-                "duration": "15 mins",
+                "duration": "33 sec",
                 "quesDescription": "Fusce vulputate dui sit amet diam tincidunt vestibulum."
             },
             {
@@ -132,7 +132,7 @@
                 "transcript": "resources/audio/part1_1.pdf",
                 "preview": "resources/image/previews/part1_1.png",
                 "thumbnail": "resources/image/thumbs/part1_1.png",
-                "duration": "10 mins"
+                "duration": "33 sec"
             },
             {
                 "id": "aud-002",
@@ -143,7 +143,7 @@
                 "transcript": "resources/audio/part1_2.pdf",
                 "preview": "resources/image/previews/part1_0.png",
                 "thumbnail": "resources/image/thumbs/part1_0.png",
-                "duration": "10 mins",
+                "duration": "33 sec",
                 "quesDescription": "Fusce vulputate dui sit amet diam tincidunt vestibulum."
             },
             {
@@ -174,7 +174,7 @@
                 "id": "kc-001",
                 "audio": "aud-000",
                 "time": 5,
-                "title": "Chapter 01: 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+                "title": "Chapter 01: Question 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
                 "question": "1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud?",
                 "instruction": "Select an answer and click Submit.",
                 "type": "mcss",
@@ -229,7 +229,7 @@
                 "id": "kc-002",
                 "audio": "aud-000",
                 "time": "10",
-                "title": "Chapter 01: 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+                "title": "Chapter 01: Question 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
                 "question": "2. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud?",
                 "instruction": "Select all applicable answers and click Submit.",
                 "type": "mcms",
@@ -273,7 +273,7 @@
                 "id": "kc-003",
                 "audio": "aud-000",
                 "time": "end",
-                "title": "Chapter 01: 3. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+                "title": "Chapter 01: Question 3. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
                 "question": "3. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud?",
                 "instruction": "Select an answer and click Submit.",
                 "type": "mcss",
@@ -328,7 +328,7 @@
                 "id": "kc-004",
                 "audio": "aud-002",
                 "time": "10",
-                "title": "Chapter 03: 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+                "title": "Chapter 03: Question 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
                 "question": "4. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud?",
                 "instruction": "Select all applicable answers and click Submit.",
                 "type": "mcms",
