@@ -68,7 +68,7 @@ namespace HTML5AudioPlayer.Views {
 
         }
 
-        public events(): Backbone.EventsHash {
+        public events() {
             return {
                 'click .launch-button': 'onLaunchCourse',
                 'click .help-button': 'onOpenHelp', //onOpenHelp
@@ -356,6 +356,7 @@ namespace HTML5AudioPlayer.Views {
             if (courseModel.CourseMode === DataStructures.CourseMode.CPE && courseModel.KnowledgeCheck.Enabled) {
                 courseModel.PlayerModel.CuePoints = courseModel.KnowledgeCheck.getCuePoints(item.Id);
             }
+            courseView._carousel.goToSlide(null,Number(item.Index)-1);
         }
 
         @named

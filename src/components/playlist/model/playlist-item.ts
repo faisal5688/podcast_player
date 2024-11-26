@@ -38,8 +38,8 @@
         get CurrentTime(): number { return this.get("currenttime"); }
         set CurrentTime(value: number) { this.set("currenttime", value); }
 
-        get Duration(): number { return this.get("duration"); }
-        set Duration(value: number) { this.set("duration", value); }
+        get Duration(): string { return this.get("duration"); }
+        set Duration(value: string) { this.set("duration", value); }
 
         get Index(): string { return this.get("index"); }
         set Index(value: string) { this.set("index", value); }
@@ -73,7 +73,6 @@
 
         get MicroPolls(): DataStructures.MicroPoll[] { return this.get("microPolls"); }
         set MicroPolls(value: DataStructures.MicroPoll[]) { this.set("microPolls", value); }
-
 
 
         get Total(): number { return this.get("total"); }

@@ -78,9 +78,12 @@ namespace HTML5AudioPlayer.Components.Views {
         }
 
         public afterRender(): void {
+            let playlistItemView = this,
+            playlistItemModel: Models.PlaylistItem = this.model;
             //alert("afterRender")
             //this.reRender();
         }
+
         public reRender(): void {
             let playlistItemView = this,
                 playlistItemModel: Models.PlaylistItem = this.model;
@@ -88,7 +91,9 @@ namespace HTML5AudioPlayer.Components.Views {
             playlistItemView.$el.find(".item-inpogress").hide()
             //playlistItemModel.Complete=true;
             playlistItemView.updateNextBack();
+
         }
+
         public updateNextBack(): void {
             let playlistItemView = this,
                 playlistItemModel: Models.PlaylistItem = this.model;
@@ -105,12 +110,14 @@ namespace HTML5AudioPlayer.Components.Views {
                 playlistItemView.$el.find(".back_chapt_btn").removeClass("chapt-enabled").addClass("chapt-disabled");
             }
         }
+
         public renderInprogress(): void {
             let playlistItemView = this,
                 playlistItemModel: Models.PlaylistItem = this.model;
             playlistItemView.$el.find(".item-inpogress").show()
             //playlistItemModel.Complete=true;
         }
+
         @named
         private onLeftClick(e: MouseEvent): void {
             let playlistItemView: PlaylistItem = this,
@@ -130,6 +137,7 @@ namespace HTML5AudioPlayer.Components.Views {
             playlistItemView.trigger(Events.EVENT_ITEM_CLICKED, playlistItemModel);
             playlistItemView.trigger(Events.EVENT_INIT_PLAYER, playlistItemModel);
         }
+
         togglePlayPause1(e: MouseEvent): void {
             e.stopPropagation();
             let playlistItemView: PlaylistItem = this,

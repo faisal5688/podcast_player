@@ -151,22 +151,9 @@ namespace HTML5AudioPlayer.Models {
             model.PlayerModel.once(Events.EVENT_MARK_COURSE_COMPLETE, model.onMarkCourseComplete, model);
             //model.PlayerModel.once(Events.EVENT_LAUNCH_FEEDBACK, options.onLaunchFeedback);
 
-
-
             model.CarouselModel = new Components.Models.Carousel(model.Carousel);
 
             model.KnowledgeCheckItem = new Components.Models.KnowledgeCheckItem(model.KnowledgecheckItemData.knowledgechecksdata)
-
-
-            // hasCarousel = model.Carousel.hasCarousel;
-            //alert(model.ShowExitButton)
-            // PlayerData
-            console.log("model.Carousel")
-            console.log(model.CarouselModel)
-            console.log(model.KnowledgeCheckItem)
-            //Carousel
-
-
 
             options.knowledgechecks = options.knowledgechecks || { "enabled": false };
 
@@ -174,11 +161,7 @@ namespace HTML5AudioPlayer.Models {
             if (model.CourseMode === DataStructures.CourseMode.CPE && model.KnowledgeCheck.Enabled) {
                 model.PlayerModel.CuePoints = model.KnowledgeCheck.getCuePoints(model.PlayerModel.Playlist.CurrentItem.Id);
                 model.PlayerModel.CuePointDelta = model.KnowledgeCheck.CuePointDelta;
-                //model.PlayerModel.Knowledgechecksdata = model.KnowledgeCheck.knowledgechecksdata;
             }
-
-            //     console.log("model.KnowledgeCheck")
-            //    console.log(model.KnowledgeCheck)
 
 
             model.CourseComplete = false;

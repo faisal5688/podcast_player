@@ -84,11 +84,6 @@ namespace HTML5AudioPlayer.Components.Views {
                 model: audioPlayerModel.Playlist
             });
 
-
-            console.log("audioPlayerModel.Playlist")
-            console.log(audioPlayerModel.Playlist)
-
-
             audioPlayerView._playlist.on(Events.EVENT_SELECTION_CHANGE, audioPlayerView.onAudioChanged, audioPlayerView);
             audioPlayerView._playlist.on(Events.EVENT_SHOW_GLOSSARY, audioPlayerView.onShowGlossary, audioPlayerView);
             audioPlayerView._playlist.on(Events.EVENT_SHOW_INDEX, audioPlayerView.onShowIndex, audioPlayerView);
@@ -561,7 +556,7 @@ namespace HTML5AudioPlayer.Components.Views {
             //}
             let textTracks = audioPlayerView._myPlayer.textTracks();
            // console.log("Text Tracks:", textTracks[0].id);
-            if (textTracks && textTracks[0].id=="") {
+            if (textTracks && textTracks[0] && textTracks[0].id=="") {
                 audioPlayerView.updateCaptions();
             }
             audioPlayerView.updateProgress(audioPlayerView._myPlayer)
@@ -1209,7 +1204,6 @@ namespace HTML5AudioPlayer.Components.Views {
                 textTrackDisplay.addClass("empty-captions");
             }
 
-
         }
 
         @named
@@ -1338,10 +1332,6 @@ namespace HTML5AudioPlayer.Components.Views {
             audioPlayerView.resetMicroPollStatus();
             audioPlayerView.enable();
         }
-
-
-
-
 
         @named
         private restartAudio() {

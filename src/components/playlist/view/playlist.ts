@@ -64,14 +64,10 @@ namespace HTML5AudioPlayer.Components.Views {
                 playlistItemView.on(Events.EVENT_ITEM_CLICKED_ONOFFAUDIO, playlistView.onoffAudio, playlistView);
                 //playlistItemView.on(Events.EVENT_ITEM_CLICKED_ONOFFAUDIO, playlistView.autoAdvanceAudio, playlistView);
 
-
-
                 playlistModel.enableAssessment();
                 //playlistItemView.afterRender()
 
             }
-
-
 
             //alert(COURSE_MODEL.KnowledgeCheck.CuePoints)
             for (let i = 0; i < playlistModel.KnowledgeCheckItems.length; i++) {
@@ -105,9 +101,6 @@ namespace HTML5AudioPlayer.Components.Views {
             let playlistView = this,
                 playlistModel: Models.Playlist = this.model;
 
-                console.log("playlistView.model")
-                console.log(playlistView.model)
-
             playlistView.$el.html(playlistView._template(playlistView.model.toJSON()));
 
             let playlistInner: JQuery = playlistView.$el.find(".playlist-list");
@@ -117,7 +110,6 @@ namespace HTML5AudioPlayer.Components.Views {
 
                 playlistInner.append(playlistItem.render().$el);
             }
-
 
 
             let KnowledgeCheckLisInner: JQuery = playlistView.$el.find(".knowledge-checklist-list");
@@ -132,7 +124,8 @@ namespace HTML5AudioPlayer.Components.Views {
 
         @named
         afterRender(): void {
-            let playlistView: Playlist = this;
+            let playlistView: Playlist = this,
+            playlistModel: Models.Playlist = playlistView.model;
 
             for (let i = 0; i < playlistView._playlistItems.length; i++) {
                 playlistView._playlistItems[i].afterRender();
@@ -152,6 +145,67 @@ namespace HTML5AudioPlayer.Components.Views {
                 });
             } catch (err) {
                 Utilities.consoleError("Failed to apply scrollbar to '.playlist-inner': ", err.message, err.stack);
+            }
+
+            let audioPlayerView = videojs("video-instance")
+            this.loadAudioPlaylist(audioPlayerView, playlistModel.PlaylistItems);
+            audioPlayerView.on('playlistloaded', (()=>{
+                this.renderPlayerlistTime();
+            }));
+
+        }
+
+        private renderPlayerlistTime(){
+            let playlistView: Playlist = this,
+            playlistModel: Models.Playlist = playlistView.model;
+            for (let i = 0; i < playlistView._playlistItems.length; i++) {
+                let playlistItem: PlaylistItem = playlistView._playlistItems[i];
+
+                playlistItem.$el.find(".left-content .duration").html(playlistItem.model.Duration);
+            }
+        }
+
+        private loadAudioPlaylist(player, playlist:Models.PlaylistItem[]) {
+            const durations = [];
+            let loadedCount = 0;
+
+            playlist.forEach((track, index) => {
+                if (!track.url) {
+                    console.warn(`Track at index ${index} is missing a URL.`);
+                    durations[index] = 0;
+                    loadedCount++;
+                    this.checkIfAllLoaded(player, playlist, durations, loadedCount);
+                    return;
+                }
+
+                const audio = new Audio();
+                audio.src = track.Url;
+
+                audio.addEventListener('loadedmetadata', () => {
+                    durations[index] = audio.duration;
+                    console.log(`Metadata Loaded: ${track.Title}, Duration: ${audio.duration.toFixed(2)}s`);
+
+                    loadedCount++;
+                    this.checkIfAllLoaded(player, playlist, durations, loadedCount);
+                });
+
+                audio.addEventListener('error', () => {
+                    console.error(`Error loading track: ${track.Title}`);
+                    durations[index] = 0;
+                    loadedCount++;
+                    this.checkIfAllLoaded(player, playlist, durations, loadedCount);
+                });
+            });
+        }
+
+        private checkIfAllLoaded(player, playlist:Models.PlaylistItem[], durations, loadedCount) {
+            if (loadedCount === playlist.length) {
+                playlist.forEach((track, index) => {
+                    track.Duration = durations[index]
+                        ? `${Math.floor(durations[index] / 60)}:${Math.floor(durations[index] % 60)+' min'}`
+                        : '00:00';
+                });
+                player.trigger('playlistloaded', playlist);
             }
         }
 

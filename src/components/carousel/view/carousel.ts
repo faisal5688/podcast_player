@@ -202,8 +202,8 @@ namespace HTML5AudioPlayer.Components.Views {
             this.$(`.carousel-indicators button[data-index="${this.currentSlideIndex}"]`).addClass('active');
         }
 
-        goToSlide(event: JQuery.ClickEvent) {
-            const index = $(event.currentTarget).data('index');
+        goToSlide(event: JQuery.ClickEvent, slideNum?:number) {
+            const index = event ? $(event.currentTarget).data('index'): slideNum;
             this.currentSlideIndex = index;
             this.updateSlidePosition();
         }
