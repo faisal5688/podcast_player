@@ -145,21 +145,49 @@
                     text-align: center;
                     padding: 40px;
                 }
+
+                .inst{
+                    font-size: 12px;
+                }
+
+                .star-container{
+                    display: flex;
+                    align-items: center;
+
+                    .star-rating {
+                        display: flex;
+                        cursor: pointer;
+                        padding-right: 15px;
+
+                        .star {
+                            font-size: 30px;
+                            color: #ccc;
+                            cursor: pointer;
+
+                            &.star.selected {
+                                color: gold;
+                            }
+                        }
+
+                      }
+                      .rating-text {
+                        font-size: 10px;
+                        color: rgba(0,0,0,0.7);
+                      }
+                }
             }
 
             .buttons-container {
                 text-align: center;
                 position: absolute;
-                bottom: 0;
+                bottom: 10px;
                 width: 100%;
-                padding-bottom: 15px;
 
                 .modal-button {
                     display: inline-block;
                     padding: 7px 20px;
                     text-transform: uppercase;
                     padding: 10px 20px;
-                    margin-top: 25px;
                     margin-left: 10px;
                     min-width: 97px;
                     background: rgb(112,21,234);

@@ -19,8 +19,15 @@ namespace HTML5AudioPlayer.Components.Models {
         get Buttons(): DataStructures.ModalButton[] { return this.get("buttons"); }
         set Buttons(value: DataStructures.ModalButton[]) { this.set("buttons", value); }
 
+        get StartRating(): boolean { return this.get("hasStarRating"); }
+        set StartRating(value: boolean) { this.set("hasStarRating", value); }
+
+        get Rating(): number { return this.get("rating"); }
+        set Rating(value: number) { this.set("rating", value); }
+
         constructor(options: DataStructures.ModalDialogOptions) {
             super(options);
+            this.Rating = 0;
         }
     }
 }

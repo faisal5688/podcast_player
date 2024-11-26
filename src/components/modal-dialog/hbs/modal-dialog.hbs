@@ -22,7 +22,20 @@
             <span class="progress-text-content"></span>
         </div>
     {{else}}
-        {{{content}}}
+        <p>{{{content}}}</p>
+        {{#if hasStarRating}}
+        <div class="inst">Click on a star to rate this podcast.</div>
+            <div class="star-container">
+                <div class="star-rating">
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
+                </div>
+                <div class="rating-text"></div>
+            </div>
+        {{/if}}
     {{/if}}
 </div>
 <div class="buttons-container">

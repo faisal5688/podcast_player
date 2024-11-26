@@ -430,7 +430,8 @@ namespace HTML5AudioPlayer.Views {
                     "hasclose": false,
                     "hasProgressbar": false,
                     "content": courseModel.FeedbackPopup.content,
-                    "buttons": courseModel.FeedbackPopup.buttons
+                    "buttons": courseModel.FeedbackPopup.buttons,
+                    "hasStarRating": true
                 }),
                     modalView: Components.Views.ModalDialog = new Components.Views.ModalDialog({
                         model: modal
@@ -451,6 +452,10 @@ namespace HTML5AudioPlayer.Views {
                             courseModel.ScormPreviousData.feedback = "disliked"
                         }
                     }
+                    let storedRating = localStorage.getItem('starRating');
+                    if(storedRating){
+                        courseModel.ScormPreviousData.storedRating = storedRating;
+                   }
                 });
                 modalView.showModal();
             }

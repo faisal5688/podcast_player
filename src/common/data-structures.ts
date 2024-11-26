@@ -63,6 +63,7 @@ namespace HTML5AudioPlayer.DataStructures {
         progressTitle?: string;
         buttons?: ModalButton[];
         reportCategory?: string;
+        hasStarRating?:boolean;
     }
 
     export class VideoMessages {

@@ -15,7 +15,8 @@ namespace HTML5AudioPlayer.Components.Views {
 
         public events() {
             return <Backbone.EventsHash>{
-                'click .close-modal': 'closeModal'
+                'click .close-modal': 'closeModal',
+                'click .star': 'updateRating',
             };
         }
 
@@ -24,6 +25,13 @@ namespace HTML5AudioPlayer.Components.Views {
                 modalDialogModel: Models.ModalDialog = this.model;
 
             modalDialogView.$el.html(modalDialogView._template(modalDialogModel.toJSON()));
+
+            let storedRating = localStorage.getItem('starRating');
+            if (storedRating) {
+                modalDialogModel.Rating = parseInt(storedRating, 10);  // Use the stored value
+            }
+
+            modalDialogView.updateStars();
             return modalDialogView;
         }
 
@@ -78,6 +86,39 @@ namespace HTML5AudioPlayer.Components.Views {
             $progressBarSuccess.css('width', 0 + '%').html('');
             $progressBarFailed.css('width', 0 + '%').html('');
             $bodyText.html('');
+        }
+
+        private updateStars(): void {
+            let modalDialogView = this,
+            modalDialogModel: Models.ModalDialog = this.model;
+
+            modalDialogView.$('.star').each((index, element) => {
+                let $star = $(element);
+                let value = parseInt($star.attr('data-value')!, 10);
+
+                if (value <= modalDialogModel.Rating) {
+                    $star.addClass('selected');
+                } else {
+                    $star.removeClass('selected');
+                }
+            });
+            this.$('.rating-text').html(`You rated ${modalDialogModel.Rating} star${modalDialogModel.Rating > 1 ? 's' : ''}`);
+        }
+
+        private updateRating(evt:Event): void {
+            let modalDialogView = this,
+                modalDialogModel: Models.ModalDialog = this.model;
+
+            let $star = $(evt.currentTarget);
+            modalDialogModel.Rating = parseInt($star.attr('data-value')!, 10);
+
+            localStorage.setItem('starRating', modalDialogModel.Rating.toString());
+
+            this.updateStars();
+
+            modalDialogModel.set('rating', modalDialogModel.Rating);
+
+            this.$('.rating-text').html(`You rated ${modalDialogModel.Rating} star${modalDialogModel.Rating > 1 ? 's' : ''}`);
         }
 
         public destroy(): void {
