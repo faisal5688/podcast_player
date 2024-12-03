@@ -80,6 +80,13 @@
                 "description": "<div class='car_img'><img src='resources/image/kpmg-logo-white.svg'></div><div class='car_txt1'>Audio Podcast 4</div><div class='car_txt2'>AI is transforming financial reporting and auditing</div><div class='car_txt3'>2 Chapters</div>",
                 "preview": "resources/image/carousel/part1_2.png",
                 "subtitle": "Slide 4"
+            },
+            {
+                "id": "05",
+                "title": "Slide 5",
+                "description": "<div class='car_img'><img src='resources/image/kpmg-logo-white.svg'></div><div class='car_txt1'>Audio Podcast 4</div><div class='car_txt2'>AI is transforming financial reporting and auditing</div><div class='car_txt3'>2 Chapters</div>",
+                "preview": "resources/image/carousel/part1_2.png",
+                "subtitle": "Slide 5"
             }
         ]
     },
@@ -112,40 +119,64 @@
         },
         "rePollOnSeek": true,
         "playlist": [{
-                "id": "aud-000",
-                "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
-                "description": "",
-                "url": "resources/audio/part1_0.mp3",
-                "subtitle": "resources/audio/part1_0.vtt",
-                "transcript": "resources/audio/part1_0.pdf",
-                "preview": "resources/image/previews/part1_0.png",
-                "thumbnail": "resources/image/thumbs/part1_0.png",
-                "duration": "33 sec",
-                "quesDescription": "Fusce vulputate dui sit amet diam tincidunt vestibulum."
-            },
-            {
-                "id": "aud-001",
-                "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
-                "description": "",
-                "url": "resources/audio/part1_1.mp3",
-                "subtitle": "resources/audio/part1_1.vtt",
-                "transcript": "resources/audio/part1_1.pdf",
-                "preview": "resources/image/previews/part1_1.png",
-                "thumbnail": "resources/image/thumbs/part1_1.png",
-                "duration": "33 sec"
-            },
-            {
-                "id": "aud-002",
-                "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
-                "description": "",
-                "url": "resources/audio/part1_2.mp3",
-                "subtitle": "resources/audio/part1_2.vtt",
-                "transcript": "resources/audio/part1_2.pdf",
-                "preview": "resources/image/previews/part1_0.png",
-                "thumbnail": "resources/image/thumbs/part1_0.png",
-                "duration": "33 sec",
-                "quesDescription": "Fusce vulputate dui sit amet diam tincidunt vestibulum."
-            },
+            "id": "aud-001",
+            "title": "SEC comment letter trends",
+            "description": "",
+            "url": "resources/audio/part_1.mp3",
+            "subtitle": "resources/audio/part_1.vtt",
+            "transcript": "resources/audio/part_1.pdf",
+            "preview": "resources/image/previews/part_1.jpg",
+            "thumbnail": "resources/image/thumbs/part_1.jpg",
+            "duration": "33 sec",
+            "quesDescription": "Fusce vulputate dui sit amet diam tincidunt vestibulum."
+        },
+        {
+            "id": "aud-002",
+            "title": "SEC comment letter process",
+            "description": "",
+            "url": "resources/audio/part_2.mp3",
+            "subtitle": "resources/audio/part_2.vtt",
+            "transcript": "resources/audio/part_2.pdf",
+            "preview": "resources/image/previews/part_2.jpg",
+            "thumbnail": "resources/image/thumbs/part_2.jpg",
+            "duration": "33 sec"
+        },
+        {
+            "id": "aud-003",
+            "title": "SEC review priorities",
+            "description": "",
+            "url": "resources/audio/part_3.mp3",
+            "subtitle": "resources/audio/part_3.vtt",
+            "transcript": "resources/audio/part_3.pdf",
+            "preview": "resources/image/previews/part_3.jpg",
+            "thumbnail": "resources/image/thumbs/part_3.jpg",
+            "duration": "33 sec",
+            "quesDescription": "Fusce vulputate dui sit amet diam tincidunt vestibulum."
+        },
+        {
+            "id": "aud-004",
+            "title": "Cybersecurity rules",
+            "description": "",
+            "url": "resources/audio/part_4.mp3",
+            "subtitle": "resources/audio/part_4.vtt",
+            "transcript": "resources/audio/part_4.pdf",
+            "preview": "resources/image/previews/part_4.jpg",
+            "thumbnail": "resources/image/thumbs/part_4.jpg",
+            "duration": "33 sec",
+            "quesDescription": "Fusce vulputate dui sit amet diam tincidunt vestibulum."
+        },
+        {
+            "id": "aud-005",
+            "title": "Artificial intelligence (AI) trends and disclosures",
+            "description": "",
+            "url": "resources/audio/part_5.mp3",
+            "subtitle": "resources/audio/part_5.vtt",
+            "transcript": "resources/audio/part_5.pdf",
+            "preview": "resources/image/previews/part_5.jpg",
+            "thumbnail": "resources/image/thumbs/part_5.jpg",
+            "duration": "33 sec",
+            "quesDescription": "Fusce vulputate dui sit amet diam tincidunt vestibulum."
+        },
             {
                 "id": "assessment",
                 "title": "Assessment",
@@ -172,50 +203,52 @@
         "knowledgechecksdata": [
             {
                 "id": "kc-001",
-                "audio": "aud-000",
-                "time": 5,
+                "audio": "aud-001",
+                "time": "end",
                 "title": "Chapter 01: Question 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
-                "question": "1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud?",
+                "question": "What area of focus from 2023 is expected to continue into 2024, per the Director of the Division of Corporate Finance?",
                 "instruction": "Select an answer and click Submit.",
                 "type": "mcss",
                 "attempts": 1,
                 "correct": [
-                    "3"
+                    "1"
                 ],
-                "options": [{
+                "options": [
+                    {
                         "id": "1",
-                        "text": "Option 1"
+                        "text": "A. Disclosures resulting from recently adopted rules"
                     },
                     {
                         "id": "2",
-                        "text": "Option 2"
+                        "text": "B. Debt and equity"
                     },
                     {
                         "id": "3",
-                        "text": "Option 3"
+                        "text": "C. Inventory"
                     },
                     {
                         "id": "4",
-                        "text": "Option 4"
+                        "text": "D. Internal controls"
                     }
                 ],
                 "feedback": {
                     "title": "Feedback",
-                    "individual": [{
+                    "individual": [
+                        {
                             "id": "1",
-                            "feedback": "A is incorrect."
+                            "feedback": "<b>A is correct</b>. Areas of focus from 2023 which are expected to continue in 2024 per the statement made by Erik Gerding, Director of the Division of Corporate Finance, include market disruptions in the banking industry and disclosures about interest rate and liquidity risk, impacts of inflation and related risks, disclosures by companies based in or with major operations in China, and disclosures resulting from recently adopted rules."
                         },
                         {
                             "id": "2",
-                            "feedback": "B is incorrect."
+                            "feedback": "<b>B is incorrect</b>. While the SEC did issue comments related to debt and equity, they were not determined to be an area of focus for 2023 or 2024.  The majority of comments related to debt and equity focused on classification and inadequate disclosure. The correct answer is A. Areas of focus from 2023 which are expected to continue in 2024 per the statement made by Erik Gerding, Director of the Division of Corporate Finance, include market disruptions in the banking industry and disclosures about interest rate and liquidity risk, impacts of inflation and related risks, disclosures by companies based in or with major operations in China, and disclosures resulting from recently adopted rules."
                         },
                         {
                             "id": "3",
-                            "feedback": "C is correct."
+                            "feedback": "<b>C is incorrect</b>. While the SEC did issue comments related to inventory, they were not determined to be an area of focus for 2023 or 2024. The majority of comments related to inventory focused on disclosure of the basis of accounting for inventory and components of costs of sales. The correct answer is A. Areas of focus from 2023 which are expected to continue in 2024 per the statement made by Erik Gerding, Director of the Division of Corporate Finance, include market disruptions in the banking industry and disclosures about interest rate and liquidity risk, impacts of inflation and related risks, disclosures by companies based in or with major operations in China, and disclosures resulting from recently adopted rules. "
                         },
                         {
                             "id": "4",
-                            "feedback": "D is incorrect."
+                            "feedback": "<b>D is incorrect</b>. While the SEC did issue comments related to internal controls, they were not determined to be an area of focus for 2023 or 2024. The majority of comments related to internal controls focused on incomplete disclosures, inconsistency in assessments and errors. The correct answer is A. Areas of focus from 2023 which are expected to continue in 2024 per the statement made by Erik Gerding, Director of the Division of Corporate Finance, include market disruptions in the banking industry and disclosures about interest rate and liquidity risk, impacts of inflation and related risks, disclosures by companies based in or with major operations in China, and disclosures resulting from recently adopted rules."
                         }
                     ]
                 },
@@ -227,41 +260,54 @@
             },
             {
                 "id": "kc-002",
-                "audio": "aud-000",
-                "time": "10",
+                "audio": "aud-002",
+                "time": "end",
                 "title": "Chapter 01: Question 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
-                "question": "2. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud?",
+                "question": "Which of the following disclosure requirements did the SEC recently issue compliance and disclosure interpretations (C&DIs) for?",
                 "instruction": "Select all applicable answers and click Submit.",
-                "type": "mcms",
+                "type": "mcss",
                 "attempts": 1,
                 "correct": [
-                    "2",
-                    "4"
+                    "1"
                 ],
-                "options": [{
+                "options": [
+                    {
                         "id": "1",
-                        "text": "Option 1"
+                        "text": "A. Pay versus performance"
                     },
                     {
                         "id": "2",
-                        "text": "Option 2"
+                        "text": "B. Artificial intelligence"
                     },
                     {
                         "id": "3",
-                        "text": "Option 3"
+                        "text": "C. Segment reporting"
                     },
                     {
                         "id": "4",
-                        "text": "Option 4"
+                        "text": "D. Critical accounting estimates"
                     }
                 ],
                 "feedback": {
                     "title": "Feedback",
-                    "generic": {
-                        "correct": "That's correct.",
-                        "incorrect": "That's incorrect.",
-                        "partial": "That's partially correct."
-                    }
+                    "individual": [
+                        {
+                            "id": "1",
+                            "feedback": "<b>A is correct</b>. The SEC staff issued a series of Compliance & Disclosure Interpretations (C&DIs) covering certain implementation and practical questions related to pay versus performance disclosure requirements in 2023."
+                        },
+                        {
+                            "id": "2",
+                            "feedback": "<b>B is incorrect</b>. The SEC staff did not issue Compliance & Disclosure Interpretations (C&DIs) related to Artificial intelligence. The SEC has made public remarks and emphasized the importance of ensuring representations of a Company regarding Artificial Intelligence are not false or misleading. The correct answer is A. The SEC staff issued a series of Compliance & Disclosure Interpretations (C&DI’s) covering certain implementation and practical questions related to pay versus performance disclosure requirements in 2023."
+                        },
+                        {
+                            "id": "3",
+                            "feedback": "<b>C is incorrect</b>. The SEC did not issue Compliance & Disclosure Interpretations (C&DIs) related to Segment reporting. Segment reporting was one of the top SEC staff comment letter topics in the most recent comment cycle (12 months ended June 30, 2024). The correct answer is A. The SEC staff issued a series of Compliance & Disclosure Interpretations (C&DI’s) covering certain implementation and practical questions related to pay versus performance disclosure requirements in 2023."
+                        },
+                        {
+                            "id": "4",
+                            "feedback": "<b>D is incorrect</b>. The SEC did not issue Compliance & Disclosure Interpretations (C&DIs) related to Critical accounting estimates. The Director of the Division of Corporation Finance noted critical accounting estimates to be a focus area of the 2024 disclosure review program. The correct answer is A. The SEC staff issued a series of Compliance & Disclosure Interpretations (C&DIs) covering certain implementation and practical questions related to pay versus performance disclosure requirements in 2023."
+                        }
+                    ]
                 },
                 "submit": "Submit",
                 "continue": "Continue",
@@ -271,50 +317,52 @@
             },
             {
                 "id": "kc-003",
-                "audio": "aud-000",
+                "audio": "aud-003",
                 "time": "end",
-                "title": "Chapter 01: Question 3. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
-                "question": "3. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud?",
-                "instruction": "Select an answer and click Submit.",
+                "title": "Chapter 03: Question 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+                "question": "Which one of the following is a top comment topic area identified in the most recent comment cycle (12 months ended June 30, 2024)?",
+                "instruction": "Select all applicable answers and click Submit.",
                 "type": "mcss",
                 "attempts": 1,
                 "correct": [
-                    "4"
+                    "2"
                 ],
-                "options": [{
+                "options": [
+                    {
                         "id": "1",
-                        "text": "Option 1."
+                        "text": "A. Cybersecurity"
                     },
                     {
                         "id": "2",
-                        "text": "Option 2."
+                        "text": "B. Revenue recognition"
                     },
                     {
                         "id": "3",
-                        "text": "Option 3."
+                        "text": "C. Artificial Intelligence"
                     },
                     {
                         "id": "4",
-                        "text": "Option 4."
+                        "text": "D. Debt and equity"
                     }
                 ],
                 "feedback": {
                     "title": "Feedback",
-                    "individual": [{
+                    "individual": [
+                        {
                             "id": "1",
-                            "feedback": "A is incorrect."
+                            "feedback": "<b>A is incorrect</b>. While the SEC Staff did issue comments specifically related to cybersecurity, these comments were not as prevalent as comments issued related to revenue recognition. The majority of comments related to cybersecurity focused on Item 1.05 Material Cybersecurity Incidents. The correct answer is B. Revenue recognition was one of the top accounting topic areas to receive comments from the SEC for each of the previous 3 years. The revenue recognition topic area is a recurring area and received a high percentage of the accounting related comment letters with the comments being heavily weighted towards revenue disclosures."
                         },
                         {
                             "id": "2",
-                            "feedback": "B is incorrect."
+                            "feedback": "<b>B is correct</b>. Revenue recognition was one of the top accounting topic areas to receive comments from the SEC for each of the previous 3 years. The revenue recognition topic area is a recurring area and received a high percentage of the accounting related comment letters with the comments being heavily weighted towards revenue disclosures."
                         },
                         {
                             "id": "3",
-                            "feedback": "C is incorrect."
+                            "feedback": "<b>C is incorrect</b>. While the SEC Staff did issue comments specifically related to artificial intelligence, these comments were not as prevalent as comments issued related to revenue recognition. The majority of comments related to artificial intelligence focused on credibility and adequacy of disclosure. The correct answer is B. Revenue recognition was one of the top accounting topic areas to receive comments from the SEC for each of the previous 3 years. The revenue recognition topic area is a recurring area and received a high percentage of the accounting related comment letters with the comments being heavily weighted towards revenue disclosures."
                         },
                         {
                             "id": "4",
-                            "feedback": "D is correct."
+                            "feedback": "<b>D is incorrect</b>. While the SEC Staff did issue comments specifically related to debt and equity, these comments were not as prevalent as comments issued related to revenue recognition. The majority of comments related to debt and equity focused on classification and inadequate disclosure. The correct answer is B. Revenue recognition was one of the top accounting topic areas to receive comments from the SEC for each of the previous 3 years. The revenue recognition topic area is a recurring area and received a high percentage of the accounting related comment letters with the comments being heavily weighted towards revenue disclosures. "
                         }
                     ]
                 },
@@ -326,41 +374,111 @@
             },
             {
                 "id": "kc-004",
-                "audio": "aud-002",
-                "time": "10",
+                "audio": "aud-004",
+                "time": "end",
                 "title": "Chapter 03: Question 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
-                "question": "4. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud?",
+                "question": "In the most recent comment letter cycle, which two topics were in the top topic areas receiving comments? <br>I. Third-party experts <br>II. Balance Sheet Matters <br>III. MD&A  <br>IV. Non-GAAP financial measures",
                 "instruction": "Select all applicable answers and click Submit.",
-                "type": "mcms",
+                "type": "mcss",
                 "attempts": 1,
                 "correct": [
-                    "1",
                     "4"
                 ],
-                "options": [{
+                "options": [
+                    {
                         "id": "1",
-                        "text": "Option 1."
+                        "text": "A. I & II "
                     },
                     {
                         "id": "2",
-                        "text": "Option 2."
+                        "text": "B. I & III "
                     },
                     {
                         "id": "3",
-                        "text": "Option 3."
+                        "text": "C. II & IV"
                     },
                     {
                         "id": "4",
-                        "text": "Option 4."
+                        "text": "D. III & IV"
                     }
                 ],
                 "feedback": {
                     "title": "Feedback",
-                    "generic": {
-                        "correct": "That's correct. Fusce vulputate dui sit amet diam tincidunt vestibulum.",
-                        "incorrect": "That's incorrect. Fusce vulputate dui sit amet diam tincidunt vestibulum.",
-                        "partial": "That's partially correct. Fusce vulputate dui sit amet diam tincidunt vestibulum."
+                    "individual": [
+                        {
+                            "id": "1",
+                            "feedback": "<b>A is incorrect</b>. While the SEC did issue comments related to third-party experts and balance sheet matters and the SEC continues to focus on improving disclosures in these areas, they were not the most prolific of the SEC’s comments. The correct answer is D. Consistent with recent years, two of the top topic areas to receive comments remained MD&A and non-GAAP financial measures."
+                        },
+                        {
+                            "id": "2",
+                            "feedback": "<b>B is incorrect</b>. While the SEC did issue comments related to third-party experts and the SEC continues to focus on improving transparency of disclosures in this area, they were not one of the most prolific of the SEC’s comments. The correct answer is D. Consistent with recent years, two of the top topic areas to receive comments remained MD&A and non-GAAP financial measures."
+                        },
+                        {
+                            "id": "3",
+                            "feedback": "<b>C is incorrect</b>. While the SEC did issue comments related to balance sheet matters and the SEC continues to focus on improving disclosures in this area, it was not one of the most prolific of the SEC’s comments. The correct answer is D. Consistent with recent years, two of the top topic areas to receive comments remained MD&A and non-GAAP financial measures. "
+                        },
+                        {
+                            "id": "4",
+                            "feedback": "<b>D is correct</b>. Consistent with recent years, two of the top topic areas receiving comments in the most recent comment letter cycle remained MD&A and non-GAAP financial measures."
+                        }
+                    ]
+                },
+                "submit": "Submit",
+                "continue": "Continue",
+                "tryagain": "Try Again",
+                "next": "Next",
+                "back":"Back"
+            },
+            {
+                "id": "kc-005",
+                "audio": "aud-005",
+                "time": "end",
+                "title": "Chapter 03: Question 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+                "question": "What aspect of non-GAAP financial measures was NOT noted as a significant source of comments in the most recent cycle?",
+                "instruction": "Select all applicable answers and click Submit.",
+                "type": "mcss",
+                "attempts": 1,
+                "correct": [
+                    "4"
+                ],
+                "options": [
+                    {
+                        "id": "1",
+                        "text": "A. Tailored accounting principles"
+                    },
+                    {
+                        "id": "2",
+                        "text": "B. Prominence"
+                    },
+                    {
+                        "id": "3",
+                        "text": "C. Appropriate labeling and disclosure"
+                    },
+                    {
+                        "id": "4",
+                        "text": "D. Liquidity measures"
                     }
+                ],
+                "feedback": {
+                    "title": "Feedback",
+                    "individual": [
+                        {
+                            "id": "1",
+                            "feedback": "<b>A is incorrect</b>. Tailored accounting policies was noted as a significant source of comments in the most recent cycle of non-GAAP financial measure comments. Using a tailored accounting principle in place of a GAAP principle can be misleading. The correct answer is D. Aspects of non-GAAP financial measures that received the most comment in the most recent cycle were tailored accounting principles, prominence, exclusion of normal and recurring cash operating expenses, and appropriate labeling and disclosure of non-GAAP financial measures. Comments related to non-GAAP rules around liquidity measures, while issued, were not as prevalent."
+                        },
+                        {
+                            "id": "2",
+                            "feedback": "<b>B is incorrect</b>. Prominence was noted as a significant source of comments in the most recent cycle of non-GAAP financial measure comments. A non-GAAP measure cannot be presented more prominently than its most directly comparable GAAP measure. The correct answer is D. Aspects of non-GAAP financial measures that received the most comment in the most recent cycle were tailored accounting principles, prominence, exclusion of normal and recurring cash operating expenses, and appropriate labeling and disclosure of non-GAAP financial measures. Comments related to non-GAAP rules around liquidity measures, while issued, were not as prevalent."
+                        },
+                        {
+                            "id": "3",
+                            "feedback": "<b>C is incorrect</b>. Appropriate labeling & disclosure was noted as a significant source of comments in the most recent cycle of non-GAAP financial measure comments. Not providing clear and appropriate labels and descriptions of a non-GAAP financial measure to indicate it is a non-GAAP financial measure can be misleading. The correct answer is D. Aspects of non-GAAP financial measures that received the most comment in the most recent cycle were tailored accounting principles, prominence, exclusion of normal and recurring cash operating expenses, and appropriate labeling and disclosure of non-GAAP financial measures. Comments related to non-GAAP rules around liquidity measures, while issued, were not as prevalent."
+                        },
+                        {
+                            "id": "4",
+                            "feedback": "<b>D is correct</b>. Aspects of non-GAAP financial measures that received the most comment in the most recent cycle were tailored accounting principles, prominence, exclusion of normal and recurring cash operating expenses, and appropriate labeling and disclosure of non-GAAP financial measures. Comments related to non-GAAP rules around liquidity measures, while issued, were not as prevalent."
+                        }
+                    ]
                 },
                 "submit": "Submit",
                 "continue": "Continue",
@@ -407,1823 +525,325 @@
             "AssessmentCloseText": "Your assessment progress will be lost and you will have to restart from the beginning. <br><br>Do you really want to close the assessment?"
         },
         "assessment": {
-            "module": [{
-                "moduleID": "m01",
-                "pool": {
-                    "bank": [{
-                            "bankId": "m01",
-                            "numQuesToDisplay": "2",
-                            "isRandomize": "true",
-                            "question": [
-                                {
-                                    "type": "choice",
-                                    "id": "m01_q1",
-                                    "body": {
-                                        "question": "Which of the following is within the scope of IFRS 9?",
-                                        "instruction": "Check the correct option and select Submit.",
-                                        "MCQ": {
-                                            "category": "MCSS",
-                                            "totalAttempts": "1",
-                                            "randomizeOptions": "n",
-                                            "correctAnswer": "1",
-                                            "choices": {
-                                                "choice": [{
-                                                        "correct": "1",
-                                                        "cdata-section": "Answer Contracts to purchase a non-financial item for speculative purposes that is readily convertible to cash"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "Employer rights and obligations under defined benefit plans"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "Equity instruments issued by the entity"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "Rights and obligations under insurance contracts"
-                                                    }
-                                                ]
-                                            },
-                                            "button": {
-                                                "submit": "<B>Submit</B>",
-                                                "back": "<B>Back</B>"
-                                            }
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "choice",
-                                    "id": "m01_q2",
-                                    "body": {
-                                        "remedialPage": "1",
-                                        "pageheading": {
-                                            "type": "text",
-                                            "x": "60",
-                                            "y": "120",
-                                            "width": "500",
-                                            "cdata-section": "<bodyAssess><B>Question: m01_q01_q2</B></bodyAssess>"
-                                        },
-                                        "question": "Which of the following is fully within the scope of IFRS 9?",
-                                        "instruction": "Check the correct option and select Submit.",
-                                        "MCQ": {
-                                            "category": "MCSS",
-                                            "type": "selfcheck",
-                                            "isTrueFalse": "n",
-                                            "totalAttempts": "1",
-                                            "randomizeOptions": "n",
-                                            "correctAnswer": "3",
-                                            "responseType": "generic",
-                                            "feedbackStartX": "300",
-                                            "feedbackStartY": "300",
-                                            "choices": {
-                                                "x": "83",
-                                                "y": "275",
-                                                "questionOffSet": "30",
-                                                "choiceOffSet": "18",
-                                                "choicesWidth": "700",
-                                                "choice": [{
-                                                        "correct": "0",
-                                                        "cdata-section": "Loan commitments that the entity does not designate as financial liabilities"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "Forward contract between an acquirer and a selling shareholder"
-                                                    },
-                                                    {
-                                                        "correct": "1",
-                                                        "cdata-section": "Answer A commitment to provide a loan at below-market interest rate"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "Employer rights and obligations under defined contribution plans"
-                                                    }
-                                                ]
-                                            },
-                                            "button": {
-                                                "x": "904",
-                                                "y": "580",
-                                                "submit": "<B>Submit</B>",
-                                                "back": "<B>Back</B>",
-                                                "reset": "<B>Reset</B>",
-                                                "solution": "<B>Solution</B>"
-                                            },
-                                            "feedback": {
-                                                "leftOffset": "20",
-                                                "topOffset": "90",
-                                                "rightOffset": "38",
-                                                "bottomOffset": "160",
-                                                "enableCloseBtn": "yes",
-                                                "genericResponse": {
-                                                    "tryAgain": "Click <B>Close</B> to try again.",
-                                                    "solution": "Click <B>Close</B> to continue.",
-                                                    "correct": "Correct. Click <B>Close</B> to continue.",
-                                                    "partialCorrect": "Incorrect.",
-                                                    "incorrect": "Incorrect."
-                                                },
-                                                "specificResponse": {
-                                                    "response": [{
-                                                            "id": "1",
-                                                            "isCorrect": "y",
-                                                            "cdata-section": "response 1"
+            "module": [
+                {
+                    "moduleID": "m01",
+                    "pool": {
+                        "bank": [
+                            {
+                                "bankId": "m01",
+                                "numQuesToDisplay": "8",
+                                "isRandomize": "true",
+                                "question": [
+                                    {
+                                        "type": "choice",
+                                        "id": "m01_q1",
+                                        "body": {
+                                            "question": "Which location was most frequently used by companies in Form 10-K’s issued between February and April 2024 to disclose Artificial Intelligence (“AI”)? <br>",
+                                            "instruction": "Check the correct option and select Submit.",
+                                            "MCQ": {
+                                                "category": "MCSS",
+                                                "totalAttempts": "1",
+                                                "randomizeOptions": "n",
+                                                "correctAnswer": "2",
+                                                "choices": {
+                                                    "choice": [
+                                                        {
+                                                            "correct": "0",
+                                                            "cdata-section": "Item 1. Business"
                                                         },
                                                         {
-                                                            "id": "2",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 2"
+                                                            "correct": "1",
+                                                            "cdata-section": "Item 1A. Risk Factors"
                                                         },
                                                         {
-                                                            "id": "3",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 3"
+                                                            "correct": "0",
+                                                            "cdata-section": "Item 1C. Cybersecurity"
                                                         },
                                                         {
-                                                            "id": "4",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 4"
+                                                            "correct": "0",
+                                                            "cdata-section": "Item 7. MD&A"
                                                         }
                                                     ]
+                                                },
+                                                "button": {
+                                                    "submit": "<B>Submit</B>",
+                                                    "back": "<B>Back</B>"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "choice",
+                                        "id": "m01_q2",
+                                        "body": {
+                                            "question": "Which topic is expected to be a priority of the SEC disclosure review program in 2024?",
+                                            "instruction": "Check the correct option and select Submit.",
+                                            "MCQ": {
+                                                "category": "MCSS",
+                                                "totalAttempts": "1",
+                                                "randomizeOptions": "n",
+                                                "correctAnswer": "1",
+                                                "choices": {
+                                                    "choice": [
+                                                        {
+                                                            "correct": "1",
+                                                            "cdata-section": "Segment reporting"
+                                                        },
+                                                        {
+                                                            "correct": "0",
+                                                            "cdata-section": "Revenue recognition"
+                                                        },
+                                                        {
+                                                            "correct": "0",
+                                                            "cdata-section": "Fair value"
+                                                        },
+                                                        {
+                                                            "correct": "0",
+                                                            "cdata-section": "Inventory"
+                                                        }
+                                                    ]
+                                                },
+                                                "button": {
+                                                    "submit": "<B>Submit</B>",
+                                                    "back": "<B>Back</B>"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "choice",
+                                        "id": "m01_q3",
+                                        "body": {
+                                            "question": "Which one of the following is a frequent comment area identified in the current cycle related to segment reporting?",
+                                            "instruction": "Check the correct option and select Submit.",
+                                            "MCQ": {
+                                                "category": "MCSS",
+                                                "totalAttempts": "1",
+                                                "randomizeOptions": "n",
+                                                "correctAnswer": "3",
+                                                "choices": {
+                                                    "choice": [
+                                                        {
+                                                            "correct": "0",
+                                                            "cdata-section": "Business overview "
+                                                        },
+                                                        {
+                                                            "correct": "0",
+                                                            "cdata-section": "Critical accounting estimates"
+                                                        },
+                                                        {
+                                                            "correct": "1",
+                                                            "cdata-section": "Identification of operating and/or reportable segments"
+                                                        },
+                                                        {
+                                                            "correct": "0",
+                                                            "cdata-section": "Geographic information"
+                                                        }
+                                                    ]
+                                                },
+                                                "button": {
+                                                    "submit": "<B>Submit</B>",
+                                                    "back": "<B>Back</B>"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "choice",
+                                        "id": "m01_q4",
+                                        "body": {
+                                            "question": "Which topic do the majority of internal control over financial reporting comments relate to?",
+                                            "instruction": "Check the correct option and select Submit.",
+                                            "MCQ": {
+                                                "category": "MCSS",
+                                                "totalAttempts": "1",
+                                                "randomizeOptions": "n",
+                                                "correctAnswer": "4",
+                                                "choices": {
+                                                    "choice": [
+                                                        {
+                                                            "correct": "0",
+                                                            "cdata-section": "Results of operations"
+                                                        },
+                                                        {
+                                                            "correct": "0",
+                                                            "cdata-section": "Prominence"
+                                                        },
+                                                        {
+                                                            "correct": "0",
+                                                            "cdata-section": "Climate change"
+                                                        },
+                                                        {
+                                                            "correct": "1",
+                                                            "cdata-section": "Incomplete disclosures"
+                                                        }
+                                                    ]
+                                                },
+                                                "button": {
+                                                    "submit": "<B>Submit</B>",
+                                                    "back": "<B>Back</B>"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "choice",
+                                        "id": "m01_q5",
+                                        "body": {
+                                            "question": "Which of the following risk factor comment letter topic areas received the most comment letters in the most recent comment cycle (12 months ended June 30, 2024)?",
+                                            "instruction": "Check the correct option and select Submit.",
+                                            "MCQ": {
+                                                "category": "MCSS",
+                                                "totalAttempts": "1",
+                                                "randomizeOptions": "n",
+                                                "correctAnswer": "2",
+                                                "choices": {
+                                                    "choice": [
+                                                        {
+                                                            "correct": "0",
+                                                            "cdata-section": "Management’s discussion & analysis"
+                                                        },
+                                                        {
+                                                            "correct": "1",
+                                                            "cdata-section": "Climate Change"
+                                                        },
+                                                        {
+                                                            "correct": "0",
+                                                            "cdata-section": "Disclosure controls and procedures"
+                                                        },
+                                                        {
+                                                            "correct": "0",
+                                                            "cdata-section": "Non-GAAP financial measures"
+                                                        }
+                                                    ]
+                                                },
+                                                "button": {
+                                                    "submit": "<B>Submit</B>",
+                                                    "back": "<B>Back</B>"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "choice",
+                                        "id": "m01_q6",
+                                        "body": {
+                                            "question": "What aspect of non-GAAP financial measures received the most attention in comment letters?",
+                                            "instruction": "Check the correct option and select Submit.",
+                                            "MCQ": {
+                                                "category": "MCSS",
+                                                "totalAttempts": "1",
+                                                "randomizeOptions": "n",
+                                                "correctAnswer": "1",
+                                                "choices": {
+                                                    "choice": [
+                                                        {
+                                                            "correct": "1",
+                                                            "cdata-section": "Use of individually tailored accounting principles "
+                                                        },
+                                                        {
+                                                            "correct": "0",
+                                                            "cdata-section": "Incomplete disclosure"
+                                                        },
+                                                        {
+                                                            "correct": "0",
+                                                            "cdata-section": "Use of free cash flows measures "
+                                                        },
+                                                        {
+                                                            "correct": "0",
+                                                            "cdata-section": "Required statement disclosing reasons management believes the measure is useful to investors"
+                                                        }
+                                                    ]
+                                                },
+                                                "button": {
+                                                    "submit": "<B>Submit</B>",
+                                                    "back": "<B>Back</B>"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "choice",
+                                        "id": "m01_q7",
+                                        "body": {
+                                            "question": "Which of the following is NOT an example of a Form 8-K disclosure trend related to cybersecurity incidents?",
+                                            "instruction": "Check the correct option and select Submit.",
+                                            "MCQ": {
+                                                "category": "MCSS",
+                                                "totalAttempts": "1",
+                                                "randomizeOptions": "n",
+                                                "correctAnswer": "2",
+                                                "choices": {
+                                                    "choice": [
+                                                        {
+                                                            "correct": "0",
+                                                            "cdata-section": "The filing of Item 1.05 on Form 8-K ranged from five days to 25 days from the date the incident was detected."
+                                                        },
+                                                        {
+                                                            "correct": "1",
+                                                            "cdata-section": "Approximately 85% of registrants disclosed that they believed that the incident had no material impact (or reasonably likely impact) on the company. "
+                                                        },
+                                                        {
+                                                            "correct": "0",
+                                                            "cdata-section": "Half of the registrants that filed Item 1.05 on Form 8-K made an initial disclosure on Item 8.01 at which point the registrant had not yet determined whether the incident was material."
+                                                        },
+                                                        {
+                                                            "correct": "0",
+                                                            "cdata-section": "The average filing time from the date the cybersecurity incident was detected was approximately 13 days."
+                                                        }
+                                                    ]
+                                                },
+                                                "button": {
+                                                    "submit": "<B>Submit</B>",
+                                                    "back": "<B>Back</B>"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "choice",
+                                        "id": "m01_q8",
+                                        "body": {
+                                            "question": "Which of the following is an example of a SEC comment letter that may be received related to the prominence principle?",
+                                            "instruction": "Check the correct option and select Submit.",
+                                            "MCQ": {
+                                                "category": "MCSS",
+                                                "totalAttempts": "1",
+                                                "randomizeOptions": "n",
+                                                "correctAnswer": "3",
+                                                "choices": {
+                                                    "choice": [
+                                                        {
+                                                            "correct": "0",
+                                                            "cdata-section": "Adjustments to a non-GAAP financial measure for acquisition and divestiture costs that include compensation expenses associated with employee retention associated with onboarding employees from acquired entities."
+                                                        },
+                                                        {
+                                                            "correct": "0",
+                                                            "cdata-section": "Presentation of organic sales, net of an adjustment for “sales of disposed businesses that did not qualify for discontinued operations.”"
+                                                        },
+                                                        {
+                                                            "correct": "1",
+                                                            "cdata-section": "Presentation of 'Percentage change in Adjusted EBITDA,' without also presenting the comparable GAAP measure with equal or greater importance."
+                                                        },
+                                                        {
+                                                            "correct": "0",
+                                                            "cdata-section": "Labeling of Cash Flow from Operations as a non-GAAP financial measure which is a label commonly used interchangeably with Cash Flow from Operating Activities."
+                                                        }
+                                                    ]
+                                                },
+                                                "button": {
+                                                    "submit": "<B>Submit</B>",
+                                                    "back": "<B>Back</B>"
                                                 }
                                             }
                                         }
                                     }
-                                },
-                                {
-                                    "type": "choice",
-                                    "id": "m01_q3",
-                                    "body": {
-                                        "remedialPage": "1",
-                                        "pageheading": {
-                                            "type": "text",
-                                            "x": "60",
-                                            "y": "120",
-                                            "width": "500",
-                                            "cdata-section": "<bodyAssess><B>Question: m01_q01_q3</B></bodyAssess>"
-                                        },
-                                        "question": "Which of the following is fully within the scope of IFRS 9?",
-                                        "instruction": "Check the correct option and select Submit.",
-                                        "MCQ": {
-                                            "category": "MCSS",
-                                            "type": "selfcheck",
-                                            "isTrueFalse": "n",
-                                            "totalAttempts": "1",
-                                            "randomizeOptions": "n",
-                                            "correctAnswer": "3",
-                                            "responseType": "generic",
-                                            "feedbackStartX": "300",
-                                            "feedbackStartY": "300",
-                                            "choices": {
-                                                "x": "83",
-                                                "y": "275",
-                                                "questionOffSet": "30",
-                                                "choiceOffSet": "18",
-                                                "choicesWidth": "700",
-                                                "choice": [{
-                                                        "correct": "0",
-                                                        "cdata-section": "Insurance contracts"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "Loan commitments at market rate interest"
-                                                    },
-                                                    {
-                                                        "correct": "1",
-                                                        "cdata-section": "Answer Forward contracts with a financial underlying"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "Leasing rights and obligations"
-                                                    }
-                                                ]
-                                            },
-                                            "button": {
-                                                "x": "904",
-                                                "y": "580",
-                                                "submit": "<B>Submit</B>",
-                                                "back": "<B>Back</B>",
-                                                "reset": "<B>Reset</B>",
-                                                "solution": "<B>Solution</B>"
-                                            },
-                                            "feedback": {
-                                                "leftOffset": "20",
-                                                "topOffset": "90",
-                                                "rightOffset": "38",
-                                                "bottomOffset": "160",
-                                                "enableCloseBtn": "yes",
-                                                "genericResponse": {
-                                                    "tryAgain": "Click <B>Close</B> to try again.",
-                                                    "solution": "Click <B>Close</B> to continue.",
-                                                    "correct": "Correct. Click <B>Close</B> to continue.",
-                                                    "partialCorrect": "Incorrect.",
-                                                    "incorrect": "Incorrect."
-                                                },
-                                                "specificResponse": {
-                                                    "response": [{
-                                                            "id": "1",
-                                                            "isCorrect": "y",
-                                                            "cdata-section": "response 1"
-                                                        },
-                                                        {
-                                                            "id": "2",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 2"
-                                                        },
-                                                        {
-                                                            "id": "3",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 3"
-                                                        },
-                                                        {
-                                                            "id": "4",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 4"
-                                                        }
-                                                    ]
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            ]
-                        },
-                        {
-                            "bankId": "m02",
-                            "bankTitle": "Bank2",
-                            "numQuesToDisplay": "1",
-                            "isRandomize": "true",
-                            "question": [{
-                                    "type": "choice",
-                                    "id": "m01_q4",
-                                    "body": {
-                                        "remedialPage": "1",
-                                        "pageheading": {
-                                            "type": "text",
-                                            "x": "60",
-                                            "y": "120",
-                                            "width": "500",
-                                            "cdata-section": "<bodyAssess><B>Question: m01_q01_q4</B></bodyAssess>"
-                                        },
-                                        "question": "Which of the following is an example of an underlying?",
-                                        "instruction": "Check the correct option and select Submit.",
-                                        "MCQ": {
-                                            "category": "MCSS",
-                                            "type": "selfcheck",
-                                            "isTrueFalse": "n",
-                                            "totalAttempts": "1",
-                                            "randomizeOptions": "n",
-                                            "correctAnswer": "4",
-                                            "responseType": "generic",
-                                            "feedbackStartX": "300",
-                                            "feedbackStartY": "300",
-                                            "choices": {
-                                                "x": "83",
-                                                "y": "275",
-                                                "questionOffSet": "30",
-                                                "choiceOffSet": "18",
-                                                "choicesWidth": "700",
-                                                "choice": [{
-                                                        "correct": "0",
-                                                        "cdata-section": "Tons of steel"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "GBP 1 million"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "1,000 shares"
-                                                    },
-                                                    {
-                                                        "correct": "1",
-                                                        "cdata-section": "Answer 90-day LIBOR rate"
-                                                    }
-                                                ]
-                                            },
-                                            "button": {
-                                                "x": "904",
-                                                "y": "580",
-                                                "submit": "<B>Submit</B>",
-                                                "back": "<B>Back</B>",
-                                                "reset": "<B>Reset</B>",
-                                                "solution": "<B>Solution</B>"
-                                            },
-                                            "feedback": {
-                                                "leftOffset": "20",
-                                                "topOffset": "90",
-                                                "rightOffset": "38",
-                                                "bottomOffset": "160",
-                                                "enableCloseBtn": "yes",
-                                                "genericResponse": {
-                                                    "tryAgain": "Click <B>Close</B> to try again.",
-                                                    "solution": "Click <B>Close</B> to continue.",
-                                                    "correct": "Correct. Click <B>Close</B> to continue.",
-                                                    "partialCorrect": "Incorrect.",
-                                                    "incorrect": "Incorrect."
-                                                },
-                                                "specificResponse": {
-                                                    "response": [{
-                                                            "id": "1",
-                                                            "isCorrect": "y",
-                                                            "cdata-section": "response 1"
-                                                        },
-                                                        {
-                                                            "id": "2",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 2"
-                                                        },
-                                                        {
-                                                            "id": "3",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 3"
-                                                        },
-                                                        {
-                                                            "id": "4",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 4"
-                                                        }
-                                                    ]
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "choice",
-                                    "id": "m01_q5",
-                                    "body": {
-                                        "remedialPage": "1",
-                                        "pageheading": {
-                                            "type": "text",
-                                            "x": "60",
-                                            "y": "120",
-                                            "width": "500",
-                                            "cdata-section": "<bodyAssess><B>Question: m01_q01_q5</B></bodyAssess>"
-                                        },
-                                        "question": "Which of the following are exempt from derivative treatment under IFRS 9?",
-                                        "instruction": "Check the correct option and select Submit.",
-                                        "MCQ": {
-                                            "category": "MCSS",
-                                            "type": "selfcheck",
-                                            "isTrueFalse": "n",
-                                            "totalAttempts": "1",
-                                            "randomizeOptions": "n",
-                                            "correctAnswer": "2",
-                                            "responseType": "generic",
-                                            "feedbackStartX": "300",
-                                            "feedbackStartY": "300",
-                                            "choices": {
-                                                "x": "83",
-                                                "y": "275",
-                                                "questionOffSet": "30",
-                                                "choiceOffSet": "18",
-                                                "choicesWidth": "700",
-                                                "choice": [{
-                                                        "correct": "0",
-                                                        "cdata-section": "Forward contracts requiring net settlement"
-                                                    },
-                                                    {
-                                                        "correct": "1",
-                                                        "cdata-section": "Answer Regular way contracts"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "Embedded derivatives in lease contracts"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "Credit default swaps"
-                                                    }
-                                                ]
-                                            },
-                                            "button": {
-                                                "x": "904",
-                                                "y": "580",
-                                                "submit": "<B>Submit</B>",
-                                                "back": "<B>Back</B>",
-                                                "reset": "<B>Reset</B>",
-                                                "solution": "<B>Solution</B>"
-                                            },
-                                            "feedback": {
-                                                "leftOffset": "20",
-                                                "topOffset": "90",
-                                                "rightOffset": "38",
-                                                "bottomOffset": "160",
-                                                "enableCloseBtn": "yes",
-                                                "genericResponse": {
-                                                    "tryAgain": "Click <B>Close</B> to try again.",
-                                                    "solution": "Click <B>Close</B> to continue.",
-                                                    "correct": "Correct. Click <B>Close</B> to continue.",
-                                                    "partialCorrect": "Incorrect.",
-                                                    "incorrect": "Incorrect."
-                                                },
-                                                "specificResponse": {
-                                                    "response": [{
-                                                            "id": "1",
-                                                            "isCorrect": "y",
-                                                            "cdata-section": "response 1"
-                                                        },
-                                                        {
-                                                            "id": "2",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 2"
-                                                        },
-                                                        {
-                                                            "id": "3",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 3"
-                                                        },
-                                                        {
-                                                            "id": "4",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 4"
-                                                        }
-                                                    ]
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "choice",
-                                    "id": "m01_q16",
-                                    "body": {
-                                        "remedialPage": "1",
-                                        "pageheading": {
-                                            "type": "text",
-                                            "x": "60",
-                                            "y": "120",
-                                            "width": "500",
-                                            "cdata-section": "<bodyAssess><B>Question: m01_q01_q16</B></bodyAssess>"
-                                        },
-                                        "question": "Which of the following best describes an embedded derivative?",
-                                        "instruction": "Check the correct option and select Submit.",
-                                        "MCQ": {
-                                            "category": "MCSS",
-                                            "type": "selfcheck",
-                                            "isTrueFalse": "n",
-                                            "totalAttempts": "1",
-                                            "randomizeOptions": "n",
-                                            "correctAnswer": "2",
-                                            "responseType": "generic",
-                                            "feedbackStartX": "300",
-                                            "feedbackStartY": "300",
-                                            "choices": {
-                                                "x": "83",
-                                                "y": "275",
-                                                "questionOffSet": "30",
-                                                "choiceOffSet": "18",
-                                                "choicesWidth": "700",
-                                                "choice": [{
-                                                        "correct": "0",
-                                                        "cdata-section": "A contract that includes both a non-derivative host contract"
-                                                    },
-                                                    {
-                                                        "correct": "1",
-                                                        "cdata-section": "Answer A financial instrument that causes modifications to some or all of the cash flows"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "A financial instrument, whose value changes in response to a variable"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "A contract entered into held for the purpose of the receipt"
-                                                    }
-                                                ]
-                                            },
-                                            "button": {
-                                                "x": "904",
-                                                "y": "580",
-                                                "submit": "<B>Submit</B>",
-                                                "back": "<B>Back</B>",
-                                                "reset": "<B>Reset</B>",
-                                                "solution": "<B>Solution</B>"
-                                            },
-                                            "feedback": {
-                                                "leftOffset": "20",
-                                                "topOffset": "90",
-                                                "rightOffset": "38",
-                                                "bottomOffset": "160",
-                                                "enableCloseBtn": "yes",
-                                                "genericResponse": {
-                                                    "tryAgain": "Click <B>Close</B> to try again.",
-                                                    "solution": "Click <B>Close</B> to continue.",
-                                                    "correct": "Correct. Click <B>Close</B> to continue.",
-                                                    "partialCorrect": "Incorrect.",
-                                                    "incorrect": "Incorrect."
-                                                },
-                                                "specificResponse": {
-                                                    "response": [{
-                                                            "id": "1",
-                                                            "isCorrect": "y",
-                                                            "cdata-section": "response 1"
-                                                        },
-                                                        {
-                                                            "id": "2",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 2"
-                                                        },
-                                                        {
-                                                            "id": "3",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 3"
-                                                        },
-                                                        {
-                                                            "id": "4",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 4"
-                                                        }
-                                                    ]
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            ]
-                        },
-                        {
-                            "bankId": "m03",
-                            "bankTitle": "Bank3",
-                            "numQuesToDisplay": "1",
-                            "isRandomize": "true",
-                            "question": [{
-                                    "type": "choice",
-                                    "id": "m01_q6",
-                                    "body": {
-                                        "remedialPage": "1",
-                                        "pageheading": {
-                                            "type": "text",
-                                            "x": "60",
-                                            "y": "120",
-                                            "width": "500",
-                                            "cdata-section": "<bodyAssess><B>Question: m01_q01_q6</B></bodyAssess>"
-                                        },
-                                        "question": "When are contracts to buy or sell a non-financial item accounted for as derivatives?",
-                                        "instruction": "Check the correct option and select Submit.",
-                                        "MCQ": {
-                                            "category": "MCSS",
-                                            "type": "selfcheck",
-                                            "isTrueFalse": "n",
-                                            "totalAttempts": "1",
-                                            "randomizeOptions": "n",
-                                            "correctAnswer": "1",
-                                            "responseType": "generic",
-                                            "feedbackStartX": "300",
-                                            "feedbackStartY": "300",
-                                            "choices": {
-                                                "x": "83",
-                                                "y": "275",
-                                                "questionOffSet": "30",
-                                                "choiceOffSet": "18",
-                                                "choicesWidth": "700",
-                                                "choice": [{
-                                                        "correct": "1",
-                                                        "cdata-section": "Answer When they are 'net settled' in accordance with the IFRS 9 definition"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "When they are not 'net settled' in accordance with the IFRS 9 definition"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "When they are not 'net settled' in accordance with the IFRS 9 definition"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "When they are 'net settled' in accordance with the IFRS 9 definition"
-                                                    }
-                                                ]
-                                            },
-                                            "button": {
-                                                "x": "904",
-                                                "y": "580",
-                                                "submit": "<B>Submit</B>",
-                                                "back": "<B>Back</B>",
-                                                "reset": "<B>Reset</B>",
-                                                "solution": "<B>Solution</B>"
-                                            },
-                                            "feedback": {
-                                                "leftOffset": "20",
-                                                "topOffset": "90",
-                                                "rightOffset": "38",
-                                                "bottomOffset": "160",
-                                                "enableCloseBtn": "yes",
-                                                "genericResponse": {
-                                                    "tryAgain": "Click <B>Close</B> to try again.",
-                                                    "solution": "Click <B>Close</B> to continue.",
-                                                    "correct": "Correct. Click <B>Close</B> to continue.",
-                                                    "partialCorrect": "Incorrect.",
-                                                    "incorrect": "Incorrect."
-                                                },
-                                                "specificResponse": {
-                                                    "response": [{
-                                                            "id": "1",
-                                                            "isCorrect": "y",
-                                                            "cdata-section": "response 1"
-                                                        },
-                                                        {
-                                                            "id": "2",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 2"
-                                                        },
-                                                        {
-                                                            "id": "3",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 3"
-                                                        },
-                                                        {
-                                                            "id": "4",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 4"
-                                                        }
-                                                    ]
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "choice",
-                                    "id": "m01_q7",
-                                    "body": {
-                                        "remedialPage": "1",
-                                        "pageheading": {
-                                            "type": "text",
-                                            "x": "60",
-                                            "y": "120",
-                                            "width": "500",
-                                            "cdata-section": "<bodyAssess><B>Question: m01_q01_q7</B></bodyAssess>"
-                                        },
-                                        "question": "Which of the following contracts could qualify for the own use exemption under IFRS 9?",
-                                        "instruction": "Check the correct option and select Submit.",
-                                        "MCQ": {
-                                            "category": "MCSS",
-                                            "type": "selfcheck",
-                                            "isTrueFalse": "n",
-                                            "totalAttempts": "1",
-                                            "randomizeOptions": "n",
-                                            "correctAnswer": "2",
-                                            "responseType": "generic",
-                                            "feedbackStartX": "300",
-                                            "feedbackStartY": "300",
-                                            "choices": {
-                                                "x": "83",
-                                                "y": "275",
-                                                "questionOffSet": "30",
-                                                "choiceOffSet": "18",
-                                                "choicesWidth": "700",
-                                                "choice": [{
-                                                        "correct": "0",
-                                                        "cdata-section": "A foreign currency forward contract"
-                                                    },
-                                                    {
-                                                        "correct": "1",
-                                                        "cdata-section": "Answer A forward to purchase copper"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "An option to sell shares of a public entity"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "A fixed-for-variable rate interest swap"
-                                                    }
-                                                ]
-                                            },
-                                            "button": {
-                                                "x": "904",
-                                                "y": "580",
-                                                "submit": "<B>Submit</B>",
-                                                "back": "<B>Back</B>",
-                                                "reset": "<B>Reset</B>",
-                                                "solution": "<B>Solution</B>"
-                                            },
-                                            "feedback": {
-                                                "leftOffset": "20",
-                                                "topOffset": "90",
-                                                "rightOffset": "38",
-                                                "bottomOffset": "160",
-                                                "enableCloseBtn": "yes",
-                                                "genericResponse": {
-                                                    "tryAgain": "Click <B>Close</B> to try again.",
-                                                    "solution": "Click <B>Close</B> to continue.",
-                                                    "correct": "Correct. Click <B>Close</B> to continue.",
-                                                    "partialCorrect": "Incorrect.",
-                                                    "incorrect": "Incorrect."
-                                                },
-                                                "specificResponse": {
-                                                    "response": [{
-                                                            "id": "1",
-                                                            "isCorrect": "y",
-                                                            "cdata-section": "response 1"
-                                                        },
-                                                        {
-                                                            "id": "2",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 2"
-                                                        },
-                                                        {
-                                                            "id": "3",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 3"
-                                                        },
-                                                        {
-                                                            "id": "4",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 4"
-                                                        }
-                                                    ]
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "choice",
-                                    "id": "m01_q8",
-                                    "body": {
-                                        "remedialPage": "1",
-                                        "pageheading": {
-                                            "type": "text",
-                                            "x": "60",
-                                            "y": "120",
-                                            "width": "500",
-                                            "cdata-section": "<bodyAssess><B>Question: m01_q01_q8</B></bodyAssess>"
-                                        },
-                                        "question": "To which of the following could the own use exemption apply?",
-                                        "instruction": "Check the correct option and select Submit.",
-                                        "MCQ": {
-                                            "category": "MCSS",
-                                            "type": "selfcheck",
-                                            "isTrueFalse": "n",
-                                            "totalAttempts": "1",
-                                            "randomizeOptions": "n",
-                                            "correctAnswer": "2",
-                                            "responseType": "generic",
-                                            "feedbackStartX": "300",
-                                            "feedbackStartY": "300",
-                                            "choices": {
-                                                "x": "83",
-                                                "y": "275",
-                                                "questionOffSet": "30",
-                                                "choiceOffSet": "18",
-                                                "choicesWidth": "700",
-                                                "choice": [{
-                                                        "correct": "0",
-                                                        "cdata-section": "Contracts to buy or sell a foreign currency"
-                                                    },
-                                                    {
-                                                        "correct": "1",
-                                                        "cdata-section": "Answer Contracts to buy or sell natural gas"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "Contracts to buy or sell entity's own shares"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "Contracts to buy or sell shares of a public entity"
-                                                    }
-                                                ]
-                                            },
-                                            "button": {
-                                                "x": "904",
-                                                "y": "580",
-                                                "submit": "<B>Submit</B>",
-                                                "back": "<B>Back</B>",
-                                                "reset": "<B>Reset</B>",
-                                                "solution": "<B>Solution</B>"
-                                            },
-                                            "feedback": {
-                                                "leftOffset": "20",
-                                                "topOffset": "90",
-                                                "rightOffset": "38",
-                                                "bottomOffset": "160",
-                                                "enableCloseBtn": "yes",
-                                                "genericResponse": {
-                                                    "tryAgain": "Click <B>Close</B> to try again.",
-                                                    "solution": "Click <B>Close</B> to continue.",
-                                                    "correct": "Correct. Click <B>Close</B> to continue.",
-                                                    "partialCorrect": "Incorrect.",
-                                                    "incorrect": "Incorrect."
-                                                },
-                                                "specificResponse": {
-                                                    "response": [{
-                                                            "id": "1",
-                                                            "isCorrect": "y",
-                                                            "cdata-section": "response 1"
-                                                        },
-                                                        {
-                                                            "id": "2",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 2"
-                                                        },
-                                                        {
-                                                            "id": "3",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 3"
-                                                        },
-                                                        {
-                                                            "id": "4",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 4"
-                                                        }
-                                                    ]
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "choice",
-                                    "id": "m01_q9",
-                                    "body": {
-                                        "remedialPage": "1",
-                                        "pageheading": {
-                                            "type": "text",
-                                            "x": "60",
-                                            "y": "120",
-                                            "width": "500",
-                                            "cdata-section": "<bodyAssess><B>Question: m01_q01_q9</B></bodyAssess>"
-                                        },
-                                        "question": "Which of the following embedded derivatives are considered closely related to the host contract?",
-                                        "instruction": "Check the correct option and select Submit.",
-                                        "MCQ": {
-                                            "category": "MCSS",
-                                            "type": "selfcheck",
-                                            "isTrueFalse": "n",
-                                            "totalAttempts": "1",
-                                            "randomizeOptions": "n",
-                                            "correctAnswer": "3",
-                                            "responseType": "generic",
-                                            "feedbackStartX": "300",
-                                            "feedbackStartY": "300",
-                                            "choices": {
-                                                "x": "83",
-                                                "y": "275",
-                                                "questionOffSet": "30",
-                                                "choiceOffSet": "18",
-                                                "choicesWidth": "700",
-                                                "choice": [{
-                                                        "correct": "0",
-                                                        "cdata-section": "response 1"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "response 2"
-                                                    },
-                                                    {
-                                                        "correct": "1",
-                                                        "cdata-section": "Embedded derivative in a debt instrument related to the creditworthiness of the issuer"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "response 4"
-                                                    }
-                                                ]
-                                            },
-                                            "button": {
-                                                "x": "904",
-                                                "y": "580",
-                                                "submit": "<B>Submit</B>",
-                                                "back": "<B>Back</B>",
-                                                "reset": "<B>Reset</B>",
-                                                "solution": "<B>Solution</B>"
-                                            },
-                                            "feedback": {
-                                                "leftOffset": "20",
-                                                "topOffset": "90",
-                                                "rightOffset": "38",
-                                                "bottomOffset": "160",
-                                                "enableCloseBtn": "yes",
-                                                "genericResponse": {
-                                                    "tryAgain": "Click <B>Close</B> to try again.",
-                                                    "solution": "Click <B>Close</B> to continue.",
-                                                    "correct": "Correct. Click <B>Close</B> to continue.",
-                                                    "partialCorrect": "Incorrect.",
-                                                    "incorrect": "Incorrect."
-                                                },
-                                                "specificResponse": {
-                                                    "response": [{
-                                                            "id": "1",
-                                                            "isCorrect": "y",
-                                                            "cdata-section": "response 1"
-                                                        },
-                                                        {
-                                                            "id": "2",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 2"
-                                                        },
-                                                        {
-                                                            "id": "3",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 3"
-                                                        },
-                                                        {
-                                                            "id": "4",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 4"
-                                                        }
-                                                    ]
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-
-                            ]
-                        },
-                        {
-                            "bankId": "m04",
-                            "bankTitle": "Bank4",
-                            "numQuesToDisplay": "1",
-                            "isRandomize": "true",
-                            "question": [{
-                                    "type": "choice",
-                                    "id": "m01_q10",
-                                    "body": {
-                                        "remedialPage": "1",
-                                        "pageheading": {
-                                            "type": "text",
-                                            "x": "60",
-                                            "y": "120",
-                                            "width": "500",
-                                            "cdata-section": "<bodyAssess><B>Question: m01_q01_q10</B></bodyAssess>"
-                                        },
-                                        "question": "In which of the following situations will an embedded derivative be separated from its host contract?",
-                                        "instruction": "Check the correct option and select Submit.",
-                                        "MCQ": {
-                                            "category": "MCSS",
-                                            "type": "selfcheck",
-                                            "isTrueFalse": "n",
-                                            "totalAttempts": "1",
-                                            "randomizeOptions": "n",
-                                            "correctAnswer": "4",
-                                            "responseType": "generic",
-                                            "feedbackStartX": "300",
-                                            "feedbackStartY": "300",
-                                            "choices": {
-                                                "x": "83",
-                                                "y": "275",
-                                                "questionOffSet": "30",
-                                                "choiceOffSet": "18",
-                                                "choicesWidth": "700",
-                                                "choice": [{
-                                                        "correct": "0",
-                                                        "cdata-section": "The embedded derivative is closely related to the economic characteristics of the host."
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "The host is a debt security classified as at fair value through profit or loss."
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "The host instrument is a financial asset in the scope of IFRS 9."
-                                                    },
-                                                    {
-                                                        "correct": "1",
-                                                        "cdata-section": "Answer The embedded derivative would be accounted for as a derivative."
-                                                    }
-                                                ]
-                                            },
-                                            "button": {
-                                                "x": "904",
-                                                "y": "580",
-                                                "submit": "<B>Submit</B>",
-                                                "back": "<B>Back</B>",
-                                                "reset": "<B>Reset</B>",
-                                                "solution": "<B>Solution</B>"
-                                            },
-                                            "feedback": {
-                                                "leftOffset": "20",
-                                                "topOffset": "90",
-                                                "rightOffset": "38",
-                                                "bottomOffset": "160",
-                                                "enableCloseBtn": "yes",
-                                                "genericResponse": {
-                                                    "tryAgain": "Click <B>Close</B> to try again.",
-                                                    "solution": "Click <B>Close</B> to continue.",
-                                                    "correct": "Correct. Click <B>Close</B> to continue.",
-                                                    "partialCorrect": "Incorrect.",
-                                                    "incorrect": "Incorrect."
-                                                },
-                                                "specificResponse": {
-                                                    "response": [{
-                                                            "id": "1",
-                                                            "isCorrect": "y",
-                                                            "cdata-section": "response 1"
-                                                        },
-                                                        {
-                                                            "id": "2",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 2"
-                                                        },
-                                                        {
-                                                            "id": "3",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 3"
-                                                        },
-                                                        {
-                                                            "id": "4",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 4"
-                                                        }
-                                                    ]
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "choice",
-                                    "id": "m01_q11",
-                                    "body": {
-                                        "remedialPage": "1",
-                                        "pageheading": {
-                                            "type": "text",
-                                            "x": "60",
-                                            "y": "120",
-                                            "width": "500",
-                                            "cdata-section": "<bodyAssess><B>Question: m01_q01_q11</B></bodyAssess>"
-                                        },
-                                        "question": "Which of the following will <b>NEVER</b> result in bifurcation of an embedded derivative, provided there are no other conditions requiring bifurcation?",
-                                        "instruction": "Check the correct option and select Submit.",
-                                        "MCQ": {
-                                            "category": "MCSS",
-                                            "type": "selfcheck",
-                                            "isTrueFalse": "n",
-                                            "totalAttempts": "1",
-                                            "randomizeOptions": "n",
-                                            "correctAnswer": "3",
-                                            "responseType": "generic",
-                                            "feedbackStartX": "300",
-                                            "feedbackStartY": "300",
-                                            "choices": {
-                                                "x": "83",
-                                                "y": "275",
-                                                "questionOffSet": "30",
-                                                "choiceOffSet": "18",
-                                                "choicesWidth": "700",
-                                                "choice": [{
-                                                        "correct": "0",
-                                                        "cdata-section": "The embedded derivative has all three characteristics of a derivative."
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "The host contract is accounted for at amortized cost."
-                                                    },
-                                                    {
-                                                        "correct": "1",
-                                                        "cdata-section": "Answer The embedded derivative is closely related to the host instrument."
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "The host contract is expected to mature within one year."
-                                                    }
-                                                ]
-                                            },
-                                            "button": {
-                                                "x": "904",
-                                                "y": "580",
-                                                "submit": "<B>Submit</B>",
-                                                "back": "<B>Back</B>",
-                                                "reset": "<B>Reset</B>",
-                                                "solution": "<B>Solution</B>"
-                                            },
-                                            "feedback": {
-                                                "leftOffset": "20",
-                                                "topOffset": "90",
-                                                "rightOffset": "38",
-                                                "bottomOffset": "160",
-                                                "enableCloseBtn": "yes",
-                                                "genericResponse": {
-                                                    "tryAgain": "Click <B>Close</B> to try again.",
-                                                    "solution": "Click <B>Close</B> to continue.",
-                                                    "correct": "Correct. Click <B>Close</B> to continue.",
-                                                    "partialCorrect": "Incorrect.",
-                                                    "incorrect": "Incorrect."
-                                                },
-                                                "specificResponse": {
-                                                    "response": [{
-                                                            "id": "1",
-                                                            "isCorrect": "y",
-                                                            "cdata-section": "response 1"
-                                                        },
-                                                        {
-                                                            "id": "2",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 2"
-                                                        },
-                                                        {
-                                                            "id": "3",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 3"
-                                                        },
-                                                        {
-                                                            "id": "4",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 4"
-                                                        }
-                                                    ]
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "choice",
-                                    "id": "m01_q12",
-                                    "body": {
-                                        "remedialPage": "1",
-                                        "pageheading": {
-                                            "type": "text",
-                                            "x": "60",
-                                            "y": "120",
-                                            "width": "500",
-                                            "cdata-section": "<bodyAssess><B>Question: m01_q01_q12</B></bodyAssess>"
-                                        },
-                                        "question": "Which of the following embedded derivatives are “closely related” to a debt instrument issued by A Corp.?",
-                                        "instruction": "Check the correct option and select Submit.",
-                                        "MCQ": {
-                                            "category": "MCSS",
-                                            "type": "selfcheck",
-                                            "isTrueFalse": "n",
-                                            "totalAttempts": "1",
-                                            "randomizeOptions": "n",
-                                            "correctAnswer": "3",
-                                            "responseType": "generic",
-                                            "feedbackStartX": "300",
-                                            "feedbackStartY": "300",
-                                            "choices": {
-                                                "x": "83",
-                                                "y": "275",
-                                                "questionOffSet": "30",
-                                                "choiceOffSet": "18",
-                                                "choicesWidth": "700",
-                                                "choice": [{
-                                                        "correct": "0",
-                                                        "cdata-section": "Option to purchase shares of C Corp"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "Interest rate escalation clause with a multiplier"
-                                                    },
-                                                    {
-                                                        "correct": "1",
-                                                        "cdata-section": "Answer Interest payments indexed to the credit risk of A Corp. based on a predefined formula"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "Principal payments indexed to stock price of C Corp"
-                                                    }
-                                                ]
-                                            },
-                                            "button": {
-                                                "x": "904",
-                                                "y": "580",
-                                                "submit": "<B>Submit</B>",
-                                                "back": "<B>Back</B>",
-                                                "reset": "<B>Reset</B>",
-                                                "solution": "<B>Solution</B>"
-                                            },
-                                            "feedback": {
-                                                "leftOffset": "20",
-                                                "topOffset": "90",
-                                                "rightOffset": "38",
-                                                "bottomOffset": "160",
-                                                "enableCloseBtn": "yes",
-                                                "genericResponse": {
-                                                    "tryAgain": "Click <B>Close</B> to try again.",
-                                                    "solution": "Click <B>Close</B> to continue.",
-                                                    "correct": "Correct. Click <B>Close</B> to continue.",
-                                                    "partialCorrect": "Incorrect.",
-                                                    "incorrect": "Incorrect."
-                                                },
-                                                "specificResponse": {
-                                                    "response": [{
-                                                            "id": "1",
-                                                            "isCorrect": "y",
-                                                            "cdata-section": "response 1"
-                                                        },
-                                                        {
-                                                            "id": "2",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 2"
-                                                        },
-                                                        {
-                                                            "id": "3",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 3"
-                                                        },
-                                                        {
-                                                            "id": "4",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 4"
-                                                        }
-                                                    ]
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-
-                            ]
-                        },
-                        {
-                            "bankId": "m05",
-                            "bankTitle": "Bank5",
-                            "numQuesToDisplay": "2",
-                            "isRandomize": "true",
-                            "question": [{
-                                    "type": "choice",
-                                    "id": "m01_q17",
-                                    "body": {
-                                        "remedialPage": "1",
-                                        "pageheading": {
-                                            "type": "text",
-                                            "x": "60",
-                                            "y": "120",
-                                            "width": "500",
-                                            "cdata-section": "<bodyAssess><B>Question: m01_q01_q17</B></bodyAssess>"
-                                        },
-                                        "question": "Which of the following contracts entered into by an entity is an example of a derivative in IFRS 9?",
-                                        "instruction": "Check the correct option and select Submit.",
-                                        "MCQ": {
-                                            "category": "MCSS",
-                                            "type": "selfcheck",
-                                            "isTrueFalse": "n",
-                                            "totalAttempts": "1",
-                                            "randomizeOptions": "n",
-                                            "correctAnswer": "3",
-                                            "responseType": "generic",
-                                            "feedbackStartX": "300",
-                                            "feedbackStartY": "300",
-                                            "choices": {
-                                                "x": "83",
-                                                "y": "275",
-                                                "questionOffSet": "30",
-                                                "choiceOffSet": "18",
-                                                "choicesWidth": "700",
-                                                "choice": [{
-                                                        "correct": "0",
-                                                        "cdata-section": "A loan commitment to grant a loan to another party at a future date at below market rates."
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "A financial guarantee held to receive a payment reimbursing for the loss"
-                                                    },
-                                                    {
-                                                        "correct": "1",
-                                                        "cdata-section": "Answer A forward contract to purchase shares of a private entity at a future date."
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "An investment in a public company with significant fluctuations in its market capitalization."
-                                                    }
-                                                ]
-                                            },
-                                            "button": {
-                                                "x": "904",
-                                                "y": "580",
-                                                "submit": "<B>Submit</B>",
-                                                "back": "<B>Back</B>",
-                                                "reset": "<B>Reset</B>",
-                                                "solution": "<B>Solution</B>"
-                                            },
-                                            "feedback": {
-                                                "leftOffset": "20",
-                                                "topOffset": "90",
-                                                "rightOffset": "38",
-                                                "bottomOffset": "160",
-                                                "enableCloseBtn": "yes",
-                                                "genericResponse": {
-                                                    "tryAgain": "Click <B>Close</B> to try again.",
-                                                    "solution": "Click <B>Close</B> to continue.",
-                                                    "correct": "Correct. Click <B>Close</B> to continue.",
-                                                    "partialCorrect": "Incorrect.",
-                                                    "incorrect": "Incorrect."
-                                                },
-                                                "specificResponse": {
-                                                    "response": [{
-                                                            "id": "1",
-                                                            "isCorrect": "y",
-                                                            "cdata-section": "response 1"
-                                                        },
-                                                        {
-                                                            "id": "2",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 2"
-                                                        },
-                                                        {
-                                                            "id": "3",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 3"
-                                                        },
-                                                        {
-                                                            "id": "4",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 4"
-                                                        }
-                                                    ]
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "choice",
-                                    "id": "m01_q18",
-                                    "body": {
-                                        "remedialPage": "1",
-                                        "pageheading": {
-                                            "type": "text",
-                                            "x": "60",
-                                            "y": "120",
-                                            "width": "500",
-                                            "cdata-section": "<bodyAssess><B>Question: m01_q01_q18</B></bodyAssess>"
-                                        },
-                                        "question": "An entity enters into a contract to purchase sugar from a supplier. The entity will pay a fixed amount in US dollars at a future date on delivery of the goods.",
-                                        "instruction": "Check the correct option and select Submit.",
-                                        "MCQ": {
-                                            "category": "MCSS",
-                                            "type": "selfcheck",
-                                            "isTrueFalse": "n",
-                                            "totalAttempts": "1",
-                                            "randomizeOptions": "n",
-                                            "correctAnswer": "4",
-                                            "responseType": "generic",
-                                            "feedbackStartX": "300",
-                                            "feedbackStartY": "300",
-                                            "choices": {
-                                                "x": "83",
-                                                "y": "275",
-                                                "questionOffSet": "30",
-                                                "choiceOffSet": "18",
-                                                "choicesWidth": "700",
-                                                "choice": [{
-                                                        "correct": "0",
-                                                        "cdata-section": "If the host contract relates to the purchase of a commodity"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "If the entity can settle the contract via the market mechanism"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "If the foreign currency exchange rate fluctuates significantly"
-                                                    },
-                                                    {
-                                                        "correct": "1",
-                                                        "cdata-section": "Answer If the payments are denominated in a functional currency of either party of the contract"
-                                                    }
-                                                ]
-                                            },
-                                            "button": {
-                                                "x": "904",
-                                                "y": "580",
-                                                "submit": "<B>Submit</B>",
-                                                "back": "<B>Back</B>",
-                                                "reset": "<B>Reset</B>",
-                                                "solution": "<B>Solution</B>"
-                                            },
-                                            "feedback": {
-                                                "leftOffset": "20",
-                                                "topOffset": "90",
-                                                "rightOffset": "38",
-                                                "bottomOffset": "160",
-                                                "enableCloseBtn": "yes",
-                                                "genericResponse": {
-                                                    "tryAgain": "Click <B>Close</B> to try again.",
-                                                    "solution": "Click <B>Close</B> to continue.",
-                                                    "correct": "Correct. Click <B>Close</B> to continue.",
-                                                    "partialCorrect": "Incorrect.",
-                                                    "incorrect": "Incorrect."
-                                                },
-                                                "specificResponse": {
-                                                    "response": [{
-                                                            "id": "1",
-                                                            "isCorrect": "y",
-                                                            "cdata-section": "response 1"
-                                                        },
-                                                        {
-                                                            "id": "2",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 2"
-                                                        },
-                                                        {
-                                                            "id": "3",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 3"
-                                                        },
-                                                        {
-                                                            "id": "4",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 4"
-                                                        }
-                                                    ]
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "choice",
-                                    "id": "m01_q19",
-                                    "body": {
-                                        "remedialPage": "1",
-                                        "pageheading": {
-                                            "type": "text",
-                                            "x": "60",
-                                            "y": "120",
-                                            "width": "500",
-                                            "cdata-section": "<bodyAssess><B>Question: m01_q01_q19</B></bodyAssess>"
-                                        },
-                                        "question": "Which of the following is an example of a contract that is exempt from derivative accounting and can be accounted for as an executory contract?",
-                                        "instruction": "Check the correct option and select Submit.",
-                                        "MCQ": {
-                                            "category": "MCSS",
-                                            "type": "selfcheck",
-                                            "isTrueFalse": "n",
-                                            "totalAttempts": "1",
-                                            "randomizeOptions": "n",
-                                            "correctAnswer": "1",
-                                            "responseType": "generic",
-                                            "feedbackStartX": "300",
-                                            "feedbackStartY": "300",
-                                            "choices": {
-                                                "x": "83",
-                                                "y": "275",
-                                                "questionOffSet": "30",
-                                                "choiceOffSet": "18",
-                                                "choicesWidth": "700",
-                                                "choice": [{
-                                                        "correct": "1",
-                                                        "cdata-section": "Answer A forward contract to purchase 5,000 tons of steel to be used in production"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "A forward contract to purchase 100 shares of a public entity at a set price"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "A forward contract denominated in a foreign currency to purchase 5 tons of coffee beans"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "A forward contract to sell 2 million bushels of corn"
-                                                    }
-                                                ]
-                                            },
-                                            "button": {
-                                                "x": "904",
-                                                "y": "580",
-                                                "submit": "<B>Submit</B>",
-                                                "back": "<B>Back</B>",
-                                                "reset": "<B>Reset</B>",
-                                                "solution": "<B>Solution</B>"
-                                            },
-                                            "feedback": {
-                                                "leftOffset": "20",
-                                                "topOffset": "90",
-                                                "rightOffset": "38",
-                                                "bottomOffset": "160",
-                                                "enableCloseBtn": "yes",
-                                                "genericResponse": {
-                                                    "tryAgain": "Click <B>Close</B> to try again.",
-                                                    "solution": "Click <B>Close</B> to continue.",
-                                                    "correct": "Correct. Click <B>Close</B> to continue.",
-                                                    "partialCorrect": "Incorrect.",
-                                                    "incorrect": "Incorrect."
-                                                },
-                                                "specificResponse": {
-                                                    "response": [{
-                                                            "id": "1",
-                                                            "isCorrect": "y",
-                                                            "cdata-section": "response 1"
-                                                        },
-                                                        {
-                                                            "id": "2",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 2"
-                                                        },
-                                                        {
-                                                            "id": "3",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 3"
-                                                        },
-                                                        {
-                                                            "id": "4",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 4"
-                                                        }
-                                                    ]
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-
-                            ]
-                        },
-                        {
-                            "bankId": "m06",
-                            "bankTitle": "Bank6",
-                            "numQuesToDisplay": "1",
-                            "isRandomize": "true",
-                            "question": [{
-                                    "type": "choice",
-                                    "id": "m01_q13",
-                                    "body": {
-                                        "remedialPage": "1",
-                                        "pageheading": {
-                                            "type": "text",
-                                            "x": "60",
-                                            "y": "120",
-                                            "width": "500",
-                                            "cdata-section": "<bodyAssess><B>Question: m01_q01_q13</B></bodyAssess>"
-                                        },
-                                        "question": "Under IFRS, when is reassessment of an embedded derivative performed?",
-                                        "instruction": "Check the correct option and select Submit.",
-                                        "MCQ": {
-                                            "category": "MCSS",
-                                            "type": "selfcheck",
-                                            "isTrueFalse": "n",
-                                            "totalAttempts": "1",
-                                            "randomizeOptions": "n",
-                                            "correctAnswer": "2",
-                                            "responseType": "generic",
-                                            "feedbackStartX": "300",
-                                            "feedbackStartY": "300",
-                                            "choices": {
-                                                "x": "83",
-                                                "y": "275",
-                                                "questionOffSet": "30",
-                                                "choiceOffSet": "18",
-                                                "choicesWidth": "700",
-                                                "choice": [{
-                                                        "correct": "0",
-                                                        "cdata-section": "When there are changes in market conditions"
-                                                    },
-                                                    {
-                                                        "correct": "1",
-                                                        "cdata-section": "Answer When there is a revision to the contract terms that cause a significant modification to the cash flows under the contract"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "Throughout the life of the contract"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "At the time annual financial statements are prepared"
-                                                    }
-                                                ]
-                                            },
-                                            "button": {
-                                                "x": "904",
-                                                "y": "580",
-                                                "submit": "<B>Submit</B>",
-                                                "back": "<B>Back</B>",
-                                                "reset": "<B>Reset</B>",
-                                                "solution": "<B>Solution</B>"
-                                            },
-                                            "feedback": {
-                                                "leftOffset": "20",
-                                                "topOffset": "90",
-                                                "rightOffset": "38",
-                                                "bottomOffset": "160",
-                                                "enableCloseBtn": "yes",
-                                                "genericResponse": {
-                                                    "tryAgain": "Click <B>Close</B> to try again.",
-                                                    "solution": "Click <B>Close</B> to continue.",
-                                                    "correct": "Correct. Click <B>Close</B> to continue.",
-                                                    "partialCorrect": "Incorrect.",
-                                                    "incorrect": "Incorrect."
-                                                },
-                                                "specificResponse": {
-                                                    "response": [{
-                                                            "id": "1",
-                                                            "isCorrect": "y",
-                                                            "cdata-section": "response 1"
-                                                        },
-                                                        {
-                                                            "id": "2",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 2"
-                                                        },
-                                                        {
-                                                            "id": "3",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 3"
-                                                        },
-                                                        {
-                                                            "id": "4",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 4"
-                                                        }
-                                                    ]
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "choice",
-                                    "id": "m01_q14",
-                                    "body": {
-                                        "remedialPage": "1",
-                                        "pageheading": {
-                                            "type": "text",
-                                            "x": "60",
-                                            "y": "120",
-                                            "width": "500",
-                                            "cdata-section": "<bodyAssess><B>Question: m01_q01_q14</B></bodyAssess>"
-                                        },
-                                        "question": "Which statement regarding the requirements for reassessment of embedded derivatives under IFRS is correct? ",
-                                        "instruction": "Check the correct option and select Submit.",
-                                        "MCQ": {
-                                            "category": "MCSS",
-                                            "type": "selfcheck",
-                                            "isTrueFalse": "n",
-                                            "totalAttempts": "1",
-                                            "randomizeOptions": "n",
-                                            "correctAnswer": "4",
-                                            "responseType": "generic",
-                                            "feedbackStartX": "300",
-                                            "feedbackStartY": "300",
-                                            "choices": {
-                                                "x": "83",
-                                                "y": "275",
-                                                "questionOffSet": "30",
-                                                "choiceOffSet": "18",
-                                                "choicesWidth": "700",
-                                                "choice": [{
-                                                        "correct": "0",
-                                                        "cdata-section": "response 1"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "response 2"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "response 3"
-                                                    },
-                                                    {
-                                                        "correct": "1",
-                                                        "cdata-section": "Answer response 4"
-                                                    }
-                                                ]
-                                            },
-                                            "button": {
-                                                "x": "904",
-                                                "y": "580",
-                                                "submit": "<B>Submit</B>",
-                                                "back": "<B>Back</B>",
-                                                "reset": "<B>Reset</B>",
-                                                "solution": "<B>Solution</B>"
-                                            },
-                                            "feedback": {
-                                                "leftOffset": "20",
-                                                "topOffset": "90",
-                                                "rightOffset": "38",
-                                                "bottomOffset": "160",
-                                                "enableCloseBtn": "yes",
-                                                "genericResponse": {
-                                                    "tryAgain": "Click <B>Close</B> to try again.",
-                                                    "solution": "Click <B>Close</B> to continue.",
-                                                    "correct": "Correct. Click <B>Close</B> to continue.",
-                                                    "partialCorrect": "Incorrect.",
-                                                    "incorrect": "Incorrect."
-                                                },
-                                                "specificResponse": {
-                                                    "response": [{
-                                                            "id": "1",
-                                                            "isCorrect": "y",
-                                                            "cdata-section": "response 1"
-                                                        },
-                                                        {
-                                                            "id": "2",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 2"
-                                                        },
-                                                        {
-                                                            "id": "3",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 3"
-                                                        },
-                                                        {
-                                                            "id": "4",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 4"
-                                                        }
-                                                    ]
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "choice",
-                                    "id": "m01_q15",
-                                    "body": {
-                                        "remedialPage": "1",
-                                        "pageheading": {
-                                            "type": "text",
-                                            "x": "60",
-                                            "y": "120",
-                                            "width": "500",
-                                            "cdata-section": "<bodyAssess><B>Question: m01_q01_q15</B></bodyAssess>"
-                                        },
-                                        "question": "When should entities assess whether embedded derivatives require separation from the host contract?",
-                                        "instruction": "Check the correct option and select Submit.",
-                                        "MCQ": {
-                                            "category": "MCSS",
-                                            "type": "selfcheck",
-                                            "isTrueFalse": "n",
-                                            "totalAttempts": "1",
-                                            "randomizeOptions": "n",
-                                            "correctAnswer": "1",
-                                            "responseType": "generic",
-                                            "feedbackStartX": "300",
-                                            "feedbackStartY": "300",
-                                            "choices": {
-                                                "x": "83",
-                                                "y": "275",
-                                                "questionOffSet": "30",
-                                                "choiceOffSet": "18",
-                                                "choicesWidth": "700",
-                                                "choice": [{
-                                                        "correct": "1",
-                                                        "cdata-section": "Answer When the entity first becomes a party to the contract"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "When the entity chooses to in accordance with its documented policy"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "When the entity prepares its quarterly financial statements"
-                                                    },
-                                                    {
-                                                        "correct": "0",
-                                                        "cdata-section": "When the entity derecognizes the host contract"
-                                                    }
-                                                ]
-                                            },
-                                            "button": {
-                                                "x": "904",
-                                                "y": "580",
-                                                "submit": "<B>Submit</B>",
-                                                "back": "<B>Back</B>",
-                                                "reset": "<B>Reset</B>",
-                                                "solution": "<B>Solution</B>"
-                                            },
-                                            "feedback": {
-                                                "leftOffset": "20",
-                                                "topOffset": "90",
-                                                "rightOffset": "38",
-                                                "bottomOffset": "160",
-                                                "enableCloseBtn": "yes",
-                                                "genericResponse": {
-                                                    "tryAgain": "Click <B>Close</B> to try again.",
-                                                    "solution": "Click <B>Close</B> to continue.",
-                                                    "correct": "Correct. Click <B>Close</B> to continue.",
-                                                    "partialCorrect": "Incorrect.",
-                                                    "incorrect": "Incorrect."
-                                                },
-                                                "specificResponse": {
-                                                    "response": [{
-                                                            "id": "1",
-                                                            "isCorrect": "y",
-                                                            "cdata-section": "response 1"
-                                                        },
-                                                        {
-                                                            "id": "2",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 2"
-                                                        },
-                                                        {
-                                                            "id": "3",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 3"
-                                                        },
-                                                        {
-                                                            "id": "4",
-                                                            "isCorrect": "n",
-                                                            "cdata-section": "response 4"
-                                                        }
-                                                    ]
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-
-                            ]
-                        }
-                    ]
+                                ]
+                            }]
+                    }
                 }
-            }]
+            ]
         }
     },
     "surveyData": {
