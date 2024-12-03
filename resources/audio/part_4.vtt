@@ -1,99 +1,424 @@
 WEBVTT
 
-00:00.000 --> 00:02.900
-There are many opportunities to provide permissible
+00:00:00.000 --> 00:00:02.340
+So with that top of mind, we're going to kick it
 
-00:02.900 --> 00:07.820
-tax and advisory services to AICPA and SEC audit clients,
+00:00:02.340 --> 00:00:07.380
+off with a couple of the top most interest topics with Tim,
 
-00:07.820 --> 00:12.440
-adding value to various aspects of the audit client’s organization.
+00:00:07.380 --> 00:00:10.590
+if you could tell us about. Share some thoughts about
 
-00:12.440 --> 00:16.380
-There are even more opportunities to provide tax and advisory services
+00:00:10.590 --> 00:00:14.370
+artificial intelligence. As well as the cyber disclosure
 
-00:16.380 --> 00:18.890
-to non-audit affiliates of the audit client.
+00:00:14.370 --> 00:00:17.670
+rules that are new and the SEC, what we're seeing in comment
 
-00:18.890 --> 00:23.525
-These services, such as ESG IMPACT services, address client needs
+00:00:17.670 --> 00:00:21.810
+letters coming out of cyber disclosure incidences in form a
 
-00:23.525 --> 00:28.025
-across all sectors, while still allowing the firm to uphold our
+00:00:21.810 --> 00:00:26.340
+case. Tim Brown: Yeah. Thanks very much, Ellen. That was
 
-00:28.025 --> 00:30.995
-independence commitments to the capital markets.
+00:00:26.340 --> 00:00:30.360
+a great overview of really where the staff is headed with
 
-00:30.995 --> 00:33.695
-We encourage audit professionals to refer to the
+00:00:30.360 --> 00:00:34.290
+their comments moving forward and things that companies need
 
-00:33.695 --> 00:36.410
-“Focused Non-Audit Services for Audit Clients”
+00:00:34.290 --> 00:00:38.280
+to need to think about on every time they're making a
 
-00:36.410 --> 00:39.850
-document found on the Non-audit Services Portal when
+00:00:38.280 --> 00:00:42.990
+filing. And as you said, let's dive into some of some of the
 
-00:39.850 --> 00:43.145
-teaming with tax and advisory professionals to identify
+00:00:42.990 --> 00:00:47.700
+information here related to cyber security. So this isn't a
 
-00:43.145 --> 00:46.725
-the many permissible non-audit services that we can provide.
+00:00:47.700 --> 00:00:50.130
+webcast to talk about the cybersecurity rules. Hopefully,
 
-00:46.725 --> 00:51.315
-Doing so can improve the overall client experience by enhancing
+00:00:50.130 --> 00:00:52.920
+everyone at this point really has a good understanding of
 
-00:51.315 --> 00:54.125
-our breadth of knowledge of the client’s business,
+00:00:52.920 --> 00:00:57.270
+what these entail. But just as a high level reminder of what
 
-00:54.125 --> 00:56.995
-further fostering relationships with our clients and
+00:00:57.270 --> 00:01:01.470
+these rules required and where comments may be coming. We
 
-00:56.995 --> 01:00.485
-directly contributing to the firm’s growth strategy.
+00:01:01.470 --> 00:01:04.410
+wanted to share with the audience, just remember that
 
-01:00.485 --> 01:02.995
-Be mindful that there are still services that have
+00:01:04.410 --> 00:01:08.550
+there's a new item 105 on Form 8K that requires disclosure
 
-01:02.995 --> 01:06.820
-to be carefully managed to avoid independence violations.
+00:01:08.550 --> 00:01:13.200
+anytime a cybersecurity incident is deemed to be material by
 
-01:06.820 --> 01:09.145
-The way to navigate through these opportunities is by
+00:01:13.200 --> 00:01:16.650
+a company and that Form 8K is required to be filed within
 
-01:09.145 --> 01:13.415
-relying on components of our System of Independence Quality Control,
+00:01:16.650 --> 00:01:21.150
+four days of that materiality determination. That is the
 
-01:13.415 --> 01:17.710
-such as Sentinel. Following the firm’s System of Independence
+00:01:21.150 --> 00:01:25.140
+four day clock does not start at the point in time where the
 
-01:17.710 --> 01:19.610
-Quality Control when pursuing
+00:01:25.140 --> 00:01:28.860
+cybersecurity incident happens. And so that's an important
 
-01:19.610 --> 01:24.410
-opportunities allows the firm to provide permissible services to audit clients
+00:01:28.860 --> 00:01:31.800
+distinction that we're going to get into a. Bit more here
 
-01:24.410 --> 01:30.225
-and their affiliates. Throughout this course you will hear what you can do to maintain
+00:01:31.800 --> 00:01:36.390
+into the details of in a second. In addition to that, the
 
-01:30.225 --> 01:34.585
-the firm’s independence when offering permissible non-audit services.
+00:01:36.390 --> 00:01:41.460
+rules required certain periodic reporting disclosures to be
 
-01:34.585 --> 01:39.210
-For example, early teaming and consultation among non-audit professionals,
+00:01:41.460 --> 00:01:45.000
+in annual filings of companies and those are more detailed
 
-01:39.210 --> 01:43.550
-audit partners and Risk Management - Independence, use of Sentinel, and
+00:01:45.000 --> 00:01:49.080
+disclosures perhaps than were ever required before, although
 
-01:43.550 --> 01:46.940
-the firm’s Independence Non-audit Services Portal.
+00:01:49.080 --> 00:01:51.210
+certainly some of that information may have been in some
 
-01:46.940 --> 01:49.505
-The portal was designed to centrally house
+00:01:51.210 --> 00:01:55.410
+companies filings previously. There's some ability for
 
-01:49.505 --> 01:52.421
-independence guidance to use when proposing permissible
+00:01:55.410 --> 00:02:01.620
+companies to. Claim an exemption to some of the disclosure
 
-01:52.421 --> 01:55.955
-non-audit services for audit clients and their affiliates.
+00:02:01.620 --> 00:02:04.350
+requirements, in particular case where there's a national
 
-01:55.955 --> 01:56.637
+00:02:04.350 --> 00:02:07.560
+security interest that's implicated. Through that cyber
+
+00:02:07.560 --> 00:02:11.190
+security incident. And so there are some exceptions there
+
+00:02:11.190 --> 00:02:15.750
+that companies can take advantage of as well. So these are
+
+00:02:15.750 --> 00:02:19.170
+very detailed rules. I'm sure every company out there right
+
+00:02:19.170 --> 00:02:23.910
+now has put in processes and controls whereby if a cyber
+
+00:02:23.910 --> 00:02:26.970
+security incident occurs or really I should say when a cyber
+
+00:02:26.970 --> 00:02:29.010
+security incident occurs, because we know they're occurring
+
+00:02:29.010 --> 00:02:32.070
+all the time, they're taking those incidents and they're
+
+00:02:32.070 --> 00:02:35.520
+assessing them against materiality. In a cross functionally
+
+00:02:35.520 --> 00:02:39.060
+way to really assess what that materiality looks like and
+
+00:02:39.060 --> 00:02:43.710
+make that determination. So if we move to our next slide
+
+00:02:43.710 --> 00:02:46.800
+here, what we heard from Director Girding has been mentioned
+
+00:02:46.800 --> 00:02:48.840
+a few times. He's the Director of the Division of
+
+00:02:48.840 --> 00:02:52.860
+Corporation Finance. He made some statements this year in
+
+00:02:52.860 --> 00:02:58.230
+May and they related to the use of that item 105 on the form
+
+00:02:58.230 --> 00:03:02.490
+AK that I spoke about just a couple of minutes ago. And I'll
+
+00:03:02.490 --> 00:03:04.590
+step back here to say that the division of Corporation
+
+00:03:04.590 --> 00:03:07.410
+Finance for last few years is. Being clear in their
+
+00:03:07.410 --> 00:03:11.010
+communications with the public to say that we're not here to
+
+00:03:11.010 --> 00:03:13.890
+try and play a game of gotcha. Really what they're
+
+00:03:13.890 --> 00:03:17.910
+interested to do is to see how practice has developed
+
+00:03:17.910 --> 00:03:20.220
+through the application of the rules and the guidance that
+
+00:03:20.220 --> 00:03:22.980
+they put out there. And then they're going to make comments
+
+00:03:22.980 --> 00:03:26.610
+or make statements or put out CNDIS compliance and
+
+00:03:26.610 --> 00:03:30.630
+disclosure interpretations to kind of address the way that
+
+00:03:30.630 --> 00:03:32.850
+they feel practice has developed that they were not
+
+00:03:32.850 --> 00:03:36.480
+intending to. And so this is one of those cases where.
+
+00:03:36.480 --> 00:03:40.680
+Director Gordon came out and made a statement to say we see
+
+00:03:40.680 --> 00:03:44.370
+the companies are putting cyber security incidents on form
+
+00:03:44.370 --> 00:03:49.590
+AK and using Item 105. Even prior to perhaps making that
+
+00:03:49.590 --> 00:03:53.340
+materiality determination, there was really intended to be
+
+00:03:53.340 --> 00:03:58.740
+the triggering event for item 105 disclosure. And so we feel
+
+00:03:58.740 --> 00:04:02.280
+like that could be misleading for the investing public.
+
+00:04:02.280 --> 00:04:05.400
+Because the triggering event in our view, and this is the
+
+00:04:05.400 --> 00:04:08.910
+SEC speaking for item 105, should be that materiality
+
+00:04:08.910 --> 00:04:12.930
+determination. And so if you have an incident that you've
+
+00:04:12.930 --> 00:04:17.130
+deemed to be material, certainly put that on Item 105. If
+
+00:04:17.130 --> 00:04:20.670
+it's clear at the outset from an incident that it's going to
+
+00:04:20.670 --> 00:04:23.700
+have a material impact. And remember, the material impact
+
+00:04:23.700 --> 00:04:26.700
+can either be from a quantitative threshold or it could be
+
+00:04:26.700 --> 00:04:30.300
+considered qualitatively material to the business, including
+
+00:04:30.300 --> 00:04:33.420
+things such as your operations. If it's clear from the
+
+00:04:33.420 --> 00:04:36.870
+outset, then sure, go ahead and say that. Put that on Item
+
+00:04:36.870 --> 00:04:41.220
+105 on Form 8K. However, if you have an incident and you
+
+00:04:41.220 --> 00:04:44.160
+haven't yet made that determination. Or you've just
+
+00:04:44.160 --> 00:04:47.580
+concluded it's immaterial. That's not necessarily bad
+
+00:04:47.580 --> 00:04:51.510
+information for an investor to have. So we do appreciate the
+
+00:04:51.510 --> 00:04:53.610
+fact that companies are trying to disclose certain
+
+00:04:53.610 --> 00:04:57.600
+information on form AK even before that materiality
+
+00:04:57.600 --> 00:05:00.990
+determination has been made. In those cases, though, please
+
+00:05:00.990 --> 00:05:05.610
+don't use item 105, Please use item 801. Or perhaps there's
+
+00:05:05.610 --> 00:05:09.000
+another item within form AK where it may be appropriate to
+
+00:05:09.000 --> 00:05:12.900
+make some of those disclosures and file those with the SEC.
+
+00:05:12.900 --> 00:05:17.730
+And so they really tried to focus the attention of entities
+
+00:05:17.730 --> 00:05:22.860
+in these situations on that materiality determination. So
+
+00:05:22.860 --> 00:05:25.860
+what have we seen? And I think we can demonstrate that as we
+
+00:05:25.860 --> 00:05:31.680
+move forward here. What we've seen from the time prior to
+
+00:05:31.680 --> 00:05:34.980
+May when the statement was made, as we'll see on the next
+
+00:05:34.980 --> 00:05:40.560
+slide, and the time after May through towards the end of
+
+00:05:40.560 --> 00:05:44.130
+September is really a shift. In the way that companies are
+
+00:05:44.130 --> 00:05:48.720
+approaching these disclosures, so before May, we saw more
+
+00:05:48.720 --> 00:05:52.860
+than half, half of companies using item 105 and either
+
+00:05:52.860 --> 00:05:56.310
+saying it wasn't material, the incident wasn't material to
+
+00:05:56.310 --> 00:05:58.710
+the company or they have not yet made a material
+
+00:05:58.710 --> 00:06:02.370
+determination or perhaps being silent on some aspect of
+
+00:06:02.370 --> 00:06:07.020
+materiality, but speaking to another aspect of immateriality
+
+00:06:07.020 --> 00:06:11.610
+to the company. There was many companies making disclosures
+
+00:06:11.610 --> 00:06:16.200
+on item 105 that said. There was no material impact and the
+
+00:06:16.200 --> 00:06:20.070
+range in terms of when formaks were being filed was really
+
+00:06:20.070 --> 00:06:24.840
+wide. So we saw any anything from one day after an incident
+
+00:06:24.840 --> 00:06:28.050
+occurred which seemed very short for potentially an
+
+00:06:28.050 --> 00:06:30.900
+immaterial incident where that materiality assessment has
+
+00:06:30.900 --> 00:06:35.640
+not been made-up through say 43 days. And these are somewhat
+
+00:06:35.640 --> 00:06:39.300
+limited populations. So the range was wide. Maybe it was
+
+00:06:39.300 --> 00:06:42.660
+expected, but there was a varying use, I would say of the
+
+00:06:42.660 --> 00:06:48.000
+form AK for these incidents. After Director Gerding made his
+
+00:06:48.000 --> 00:06:52.800
+remarks, we've seen a shift and more companies are using 801
+
+00:06:52.800 --> 00:06:56.370
+prior to determination of whether an incident is material or
+
+00:06:56.370 --> 00:06:59.430
+not. We're seeing more companies being deliberate about
+
+00:06:59.430 --> 00:07:03.960
+making comments in item one O 5 that an area was or an
+
+00:07:03.960 --> 00:07:06.990
+incident was material to the entity for one reason or
+
+00:07:06.990 --> 00:07:11.280
+another. And we've seen really a compression of that time
+
+00:07:11.280 --> 00:07:16.830
+frame of reporting on form AK. From five days to 25 days
+
+00:07:16.830 --> 00:07:19.950
+since that May statement came out. So I think everyone's
+
+00:07:19.950 --> 00:07:23.280
+getting the message. We wanted to make sure that was clear.
+
+00:07:23.280 --> 00:07:26.760
+And that really leads us into our next slide where we have
+
+00:07:26.760 --> 00:07:31.740
+some comments here that the SEC has issued on item 1:05. And
+
+00:07:31.740 --> 00:07:34.290
+I think it's important to highlight here as you read through
+
+00:07:34.290 --> 00:07:36.480
+them. And again, you'll have this information. You can sift
+
+00:07:36.480 --> 00:07:40.920
+through the comments after the webcast. More closely, a lot
+
+00:07:40.920 --> 00:07:44.520
+of these comments relate to that materiality assessment and
+
+00:07:44.520 --> 00:07:47.490
+the SEC wanting companies to make sure that they are stating
+
+00:07:47.490 --> 00:07:51.210
+whether or not. The incident of material, how it was
+
+00:07:51.210 --> 00:07:53.790
+material to the company and providing information for the
+
+00:07:53.790 --> 00:07:58.620
+investor know how that materiality assessment was made. And
+
+00:07:58.620 --> 00:08:00.990
+that's not to say that detailed information that's going to
+
+00:08:00.990 --> 00:08:03.930
+give away any secrets of the company is required to be put
+
+00:08:03.930 --> 00:08:07.560
+on Form 8K, but they want the descriptions to match the
+
+00:08:07.560 --> 00:08:10.740
+requirements that exist within the rules today.
+
+00:08:10.740 --> 00:08:14.100
+Additionally, we've seen comments where they're asking for a
+
+00:08:14.100 --> 00:08:17.430
+better description about how that incident has or is
+
+00:08:17.430 --> 00:08:21.210
+expected to. Back the business again, I don't think that
+
+00:08:21.210 --> 00:08:24.150
+description needs to be in such a detailed way that it's
+
+00:08:24.150 --> 00:08:27.330
+giving away private information from the company, but they
+
+00:08:27.330 --> 00:08:31.320
+do expect the investor to know what those impacts are. So
+
+00:08:31.320 --> 00:08:34.170
+this is really the SEC enforcing these rules and
+
+00:08:34.170 --> 00:08:37.500
+regulations, as I said they would, based on what they
+
+00:08:37.500 --> 00:08:40.410
+perceive to be the requirements and the information that's
+
+00:08:40.410 --> 00:08:41.880
+being provided by companies.
