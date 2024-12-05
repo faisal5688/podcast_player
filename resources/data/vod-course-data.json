@@ -125,8 +125,8 @@
             "url": "resources/audio/part_1.mp3",
             "subtitle": "resources/audio/part_1.vtt",
             "transcript": "resources/audio/part_1.pdf",
-            "preview": "resources/image/previews/part_1.jpg",
-            "thumbnail": "resources/image/thumbs/part_1.jpg",
+            "preview": "resources/image/previews/part_1.png",
+            "thumbnail": "resources/image/thumbs/part_1.png",
             "duration": "33 sec",
             "quesDescription": "Fusce vulputate dui sit amet diam tincidunt vestibulum."
         },
@@ -137,8 +137,8 @@
             "url": "resources/audio/part_2.mp3",
             "subtitle": "resources/audio/part_2.vtt",
             "transcript": "resources/audio/part_2.pdf",
-            "preview": "resources/image/previews/part_2.jpg",
-            "thumbnail": "resources/image/thumbs/part_2.jpg",
+            "preview": "resources/image/previews/part_2.png",
+            "thumbnail": "resources/image/thumbs/part_2.png",
             "duration": "33 sec"
         },
         {
@@ -148,8 +148,8 @@
             "url": "resources/audio/part_3.mp3",
             "subtitle": "resources/audio/part_3.vtt",
             "transcript": "resources/audio/part_3.pdf",
-            "preview": "resources/image/previews/part_3.jpg",
-            "thumbnail": "resources/image/thumbs/part_3.jpg",
+            "preview": "resources/image/previews/part_3.png",
+            "thumbnail": "resources/image/thumbs/part_3.png",
             "duration": "33 sec",
             "quesDescription": "Fusce vulputate dui sit amet diam tincidunt vestibulum."
         },
@@ -160,8 +160,8 @@
             "url": "resources/audio/part_4.mp3",
             "subtitle": "resources/audio/part_4.vtt",
             "transcript": "resources/audio/part_4.pdf",
-            "preview": "resources/image/previews/part_4.jpg",
-            "thumbnail": "resources/image/thumbs/part_4.jpg",
+            "preview": "resources/image/previews/part_4.png",
+            "thumbnail": "resources/image/thumbs/part_4.png",
             "duration": "33 sec",
             "quesDescription": "Fusce vulputate dui sit amet diam tincidunt vestibulum."
         },
@@ -172,8 +172,8 @@
             "url": "resources/audio/part_5.mp3",
             "subtitle": "resources/audio/part_5.vtt",
             "transcript": "resources/audio/part_5.pdf",
-            "preview": "resources/image/previews/part_5.jpg",
-            "thumbnail": "resources/image/thumbs/part_5.jpg",
+            "preview": "resources/image/previews/part_5.png",
+            "thumbnail": "resources/image/thumbs/part_5.png",
             "duration": "33 sec",
             "quesDescription": "Fusce vulputate dui sit amet diam tincidunt vestibulum."
         },
