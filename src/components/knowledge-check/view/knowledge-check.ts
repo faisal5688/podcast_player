@@ -181,12 +181,21 @@ namespace HTML5AudioPlayer.Components.Views {
         private onClose(e: any): void {
             let knowledgeCheckView: KnowledgeCheck = this,
                 knowledgeCheckModel: Models.KnowledgeCheck = knowledgeCheckView.model;
-            //knowledgeCheckView.reset();
+            knowledgeCheckView.reset();
             knowledgeCheckView.$(".feedback").hide();
             knowledgeCheckView.$(".feedback-container").hide();
             knowledgeCheckView.$('input[name=kc-option]').prop('disabled', true).closest('label').addClass('disabled-label');;
             knowledgeCheckView.$('label').addClass('disabled-label');
             //knowledgeCheckView.trigger(Events.EVENT_KC_NEXT, knowledgeCheckModel.Current);
+
+            if (knowledgeCheckModel.Current.index < knowledgeCheckModel.Current.total) {
+                knowledgeCheckView.trigger(Events.EVENT_KC_NEXT, knowledgeCheckModel.Current);
+            } else {
+                //let knowledgeCheckView: KnowledgeCheck = this;
+                //knowledgeCheckView.reset();
+                //knowledgeCheckView.$(".feedback").hide();
+                knowledgeCheckView.closeQuetion();
+            }
         }
 
         @named
@@ -274,7 +283,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 knowledgeCheckView.$(".ck-continue-btn").hide();
             }
             else {
-                knowledgeCheckView.$(".ck-continue-btn").show();
+               // knowledgeCheckView.$(".ck-continue-btn").show();
                 knowledgeCheckView.$(".ck-try-again-btn").hide();
 
                 knowledgeCheckView.showCorrectAnswers(DataStructures.KCResult.Correct !== result);
@@ -286,7 +295,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 //knowledgeCheckView.$(".ck-next-btn").removeClass("disabled").show();
             } else {
                 //alert("ck-continue-btn show")
-                knowledgeCheckView.$(".ck-continue-btn").show();
+                knowledgeCheckView.$(".ck-continue-btn").hide(); //hide
                 //knowledgeCheckView.$(".ck-next-btn").addClass("disabled").hide();
             }
 
