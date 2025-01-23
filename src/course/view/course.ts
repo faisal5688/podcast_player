@@ -73,6 +73,7 @@ namespace HTML5AudioPlayer.Views {
                 'click .launch-button': 'onLaunchCourse',
                 'click .help-button': 'onOpenHelp', //onOpenHelp
                 'click .exit-button': 'onCourseExit',
+                'click .copyright-button': 'onOpenCopyright',
 
 
                 'click .close-button': 'onClosePlaylist',
@@ -469,7 +470,28 @@ namespace HTML5AudioPlayer.Views {
             }
         }
 
+        private onOpenCopyright(): void { //copy right popup
+            let courseView: Course = this,
+                courseModel: Models.Course = courseView.model;
+                //alert()
+                // courseView._player.enable();
+                // courseView._copyright = new Components.Views.Copyright({
+                //     model: courseModel.Copyright,
+                //     el: "#copyright-container"
+                // });
+                // courseView._copyright.render();
+                // courseView._player.pause();
+                //courseView._copyright.model.initCopyright();
+                //courseView._copyright.model.setCurrentQuestion(0);
 
+                //courseView._copyright.once(Events.EVENT_ASSESSMENT_COMPLETE, courseView.markCopyrightComplete, courseView);
+               // courseView._copyright.once(Events.EVENT_ASSESSMENT_STATUS, courseView.updateCopyrightStatus, courseView);
+                //courseView._copyright.on(Events.EVENT_ASSESSMENT_CLOSE, courseView.assessmentClose, courseView);
+                //courseView._copyright.show();
+                //courseView._copyright.checkCopyrightComplete();
+
+            //Utilities.openPdf(this.model.Help.url);
+        }
 
         private onOpenHelp(): void {
             let courseView: Course = this,

@@ -197,6 +197,13 @@
         "url": "resources/pdfs/help.pdf"
     },
 
+    "copyright": {
+        "show": true,
+        "tooltip": "Help",
+        "icon": "resources/image/icon_help.svg",
+        "url": "resources/pdfs/help.pdf"
+    },
+
     "knowledgechecks": {
         "enabled": true,
         "cuepointdelta": 0.2,
