@@ -9,13 +9,13 @@
     {{/if}}
     {{#if HideGlossaryBtn}} {{else}}
         <div class="glossary-button">
-            <img src="resources/image/shell_glossary_icon.svg" alt="Glossary" />
+            <img src="resources/image/shell_glossary_icon.svg" alt="Glossary" title="Glossary" />
             <h4>{{{GlossaryBtnText}}}</h4>
         </div>
     {{/if}}
     {{#if ShowResourceBtn}}
         <div class="resource-button">
-            <img src="resources/image/shell_resources_icon.svg" alt="" />
+            <img src="resources/image/shell_resources_icon.svg" alt="" title="Resources" />
             <h4>{{{ResourceBtnText}}}</h4>
         </div>
     {{/if}}
@@ -23,11 +23,12 @@
         {{#if help.show}}
             {{!-- <div class="help-button" title="{{help.tooltip}}"><img src="{{help.icon}}" onload="SVGInject(this)" /></div> --}}
             <div class="help-button">
-                <img src="resources/image/shell_help_icon.svg" alt="" />
+                <img src="resources/image/shell_help_icon.svg" alt=""  title="Help" />
                 <h4>{{{HelpBtnText}}}</h4>
             </div>
         {{/if}}
     {{/if}}
+
 
     {{#if HideIndexBtn}} {{else}}
         <div class="index-button">
