@@ -5,6 +5,7 @@
 /// <reference path="../../components/assessment/view/assessment.ts" />
 /// <reference path="../../components/survey/view/survey.ts" />
 /// <reference path="../../components/carousel/view/carousel.ts" />
+/// <reference path="../../components/copyright/view/copyright.ts" />
 
 
 
@@ -21,6 +22,7 @@ namespace HTML5AudioPlayer.Views {
         private _carousel: Components.Views.Carousel;
         private _item: Components.Models.PlaylistItem;
         private wasPlaying = false;
+        private _copyright: Components.Views.Copyright;
 
         constructor(options: any) {
             super(options);
@@ -473,6 +475,12 @@ namespace HTML5AudioPlayer.Views {
         private onOpenCopyright(): void { //copy right popup
             let courseView: Course = this,
                 courseModel: Models.Course = courseView.model;
+                courseView._copyright = new Components.Views.Copyright({
+                    model: courseModel.CopyrightModel,
+                    el: "#copyright-container"
+                });
+                courseView._copyright.render();
+                courseView._copyright.show();
                 //alert()
                 // courseView._player.enable();
                 // courseView._copyright = new Components.Views.Copyright({
