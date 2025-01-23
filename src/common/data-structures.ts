@@ -266,6 +266,13 @@ namespace HTML5AudioPlayer.DataStructures {
         url: string;
     }
 
+    export class CopyrightData {
+        show: boolean;
+        tooltip: string;
+        icon: string;
+        url: string;
+    }
+
     export class startPage {
         title: string;
         content: string;

@@ -84,6 +84,8 @@ namespace HTML5AudioPlayer.Models {
 
         get Help(): DataStructures.HelpData { return this.get("help"); }
 
+        get Copyright():DataStructures.CopyrightData { return this.get("copyright"); }
+
         get hasCarousel(): boolean { return this.get("hasCarousel"); }
         set hasCarousel(value: boolean) { this.set("current", value); }
 
