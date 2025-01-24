@@ -154,7 +154,7 @@
             background: rgba(0, 184, 245, 0.1);
             display: flex;
             align-items: center;
-            padding: 10px;
+            padding: 10px 37px 10px 10px;
             box-sizing: border-box;
 
             .index {
@@ -171,20 +171,29 @@
             }
 
             .question-number {
-                width: 65px;
+                width: 50px;
+
+                .quest-num-1 {
+                    font-size: 22px;
+                    font-weight: bold;
+                }
+
+                .quest-num-2 {
+                    font-size: 16px;
+                }
             }
 
             .page-number {
                 color: $colorBlue;
                 font-size: $fontSizeMidium;
-                width: 70px;
+                width: 50px;
                 text-align: center;
             }
 
             .question-text {
                 // background: rgba(0, 184, 245, 0.1);
-                padding: 15px 40px 15px 5px;
-                width: calc(100% - 80px);
+                padding: 15px 10px 15px 5px;
+                width: calc(100% - 50px);
                 font-size: $fontSizeMidium;
                 font-weight: bold;
                 color: $colorBlue;
@@ -669,8 +678,6 @@
                 margin-top: 0px;
 
                 .page-number {
-                    width: 7%;
-                    top: 10px;
 
                     .index {
                         font-size: $fontSizeExtraLarge;
@@ -734,8 +741,6 @@
         .assessment {
             .question-container {
                 .page-number {
-                    left: 10px;
-                    top: 10px;
 
                     .index {
                         width: 10%;
@@ -870,11 +875,11 @@
                 .question-text {
                     // padding: 25px 20px 25px 90px;
                     line-height: 22px;
-                    padding: 15px 10px 15px 15px;
+                    padding: 15px 10px 15px 5px;
                 }
 
                 .page-number {
-                    width: 58px;
+                    width: 50px;
 
                     .index {
                         font-size: 55px;
