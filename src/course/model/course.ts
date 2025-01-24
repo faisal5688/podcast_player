@@ -84,6 +84,11 @@ namespace HTML5AudioPlayer.Models {
 
         get Help(): DataStructures.HelpData { return this.get("help"); }
 
+        get Copyright():DataStructures.CopyrightData { return this.get("copyright"); }
+
+        get CopyrightModel(): Components.Models.Copyright { return this.get("CopyrightModel"); }
+        set CopyrightModel(value: Components.Models.Copyright) { this.set("CopyrightModel", value); }
+
         get hasCarousel(): boolean { return this.get("hasCarousel"); }
         set hasCarousel(value: boolean) { this.set("current", value); }
 
@@ -152,6 +157,7 @@ namespace HTML5AudioPlayer.Models {
             //model.PlayerModel.once(Events.EVENT_LAUNCH_FEEDBACK, options.onLaunchFeedback);
 
             model.CarouselModel = new Components.Models.Carousel(model.Carousel);
+            model.CopyrightModel = new Components.Models.Copyright(model.Copyright);
 
             model.KnowledgeCheckItem = new Components.Models.KnowledgeCheckItem(model.KnowledgecheckItemData.knowledgechecksdata)
 

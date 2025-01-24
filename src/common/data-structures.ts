@@ -266,6 +266,14 @@ namespace HTML5AudioPlayer.DataStructures {
         url: string;
     }
 
+    export class CopyrightData {
+        show: boolean;
+        tooltip: string;
+        icon: string;
+        url: string;
+        content:string;
+    }
+
     export class startPage {
         title: string;
         content: string;
@@ -378,6 +386,7 @@ namespace HTML5AudioPlayer.DataStructures {
 
     export class Carousel{
 		hasCarousel:boolean;
+        showcontrols:boolean;
         slides: slideData[];
     }
     export class slideData {

@@ -51,6 +51,7 @@
 
     "carousel": {
         "hasCarousel": true,
+        "showcontrols":false,
         "hasBackButton": true,
         "slides":[
             {
@@ -113,7 +114,7 @@
         "playlistStartIndex": 0,
         "HideCaptionsOnLaunch": true,
         "HidePlaylist": false,
-        "AutoAdvanceToNext": false,
+        "AutoAdvanceToNext": true,
         "options": {
             "playbackRates": [0.7,1, 1.5]
         },
@@ -195,6 +196,14 @@
         "tooltip": "Help",
         "icon": "resources/image/icon_help.svg",
         "url": "resources/pdfs/help.pdf"
+    },
+
+    "copyright": {
+        "show": true,
+        "tooltip": "copyright",
+        "icon": "resources/image/icon_help.svg",
+        "url": "resources/pdfs/help.pdf",
+        "content":"copyright content"
     },
 
     "knowledgechecks": {
