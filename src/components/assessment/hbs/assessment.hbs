@@ -17,9 +17,9 @@
     <div class="question-container">
         <div class="page-number">
             <div class="index">Q.</div>
-            {{#ifCond APP_MODE "==" "debug"}}
+            {{!-- {{#ifCond APP_MODE "==" "debug"}} --}}
             <div class="question-number"> {{{NumCurrentQuestionDisplay}}} of {{{NumOfQuestionToDisplay}}}</div>
-            {{/ifCond}}
+            {{!-- {{/ifCond}} --}}
         </div>
 
         <div class="question-text">{{{currentQuestionData.question}}}</div>
