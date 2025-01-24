@@ -141,16 +141,21 @@
         display: none;
 
         .assessmentCloseBtn {
-            @include popupCloseBtn;
+            @include popupCloseBtnQuest;
             position: absolute;
-            right: 14px;
-            top: 14px;
+            right: 10px;
+            top: 10px;
             cursor: pointer;
             border: none;
         }
 
         .question-container {
             width: $fullWidth;
+            background: rgba(0, 184, 245, 0.1);
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            box-sizing: border-box;
 
             .index {
                 @include floatLeft;
@@ -166,22 +171,20 @@
             }
 
             .question-number {
-                position: absolute;
-                top: 78px;
-                left: 14px;
                 width: 65px;
             }
 
             .page-number {
-                position: absolute;
-                top: 5px;
-                left: 20px;
+                color: $colorBlue;
+                font-size: $fontSizeMidium;
+                width: 70px;
+                text-align: center;
             }
 
             .question-text {
-                background: rgba(0, 184, 245, 0.1);
-                padding: 15px 40px 15px 20px;
-                width: 100%;
+                // background: rgba(0, 184, 245, 0.1);
+                padding: 15px 40px 15px 5px;
+                width: calc(100% - 80px);
                 font-size: $fontSizeMidium;
                 font-weight: bold;
                 color: $colorBlue;
@@ -867,7 +870,7 @@
                 .question-text {
                     // padding: 25px 20px 25px 90px;
                     line-height: 22px;
-                    padding: 15px 40px 15px 10px;
+                    padding: 15px 10px 15px 15px;
                 }
 
                 .page-number {

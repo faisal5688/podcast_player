@@ -216,6 +216,15 @@ background: linear-gradient(90deg, rgba(92,33,232,1) 0%, rgba(88,36,232,1) 20%, 
 
 }
 
+@mixin popupCloseBtnQuest {
+    background: url("../resources/image/popup_close_Quest.svg") no-repeat;
+    width: 24px;
+    height: 24px;
+    background-position: center center;
+    background-size: 24px 24px;
+
+}
+
 @mixin menuBtn {
     background: url("../resources/image/menu_btn.svg") no-repeat;
     width: 24px;
