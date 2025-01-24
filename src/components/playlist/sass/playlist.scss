@@ -346,7 +346,7 @@
 
                         .item-index {
                             @include ChapterNoFontStyle;
-                            padding: 10px 0 2px 0;
+                            padding: 10px 0 10px 0;
                             font-weight: bold;
                             color: $colorCobaltBlue;
                         }
@@ -730,9 +730,9 @@
 
                         .item-index {
                             @include ItemFontStyle;
-                            padding: 10px 0 2px 0;
+                            padding: 10px 0 10px 0;
                             font-weight: bold;
-                            height: 16px;
+                            // height: 16px;
                         }
 
                         .item-title {
@@ -866,11 +866,11 @@
                         }
 
                         .item-index {
-                            padding: 10px 0 2px 0;
+                            padding: 10px 0 10px 0;
                             @include QuestionTitleFontStyle;
                             font-weight: bold;
                             color: $colorCobaltBlue;
-                            height: 60px;
+                            // height: 60px;
                         }
 
                         .item-title {
