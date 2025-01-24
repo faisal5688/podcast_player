@@ -6,6 +6,11 @@ namespace HTML5AudioPlayer.Components.Models {
         get HasCarousel(): boolean { return this.get("hasCarousel"); }
         set HasCarousel(value: boolean) { this.set("hasCarousel", value); }
 
+        get Showcontrols(): boolean { return this.get("showcontrols"); }
+        set Showcontrols(value: boolean) { this.set("showcontrols", value); }
+
+
+
         get Visible(): boolean { return this.get("visible"); }
         set Visible(value: boolean) { this.set("visible", value); }
 

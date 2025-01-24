@@ -192,14 +192,19 @@ namespace HTML5AudioPlayer.Components.Views {
 
         updateSlidePosition() {
             //alert(this.currentSlideIndex)
+
             let carouselView = this,
                 carouselModel: Models.Carousel = this.model;
-            const offset = -this.currentSlideIndex * (100); // 300px width per slide
-            this.$('.carousel-content').css('transform', `translateX(${offset}%)`);
 
-            // Update active state for indicators
-            this.$('.carousel-indicators button').removeClass('active');
-            this.$(`.carousel-indicators button[data-index="${this.currentSlideIndex}"]`).addClass('active');
+                if(carouselModel.Showcontrols){
+                    const offset = -this.currentSlideIndex * (100); // 300px width per slide
+                    this.$('.carousel-content').css('transform', `translateX(${offset}%)`);
+
+                    // Update active state for indicators
+                    this.$('.carousel-indicators button').removeClass('active');
+                    this.$(`.carousel-indicators button[data-index="${this.currentSlideIndex}"]`).addClass('active');
+                }
+
         }
 
         goToSlide(event: JQuery.ClickEvent, slideNum?:number) {
@@ -216,6 +221,7 @@ namespace HTML5AudioPlayer.Components.Views {
         }
 
         public prevSlide() {
+
             if (this.currentSlideIndex > 0) {
                 this.currentSlideIndex--;
                 this.updateSlidePosition();

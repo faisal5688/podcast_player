@@ -386,6 +386,7 @@ namespace HTML5AudioPlayer.DataStructures {
 
     export class Carousel{
 		hasCarousel:boolean;
+        showcontrols:boolean;
         slides: slideData[];
     }
     export class slideData {
