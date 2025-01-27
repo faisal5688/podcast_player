@@ -497,7 +497,7 @@
         "passingPercent": 70,
         "startPage": {
             "title": "Assessment",
-            "content": "<p>Congratulations on completing the course!</p><br><p class='instText'>Click Start to take the assessment and see how much you have learned.</p><br><p>In order to receive CPE credit, you must score a 70% of higher on this assessment. The assessment includes a series of multiple-choice questions. You will be provided consolidated feedback at the end of the assessment. Feel free to review the course content before you begin the assessment.</p><br><p><b>Good luck!!</b></p>",
+            "content": "<p>Congratulations on completing the course!</p><br><p class='instText'>Click Start to take the assessment and see how much you have learned.</p><br><p>In order to receive CPE credit, you must score a 70% or higher on this assessment. The assessment includes a series of multiple-choice questions. You will be provided consolidated feedback at the end of the assessment. Feel free to review the course content before you begin the assessment.</p><br><p><b>Good luck!!</b></p>",
             "successText": "Congratulations! You have completed this assessment with a score of",
             "button": "Start"
         },
