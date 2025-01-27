@@ -198,13 +198,7 @@
         "url": "resources/pdfs/help.pdf"
     },
 
-    "copyright": {
-        "show": true,
-        "tooltip": "copyright",
-        "icon": "resources/image/icon_help.svg",
-        "url": "resources/pdfs/help.pdf",
-        "content":"copyright content"
-    },
+
 
     "knowledgechecks": {
         "enabled": true,

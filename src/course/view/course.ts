@@ -5,7 +5,6 @@
 /// <reference path="../../components/assessment/view/assessment.ts" />
 /// <reference path="../../components/survey/view/survey.ts" />
 /// <reference path="../../components/carousel/view/carousel.ts" />
-/// <reference path="../../components/copyright/view/copyright.ts" />
 
 
 
@@ -22,7 +21,6 @@ namespace HTML5AudioPlayer.Views {
         private _carousel: Components.Views.Carousel;
         private _item: Components.Models.PlaylistItem;
         private wasPlaying = false;
-        private _copyright: Components.Views.Copyright;
 
         constructor(options: any) {
             super(options);
@@ -75,9 +73,6 @@ namespace HTML5AudioPlayer.Views {
                 'click .launch-button': 'onLaunchCourse',
                 'click .help-button': 'onOpenHelp', //onOpenHelp
                 'click .exit-button': 'onCourseExit',
-                'click .copyright-button': 'onOpenCopyright',
-
-
                 'click .close-button': 'onClosePlaylist',
                 'click .index-button': 'onShowIndex',
                 'click .glossary-button': 'onShowGlossary',
@@ -472,34 +467,6 @@ namespace HTML5AudioPlayer.Views {
             }
         }
 
-        private onOpenCopyright(): void { //copy right popup
-            let courseView: Course = this,
-                courseModel: Models.Course = courseView.model;
-                courseView._copyright = new Components.Views.Copyright({
-                    model: courseModel.CopyrightModel,
-                    el: "#copyright-container"
-                });
-                courseView._copyright.render();
-                courseView._copyright.show();
-                //alert()
-                // courseView._player.enable();
-                // courseView._copyright = new Components.Views.Copyright({
-                //     model: courseModel.Copyright,
-                //     el: "#copyright-container"
-                // });
-                // courseView._copyright.render();
-                // courseView._player.pause();
-                //courseView._copyright.model.initCopyright();
-                //courseView._copyright.model.setCurrentQuestion(0);
-
-                //courseView._copyright.once(Events.EVENT_ASSESSMENT_COMPLETE, courseView.markCopyrightComplete, courseView);
-               // courseView._copyright.once(Events.EVENT_ASSESSMENT_STATUS, courseView.updateCopyrightStatus, courseView);
-                //courseView._copyright.on(Events.EVENT_ASSESSMENT_CLOSE, courseView.assessmentClose, courseView);
-                //courseView._copyright.show();
-                //courseView._copyright.checkCopyrightComplete();
-
-            //Utilities.openPdf(this.model.Help.url);
-        }
 
         private onOpenHelp(): void {
             let courseView: Course = this,
