@@ -53,10 +53,12 @@ namespace HTML5AudioPlayer.Components.Views {
             if (playlistItemModel.CurrentClicked) {
                 playlistItemView.$el.addClass("current");
                 playlistItemView.$el.find(".audio-player-container").addClass("showPlayer");
+                playlistItemView.$el.find(".waveform").show();
 
             } else {
                 playlistItemView.$el.removeClass("current");
-                playlistItemView.$el.find(".audio-player-container").removeClass("showPlayer")
+                playlistItemView.$el.find(".audio-player-container").removeClass("showPlayer");
+                playlistItemView.$el.find(".waveform").hide();
             }
             //playlistItemView.$el.removeClass("current");
             //playlistItemView.$el.find(".audio-player-container").removeClass("showPlayer")
