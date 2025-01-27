@@ -297,6 +297,7 @@ namespace HTML5AudioPlayer.Components.Views {
             playlistModel.CurrentItem.Disabled = false;
             playlistModel.CurrentListItem = item.Index;
             playlistModel.CurrentItem.Inprogress = true;
+            //alert("1st click 1")
 
             playlistView.trigger(Events.EVENT_SELECTION_CHANGE, item);
 
@@ -385,6 +386,8 @@ namespace HTML5AudioPlayer.Components.Views {
         onInitPlayer(): void {
             let playlistView: Playlist = this;
             playlistView.trigger(Events.EVENT_ITEM_INIT_PLAYER);
+           // alert("initplayer")
+
         }
 
         togglePlayPause(): void {

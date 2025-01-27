@@ -39,7 +39,7 @@ namespace HTML5AudioPlayer.Components.Views {
             'seeked': () => void;
             'playing': () => void;
             'muted': () => void;
-            'ratechange':()=>void;
+            'ratechange': () => void;
         };
 
         // This is used to store player play/pause status while opening and closing playlist on iPhone.
@@ -206,10 +206,10 @@ namespace HTML5AudioPlayer.Components.Views {
         }
 
         @named
-        private onRateChange():void{
+        private onRateChange(): void {
             let videoPlayerView: AudioPlayer = this;
 
-           let val = videoPlayerView._myPlayer.playbackRate();
+            let val = videoPlayerView._myPlayer.playbackRate();
             sessionStorage.setItem('playbackRate', val.toString());
             $('.navigatorAudioSpeedBtn').text(val.toString() + 'x');
             Utilities.consoleLog("RateChange!", val);
@@ -555,8 +555,8 @@ namespace HTML5AudioPlayer.Components.Views {
 
             //}
             let textTracks = audioPlayerView._myPlayer.textTracks();
-           // console.log("Text Tracks:", textTracks[0].id);
-            if (textTracks && textTracks[0] && textTracks[0].id=="") {
+            // console.log("Text Tracks:", textTracks[0].id);
+            if (textTracks && textTracks[0] && textTracks[0].id == "") {
                 audioPlayerView.updateCaptions();
             }
             audioPlayerView.updateProgress(audioPlayerView._myPlayer)
@@ -613,6 +613,8 @@ namespace HTML5AudioPlayer.Components.Views {
                     audioPlayerModel.sendDataToScorm();
                 }
             }
+
+            audioPlayerView.showWaveform();
         }
 
 
@@ -715,9 +717,9 @@ namespace HTML5AudioPlayer.Components.Views {
             let CurrentItem = audioPlayerModel.Playlist.PlaylistItems.filter((val) => {
                 return val.Id === vidId;
             })[0];
-           // console.log(vidId)
+            // console.log(vidId)
             //console.log("CurrentItem")
-           // console.log(CurrentItem)
+            // console.log(CurrentItem)
             let curObj: DataStructures.AudioScormData = audioPlayerModel.ScormPreviousData[CurrentItem.Id];
 
             if (!curObj) {
@@ -915,7 +917,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 curIndex: number = parseInt(audioPlayerModel.Playlist.CurrentItem.Index),
                 nextItem = audioPlayerView._playlist.getNextItem(curIndex);
 
-                audioPlayerView._myPlayer.off('ratechange', audioPlayerView._videoEventListners.ratechange);
+            audioPlayerView._myPlayer.off('ratechange', audioPlayerView._videoEventListners.ratechange);
 
 
             audioPlayerView.enable(false);
@@ -947,6 +949,7 @@ namespace HTML5AudioPlayer.Components.Views {
             audioPlayerView.enable();
             audioPlayerModel.Playlist.enableAssessment();
             $('.audio-player-template .play-pause').text('Play').addClass("play").removeClass("pause");
+            audioPlayerView.endWaveform();
         }
 
         private onLaunchAssessment(): void {
@@ -1004,8 +1007,8 @@ namespace HTML5AudioPlayer.Components.Views {
                 });
             }
             audioPlayerView.pause();
-            let storedRate =  sessionStorage.getItem('playbackRate');
-            if(storedRate){
+            let storedRate = sessionStorage.getItem('playbackRate');
+            if (storedRate) {
                 audioPlayerView._myPlayer.playbackRate(Number(storedRate));
             }
             Utilities.consoleLog("VideoChanged!", storedRate);
@@ -1024,6 +1027,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 ", Current Item: ", item.Id);
 
             // only if not updating to current Audio.
+
             if (!updatingSameAudio) {
                 Utilities.consoleTrace("Changed to: ", item);
                 audioPlayerModel._prevItemId = item.Id;
@@ -1220,8 +1224,8 @@ namespace HTML5AudioPlayer.Components.Views {
             audioPlayerModel.duration = audioPlayerView._myPlayer.duration();
             audioPlayerModel.Playlist.CurrentItem.NumQuestions = audioPlayerModel.CuePoints.length;
             audioPlayerView._myPlayer.on('ratechange', audioPlayerView._videoEventListners.ratechange);
-            let storedRate =  sessionStorage.getItem('playbackRate');
-            if(storedRate){
+            let storedRate = sessionStorage.getItem('playbackRate');
+            if (storedRate) {
                 audioPlayerView._myPlayer.playbackRate(Number(storedRate));
             }
             Utilities.consoleLog("MetaDataLoaded!", storedRate);
@@ -1521,9 +1525,11 @@ namespace HTML5AudioPlayer.Components.Views {
             let audioPlayerView: AudioPlayer = this,
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
             //audioPlayerModel.Playlist.$el.hide();
+
             if (audioPlayerView._myPlayer.paused()) {
                 audioPlayerView._myPlayer.play();
                 $('.audio-player-template .play-pause').text('Pause').addClass("pause").removeClass("play");
+                console.log("show waveform");
             } else {
                 audioPlayerView._myPlayer.pause();
                 $('.audio-player-template .play-pause').text('Play').addClass("play").removeClass("pause");
@@ -1634,10 +1640,11 @@ namespace HTML5AudioPlayer.Components.Views {
                 $('.audio-player-template .current-time').text(currentTime);
                 $('.audio-player-template .total-time').text(totalTime);
 
+
             }
             audioPlayerView._myPlayer.paused()
             audioPlayerView._myPlayer.muted(false);
-
+            audioPlayerView.createWaveform()
         }
 
         private onItemClickedSpeedList(): void {
@@ -1663,6 +1670,34 @@ namespace HTML5AudioPlayer.Components.Views {
                 $('.audioSpeedContent').toggle();
 
             });
+        }
+
+        private createWaveform(): void {
+            //alert("createWaveform")
+            let audioPlayerView: AudioPlayer = this,
+                audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
+            const waveform = $(".playlist-item.current .waveform");
+            const numberOfBars = 20; // Number of bars you want
+            console.log("***************createWaveform****************************")
+            // Generate bars dynamically
+            waveform.html("");
+            for (let i = 0; i < numberOfBars; i++) {
+                waveform.append('<div class="bar"></div>');
+            }
+
+        }
+
+        private showWaveform(): void {
+            const bars = $(".playlist-item.current .bar");
+            bars.each(function () {
+                const randomHeight = Math.random() * 100 + 10; // Between 10px and 100px
+                $(this).css("height", randomHeight + "px");
+              });
+        }
+
+        private endWaveform(): void {
+            const bars = $(".playlist-item.current .bar");
+            bars.css("height", "20px");
         }
 
     }

@@ -275,6 +275,7 @@
                             .item-index {
                                 color: $colorSacramentoGreen;
                             }
+
                             .item-title {
                                 color: $colorSacramentoGreen;
                             }
@@ -298,6 +299,27 @@
                         .duration {
                             @include videoDurationProperty;
                         }
+
+                        .waveform {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            margin: 20px auto;
+                            height: 100px;
+
+                            position: absolute;
+                            width: 90px;
+                            height: 30px;
+                            top: 0;
+
+                            .bar {
+                                width: 5px;
+                                height: 20px;
+                                margin: 0 2px;
+                                background-color: #3498db;
+                                transition: height 0.1s ease-in-out;
+                            }
+                        }
                     }
 
                     .right-content {
@@ -318,6 +340,7 @@
                                 font-style: italic;
                                 padding-right: 10px;
                             }
+
                             .complete-status-icon {
                                 @include itemCompletion;
                                 margin-top: 4px;
@@ -338,6 +361,7 @@
                                 font-style: italic;
                                 padding-right: 10px;
                             }
+
                             .inpro-status-icon {
                                 @include itemInprogress;
                                 margin-top: 4px;
@@ -375,214 +399,225 @@
                             animation: toAnimateDown 0.3s 1 ease-in;
                         }
 
-                            .controls {
+                        .controls {
 
-                                .track_inner_btn {
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: center;
-                                    width: 100%;
-                                    height: 50px;
-                                    padding-top: 2px;
-                                }
-
-                                .cc_text_main {
-                                    display: flex;
-                                    justify-content: center;
-                                    margin-bottom: 5px;
-
-                                    .cc_text_inner {
-                                        background: rgba($color: #000000, $alpha: 0.6);
-                                        padding: 1px 15px 2px 15px;
-                                        color: $colorWhite;
-                                        text-align: center;
-                                    }
-                                }
-
-                            }
-                            .transcript_btn {
-                                @include transcriptBtn;
-                                border: none;
-                                cursor: pointer;
-                                margin: 0 10px;
+                            .track_inner_btn {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                width: 100%;
+                                height: 50px;
+                                padding-top: 2px;
                             }
 
+                            .cc_text_main {
+                                display: flex;
+                                justify-content: center;
+                                margin-bottom: 5px;
 
-                            .refresh {
+                                .cc_text_inner {
+                                    background: rgba($color: #000000, $alpha: 0.6);
+                                    padding: 1px 15px 2px 15px;
+                                    color: $colorWhite;
+                                    text-align: center;
+                                }
+                            }
+
+                        }
+
+                        .transcript_btn {
+                            @include transcriptBtn;
+                            border: none;
+                            cursor: pointer;
+                            margin: 0 10px;
+                        }
+
+
+                        .refresh {
                             @include refreshBtn;
                             border: none;
                             cursor: pointer;
                             margin: 0 10px;
+                        }
+
+                        .back_chapt_btn {
+                            @include backChaptBtn;
+                            border: none;
+                            cursor: pointer;
+                            margin: 0 10px;
+
+                            &.chapt-enabled {
+                                opacity: 1;
                             }
 
-                            .back_chapt_btn {
-                                @include backChaptBtn;
-                                border: none;
-                                cursor: pointer;
-                                margin: 0 10px;
+                            &.chapt-disabled {
+                                opacity: 0.5;
+                                cursor: default;
+                            }
+                        }
 
-                                &.chapt-enabled {
-                                    opacity: 1;
-                                }
+                        .next_chapt_btn {
+                            @include nextChaptBtn;
+                            border: none;
+                            cursor: pointer;
+                            margin: 0 10px;
 
-                                &.chapt-disabled {
+                            &.chapt-enabled {
+                                opacity: 1;
+                            }
+
+                            &.chapt-disabled {
+                                opacity: 0.5;
+                                cursor: default;
+                            }
+                        }
+
+                        .cc_text_btn {
+                            border: none;
+                            cursor: pointer;
+                            margin: 0 10px;
+
+                            &.captions-enabled {
+                                @include ccTextEnableBtn;
+                                //background: url(../resources/image/captions_icon.png) no-repeat 0 0;
+
+                                opacity: 1;
+
+                                &:hover {
                                     opacity: 0.5;
-                                    cursor: default;
+                                    //opacity: 1;
+                                    //background: url(../resources/image/captions_icon.png) no-repeat -40px 0;
                                 }
                             }
 
-                            .next_chapt_btn {
-                                @include nextChaptBtn;
-                                border: none;
-                                cursor: pointer;
-                                margin: 0 10px;
+                            &.captions-disabled {
+                                @include ccTextDisableBtn;
+                                //background: url(../resources/image/captions_icon.png) no-repeat -80px 0;
 
-                                &.chapt-enabled {
+                                // opacity: 0.5;
+                                &:hover {
                                     opacity: 1;
-                                }
-
-                                &.chapt-disabled {
-                                    opacity: 0.5;
-                                    cursor: default;
+                                    //background: url(../resources/image/captions_icon.png) no-repeat -120px 0;
                                 }
                             }
+                        }
 
-                            .cc_text_btn {
-                                border: none;
-                                cursor: pointer;
-                                margin: 0 10px;
+                        .audio_on_off {
+                            cursor: pointer;
+                            margin: 0 10px;
+                            border: none;
 
-                                &.captions-enabled {
-                                    @include ccTextEnableBtn;
-                                    //background: url(../resources/image/captions_icon.png) no-repeat 0 0;
-
-                                    opacity: 1;
-                                    &:hover {
-                                        opacity: 0.5;
-                                        //opacity: 1;
-                                        //background: url(../resources/image/captions_icon.png) no-repeat -40px 0;
-                                    }
-                                }
-
-                                &.captions-disabled {
-                                    @include ccTextDisableBtn;
-                                    //background: url(../resources/image/captions_icon.png) no-repeat -80px 0;
-
-                                    // opacity: 0.5;
-                                    &:hover {
-                                        opacity: 1;
-                                        //background: url(../resources/image/captions_icon.png) no-repeat -120px 0;
-                                    }
-                                }
+                            &.audio_on {
+                                @include audioOnBtn;
                             }
 
-                            .audio_on_off {
-                                cursor: pointer;
-                                margin: 0 10px;
-                                border: none;
+                            &.audio_off {
+                                @include audioOffBtn;
+                            }
+                        }
 
-                                &.audio_on {
-                                    @include audioOnBtn;
-                                }
+                        .play-pause {
+                            margin: 0 10px;
+                            cursor: pointer;
 
-                                &.audio_off {
-                                    @include audioOffBtn;
-                                }
+                            &.play {
+                                @include playBtn;
                             }
 
-                            .play-pause {
-                                margin: 0 10px;
-                                cursor: pointer;
-
-                                &.play {
-                                    @include playBtn;
-                                }
-
-                                &.pause {
-                                    @include pauseBtn;
-                                }
+                            &.pause {
+                                @include pauseBtn;
                             }
+                        }
 
-                            .play_pause_btn {
-                                position: absolute;
-                                right: 15px;
-                                top: 17px;
-                                color: $colorCobaltBlue;
-                            }
+                        .play_pause_btn {
+                            position: absolute;
+                            right: 15px;
+                            top: 17px;
+                            color: $colorCobaltBlue;
+                        }
 
-                            input[type="range"] {
-                                /* removing default appearance */
-                                -webkit-appearance: none;
-                                appearance: none;
-                                /* custom design */
-                                width: 100%;
-                                cursor: pointer;
-                                outline: none;
-                                /* increasing height to fit thumb better */
-                                height: 13px; /* Same height as the thumb */
-                                background: transparent;
-                                position: absolute;
-                                top: -11px;
-                                left: -2px;
-                                right: 0;
-                                border-radius: 10px;
-                                overflow: hidden;
-                            }
+                        input[type="range"] {
+                            /* removing default appearance */
+                            -webkit-appearance: none;
+                            appearance: none;
+                            /* custom design */
+                            width: 100%;
+                            cursor: pointer;
+                            outline: none;
+                            /* increasing height to fit thumb better */
+                            height: 13px;
+                            /* Same height as the thumb */
+                            background: transparent;
+                            position: absolute;
+                            top: -11px;
+                            left: -2px;
+                            right: 0;
+                            border-radius: 10px;
+                            overflow: hidden;
+                        }
 
-                            /* Track: webkit browsers */
-                            input[type="range"]::-webkit-slider-runnable-track {
-                                height: 13px; /* Track height */
-                                background: #707070;
-                                background: rgba($color: #707070, $alpha: 0.3);
-                                border-radius: 1.5px;
-                                position: relative;
-                                top: 50%;
-                                transform: translateY(-50%); /* Vertically center the track within the range */
-                            }
+                        /* Track: webkit browsers */
+                        input[type="range"]::-webkit-slider-runnable-track {
+                            height: 13px;
+                            /* Track height */
+                            background: #707070;
+                            background: rgba($color: #707070, $alpha: 0.3);
+                            border-radius: 1.5px;
+                            position: relative;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            /* Vertically center the track within the range */
+                        }
 
-                            /* Track: Mozilla Firefox */
-                            input[type="range"]::-moz-range-track {
-                                height: 13px; /* Track height */
-                                background: rgba($color: #707070, $alpha: 0.3);
-                                border-radius: 1.5px;
-                                position: relative;
-                                top: 50%;
-                                transform: translateY(-50%); /* Vertically center the track */
-                            }
+                        /* Track: Mozilla Firefox */
+                        input[type="range"]::-moz-range-track {
+                            height: 13px;
+                            /* Track height */
+                            background: rgba($color: #707070, $alpha: 0.3);
+                            border-radius: 1.5px;
+                            position: relative;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            /* Vertically center the track */
+                        }
 
-                            /* Thumb: webkit */
-                            input[type="range"]::-webkit-slider-thumb {
-                                /* removing default appearance */
-                                -webkit-appearance: none;
-                                appearance: none;
-                                /* thumb design */
-                                height: 13px;
-                                width: 13px;
-                                /* box-shadow aligned with track and progress */
-                                box-shadow: -555px 0 0 545px #3B37E5; /* Adjust the range width dynamically */
-                                position: relative;
-                                border-radius: 100%;
-                                top: 50%;
-                                transform: translateY(-50%); /* Center the thumb */
-                                z-index: 1;
-                                @include rangeThumb;
-                            }
+                        /* Thumb: webkit */
+                        input[type="range"]::-webkit-slider-thumb {
+                            /* removing default appearance */
+                            -webkit-appearance: none;
+                            appearance: none;
+                            /* thumb design */
+                            height: 13px;
+                            width: 13px;
+                            /* box-shadow aligned with track and progress */
+                            box-shadow: -555px 0 0 545px #3B37E5;
+                            /* Adjust the range width dynamically */
+                            position: relative;
+                            border-radius: 100%;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            /* Center the thumb */
+                            z-index: 1;
+                            @include rangeThumb;
+                        }
 
 
-                            /* Thumb: Firefox */
-                            input[type="range"]::-moz-range-thumb {
-                                height: 13px;
-                                width: 13px;
-                                background-color: #fff;
-                                /* box-shadow aligned with track and progress */
-                                box-shadow: -555px 0 0 545px #3B37E5; /* Adjust the range width dynamically */
-                                position: relative;
-                                border-radius: 100%;
-                                top: 50%;
-                                transform: translateY(-50%); /* Center the thumb */
-                                z-index: 1;
-                                @include rangeThumb;
-                            }
+                        /* Thumb: Firefox */
+                        input[type="range"]::-moz-range-thumb {
+                            height: 13px;
+                            width: 13px;
+                            background-color: #fff;
+                            /* box-shadow aligned with track and progress */
+                            box-shadow: -555px 0 0 545px #3B37E5;
+                            /* Adjust the range width dynamically */
+                            position: relative;
+                            border-radius: 100%;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            /* Center the thumb */
+                            z-index: 1;
+                            @include rangeThumb;
+                        }
 
 
 
@@ -608,15 +643,18 @@
                                         text-align: center;
 
                                     }
+
                                     &.navigatorAudioSpeedBtn:hover {
                                         background: #00b8f5;
                                         border-radius: 5px;
                                         height: 38px;
                                         font-weight: bold;
                                     }
+
                                     &.navigatorAudioSpeedBtn.disabled {
                                         cursor: default;
                                     }
+
                                     &.navigatorAudioSpeedBtn.disabled:hover {
                                         background: none;
                                         font-weight: normal;
@@ -782,7 +820,7 @@
                     border-bottom: 2px solid #CACACA;
                 }
 
-                .knowledge-check-item{
+                .knowledge-check-item {
                     cursor: pointer;
                     display: inline-flex;
                     padding: 5px;
@@ -932,6 +970,7 @@
                 .playlist-inner {
                     height: calc(100% - 40px);
                 }
+
                 .knowledge-check-list-inner {
                     height: calc(100% - 40px);
                 }
@@ -974,6 +1013,7 @@
                                 .item-inpogress {
                                     top: -170px;
                                 }
+
                                 .item-complete {
                                     top: -170px;
                                 }
@@ -981,6 +1021,7 @@
                                 .item-index {
                                     margin-left: 0;
                                 }
+
                                 .item-title {
                                     font-size: $fontSizeMini;
                                     margin-left: 0;
@@ -995,6 +1036,7 @@
                             .item-index {
                                 padding-right: 5px;
                             }
+
                             .item-title {
                                 font-size: $fontSizeMini;
                                 line-height: 16px;
@@ -1006,31 +1048,38 @@
 
 
 
-                                .play_pause_btn {
-                                    top: -31px;
-                                    right: 6px;
-                                }
-                                .transcript_btn {
-                                    margin: 0 5px;
-                                }
-                                .refresh {
-                                    margin: 0 5px;
-                                }
-                                .back_chapt_btn {
-                                    margin: 0 5px;
-                                }
-                                .play-pause {
-                                    margin: 0 5px;
-                                }
-                                .next_chapt_btn {
-                                    margin: 0 5px;
-                                }
-                                .cc_text_btn {
-                                    margin: 0 5px;
-                                }
-                                .audio_on_off {
-                                    margin: 0 5px;
-                                }
+                            .play_pause_btn {
+                                top: -31px;
+                                right: 6px;
+                            }
+
+                            .transcript_btn {
+                                margin: 0 5px;
+                            }
+
+                            .refresh {
+                                margin: 0 5px;
+                            }
+
+                            .back_chapt_btn {
+                                margin: 0 5px;
+                            }
+
+                            .play-pause {
+                                margin: 0 5px;
+                            }
+
+                            .next_chapt_btn {
+                                margin: 0 5px;
+                            }
+
+                            .cc_text_btn {
+                                margin: 0 5px;
+                            }
+
+                            .audio_on_off {
+                                margin: 0 5px;
+                            }
 
 
                             .cc_text_main {
@@ -1103,6 +1152,7 @@
                 .playlist-inner {
                     height: calc(100% - 40px);
                 }
+
                 .knowledge-check-list-inner {
                     height: calc(100% - 40px);
                 }
@@ -1145,6 +1195,7 @@
                                 .item-inpogress {
                                     top: -170px;
                                 }
+
                                 .item-complete {
                                     top: -170px;
                                 }
@@ -1152,6 +1203,7 @@
                                 .item-index {
                                     margin-left: 0;
                                 }
+
                                 .item-title {
                                     font-size: $fontSizeMini;
                                     margin-left: 0;
@@ -1247,6 +1299,7 @@
                 .playlist-inner {
                     height: 100%;
                 }
+
                 .knowledge-check-list-inner {
                     height: 100%;
                 }

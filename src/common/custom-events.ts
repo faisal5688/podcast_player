@@ -44,6 +44,9 @@ namespace HTML5AudioPlayer.Events {
     export let EVENT_ITEM_BACKAUDIO: string = "EVENT_ITEM_BACKAUDIO";
     export let EVENT_ITEM_NEXTAUDIO: string = "EVENT_ITEM_NEXTAUDIO";
     export let EVENT_ITEM_ONOFFAUDIO: string = "EVENT_ITEM_ONOFFAUDIO";
+    export let EVENT_CREATEWAVEFORM: string = "EVENT_CREATEWAVEFORM";
+
+
 
 
     export let EVENT_ITEM_SEEK: string = "item-seek";

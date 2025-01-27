@@ -29,6 +29,11 @@
         get Thumbnail(): string { return this.get("thumbnail"); }
         set Thumbnail(value: string) { this.set("thumbnail", value); }
 
+        get Waveform(): string { return this.get("waveform"); }
+        set Waveform(value: string) { this.set("waveform", value); }
+
+
+
         get Current(): boolean { return this.get("current"); }
         set Current(value: boolean) { this.set("current", value); }
 
