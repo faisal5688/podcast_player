@@ -1678,7 +1678,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
             const waveform = $(".playlist-item.current .waveform");
             const numberOfBars = 20; // Number of bars you want
-            console.log("***************createWaveform****************************")
+            //console.log("***************createWaveform****************************")
             // Generate bars dynamically
             waveform.html("");
             for (let i = 0; i < numberOfBars; i++) {

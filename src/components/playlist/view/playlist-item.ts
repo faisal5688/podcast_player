@@ -132,6 +132,7 @@ namespace HTML5AudioPlayer.Components.Views {
             if (playlistItemModel.Current) {
                 playlistItemView.$el.addClass("current");
                 playlistItemView.$el.find(".audio-player-container").addClass("showPlayer");
+                playlistItemView.$el.find(".waveform").show();
                 if (!playlistItemModel.Complete) {
                     playlistItemView.$el.find(".item-inpogress").show();
                 }
