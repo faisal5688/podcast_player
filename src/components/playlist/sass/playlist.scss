@@ -304,19 +304,20 @@
                             display: flex;
                             justify-content: center;
                             align-items: center;
-                            margin: 20px auto;
-                            height: 100px;
-
+                            margin: 0px auto;
                             position: absolute;
-                            width: 90px;
-                            height: 30px;
+                            width: 100%;
+                            height: calc(100% - 18px);
                             top: 0;
+                            background: #0a0726;
+                            overflow: hidden;
+                            box-sizing: border-box;
 
                             .bar {
                                 width: 5px;
                                 height: 20px;
                                 margin: 0 2px;
-                                background-color: #3498db;
+                                background-color: #fcecff;
                                 transition: height 0.1s ease-in-out;
                             }
                         }
@@ -1318,4 +1319,22 @@
             }
         }
     }
+}
+
+
+@media only screen and (max-height: 500px) and (orientation: landscape) {
+    .playlist-container {
+            .playlist {
+                .playlist-left-right {
+                    .playlist-inner {
+                        height: calc(100% - 10px);
+                    }
+
+                    .knowledge-check-list-inner {
+                        height: calc(100% - 10px);
+                    }
+                }
+            }
+    }
+
 }
