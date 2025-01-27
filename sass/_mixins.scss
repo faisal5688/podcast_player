@@ -216,6 +216,10 @@ background: linear-gradient(90deg, rgba(92,33,232,1) 0%, rgba(88,36,232,1) 20%, 
 
 }
 
+@mixin bannerImgChange {
+    content:url("../resources/image/carousel/part1_0_mobile.png");
+}
+
 @mixin popupCloseBtnQuest {
     background: url("../resources/image/popup_close_Quest.svg") no-repeat;
     width: 24px;

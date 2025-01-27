@@ -57,7 +57,7 @@
             {
                 "id": "01",
                 "title": "Slide 1",
-                "description": "<div class='car_img'><img src='resources/image/kpmg-logo-white.svg'></div><div class='car_txt1'>Audio Podcast 1</div><div class='car_txt2'>AI is transforming financial reporting and auditing</div><div class='car_txt3'>2 Chapters</div>",
+                "description": "<div class='car_data_main'><div class='car_data_top'><div class='car_img'><img src='resources/image/kpmg-logo-white.svg'></div><div class='car_data1'>Preferred Stock and Significant Influence, by&nbsp;Analogy</div><div class='car_data2'><span>1</span> Accounting CPE</div></div><div class='car_data_bottom'><div class='car_copyright'>© 2025 KPMG LLP, a Delaware limited liability partnership and a member firm of the KPMG global organization of independent member firms affiliated with KPMG International Limited, a private English company limited by guarantee. All rights&nbsp;reserved.</div></div></div>",
                 "preview": "resources/image/carousel/part1_0.png",
                 "subtitle": "Slide 1"
             },
