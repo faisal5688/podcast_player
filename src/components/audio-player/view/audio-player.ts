@@ -1531,7 +1531,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 audioPlayerView._myPlayer.play();
                 $('.audio-player-template .play-pause').text('Pause').addClass("pause").removeClass("play");
                 console.log("show waveform");
-                //audioPlayerView.createWaveform();
+                audioPlayerView.createWaveform();
             } else {
                 audioPlayerView._myPlayer.pause();
                 $('.audio-player-template .play-pause').text('Play').addClass("play").removeClass("pause");
