@@ -936,6 +936,7 @@ namespace HTML5AudioPlayer.Components.Views {
             if (audioPlayerModel.AutoAdvanceToNext) {
                 if (nextItem.Id != "assessment" && nextItem.Id != "survey") {
                     audioPlayerView.next();
+                    audioPlayerView.createWaveform();
                     setTimeout(function () {
                         audioPlayerView.play();
                         $(".audio-player-container").eq(parseInt(audioPlayerModel.Playlist.CurrentItem.Index) - 1).parent().addClass("current");
@@ -1530,6 +1531,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 audioPlayerView._myPlayer.play();
                 $('.audio-player-template .play-pause').text('Pause').addClass("pause").removeClass("play");
                 console.log("show waveform");
+                //audioPlayerView.createWaveform();
             } else {
                 audioPlayerView._myPlayer.pause();
                 $('.audio-player-template .play-pause').text('Play').addClass("play").removeClass("pause");
@@ -1644,7 +1646,7 @@ namespace HTML5AudioPlayer.Components.Views {
             }
             audioPlayerView._myPlayer.paused()
             audioPlayerView._myPlayer.muted(false);
-            audioPlayerView.createWaveform()
+            audioPlayerView.createWaveform();
         }
 
         private onItemClickedSpeedList(): void {

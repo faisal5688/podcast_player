@@ -212,10 +212,14 @@ namespace HTML5AudioPlayer.Components.Models {
                         }
                         //curVidData.currenttime =
                         // model.ScormPreviousData.cv is "Current Video"
+
                         if (curVidData.id === model.ScormPreviousData.cv) {
                             curVidData.current = true;
                             model.maxVisitedTime = curVidData.currenttime;
                             model.supposedCurrentTime = curVidData.currenttime;
+                            //alert(model.supposedCurrentTime) //check bookmark
+                            //alert(model.Playlist.CurrentItem)
+
                         }
                     }
                     // if course mode is CPE, then enable the item only if previous Audio is complete.

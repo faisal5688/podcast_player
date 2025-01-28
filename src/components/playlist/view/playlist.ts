@@ -119,6 +119,23 @@ namespace HTML5AudioPlayer.Components.Views {
                 KnowledgeCheckLisInner.append(knowledgeCheckItem.render().$el);
             }
 
+            //alert("playlistModel.ScormPreviousData.cv "+playlistModel.ScormPreviousData.cv)
+            console.log("model.supposedCurrentTime ")
+            console.log(playlistModel.ScormPreviousData)
+            //console.log(playlistModel.ScormPreviousData[playlistModel.ScormPreviousData.cv].t)
+            if(playlistModel.ScormPreviousData[playlistModel.ScormPreviousData.cv] && (playlistModel.ScormPreviousData[playlistModel.ScormPreviousData.cv].t>0 && playlistModel.ScormPreviousData[playlistModel.ScormPreviousData.cv].c==0)){
+                //alert("bookmarking");
+                //console.log(playlistView._playlistItems)
+               let curEl = parseInt(playlistModel.CurrentItem.Index)-1;
+                playlistView._playlistItems[curEl].$el.addClass("current");
+                playlistView._playlistItems[curEl].$el.find(".audio-player-container").addClass("showPlayer");
+                playlistView._playlistItems[curEl].$el.find(".waveform").show();
+
+
+                //playlistModel.CurrentItem.$el.addClass("current");
+
+            }
+
             return playlistView;
         }
 
