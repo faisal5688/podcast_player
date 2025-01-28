@@ -354,7 +354,7 @@ namespace HTML5AudioPlayer.Views {
             if (courseModel.CourseMode === DataStructures.CourseMode.CPE && courseModel.KnowledgeCheck.Enabled) {
                 courseModel.PlayerModel.CuePoints = courseModel.KnowledgeCheck.getCuePoints(item.Id);
             }
-            courseView._carousel.goToSlide(null,Number(item.Index)-1);
+            courseView._carousel.goToSlide(null, Number(item.Index) - 1);
         }
 
         @named
@@ -451,9 +451,9 @@ namespace HTML5AudioPlayer.Views {
                         }
                     }
                     let storedRating = localStorage.getItem('starRating');
-                    if(storedRating){
+                    if (storedRating) {
                         courseModel.ScormPreviousData.storedRating = storedRating;
-                   }
+                    }
                 });
                 modalView.showModal();
             }
@@ -496,7 +496,11 @@ namespace HTML5AudioPlayer.Views {
             courseView._assessment.on(Events.EVENT_ASSESSMENT_CLOSE, courseView.assessmentClose, courseView);
             courseView._assessment.show();
             courseView._assessment.checkAssessmentComplete();
-            courseView._player.pause();
+            //courseView._player.pause();
+            if (!courseView._player.paused()) {
+                courseView._player.pause();
+                courseView.wasPlaying = true;
+            }
         }
 
         @named
@@ -538,6 +542,11 @@ namespace HTML5AudioPlayer.Views {
             courseModel.saveCompletionAfterAssessment();
             courseView._player.assessmentCompleted();
             courseView._assessment.destroy();
+            //alert(courseView.wasPlaying)
+            if (courseView.wasPlaying) {
+                courseView._player.play();
+                courseView.wasPlaying = false;
+            }
         }
 
         @named
@@ -554,6 +563,7 @@ namespace HTML5AudioPlayer.Views {
         private assessmentClose(): void {
             let courseView: Course = this,
                 courseModel: Models.Course = courseView.model;
+
             if (courseModel.ExitPopup) {
                 let modal: Components.Models.ModalDialog = new Components.Models.ModalDialog({
                     "heading": courseModel.ExitPopup.heading,
@@ -567,10 +577,10 @@ namespace HTML5AudioPlayer.Views {
                     }),
                     wasPlaying = false;
 
-                if (!courseView._player.paused()) {
-                    //courseView._player.pause();
-                    // wasPlaying = true;
-                }
+                // if (!courseView._player.paused()) {
+                //     courseView._player.pause();
+                //     wasPlaying = true;
+                // }
 
                 modalView.once(Events.EVENT_MODAL_CLOSED, function (buttonID: string) {
                     if (buttonID === "ok") {
@@ -579,6 +589,8 @@ namespace HTML5AudioPlayer.Views {
                             courseView._assessment.$el.hide(200, () => {
                                 courseView.markAssessmentComplete();
                             });
+                            // alert("1");
+
                         } catch (err) {
                             Utilities.consoleWarn("Failed to close the window. Error:", err);
                         }
@@ -586,9 +598,21 @@ namespace HTML5AudioPlayer.Views {
                         // if (wasPlaying) {
                         //     courseView._player.play();
                         // }
+                        //alert(courseView.wasPlaying)
+                        // if (courseView.wasPlaying) {
+                        //     courseView._player.play();
+                        //     courseView.wasPlaying = false;
+                        // }
+
+
                     }
                 });
                 modalView.showModal();
+
+                // if (courseView.wasPlaying) {
+                //     courseView._player.play();
+                //     courseView.wasPlaying = false;
+                // }
             } else {
                 try {
                     // window.close();
