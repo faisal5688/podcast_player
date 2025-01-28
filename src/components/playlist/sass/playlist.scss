@@ -317,7 +317,8 @@
                                 width: 5px;
                                 height: 20px;
                                 margin: 0 2px;
-                                background-color: #fcecff;
+                                // background-color: #fcecff;
+                                @include linearBg;
                                 transition: height 0.1s ease-in-out;
                             }
                         }
