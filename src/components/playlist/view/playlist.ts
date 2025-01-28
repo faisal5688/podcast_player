@@ -130,8 +130,9 @@ namespace HTML5AudioPlayer.Components.Views {
                 playlistView._playlistItems[curEl].$el.addClass("current");
                 playlistView._playlistItems[curEl].$el.find(".audio-player-container").addClass("showPlayer");
                 playlistView._playlistItems[curEl].$el.find(".waveform").show();
-
-
+                setTimeout(function(){
+                    playlistView.createWaveformTemp();
+                },500);
                 //playlistModel.CurrentItem.$el.addClass("current");
 
             }
@@ -476,6 +477,17 @@ namespace HTML5AudioPlayer.Components.Views {
                 playlistContainer: JQuery = playlistView.$el.parent();
             //playlistModel.CurrentItem.CurrentTime=time;
             playlistView.trigger(Events.EVENT_ITEM_CLICKED_SPEED);
+
+
+        }
+
+        createWaveformTemp(): void {
+            const waveform = $(".playlist-item.current .waveform");
+            const numberOfBars = 15; // Number of bars you want
+            waveform.html("");
+            for (let i = 0; i < numberOfBars; i++) {
+                waveform.append('<div class="bar"></div>');
+            }
 
         }
     }

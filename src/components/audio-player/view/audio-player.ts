@@ -1628,6 +1628,16 @@ namespace HTML5AudioPlayer.Components.Views {
                     Utilities.consoleTrace("Not Seeking video to max time as (current time - max time) delta is small: " + delta);
                 }
             }
+            $(".audio_on_off").removeClass('audio_off').addClass('audio_on');
+            // audioPlayerView._myPlayer.muted(true);
+            // setTimeout(function(){
+            //     if($(".audio_on_off").hasClass('audio_off')){
+            //         audioPlayerView._myPlayer.muted(true);
+            //     }else{
+            //         audioPlayerView._myPlayer.muted(false);
+            //     }
+            // },100)
+
 
         }
         @named
