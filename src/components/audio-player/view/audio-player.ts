@@ -1677,7 +1677,7 @@ namespace HTML5AudioPlayer.Components.Views {
             let audioPlayerView: AudioPlayer = this,
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
             const waveform = $(".playlist-item.current .waveform");
-            const numberOfBars = 20; // Number of bars you want
+            const numberOfBars = 15; // Number of bars you want
             //console.log("***************createWaveform****************************")
             // Generate bars dynamically
             waveform.html("");
@@ -1690,14 +1690,14 @@ namespace HTML5AudioPlayer.Components.Views {
         private showWaveform(): void {
             const bars = $(".playlist-item.current .bar");
             bars.each(function () {
-                const randomHeight = Math.random() * 100 + 10; // Between 10px and 100px
+                const randomHeight = Math.random() * 40 + 5; // Between 10px and 100px
                 $(this).css("height", randomHeight + "px");
               });
         }
 
         private endWaveform(): void {
             const bars = $(".playlist-item.current .bar");
-            bars.css("height", "20px");
+            bars.css("height", "5px");
         }
 
     }
