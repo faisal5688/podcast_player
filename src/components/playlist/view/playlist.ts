@@ -8,7 +8,7 @@ namespace HTML5AudioPlayer.Components.Views {
         private _template: (properties?: HandlebarsTemplates) => string;
 
         private _playlistItems: PlaylistItem[];
-       private _knowledgeCheckItems :KnowledgeCheckItem[];
+        private _knowledgeCheckItems: KnowledgeCheckItem[];
 
         constructor(options: Backbone.ViewOptions<Models.Playlist>) {
             super(options);
@@ -43,7 +43,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 //     //alert("false")
                 //     playlistModel.PlaylistItems[i].Disabled =false;
                 // }
-                playlistModel.PlaylistItems[i].CurrentClicked=false;
+                playlistModel.PlaylistItems[i].CurrentClicked = false;
                 playlistModel.PlaylistItems[i].Totalitems = playlistModel.PlaylistItems.length;
                 playlistView._playlistItems.push(playlistItemView);
                 playlistItemView.on(Events.EVENT_ITEM_CLICKED, playlistView.onItemClicked, playlistView);
@@ -123,19 +123,27 @@ namespace HTML5AudioPlayer.Components.Views {
             console.log("model.supposedCurrentTime ")
             console.log(playlistModel.ScormPreviousData)
             //console.log(playlistModel.ScormPreviousData[playlistModel.ScormPreviousData.cv].t)
-            if(playlistModel.ScormPreviousData[playlistModel.ScormPreviousData.cv] && (playlistModel.ScormPreviousData[playlistModel.ScormPreviousData.cv].t>0 && playlistModel.ScormPreviousData[playlistModel.ScormPreviousData.cv].c==0)){
+            if (playlistModel.ScormPreviousData[playlistModel.ScormPreviousData.cv] && (playlistModel.ScormPreviousData[playlistModel.ScormPreviousData.cv].t > 0 && playlistModel.ScormPreviousData[playlistModel.ScormPreviousData.cv].c == 0)) {
                 //alert("bookmarking");
                 //console.log(playlistView._playlistItems)
-               let curEl = parseInt(playlistModel.CurrentItem.Index)-1;
-                playlistView._playlistItems[curEl].$el.addClass("current");
-                playlistView._playlistItems[curEl].$el.find(".audio-player-container").addClass("showPlayer");
-                playlistView._playlistItems[curEl].$el.find(".waveform").show();
-                setTimeout(function(){
-                    playlistView.createWaveformTemp();
-                },500);
+                // let curEl = parseInt(playlistModel.CurrentItem.Index) - 1;
+                // playlistView._playlistItems[curEl].$el.addClass("current");
+                // playlistView._playlistItems[curEl].$el.find(".audio-player-container").addClass("showPlayer");
+                // playlistView._playlistItems[curEl].$el.find(".waveform").show();
+                // setTimeout(function () {
+
+                // }, 500);
+
+                // alert("1")
+
                 //playlistModel.CurrentItem.$el.addClass("current");
+                //$('.audio-player-template .progress-bar').val(0);
+                //('.audio-player-template .current-time').text(currentTime);
+                //('.audio-player-template .total-time').text(totalTime);
 
             }
+
+            //playlistView.onItemClicked(curEl);
 
             return playlistView;
         }
@@ -143,7 +151,7 @@ namespace HTML5AudioPlayer.Components.Views {
         @named
         afterRender(): void {
             let playlistView: Playlist = this,
-            playlistModel: Models.Playlist = playlistView.model;
+                playlistModel: Models.Playlist = playlistView.model;
 
             for (let i = 0; i < playlistView._playlistItems.length; i++) {
                 playlistView._playlistItems[i].afterRender();
@@ -167,23 +175,37 @@ namespace HTML5AudioPlayer.Components.Views {
 
             let audioPlayerView = videojs("video-instance")
             this.loadAudioPlaylist(audioPlayerView, playlistModel.PlaylistItems);
-            audioPlayerView.on('playlistloaded', (()=>{
+            audioPlayerView.on('playlistloaded', (() => {
                 this.renderPlayerlistTime();
             }));
 
+
+
         }
 
-        private renderPlayerlistTime(){
+        private renderPlayerlistTime() {
             let playlistView: Playlist = this,
-            playlistModel: Models.Playlist = playlistView.model;
+                playlistModel: Models.Playlist = playlistView.model;
             for (let i = 0; i < playlistView._playlistItems.length; i++) {
                 let playlistItem: PlaylistItem = playlistView._playlistItems[i];
 
                 playlistItem.$el.find(".left-content .duration").html(playlistItem.model.Duration);
             }
+
+
+
+            let curEl = parseInt(playlistModel.CurrentItem.Index) - 1;
+            playlistView._playlistItems[curEl].$el.addClass("current");
+            playlistView._playlistItems[curEl].$el.find(".audio-player-container").addClass("showPlayer");
+            playlistView._playlistItems[curEl].$el.find(".waveform").show();
+
+            setTimeout(function () {
+                playlistView.trigger(Events.EVENT_CREATEWAVEFORM);
+            }, 100);
+
         }
 
-        private loadAudioPlaylist(player, playlist:Models.PlaylistItem[]) {
+        private loadAudioPlaylist(player, playlist: Models.PlaylistItem[]) {
             const durations = [];
             let loadedCount = 0;
 
@@ -216,11 +238,11 @@ namespace HTML5AudioPlayer.Components.Views {
             });
         }
 
-        private checkIfAllLoaded(player, playlist:Models.PlaylistItem[], durations, loadedCount) {
+        private checkIfAllLoaded(player, playlist: Models.PlaylistItem[], durations, loadedCount) {
             if (loadedCount === playlist.length) {
                 playlist.forEach((track, index) => {
                     track.Duration = durations[index]
-                        ? `${Math.floor(durations[index] / 60)}:${Math.floor(durations[index] % 60)+' min'}`
+                        ? `${Math.floor(durations[index] / 60)}:${Math.floor(durations[index] % 60) + ' min'}`
                         : '00:00';
                 });
                 player.trigger('playlistloaded', playlist);
@@ -253,9 +275,9 @@ namespace HTML5AudioPlayer.Components.Views {
                 }
                 else {
                     playlistView.onItemClicked(nextItem);
-                    setTimeout(function(){
+                    setTimeout(function () {
                         //audioPlayerView.play();
-                    },500)
+                    }, 500)
                 }
             }
         }
@@ -404,7 +426,7 @@ namespace HTML5AudioPlayer.Components.Views {
         onInitPlayer(): void {
             let playlistView: Playlist = this;
             playlistView.trigger(Events.EVENT_ITEM_INIT_PLAYER);
-           // alert("initplayer")
+            // alert("initplayer")
 
         }
 
@@ -459,7 +481,7 @@ namespace HTML5AudioPlayer.Components.Views {
             // alert("seekAudio")
         }
 
-        speedListAudio():void{
+        speedListAudio(): void {
             console.log("speedListAudio")
             let playlistView: Playlist = this,
                 playlistModel: Models.Playlist = playlistView.model,
@@ -470,7 +492,7 @@ namespace HTML5AudioPlayer.Components.Views {
 
         }
 
-        speedClickAudio():void{
+        speedClickAudio(): void {
             console.log("speedClickAudio")
             let playlistView: Playlist = this,
                 playlistModel: Models.Playlist = playlistView.model,
@@ -481,14 +503,6 @@ namespace HTML5AudioPlayer.Components.Views {
 
         }
 
-        createWaveformTemp(): void {
-            const waveform = $(".playlist-item.current .waveform");
-            const numberOfBars = 15; // Number of bars you want
-            waveform.html("");
-            for (let i = 0; i < numberOfBars; i++) {
-                waveform.append('<div class="bar"></div>');
-            }
 
-        }
     }
 }

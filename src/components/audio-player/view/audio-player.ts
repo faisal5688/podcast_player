@@ -108,6 +108,7 @@ namespace HTML5AudioPlayer.Components.Views {
             audioPlayerView._playlist.on(Events.EVENT_ITEM_BACKAUDIO, audioPlayerView.onItemClickedBackaudio, audioPlayerView);
             audioPlayerView._playlist.on(Events.EVENT_ITEM_NEXTAUDIO, audioPlayerView.onItemClickedNextaudio, audioPlayerView);
             audioPlayerView._playlist.on(Events.EVENT_ITEM_ONOFFAUDIO, audioPlayerView.onItemClickedOnoffaudio, audioPlayerView);
+            audioPlayerView._playlist.on(Events.EVENT_CREATEWAVEFORM, audioPlayerView.onCreatewaveform, audioPlayerView);
         }
 
         @named
@@ -1503,9 +1504,6 @@ namespace HTML5AudioPlayer.Components.Views {
                 $('.audio-player-template .current-time').text(currentTime);
                 $('.audio-player-template .total-time').text(totalTime);
                 // console.log(this.currentTimeDisplay)
-
-
-
             }
         }
 
@@ -1642,8 +1640,6 @@ namespace HTML5AudioPlayer.Components.Views {
                 $('.audio-player-template .progress-bar').val(0);
                 $('.audio-player-template .current-time').text(currentTime);
                 $('.audio-player-template .total-time').text(totalTime);
-
-
             }
             audioPlayerView._myPlayer.paused()
             audioPlayerView._myPlayer.muted(false);
@@ -1673,6 +1669,18 @@ namespace HTML5AudioPlayer.Components.Views {
                 $('.audioSpeedContent').toggle();
 
             });
+        }
+
+        private onCreatewaveform():void{
+            //alert("onCreatewaveform");
+            let audioPlayerView: AudioPlayer = this,
+                audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
+
+            setTimeout(function(){
+                $('.audio-player-template .progress-bar').val(0);
+                audioPlayerView.onItemInitPlayer();
+                audioPlayerView.updateProgress(audioPlayerView._myPlayer)
+            },200)
         }
 
         private createWaveform(): void {
