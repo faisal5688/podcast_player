@@ -38,6 +38,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 playlistItemModel: Models.PlaylistItem = this.model;
             console.log("playlistItemModel")
             console.log(playlistItemModel);
+
             playlistItemView.$el.html(playlistItemView._template(playlistItemModel.toJSON()));
             // if (playlistItemModel.Current) {
             //     playlistItemView.$el.addClass("current");
@@ -50,6 +51,7 @@ namespace HTML5AudioPlayer.Components.Views {
             // if (playlistItemModel.Current) {
             // }
             //alert("CurrentClicked")
+
             if (playlistItemModel.CurrentClicked) {
                 playlistItemView.$el.addClass("current");
                 playlistItemView.$el.find(".audio-player-container").addClass("showPlayer");
@@ -75,6 +77,10 @@ namespace HTML5AudioPlayer.Components.Views {
                 playlistItemView.$el.find(".item-inpogress").hide()
             }
             playlistItemView.updateNextBack();
+            if(playlistItemModel.id=="assessment"){
+                console.log("assessment hide me");
+                playlistItemView.$el.find(".duration").hide();
+            }
             //alert(playlistItemModel.Index);
             return playlistItemView;
         }
