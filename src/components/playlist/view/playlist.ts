@@ -192,14 +192,16 @@ namespace HTML5AudioPlayer.Components.Views {
                 playlistItem.$el.find(".left-content .duration").html(playlistItem.model.Duration);
             }
 
-
+            playlistModel.CurrentItem.Inprogress = true;
 
             let curEl = parseInt(playlistModel.CurrentItem.Index) - 1;
-            playlistView._playlistItems[curEl].$el.addClass("current");
-            playlistView._playlistItems[curEl].$el.find(".audio-player-container").addClass("showPlayer");
-            playlistView._playlistItems[curEl].$el.find(".waveform").show();
-
+            // playlistView._playlistItems[curEl].$el.addClass("current");
+            // playlistView._playlistItems[curEl].$el.find(".audio-player-container").addClass("showPlayer");
+            // playlistView._playlistItems[curEl].$el.find(".waveform").show();
+            // playlistView._playlistItems[curEl].$el.find(".waveform").show();
             setTimeout(function () {
+                playlistView._playlistItems[curEl].$el.trigger("click")
+                playlistView.trigger(Events.EVENT_SELECTION_CHANGE, playlistModel.CurrentItem);
                 playlistView.trigger(Events.EVENT_CREATEWAVEFORM);
             }, 100);
 
