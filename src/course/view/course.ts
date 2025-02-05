@@ -77,6 +77,7 @@ namespace HTML5AudioPlayer.Views {
                 'click .index-button': 'onShowIndex',
                 'click .glossary-button': 'onShowGlossary',
                 'click .resource-button': 'onShowResource',
+                'click .copyright-button': 'onOpenCopyright',
             }
         }
 
@@ -467,6 +468,42 @@ namespace HTML5AudioPlayer.Views {
             }
         }
 
+        private onOpenCopyright():void{
+            let courseView: Course = this,
+                courseModel: Models.Course = courseView.model;
+
+                if (courseModel.Copyright.content && courseModel.Copyright.content.heading) {
+                    let modal: Components.Models.ModalDialog = new Components.Models.ModalDialog({
+                        "heading": courseModel.Copyright.content.heading,
+                        "hasclose": true,
+                        "hasProgressbar": false,
+                        "content": courseModel.Copyright.content.content,
+                        "buttons": courseModel.Copyright.content.buttons
+                    }),
+                        modalView: Components.Views.ModalDialog = new Components.Views.ModalDialog({
+                            model: modal
+                        }),
+                        wasPlaying = false;
+
+                        if (!courseView._player.paused()) {
+                            courseView._player.pause();
+                            wasPlaying = true;
+                        }
+
+                    modalView.once(Events.EVENT_MODAL_CLOSED, function (buttonID: string) {
+                        console.log("wasPlaying", buttonID)
+                        if (wasPlaying) {
+                            courseView._player.play();
+                            wasPlaying=false;
+                        }
+                    });
+
+                    modalView.showModal();
+                }
+                else if(courseModel.Copyright) {
+                    Utilities.openPdf(this.model.Copyright.url);
+                }
+        }
 
         private onOpenHelp(): void {
             let courseView: Course = this,

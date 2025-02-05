@@ -17,6 +17,7 @@
     "ShowResourceBtn": true,
     "ResourceBtnText": "Resources",
     "HelpBtnText": "Help",
+    "CopyrigthBtnText": "Copyright",
     "HideGlossaryBtn": false,
     "GlossaryBtnText": "Glossary",
 
@@ -191,6 +192,7 @@
         }
 
     },
+
     "help": {
         "show": true,
         "tooltip": "Help",
@@ -198,6 +200,16 @@
         "url": "resources/pdfs/help.pdf"
     },
 
+    "copyright": {
+        "show": true,
+        "tooltip": "Help",
+        "icon": "resources/image/icon_help.svg",
+        "url": "",
+        "content":{
+            "heading": "Copyright",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec neque urna. Donec varius, ipsum non luctus eleifend, purus justo tristique tellus, in mattis tellus metus vel urna. Nam et iaculis felis. Aenean ac justo id lorem ultrices euismod. Aliquam porttitor consequat tellus sed fermentum. Vestibulum gravida suscipit est vitae efficitur. Nunc egestas finibus massa a ullamcorper.<br><br>Phasellus sed tristique dolor, ac pharetra elit. Aliquam orci nisl, cursus quis erat et, ullamcorper faucibus ex."
+        }
+    },
 
 
     "knowledgechecks": {

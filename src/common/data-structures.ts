@@ -271,7 +271,7 @@ namespace HTML5AudioPlayer.DataStructures {
         tooltip: string;
         icon: string;
         url: string;
-        content:string;
+        content:ModalDialogOptions;
     }
 
     export class startPage {

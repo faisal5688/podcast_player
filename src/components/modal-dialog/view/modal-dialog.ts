@@ -53,9 +53,9 @@ namespace HTML5AudioPlayer.Components.Views {
             if (modalDialogModel.Progressbar) {
                 modalDialogView.resetProgressBar();
             }
-            if (modalDialogModel.Buttons) {
+           // if (modalDialogModel.Buttons) {
                 modalDialogView.trigger(Events.EVENT_MODAL_CLOSED, btnId);
-            }
+            //}
             modalDialogView.$el.removeClass("in");
             modalDialogView.destroy();
         }
