@@ -86,6 +86,7 @@ namespace HTML5AudioPlayer.Models {
 
         get Copyright():DataStructures.CopyrightData { return this.get("copyright"); }
 
+        get Speakers(): DataStructures.Speakers { return this.get("speakers"); }
 
         get hasCarousel(): boolean { return this.get("hasCarousel"); }
         set hasCarousel(value: boolean) { this.set("current", value); }
@@ -149,6 +150,8 @@ namespace HTML5AudioPlayer.Models {
 
             model.PlayerData.coursemode = model.CourseMode;
             model.PlayerData.passingPercent = options.assessmentData ? options.assessmentData.passingPercent : 0;
+            model.PlayerData.speakers = options.speakers;
+
             model.PlayerModel = new Components.Models.AudioPlayer(model.PlayerData,model.KnowledgecheckItemData.knowledgechecksdata);
             model.PlayerModel.on(Events.EVENT_SAVE_COURSE_DATA, model.onSendDataToScorm, model);
             model.PlayerModel.once(Events.EVENT_MARK_COURSE_COMPLETE, model.onMarkCourseComplete, model);

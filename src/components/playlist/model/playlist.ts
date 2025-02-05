@@ -47,7 +47,8 @@ namespace HTML5AudioPlayer.Components.Models {
         get CuePoints(): DataStructures.CuePoint[] { return this.get("CuePoints"); }
         set CuePoints(value: DataStructures.CuePoint[]) { this.set("CuePoints", value); }
 
-
+        get Speakers(): DataStructures.Speakers { return this.get("speakers"); }
+        set Speakers(value: DataStructures.Speakers) { this.set("speakers", value); }
 
         protected currentitemid: string;
 
@@ -64,6 +65,7 @@ namespace HTML5AudioPlayer.Components.Models {
                 qItemCount = 0;
                 model.Chapters= titlesData.chapters;
                 model.Questions = titlesData.questions;
+                model.Speakers = options.Speakers;
 
             model.PlaylistItems = new Array<PlaylistItem>();
 

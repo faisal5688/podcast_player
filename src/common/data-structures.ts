@@ -88,6 +88,7 @@ namespace HTML5AudioPlayer.DataStructures {
         coursemode: CourseMode;
         commlostmsg: string;
         passingPercent: number;
+        speakers: Speakers;
     }
     export class KnowledgeChecks{
         enabled?: boolean;
@@ -272,6 +273,18 @@ namespace HTML5AudioPlayer.DataStructures {
         icon: string;
         url: string;
         content:ModalDialogOptions;
+    }
+
+    export class Speakers{
+        title:string;
+        persons:Person;
+    }
+
+    export class Person{
+        personImg:string;
+        personName:string;
+        designation:string;
+        linkdinUrl:string;
     }
 
     export class startPage {

@@ -173,6 +173,14 @@ namespace HTML5AudioPlayer.Components.Views {
                 Utilities.consoleError("Failed to apply scrollbar to '.playlist-inner': ", err.message, err.stack);
             }
 
+            try {
+                playlistView.$(".speaker-container").mCustomScrollbar({
+                    theme: "kpmg-blue"
+                });
+            } catch (err) {
+                Utilities.consoleError("Failed to apply scrollbar to '.playlist-inner': ", err.message, err.stack);
+            }
+
             let audioPlayerView = videojs("video-instance")
             this.loadAudioPlaylist(audioPlayerView, playlistModel.PlaylistItems);
             audioPlayerView.on('playlistloaded', (() => {

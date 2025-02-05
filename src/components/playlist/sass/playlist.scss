@@ -218,7 +218,7 @@
             .playlist-inner {
                 height: calc(100% - 105px);
                 // background: $colorWhite;
-                width: 70%;
+                width: 50%;
                 margin-right: 15px;
 
                 .playlist-title {
@@ -925,6 +925,60 @@
 
 
                 }
+            }
+
+            .speaker-container{
+                width: 20%;
+                height: calc(100% - 105px);
+                margin-left: 15px;
+
+                    .speakers-title {
+                        font-size: $fontSizeStandard;
+                        color: $colorCobaltBlue;
+                        font-weight: bold;
+                        padding-bottom: 5px;
+                        margin-bottom: 10px;
+                        border-bottom: 2px solid #CACACA;
+                    }
+
+                    .person{
+                        padding: 11px;
+                        border-radius: 4px;
+                        background-color: #fff;
+                        border: 1px solid;
+                        display: flex;
+                        margin-bottom: 10px;
+
+                        .photo{
+                            width: 80px;
+
+                            img{
+                                width: 100%;
+                                height: auto;
+                            }
+                        }
+
+                        .info{
+                            width: calc(100% - 80px);
+                            padding-left: 10px;
+
+                            .name{
+                                font-weight: bold;
+                                font-size: 13px;
+                            }
+                            .post{
+                                font-size: 12px;
+                            }
+                            .linkdin{
+                                width: 30px;
+
+                                img{
+                                    width: 100%;
+                                    height: auto;
+                                }
+                            }
+                        }
+                    }
             }
         }
     }

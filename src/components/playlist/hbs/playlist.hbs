@@ -12,6 +12,25 @@
         <div class="knowledge-checklist-title">{{questions}}</div>
         <div class="knowledge-checklist-list"></div>
     </div>
+    <div class="speaker-container">
+         <div class="speakers-title">{{Speakers.title}}</div>
+            {{#each Speakers.persons}}
+                <div class="person">
+                    <div class="photo">
+                        <img src="{{this.personImg}}" alt="Profile Photo" title="profile" />
+                    </div>
+                    <div class="info">
+                        <div class="name">{{this.personName}}</div>
+                        <div class="post">{{this.designation}}</div>
+                        <div class="linkdin">
+                            <a href="{{this.linkdinUrl}}" target="_blank">
+                                <img src="resources/image/linkedin.svg" alt="LinkedIn" title="LinkedIn" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+    </div>
 </div>
 
 <div class="playlist-buttons">
