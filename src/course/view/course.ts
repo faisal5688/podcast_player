@@ -487,6 +487,7 @@ namespace HTML5AudioPlayer.Views {
 
                         if (!courseView._player.paused()) {
                             courseView._player.pause();
+                            $('.audio-player-template .play-pause').text('Play').addClass("play").removeClass("pause");
                             wasPlaying = true;
                         }
 
@@ -494,6 +495,7 @@ namespace HTML5AudioPlayer.Views {
                         console.log("wasPlaying", buttonID)
                         if (wasPlaying) {
                             courseView._player.play();
+                            $('.audio-player-template .play-pause').text('Pause').addClass("pause").removeClass("play");
                             wasPlaying=false;
                         }
                     });
