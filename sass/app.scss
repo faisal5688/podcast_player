@@ -24,6 +24,25 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: "OpenSans-Semibold";
+    src: url("fonts/OpenSans-Semibold.ttf") format("truetype"),
+        url("fonts/OpenSans-Semibold.woff2") format("woff2"),
+        url("fonts/OpenSans-Semibold.woff") format("woff");
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "OpenSans-Bold";
+    src: url("fonts/OpenSans-Bold.ttf") format("truetype"),
+        url("fonts/OpenSans-Bold.eot") format("eot"),
+        url("fonts/OpenSans-Bold.woff") format("woff");
+    font-style: normal;
+    font-display: swap;
+}
+
+
 html body {
     position: absolute;
     left: 0;

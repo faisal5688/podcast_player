@@ -935,10 +935,10 @@
                     .speakers-title {
                         font-size: $fontSizeStandard;
                         color: $colorCobaltBlue;
-                        font-weight: bold;
                         padding-bottom: 5px;
                         margin-bottom: 10px;
                         border-bottom: 2px solid #CACACA;
+                        font-family: "OpenSans-Bold";
                     }
 
                     .person{
@@ -948,6 +948,9 @@
                         border: 1px solid;
                         display: flex;
                         margin-bottom: 10px;
+                        box-shadow: 0px 3px 6px #00000029;
+                        border: 1px solid #D9D9D9;
+                        border-radius: 10px;
 
                         .photo{
                             width: 80px;
@@ -963,8 +966,8 @@
                             padding-left: 10px;
 
                             .name{
-                                font-weight: bold;
-                                font-size: 13px;
+                                font-family: "OpenSans-Bold";
+                                font-size: 16px;
                             }
                             .post{
                                 font-size: 12px;

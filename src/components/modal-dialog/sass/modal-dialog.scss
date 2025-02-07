@@ -41,33 +41,34 @@
 
             .modal-header {
                 background: rgba(0, 184, 245, 0.1);
-                padding: 5px 10px 5px 10px;
+                padding: 10px 10px 10px 20px;
+                display: flex;
                 width: 100%;
                 font-size: 18px;
-                // text-align: center;
-                font-weight: bold;
                 color: #00338d;
                 box-sizing: border-box;
 
                 .modal-title {
-                    font-weight: bold;
+                  //  font-weight: bold;
+                  font-family: "OpenSans-Semibold";
+                  font-size: 22px;
+                  line-height: normal;
                 }
 
                 .close {
                     -webkit-appearance: none;
                     padding: 0px 5px;
                     cursor: pointer;
-                    background: 0 0;
-                    border: 0;
-                    margin-top: -2px;
-                    border-radius: 4px;
-                    float: right;
-                    font-weight: bold;
-                    line-height: 1;
-                    background: $colorTertiaryRed;
-                    color: $colorWhite;
-                    opacity: 0.75;
-                    font-size: 19px;
+                    background: url(../resources/image/popup_close_btn.svg) no-repeat;
+                    width: 24px;
+                    height: 24px;
+                    background-position: center center;
+                    background-size: 24px 24px;
+                    position: absolute;
+                    right: 14px;
+                    top: 14px;
+                    cursor: pointer;
+                    border: none;
 
                     &:hover {
                         opacity: 1;
@@ -77,11 +78,14 @@
 
             .modal-body {
                 position: relative;
-                padding: 15px;
+                padding: 10px 10px 10px 20px;
                 // padding-bottom: 55px;
                 overflow-y: auto;
                 max-height: calc(100% - 95px);
-
+                p{
+                    margin-bottom: 10px;
+                    font-size: 16px;
+                }
                 .progress-text {
                     padding-top: 20px;
 
