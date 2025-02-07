@@ -53,19 +53,19 @@
     "speakers":{
         "title":"Speakers",
         "persons":[{
-            "personImg":"resources/image/KC-question-icon.png",
+            "personImg":"resources/image/nick_tricarich.png",
             "personName":"Nick Tricarichi",
             "designation":"Partner",
             "linkdinUrl":"https://www.linkedin.com/in/nick-tricarichi-9b202933/"
         },
         {
-            "personImg":"resources/image/KC-question-icon.png",
+            "personImg":"resources/image/molly_chilakapati.png",
             "personName":"Molly Chilakapati",
             "designation":"Partner",
             "linkdinUrl":"https://www.linkedin.com/in/molly-chilakapati-546aa612/"
         },
         {
-            "personImg":"resources/image/KC-question-icon.png",
+            "personImg":"resources/image/meaghan_wrona.png",
             "personName":"Meaghan Wrona",
             "designation":"Partner",
             "linkdinUrl":"https://www.linkedin.com/in/meaghan-wrona-8a5833128/"
