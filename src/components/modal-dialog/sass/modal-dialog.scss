@@ -234,3 +234,26 @@
     }
 
 }
+// Mobile both (Landscape and Portrait)
+@media only screen and (max-width: 1024px) and (orientation: landscape) {
+    .modal-background{
+        &.fade{
+            .modal-dialog{
+                width: 80%;
+                height: 80%;
+            }
+        }
+    }
+}
+
+// mobile Landscape
+@media only screen and (min-width: 1px) and (max-width: 767px) and (orientation: landscape) {
+    .modal-background{
+        &.fade{
+            .modal-dialog{
+                width: 80%;
+                height: 80%;
+            }
+        }
+    }
+}

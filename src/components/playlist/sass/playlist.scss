@@ -816,7 +816,7 @@
 
             .knowledge-check-list-inner {
                 width: 35%;
-                height: calc(100% - 105px);
+                height: calc(100% - 3em);
 
                 .knowledge-checklist-title {
                     font-size: $fontSizeStandard;
@@ -933,7 +933,7 @@
 
             .speaker-container{
                 width: 20%;
-                height: calc(100% - 105px);
+                height: calc(100% - 3em);
                 margin-left: 15px;
 
                     .speakers-title {
@@ -1256,7 +1256,7 @@
                 .playlist-inner {
                     width: 100%;
 
-                    .playlist-item {
+                    /*.playlist-item {
                         min-height: 100px;
 
                         &.current {
@@ -1312,7 +1312,7 @@
                                 line-height: 16px;
                             }
                         }
-                    }
+                    } */
                 }
 
                 .knowledge-check-list-inner {
@@ -1393,15 +1393,41 @@
         }
 
         .playlist {
+            .playlist-left-right{
+                overflow: hidden;
+
             .playlist-inner {
+                width: 40% !important;
+                height: calc(100% - 2em) !important;
+                margin-right: 0 !important;
+
                 .playlist-item {
-                    width: calc(100% - 52%);
+                    width: 100%;
 
                     &:nth-child(odd) {
                         margin-right: 7px;
                     }
                 }
             }
+            .knowledge-check-list-inner{
+                width: 30% !important;
+                height: calc(100% - 2em) !important;
+            }
+            .speaker-container{
+                width: 30% !important;
+                height: calc(100% - 2em) !important;
+                .person {
+                    .info{
+                        .name{
+                            font-size: 14px;
+                        }
+                        .post{
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+        }
         }
     }
 }
@@ -1411,15 +1437,66 @@
     .playlist-container {
             .playlist {
                 .playlist-left-right {
+                    margin-top: 1em;
+
                     .playlist-inner {
                         height: calc(100% - 10px);
+                        width: 100%;
                     }
 
                     .knowledge-check-list-inner {
                         height: calc(100% - 10px);
+                        width: 100%;
+                    }
+                    .speaker-container{
+                        height: calc(100% - 10px);
+                        width: 100%;
                     }
                 }
             }
     }
 
+}
+
+/* Landscape */
+@media only screen and (min-width: 1032px) and (max-height: 1302px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1.5) {
+    .playlist-container {
+        .playlist {
+            .playlist-left-right {
+                .playlist-inner{
+                    width: 40%;
+                    height: calc(100% - 9em);
+                }
+                .knowledge-check-list-inner{
+                    width: 30%;
+                    height: calc(100% - 9em);
+                }
+                .speaker-container{
+                    width: 30%;
+                    height: calc(100% - 9em);
+                }
+            }
+        }
+    }
+}
+/* iPad Pro 13 Portrait mode */
+@media only screen and (min-width: 1032px) and (max-height: 1302px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
+    .playlist-container {
+        .playlist {
+            .playlist-left-right {
+                .playlist-inner{
+                    width: 40%;
+                    height: calc(100% - 9em);
+                }
+                .knowledge-check-list-inner{
+                    width: 30%;
+                    height: calc(100% - 9em);
+                }
+                .speaker-container{
+                    width: 30%;
+                    height: calc(100% - 9em);
+                }
+            }
+        }
+    }
 }
