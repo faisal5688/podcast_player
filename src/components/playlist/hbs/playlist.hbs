@@ -14,7 +14,8 @@
     </div>
     <div class="speaker-container">
          <div class="speakers-title">{{Speakers.title}}</div>
-            {{#each Speakers.persons}}
+        {{#each Speakers.persons}}
+            <a href="{{this.linkdinUrl}}" target="_blank" class="person-link">
                 <div class="person">
                     <div class="photo">
                         <img src="{{this.personImg}}" alt="Profile Photo" title="profile" />
@@ -23,13 +24,13 @@
                         <div class="name">{{this.personName}}</div>
                         <div class="post">{{this.designation}}</div>
                         <div class="linkdin">
-                            <a href="{{this.linkdinUrl}}" target="_blank">
-                                <img src="resources/image/linkedin.svg" alt="LinkedIn" title="LinkedIn" />
-                            </a>
+                            <img src="resources/image/linkedin.svg" alt="LinkedIn" title="LinkedIn" />
                         </div>
                     </div>
                 </div>
-            {{/each}}
+            </a>
+        {{/each}}
+
     </div>
 </div>
 
