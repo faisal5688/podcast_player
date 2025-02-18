@@ -1069,6 +1069,11 @@
                 .playlist-inner {
                     width: 100%;
                     height: auto;
+                    margin-right: 0px;
+
+                    .playlist-item{
+                        width: 100%;
+                    }
 
                     /*.playlist-item {
 
@@ -1180,6 +1185,7 @@
                     height: auto;
                     width: 100%;
                     margin-left: 0px;
+                    overflow: hidden;
                 }
             }
         }
@@ -1368,6 +1374,34 @@
             animation: toAnimateLeftMob 0.3s 1 ease-in;
         }
     }
+}
+
+// Samsung Galaxy S22 CSS
+@media only screen and (min-width: 360px) and (min-height: 670px) and (orientation: portrait) and (min-device-pixel-ratio: 3){
+    .playlist-container{
+        .playlist{
+            .playlist-left-right {
+                .playlist-inner{
+                    .playlist-item{
+                        width: calc(100% - 25px);
+                    }
+                }
+                .knowledge-check-list-inner{
+                    .knowledge-check-item{
+                        width: calc(100% - 25px);
+                    }
+                }
+                .speaker-container{
+
+                    .person{
+                        width: calc(100% - 25px);
+                    }
+                }
+
+            }
+        }
+    }
+
 }
 
 // iPad Portrait
