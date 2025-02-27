@@ -16,8 +16,10 @@
 }
 
 @mixin linearBg {
-    background: rgb(92,33,232);
-background: linear-gradient(90deg, rgba(92,33,232,1) 0%, rgba(88,36,232,1) 20%, rgba(78,42,231,1) 40%, rgba(67,49,230,1) 60%, rgba(59,55,229,1) 80%, rgba(54,58,228,1) 100%);
+    //background: rgb(92,33,232);
+    //background: linear-gradient(90deg, rgba(92,33,232,1) 0%, rgba(88,36,232,1) 20%, rgba(78,42,231,1) 40%, rgba(67,49,230,1) 60%, rgba(59,55,229,1) 80%, rgba(54,58,228,1) 100%);
+    background: rgb(47,110,163);
+    background: linear-gradient(90deg, rgba(47,110,163,1) 0%, rgba(47,110,163,1) 20%, rgba(69,156,227,1) 40%, rgba(69,156,227,1) 60%, rgba(12,38,63,1) 80%, rgba(12,38,63,1) 100%);
 }
 
 @mixin h4Stylinig {
