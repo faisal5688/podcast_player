@@ -505,6 +505,11 @@
                 bottom: auto;
                 border-top: 2px solid rgba($color: #1E49E2, $alpha: 0.5);
 
+                img{
+                    height: 22px;
+                    margin: auto 0;
+                }
+
                 h4 {
                     display: block;
                     color: $colorWhite;
