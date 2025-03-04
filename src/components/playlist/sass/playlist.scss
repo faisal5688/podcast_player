@@ -317,7 +317,7 @@
                             .bar {
                                 width: 5px;
                                 height: 20px;
-                                margin: 0 5px;
+                                margin: 0 0;
                                 // background-color: #fcecff;
                                 @include linearBg;
                                 transition: height 0.1s ease-in-out;

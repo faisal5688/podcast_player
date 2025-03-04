@@ -348,6 +348,7 @@ namespace HTML5AudioPlayer.Components.Views {
         @named
         private parseVTT(vttText: string): void {
             const lines = vttText.split('\n');
+            this.captions = [];
             let cue: { start: number; end: number; text: string } | null = null;
 
             lines.forEach((line) => {
@@ -395,10 +396,12 @@ namespace HTML5AudioPlayer.Components.Views {
             //console.log(audioPlayerView._myPlayer.currentTime())
             let customCCDiv = document.getElementById('cc_text_inner');
             let _currentTime = audioPlayerView._myPlayer.currentTime()
+
             let currentCaption = this.captions.find(
                 (cue) => _currentTime >= cue.start && _currentTime <= cue.end
             );
-
+            //console.log("currentCaption :")
+            // console.log(currentCaption)
             if (currentCaption && audioPlayerModel.CaptionsEnabled) {
                 // console.log()
                 customCCDiv.textContent = currentCaption.text;
@@ -951,7 +954,8 @@ namespace HTML5AudioPlayer.Components.Views {
             audioPlayerView.enable();
             audioPlayerModel.Playlist.enableAssessment();
             $('.audio-player-template .play-pause').text('Play').addClass("play").removeClass("pause");
-            audioPlayerView.endWaveform();
+            //audioPlayerView.endWaveform();
+            audioPlayerView.showWaveform()
         }
 
         private onLaunchAssessment(): void {
@@ -1057,7 +1061,20 @@ namespace HTML5AudioPlayer.Components.Views {
                 }
                 audioPlayerView.trigger(Events.EVENT_SELECTION_CHANGE, item);
                 console.log("updateTexttrack 2");
-                audioPlayerView.updateTexttrack();
+                //alert(item.Subtitle)
+
+                // audioPlayerView.updateTexttrack();
+                // Replace 'captions.vtt' with your VTT file path
+                //audioPlayerView.updateTexttrack();
+                if (Utilities.isiOS() || Utilities.isiPad()) {
+                    audioPlayerView.loadCaptions(item.Subtitle);
+                    $(".cc_text_main").hide();
+                    audioPlayerModel.CaptionsEnabled = false;
+                    audioPlayerView.$(".vjs-control-bar .vjs-icon-toggle-captions").removeClass("hide");
+                    audioPlayerView.$(".vjs-control-bar .vjs-icon-tumblr").addClass("hide");
+                }else{
+                    audioPlayerView.updateTexttrack();
+                }
                 //audioPlayerView.trigger(Events.EVENT_AUDIOPLAYER_CHANGE, item);
 
             }
@@ -1671,16 +1688,16 @@ namespace HTML5AudioPlayer.Components.Views {
             });
         }
 
-        private onCreatewaveform():void{
+        private onCreatewaveform(): void {
             //alert("onCreatewaveform");
             let audioPlayerView: AudioPlayer = this,
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
 
-            setTimeout(function(){
+            setTimeout(function () {
                 $('.audio-player-template .progress-bar').val(0);
                 audioPlayerView.onItemInitPlayer();
                 audioPlayerView.updateProgress(audioPlayerView._myPlayer)
-            },200)
+            }, 200)
         }
 
         private createWaveform(): void {
@@ -1688,7 +1705,7 @@ namespace HTML5AudioPlayer.Components.Views {
             let audioPlayerView: AudioPlayer = this,
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
             const waveform = $(".playlist-item.current .waveform");
-            const numberOfBars = 5; // Number of bars you want
+            const numberOfBars = 25; // Number of bars you want
             //console.log("***************createWaveform****************************")
             // Generate bars dynamically
             waveform.html("");
@@ -1701,9 +1718,9 @@ namespace HTML5AudioPlayer.Components.Views {
         private showWaveform(): void {
             const bars = $(".playlist-item.current .bar");
             bars.each(function () {
-                const randomHeight = Math.random() * 40 + 5; // Between 10px and 100px
+                const randomHeight = Math.random() * 60 + 5; // Between 10px and 100px
                 $(this).css("height", randomHeight + "px");
-              });
+            });
         }
 
         private endWaveform(): void {
