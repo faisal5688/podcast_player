@@ -1017,6 +1017,15 @@ namespace HTML5AudioPlayer.Components.Views {
             if (storedRate) {
                 audioPlayerView._myPlayer.playbackRate(Number(storedRate));
             }
+
+            if (audioPlayerView._myPlayer.muted()) {
+                audioPlayerView._myPlayer.muted(true);
+                $(".audio_on_off").removeClass('audio_on').addClass('audio_off');
+            } else {
+                audioPlayerView._myPlayer.muted(false);
+                $(".audio_on_off").removeClass('audio_off').addClass('audio_on');
+
+            }
             Utilities.consoleLog("VideoChanged!", storedRate);
         }
 
@@ -1643,7 +1652,8 @@ namespace HTML5AudioPlayer.Components.Views {
                     Utilities.consoleTrace("Not Seeking video to max time as (current time - max time) delta is small: " + delta);
                 }
             }
-            $(".audio_on_off").removeClass('audio_off').addClass('audio_on');
+            //$(".audio_on_off").removeClass('audio_off').addClass('audio_on');
+
 
         }
         @named
@@ -1659,7 +1669,15 @@ namespace HTML5AudioPlayer.Components.Views {
                 $('.audio-player-template .total-time').text(totalTime);
             }
             audioPlayerView._myPlayer.paused()
-            audioPlayerView._myPlayer.muted(false);
+            //audioPlayerView._myPlayer.muted(false);
+            // if (audioPlayerView._myPlayer.muted()) {
+            //     audioPlayerView._myPlayer.muted(true);
+            //     $(".audio_on_off").removeClass('audio_on').addClass('audio_off');
+            // } else {
+            //     audioPlayerView._myPlayer.muted(false);
+            //     $(".audio_on_off").removeClass('audio_off').addClass('audio_on');
+
+            // }
             audioPlayerView.createWaveform();
         }
 
