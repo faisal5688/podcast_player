@@ -62,6 +62,8 @@ namespace HTML5AudioPlayer.Components.Views {
                 playlistItemView.on(Events.EVENT_ITEM_CLICKED_BACKAUDIO, playlistView.backAudio, playlistView);
                 playlistItemView.on(Events.EVENT_ITEM_CLICKED_NEXTAUDIO, playlistView.nextAudio, playlistView);
                 playlistItemView.on(Events.EVENT_ITEM_CLICKED_ONOFFAUDIO, playlistView.onoffAudio, playlistView);
+                playlistItemView.on(Events.EVENT_NEXTBACK_CLICK, playlistView.onNextBackClicked, playlistView);
+
                 //playlistItemView.on(Events.EVENT_ITEM_CLICKED_ONOFFAUDIO, playlistView.autoAdvanceAudio, playlistView);
 
                 playlistModel.enableAssessment();
@@ -347,9 +349,20 @@ namespace HTML5AudioPlayer.Components.Views {
             playlistModel.CurrentItem.Disabled = false;
             playlistModel.CurrentListItem = item.Index;
             playlistModel.CurrentItem.Inprogress = true;
-            //alert("1st click 1")
+
 
             playlistView.trigger(Events.EVENT_SELECTION_CHANGE, item);
+            playlistView.trigger(Events.EVENT_NextBack_CHANGE);
+
+        }
+
+        /**
+         * onNextBackClicked
+         */
+        public onNextBackClicked() {
+            let playlistView: Playlist = this,
+                playlistModel: Models.Playlist = playlistView.model;
+            playlistView.trigger(Events.EVENT_NextBack_CHANGE);
 
         }
 

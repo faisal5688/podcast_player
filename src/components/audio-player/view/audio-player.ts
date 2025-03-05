@@ -109,6 +109,8 @@ namespace HTML5AudioPlayer.Components.Views {
             audioPlayerView._playlist.on(Events.EVENT_ITEM_NEXTAUDIO, audioPlayerView.onItemClickedNextaudio, audioPlayerView);
             audioPlayerView._playlist.on(Events.EVENT_ITEM_ONOFFAUDIO, audioPlayerView.onItemClickedOnoffaudio, audioPlayerView);
             audioPlayerView._playlist.on(Events.EVENT_CREATEWAVEFORM, audioPlayerView.onCreatewaveform, audioPlayerView);
+
+            audioPlayerView._playlist.on(Events.EVENT_NextBack_CHANGE, audioPlayerView.onNextBackChanged, audioPlayerView);
         }
 
         @named
@@ -833,6 +835,35 @@ namespace HTML5AudioPlayer.Components.Views {
             }
         }
 
+        private triggerAllCuepoint(): void {
+            let audioPlayerView: AudioPlayer = this,
+                audioPlayerModel: Models.AudioPlayer = this.model,
+                cp: DataStructures.CuePoint = null,
+                delta: number = 0;
+
+            if (audioPlayerModel.CuePoints) {
+                for (let i: number = 0; i < audioPlayerModel.CuePoints.length; i++) {
+                    cp = audioPlayerModel.CuePoints[i];
+                    //delta = Math.abs(currentTime - cp.time);
+                    //if ((cp.time === currentTime) || (delta <= audioPlayerModel.CuePointDelta)) {
+                        if (!cp.triggered) {
+                            cp.triggered = true;
+                            cp.visited = true;
+                            //alert(cp.id)
+                            Utilities.consoleTrace("Already Triggered cue point event for: ", cp.id);
+                            //Utilities.consoleTrace("Trigger cue point event for: ", cp.id, audioPlayerView.cid, currentTime);
+                            audioPlayerView.trigger(Events.EVENT_CUEPOINT_HIT, cp);
+                            //alert("CP")
+                        }
+                        else {
+                            Utilities.consoleTrace("Already Triggered cue point event for: ", cp.id);
+                        }
+                       // break;
+                    //}
+                }
+            }
+        }
+
         @named
         private resetCuePointStatus(): void {
             let audioPlayerView: AudioPlayer = this,
@@ -933,6 +964,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 audioPlayerView.triggerCuepoint(DataStructures.KCWhen.End);
                 //audioPlayerView.resetCuePointStatus();
             }
+            audioPlayerView.triggerAllCuepoint();
 
             audioPlayerModel.Playlist.CurrentItem.CurrentClicked = true;
             audioPlayerModel.Playlist.CurrentItem.Complete = true;
@@ -994,8 +1026,8 @@ namespace HTML5AudioPlayer.Components.Views {
 
         @named
         private onAudioChanged(item: Models.PlaylistItem): void {
-            let audioPlayerView: AudioPlayer = this;
-
+            let audioPlayerView: AudioPlayer = this,
+            audioPlayerModel: Models.AudioPlayer = this.model;
             Utilities.consoleLog("Audio Changed to: " + item.Id);
 
             audioPlayerView.enable(false);
@@ -1026,7 +1058,30 @@ namespace HTML5AudioPlayer.Components.Views {
                 $(".audio_on_off").removeClass('audio_off').addClass('audio_on');
 
             }
+
+            // setTimeout(function () {
+
+            //     audioPlayerView.play();
+            //     $(".audio-player-container").eq(parseInt(audioPlayerModel.Playlist.CurrentItem.Index) - 1).parent().addClass("current");
+            //     $(".audio-player-container").eq(parseInt(audioPlayerModel.Playlist.CurrentItem.Index) - 1).addClass("showPlayer");
+            //     $('.audio-player-template .play-pause').text('Pause').addClass("pause").removeClass("play");
+            //     //$(".audio-player-container").eq(parseInt(audioPlayerModel.Playlist.CurrentItem.Index)-1).find('.play-pause').trigger("click")
+            // }, 500)
             Utilities.consoleLog("VideoChanged!", storedRate);
+        }
+
+        @named
+        private onNextBackChanged(){
+            let audioPlayerView: AudioPlayer = this,
+            audioPlayerModel: Models.AudioPlayer = this.model;
+            setTimeout(function () {
+
+                audioPlayerView.play();
+                $(".audio-player-container").eq(parseInt(audioPlayerModel.Playlist.CurrentItem.Index) - 1).parent().addClass("current");
+                $(".audio-player-container").eq(parseInt(audioPlayerModel.Playlist.CurrentItem.Index) - 1).addClass("showPlayer");
+                $('.audio-player-template .play-pause').text('Pause').addClass("pause").removeClass("play");
+
+            }, 500)
         }
 
         @named

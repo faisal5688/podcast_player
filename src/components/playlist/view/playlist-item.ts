@@ -203,7 +203,8 @@ namespace HTML5AudioPlayer.Components.Views {
                 playlistItemModel: Models.PlaylistItem = playlistItemView.model,
                 curItem: number = parseInt(playlistItemModel.Index);
             if ($(e.currentTarget).hasClass("chapt-enabled")) {
-                $(".playlist-item").eq(curItem - 2).trigger("click")
+                $(".playlist-item").eq(curItem - 2).trigger("click");
+                playlistItemView.trigger(Events.EVENT_NEXTBACK_CLICK, playlistItemModel);
             }
             //playlistItemView.trigger(Events.EVENT_ITEM_CLICKED_BACKAUDIO, playlistItemModel);
         }
@@ -213,8 +214,10 @@ namespace HTML5AudioPlayer.Components.Views {
                 playlistItemModel: Models.PlaylistItem = playlistItemView.model,
                 curItem: number = parseInt(playlistItemModel.Index);
             if ($(e.currentTarget).hasClass("chapt-enabled")) {
-                $(".playlist-item").eq(curItem).trigger("click")
+                $(".playlist-item").eq(curItem).trigger("click");
+                playlistItemView.trigger(Events.EVENT_NEXTBACK_CLICK, playlistItemModel);
             }
+
             //playlistItemView.trigger(Events.EVENT_ITEM_CLICKED_NEXTAUDIO, playlistItemModel);
         }
         onoffAudio(e: MouseEvent): void {

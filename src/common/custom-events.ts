@@ -34,6 +34,11 @@ namespace HTML5AudioPlayer.Events {
     export let EVENT_COMPLETE_QUESTION: string = "EVENT_COMPLETE_QUESTION";
     export let EVENT_CLICK_MENU: string = "EVENT_CLICK_MENU";
 
+    export let EVENT_NextBack_CHANGE: string = "nextBack-change";
+    export let EVENT_NEXTBACK_CLICK: string = "EVENT_NEXTBACK_CLICK-change";
+
+
+
 
 
 
