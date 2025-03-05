@@ -459,12 +459,12 @@ namespace HTML5AudioPlayer.Views {
                 modalView.showModal();
             }
             else {
-                try {
-                    window.close();
-                }
-                catch (err) {
-                    Utilities.consoleWarn("Failed to close the window. Error:", err);
-                }
+                // try {
+                //     window.close();
+                // }
+                // catch (err) {
+                //     Utilities.consoleWarn("Failed to close the window. Error:", err);
+                // }
             }
         }
 
