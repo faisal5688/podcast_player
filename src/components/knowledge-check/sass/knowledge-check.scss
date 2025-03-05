@@ -502,6 +502,58 @@
 
 }
 
+// Mobile Landscape
+@media only screen and (max-width: 767px) and (orientation: portrait) {
+    .knowledge-check-container {
+
+        .knowledge-check {
+
+            .mCSB_container {
+
+                .knowledge-check-que-cont {
+
+                    .knowledge-check-left {
+
+                        .question-container {
+
+                            .question-text {
+                            }
+                        }
+
+                        .question-data {
+
+                            .options {
+
+                                .option {
+                                }
+                            }
+                        }
+                    }
+
+                    .knowledge-check-right {
+
+                    }
+                }
+            }
+        }
+        .feedback-container {
+            .feedback {
+                width: 70%;
+                max-height: 70%;
+                height: 50%;
+                .content{
+                    max-height: 80%;
+                    overflow: auto;
+                }
+                .btn-container {
+                    .ck-continue-btn {
+                    }
+                }
+            }
+        }
+    }
+}
+
 // mobile Landscape
 @media only screen and (min-width: 1px) and (max-width: 767px) and (orientation: landscape) {
     .knowledge-check-container {
