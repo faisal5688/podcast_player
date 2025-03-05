@@ -625,7 +625,7 @@ namespace HTML5AudioPlayer.Views {
                     if (buttonID === "ok") {
                         try {
                             //window.close();
-                            courseView._assessment.$el.hide(200, () => {
+                            courseView._assessment.$el.hide(0, () => {
                                 courseView.markAssessmentComplete();
                             });
                             // alert("1");
