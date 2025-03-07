@@ -459,12 +459,12 @@ namespace HTML5AudioPlayer.Views {
                 modalView.showModal();
             }
             else {
-                try {
-                    window.close();
-                }
-                catch (err) {
-                    Utilities.consoleWarn("Failed to close the window. Error:", err);
-                }
+                // try {
+                //     window.close();
+                // }
+                // catch (err) {
+                //     Utilities.consoleWarn("Failed to close the window. Error:", err);
+                // }
             }
         }
 
@@ -625,7 +625,7 @@ namespace HTML5AudioPlayer.Views {
                     if (buttonID === "ok") {
                         try {
                             //window.close();
-                            courseView._assessment.$el.hide(200, () => {
+                            courseView._assessment.$el.hide(0, () => {
                                 courseView.markAssessmentComplete();
                             });
                             // alert("1");

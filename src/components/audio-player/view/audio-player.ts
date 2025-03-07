@@ -974,6 +974,7 @@ namespace HTML5AudioPlayer.Components.Views {
                     audioPlayerView.next();
                     audioPlayerView.createWaveform();
                     setTimeout(function () {
+
                         audioPlayerView.play();
                         $(".audio-player-container").eq(parseInt(audioPlayerModel.Playlist.CurrentItem.Index) - 1).parent().addClass("current");
                         $(".audio-player-container").eq(parseInt(audioPlayerModel.Playlist.CurrentItem.Index) - 1).addClass("showPlayer");
@@ -1785,6 +1786,9 @@ namespace HTML5AudioPlayer.Components.Views {
             for (let i = 0; i < numberOfBars; i++) {
                 waveform.append('<div class="bar"></div>');
             }
+            setTimeout(function(){
+                audioPlayerView.showWaveform();
+            },100)
 
         }
 
