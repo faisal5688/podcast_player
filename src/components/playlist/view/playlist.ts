@@ -254,11 +254,18 @@ namespace HTML5AudioPlayer.Components.Views {
             if (loadedCount === playlist.length) {
                 playlist.forEach((track, index) => {
                     track.Duration = durations[index]
-                        ? `${Math.floor(durations[index] / 60)}:${Math.floor(durations[index] % 60) + ' min'}`
+                        ? `${this.formatTime(durations[index]) + ' min'}`
                         : '00:00';
                 });
                 player.trigger('playlistloaded', playlist);
             }
+        }
+
+        public formatTime(seconds: number): string {
+            //console.log("************* formatTime ********************")
+            const minutes = Math.floor(seconds / 60);
+            const sec = Math.floor(seconds % 60);
+            return minutes + ':' + (sec < 10 ? '0' : '') + sec;
         }
 
         public next(flag?: boolean): void {
