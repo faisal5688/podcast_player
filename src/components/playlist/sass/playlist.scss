@@ -1579,3 +1579,32 @@
         }
     }
 }
+
+// Samsung Galaxy Z Fold 5 v13.0 CSS
+@media only screen and (min-width: 340px) and (max-width: 500px){
+    .playlist-container{
+        .playlist{
+            .playlist-left-right {
+                .playlist-inner{
+                    width: 100%;
+                    .playlist-item{
+                        width: calc(100% - 9px);
+                    }
+                }
+                .knowledge-check-list-inner{
+                    .knowledge-check-item{
+                        width: calc(100% - 25px);
+                    }
+                }
+                .speaker-container{
+
+                    .person{
+                        width: calc(100% - 25px);
+                    }
+                }
+
+            }
+        }
+    }
+
+}
