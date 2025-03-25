@@ -1073,6 +1073,12 @@
 
                     .playlist-item{
                         width: 98.5%;
+
+                        .audio-player-container{
+                            .play-pause.play{
+                                background-size: contain;
+                            }
+                        }
                     }
 
                     /*.playlist-item {
