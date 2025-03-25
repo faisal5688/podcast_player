@@ -306,7 +306,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 audioPlayerModel._retries++;
                 Utilities.consoleWarn("Retrying for the video: ", audioPlayerModel.Playlist.CurrentItem.Url, " count: ", audioPlayerModel._retries);
 
-                audioPlayerView.enable(false, "Error while loading video. Retrying...");
+                audioPlayerView.enable(false, "Error while loading audio. Retrying...");
                 // wait for half a second before retrying...
                 setTimeout(() => {
                     audioPlayerModel._startPlayingOnError = true;
@@ -1131,15 +1131,15 @@ namespace HTML5AudioPlayer.Components.Views {
                 // audioPlayerView.updateTexttrack();
                 // Replace 'captions.vtt' with your VTT file path
                 //audioPlayerView.updateTexttrack();
-                if (Utilities.isiOS() || Utilities.isiPad()) {
+                //if (Utilities.isiOS() || Utilities.isiPad()) {
                     audioPlayerView.loadCaptions(item.Subtitle);
                     $(".cc_text_main").hide();
                     audioPlayerModel.CaptionsEnabled = false;
                     audioPlayerView.$(".vjs-control-bar .vjs-icon-toggle-captions").removeClass("hide");
                     audioPlayerView.$(".vjs-control-bar .vjs-icon-tumblr").addClass("hide");
-                }else{
-                    audioPlayerView.updateTexttrack();
-                }
+                // }else{
+                //     audioPlayerView.updateTexttrack();
+                // }
                 //audioPlayerView.trigger(Events.EVENT_AUDIOPLAYER_CHANGE, item);
 
             }
@@ -1414,7 +1414,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 }
             }
             else {
-                Utilities.consoleTrace("Video seeking done.");
+                Utilities.consoleTrace("Audio seeking done.");
             }
             audioPlayerView.resetCuePointStatus();
             audioPlayerView.resetMicroPollStatus();
