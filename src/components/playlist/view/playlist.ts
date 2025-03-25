@@ -209,12 +209,35 @@ namespace HTML5AudioPlayer.Components.Views {
             // playlistView._playlistItems[curEl].$el.find(".audio-player-container").addClass("showPlayer");
             // playlistView._playlistItems[curEl].$el.find(".waveform").show();
             // playlistView._playlistItems[curEl].$el.find(".waveform").show();
+            playlistView.enable();
             setTimeout(function () {
                 playlistView._playlistItems[curEl].$el.trigger("click")
-                playlistView.trigger(Events.EVENT_SELECTION_CHANGE, playlistModel.CurrentItem);
-                playlistView.trigger(Events.EVENT_CREATEWAVEFORM);
+               // playlistView.trigger(Events.EVENT_SELECTION_CHANGE, playlistModel.CurrentItem);
+                //playlistView.trigger(Events.EVENT_CREATEWAVEFORM);
+                setTimeout(function () {
+                    playlistView.trigger(Events.EVENT_SELECTION_CHANGE, playlistModel.CurrentItem);
+                    playlistView.trigger(Events.EVENT_CREATEWAVEFORM);
+                    //alert("1")
+                    playlistView.enable(false);
+                }, 200);
             }, 100);
 
+        }
+        @named
+        public enable(enable: boolean = true, message?: string): void {
+
+            if (enable) {
+                $("#uiBlocker").hide();
+            }
+            else {
+                if (message) {
+                    $("#uiBlocker .loading-text").html(message);
+                }
+                else {
+                    $("#uiBlocker .loading-text").html("Please wait Audio is loading...");
+                }
+                $("#uiBlocker").show();
+            }
         }
 
         private loadAudioPlaylist(player, playlist: Models.PlaylistItem[]) {
