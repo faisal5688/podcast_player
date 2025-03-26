@@ -27,6 +27,15 @@ namespace Utilities {
         return ios_devices;
     }
 
+    export function isiPad_1() {
+        var isiPad = /iPad|Macintosh/i.test(navigator.userAgent) && 'ontouchend' in document;
+        if (isiPad) {
+            console.log("This is an iPad");
+        }
+        return isiPad;
+    }
+
+
     export function isiPhone() {
         let user_agent = navigator.userAgent.toLowerCase(),
             ios_devices = user_agent.match(/(iphone)/);
