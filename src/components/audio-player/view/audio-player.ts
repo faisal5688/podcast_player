@@ -1131,15 +1131,15 @@ namespace HTML5AudioPlayer.Components.Views {
                 // audioPlayerView.updateTexttrack();
                 // Replace 'captions.vtt' with your VTT file path
                 //audioPlayerView.updateTexttrack();
-                //if (Utilities.isiOS() || Utilities.isiPad()) {
+                if (Utilities.isiOS() || Utilities.isiPad_1()) {
                     audioPlayerView.loadCaptions(item.Subtitle);
                     $(".cc_text_main").hide();
                     audioPlayerModel.CaptionsEnabled = false;
                     audioPlayerView.$(".vjs-control-bar .vjs-icon-toggle-captions").removeClass("hide");
                     audioPlayerView.$(".vjs-control-bar .vjs-icon-tumblr").addClass("hide");
-                // }else{
-                //     audioPlayerView.updateTexttrack();
-                // }
+                }else{
+                    audioPlayerView.updateTexttrack();
+                }
                 //audioPlayerView.trigger(Events.EVENT_AUDIOPLAYER_CHANGE, item);
 
             }
