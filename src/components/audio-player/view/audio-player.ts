@@ -348,38 +348,64 @@ namespace HTML5AudioPlayer.Components.Views {
 
         // Parse VTT file and store cues
         @named
+
+
         private parseVTT(vttText: string): void {
             const lines = vttText.split('\n');
             this.captions = [];
             let cue: { start: number; end: number; text: string } | null = null;
 
             lines.forEach((line) => {
-                // Check if the line contains the cue timing information
+                line = line.trim();
+
                 if (line.includes('-->')) {
                     const [start, end] = line.split(' --> ');
-                    cue = { start: this.timeToSeconds(start), end: this.timeToSeconds(end), text: '' };
-                } else if (line.trim() === '') {
-                    // If cue is not null, push it to captions
+                    cue = {
+                        start: this.timeToSecondsforVtt(start),
+                        end: this.timeToSecondsforVtt(end),
+                        text: ''
+                    };
+                } else if (line === '') {
                     if (cue) {
                         this.captions.push(cue);
-                        cue = null; // Reset cue after adding
+                        cue = null;
                     }
                 } else {
-                    // Ensure cue is defined before trying to access cue.text
-
                     if (cue) {
                         cue.text += line.trim() + ' ';
-                        //console.log("cue.text")
-                        //console.log(cue.text)
                     }
                 }
             });
 
-            // Check if there's a cue that hasn't been pushed after the last line
+            // Final check for last cue
             if (cue) {
                 this.captions.push(cue);
             }
         }
+
+        private timeToSecondsforVtt(time: string): number {
+            const parts = time.split(':');
+            let seconds = 0;
+
+            if (parts.length === 3) {
+                // Format: HH:MM:SS.mmm
+                const [hh, mm, ss] = parts;
+                seconds += parseInt(hh) * 3600;
+                seconds += parseInt(mm) * 60;
+                seconds += parseFloat(ss);
+            } else if (parts.length === 2) {
+                // Format: MM:SS.mmm
+                const [mm, ss] = parts;
+                seconds += parseInt(mm) * 60;
+                seconds += parseFloat(ss);
+            } else if (parts.length === 1) {
+                // Format: SS.mmm (unlikely, but handle it)
+                seconds += parseFloat(parts[0]);
+            }
+
+            return seconds;
+        }
+
 
 
         // Convert time format to seconds
@@ -846,19 +872,19 @@ namespace HTML5AudioPlayer.Components.Views {
                     cp = audioPlayerModel.CuePoints[i];
                     //delta = Math.abs(currentTime - cp.time);
                     //if ((cp.time === currentTime) || (delta <= audioPlayerModel.CuePointDelta)) {
-                        if (!cp.triggered) {
-                            cp.triggered = true;
-                            cp.visited = true;
-                            //alert(cp.id)
-                            Utilities.consoleTrace("Already Triggered cue point event for: ", cp.id);
-                            //Utilities.consoleTrace("Trigger cue point event for: ", cp.id, audioPlayerView.cid, currentTime);
-                            audioPlayerView.trigger(Events.EVENT_CUEPOINT_HIT, cp);
-                            //alert("CP")
-                        }
-                        else {
-                            Utilities.consoleTrace("Already Triggered cue point event for: ", cp.id);
-                        }
-                       // break;
+                    if (!cp.triggered) {
+                        cp.triggered = true;
+                        cp.visited = true;
+                        //alert(cp.id)
+                        Utilities.consoleTrace("Already Triggered cue point event for: ", cp.id);
+                        //Utilities.consoleTrace("Trigger cue point event for: ", cp.id, audioPlayerView.cid, currentTime);
+                        audioPlayerView.trigger(Events.EVENT_CUEPOINT_HIT, cp);
+                        //alert("CP")
+                    }
+                    else {
+                        Utilities.consoleTrace("Already Triggered cue point event for: ", cp.id);
+                    }
+                    // break;
                     //}
                 }
             }
@@ -1028,7 +1054,7 @@ namespace HTML5AudioPlayer.Components.Views {
         @named
         private onAudioChanged(item: Models.PlaylistItem): void {
             let audioPlayerView: AudioPlayer = this,
-            audioPlayerModel: Models.AudioPlayer = this.model;
+                audioPlayerModel: Models.AudioPlayer = this.model;
             Utilities.consoleLog("Audio Changed to: " + item.Id);
 
             audioPlayerView.enable(false);
@@ -1072,9 +1098,9 @@ namespace HTML5AudioPlayer.Components.Views {
         }
 
         @named
-        private onNextBackChanged(){
+        private onNextBackChanged() {
             let audioPlayerView: AudioPlayer = this,
-            audioPlayerModel: Models.AudioPlayer = this.model;
+                audioPlayerModel: Models.AudioPlayer = this.model;
             setTimeout(function () {
 
                 audioPlayerView.play();
@@ -1137,7 +1163,7 @@ namespace HTML5AudioPlayer.Components.Views {
                     audioPlayerModel.CaptionsEnabled = false;
                     audioPlayerView.$(".vjs-control-bar .vjs-icon-toggle-captions").removeClass("hide");
                     audioPlayerView.$(".vjs-control-bar .vjs-icon-tumblr").addClass("hide");
-                }else{
+                } else {
                     audioPlayerView.updateTexttrack();
                 }
                 //audioPlayerView.trigger(Events.EVENT_AUDIOPLAYER_CHANGE, item);
@@ -1786,9 +1812,9 @@ namespace HTML5AudioPlayer.Components.Views {
             for (let i = 0; i < numberOfBars; i++) {
                 waveform.append('<div class="bar"></div>');
             }
-            setTimeout(function(){
+            setTimeout(function () {
                 audioPlayerView.showWaveform();
-            },100)
+            }, 100)
 
         }
 
