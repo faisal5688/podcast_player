@@ -298,6 +298,7 @@ namespace HTML5AudioPlayer.DataStructures {
         pageTitle: string;
         ResultText: string;
         ScoreText: string;
+        linkText:string;
         PassText: PassText;
         FailText: FailText;
         AssessmentCloseText: string;

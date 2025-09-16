@@ -544,7 +544,14 @@
                     }
                 }
             }
-
+            .linkText {
+                    margin-bottom: 3px;
+                    text-align: center;
+                    width: 100%;
+                    height: auto;
+                    color: $colorBlue;
+                    margin-top: 40px;
+                }
             .resultfooter {
                 width: 100%;
 

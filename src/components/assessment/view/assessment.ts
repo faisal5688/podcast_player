@@ -41,7 +41,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 assessmentModel: Models.Assessment = assessmentView.model,
                 checkVisitedSateOnBack: any;
             assessmentView.$el.html(assessmentView._template(assessmentModel.toJSON()));
-            if(!assessmentModel.HasBackButton){
+            if (!assessmentModel.HasBackButton) {
                 assessmentView.$(".ck-back-btn").hide();
             }
             if (assessmentModel.NumCurrentQuestionDisplay <= 1) {
@@ -49,7 +49,7 @@ namespace HTML5AudioPlayer.Components.Views {
             }
             assessmentView.$(".resultCloseBtn").show();
             if (assessmentModel.currentMCQData.category === DataStructures.ADType.MCSS) {
-                checkVisitedSateOnBack = parseInt(assessmentModel.UserAnswers[assessmentModel.NumCurrentQuestionDisplay-1])
+                checkVisitedSateOnBack = parseInt(assessmentModel.UserAnswers[assessmentModel.NumCurrentQuestionDisplay - 1])
                 if (!isNaN(checkVisitedSateOnBack)) {
                     let selectedOptions = assessmentView.$('input[name=ck-option]');
                     let radioButtonAtIndex = selectedOptions[checkVisitedSateOnBack] as HTMLInputElement;
@@ -97,7 +97,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 assessmentModel: Models.Assessment = assessmentView.model,
                 selectedOptions: JQuery = assessmentView.$('input[name=ck-option]:checked');
             Utilities.consoleLog('assessmentModel.NumCurrentQuestionDisplay', assessmentModel.NumCurrentQuestionDisplay)
-            assessmentModel.NumCurrentQuestionDisplay=assessmentModel.NumCurrentQuestionDisplay-2;
+            assessmentModel.NumCurrentQuestionDisplay = assessmentModel.NumCurrentQuestionDisplay - 2;
             if (assessmentModel.NumCurrentQuestionDisplay < assessmentModel.NumOfQuestionToDisplay) {
                 assessmentModel.setCurrentQuestion(assessmentModel.NumCurrentQuestionDisplay);
                 assessmentView.render();
@@ -192,6 +192,10 @@ namespace HTML5AudioPlayer.Components.Views {
                 assessmentView.$(".resultText").html(assessmentModel.resultPage.FailText.FailSubTitle);
                 assessmentView.$(".infoText").html(assessmentModel.resultPage.FailText.infoText);
             }
+
+            if (assessmentModel.resultPage.linkText) {
+                assessmentView.$(".linkText").html(assessmentModel.resultPage.linkText);
+            }
             assessmentView.$("#remedialContent").html(assessmentView.getRemedialContent());
             assessmentView.trigger(Events.EVENT_ASSESSMENT_STATUS, assessmentModel.currentQuestionData);
 
@@ -244,7 +248,7 @@ namespace HTML5AudioPlayer.Components.Views {
             let assessmentView: Assessment = this,
                 assessmentModel: Models.Assessment = assessmentView.model;
 
-            assessmentModel.UserAnswers=[]
+            assessmentModel.UserAnswers = []
             assessmentView.$el.fadeOut(200, () => {
                 assessmentView.trigger(Events.EVENT_ASSESSMENT_COMPLETE, assessmentModel.currentQuestionData);
             });
@@ -253,7 +257,7 @@ namespace HTML5AudioPlayer.Components.Views {
             let assessmentView: Assessment = this,
                 assessmentModel: Models.Assessment = assessmentView.model;
             //alert(assessmentModel.resultPage.AssessmentCloseText);
-            assessmentModel.UserAnswers=[]
+            assessmentModel.UserAnswers = []
             assessmentView.trigger(Events.EVENT_ASSESSMENT_CLOSE, assessmentModel.currentQuestionData);
             // assessmentView.$el.hide(200, () => {
             //     assessmentView.trigger(Events.EVENT_ASSESSMENT_COMPLETE, assessmentModel.currentQuestionData);
