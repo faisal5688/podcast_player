@@ -33,6 +33,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 'click .closeBtn': 'closeClicked',
                 'click .assessmentCloseBtn': 'assessmentCloseClicked',
 
+
             };
         }
 
@@ -83,6 +84,8 @@ namespace HTML5AudioPlayer.Components.Views {
             } catch (err) {
                 Utilities.consoleError("Failed to apply scrollbar to '.assessment': ", err.message, err.stack);
             }
+
+
 
         }
 
@@ -195,9 +198,16 @@ namespace HTML5AudioPlayer.Components.Views {
 
             if (assessmentModel.resultPage.linkText) {
                 assessmentView.$(".linkText").html(assessmentModel.resultPage.linkText);
+                assessmentView.$el.off("click", ".clickToExit").on("click", ".clickToExit", (e) => {
+                    // e.preventDefault();
+                    assessmentView.clickToExitClicked(e);
+                });
+
             }
             assessmentView.$("#remedialContent").html(assessmentView.getRemedialContent());
             assessmentView.trigger(Events.EVENT_ASSESSMENT_STATUS, assessmentModel.currentQuestionData);
+
+
 
         }
 
@@ -264,6 +274,10 @@ namespace HTML5AudioPlayer.Components.Views {
             // });
         }
 
+        private clickToExitClicked(e: any): void {
+            window.close();
+        }
+
 
 
         public show(): void {
@@ -288,6 +302,8 @@ namespace HTML5AudioPlayer.Components.Views {
                         assessmentModel.startPage.successText
                         + " " + assessmentModel.ScormData.score + "%.");
                     assessmentView.$(".resultCloseBtn").show();
+
+
 
                 }
             }

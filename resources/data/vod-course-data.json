@@ -543,7 +543,7 @@
             "QuestionText": "<b>Questions</b>",
             "CorrectText": "<b>Correct</b>",
             "InCorrectText": "<b>Incorrect</b>",
-            "linkText":"<p><b>View our <a href='https://kpmg.csod.com/DeepLink/ProcessRedirect.aspx?module=104' target='_blank'>catalog of CPE-eligible podcasts</b></a>.",
+            "linkText":"<p><b>View our <a class='clickToExit' href='https://kpmg.csod.com/DeepLink/ProcessRedirect.aspx?module=104' target='_blank'>catalog of CPE-eligible podcasts</b></a>.",
             "PassText": {
                 "congratsText": "<p>Congratulations! You have successfully completed this assessment and will receive CPE credit.</p><p>Your assessment results are shown below.</p>",
                 "InstructionText": "Click on the <b>EXIT</b> button to exit this course and return to the main menu.",
