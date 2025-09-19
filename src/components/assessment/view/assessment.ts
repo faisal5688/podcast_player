@@ -200,7 +200,27 @@ namespace HTML5AudioPlayer.Components.Views {
                 assessmentView.$(".linkText").html(assessmentModel.resultPage.linkText);
                 assessmentView.$el.off("click", ".clickToExit").on("click", ".clickToExit", (e) => {
                     // e.preventDefault();
-                    assessmentView.clickToExitClicked(e);
+                    //assessmentView.clickToExitClicked(e);
+                    try {
+                        e.preventDefault();
+
+                        // Get href from the clicked element
+                        const url = (e.currentTarget as HTMLAnchorElement).getAttribute("href");
+
+                        if (url) {
+                            // Open in a new tab
+                            window.open(url, "_blank");
+                        }
+
+                        // Close current course window
+                        if (window.top) {
+                            window.top.close();
+                        } else {
+                            window.close();
+                        }
+                    } catch (err) {
+                        Utilities.consoleWarn("Failed to close the window. Error:", err);
+                    }
                 });
 
             }
@@ -275,7 +295,14 @@ namespace HTML5AudioPlayer.Components.Views {
         }
 
         private clickToExitClicked(e: any): void {
-            window.close();
+            try {
+                if (window.top)
+                    window.top.close();
+                else
+                    window.close();
+            } catch (err) {
+                Utilities.consoleWarn("Failed to close the window. Error:", err);
+            }
         }
 
 
