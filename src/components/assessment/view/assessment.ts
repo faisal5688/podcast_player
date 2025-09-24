@@ -99,7 +99,7 @@ namespace HTML5AudioPlayer.Components.Views {
             let assessmentView: Assessment = this,
                 assessmentModel: Models.Assessment = assessmentView.model,
                 selectedOptions: JQuery = assessmentView.$('input[name=ck-option]:checked');
-            Utilities.consoleLog('assessmentModel.NumCurrentQuestionDisplay', assessmentModel.NumCurrentQuestionDisplay)
+            //Utilities.consoleLog('assessmentModel.NumCurrentQuestionDisplay', assessmentModel.NumCurrentQuestionDisplay)
             assessmentModel.NumCurrentQuestionDisplay = assessmentModel.NumCurrentQuestionDisplay - 2;
             if (assessmentModel.NumCurrentQuestionDisplay < assessmentModel.NumOfQuestionToDisplay) {
                 assessmentModel.setCurrentQuestion(assessmentModel.NumCurrentQuestionDisplay);
@@ -119,7 +119,7 @@ namespace HTML5AudioPlayer.Components.Views {
             let assessmentView: Assessment = this,
                 assessmentModel: Models.Assessment = assessmentView.model,
                 selectedOptions: JQuery = assessmentView.$('input[name=ck-option]:checked');
-            Utilities.consoleLog('assessmentModel.NumCurrentQuestionDisplay', assessmentModel.NumCurrentQuestionDisplay)
+            //Utilities.consoleLog('assessmentModel.NumCurrentQuestionDisplay', assessmentModel.NumCurrentQuestionDisplay)
             if (assessmentModel.NumCurrentQuestionDisplay < assessmentModel.NumOfQuestionToDisplay) {
                 assessmentModel.setCurrentQuestion(assessmentModel.NumCurrentQuestionDisplay);
                 assessmentView.render();
@@ -166,7 +166,7 @@ namespace HTML5AudioPlayer.Components.Views {
                     assessmentModel.UserAnswers = assessmentModel.UserAnswers.filter((item) => item !== e.currentTarget.value);
                 }
             }
-            Utilities.consoleTrace("assessmentModel.UserAnswers: ", assessmentModel.UserAnswers);
+            //Utilities.consoleTrace("assessmentModel.UserAnswers: ", assessmentModel.UserAnswers);
         }
         private showResultScreen(): void {
             let assessmentView: Assessment = this,
@@ -200,7 +200,6 @@ namespace HTML5AudioPlayer.Components.Views {
                 assessmentView.$(".linkText").html(assessmentModel.resultPage.linkText);
                 assessmentView.$el.off("click", ".clickToExit").on("click", ".clickToExit", (e) => {
                     // e.preventDefault();
-                    //assessmentView.clickToExitClicked(e);
                     try {
                         e.preventDefault();
 
@@ -211,13 +210,8 @@ namespace HTML5AudioPlayer.Components.Views {
                             // Open in a new tab
                             window.open(url, "_blank");
                         }
+                        assessmentView.trigger(Events.EVENT_ASSESSMENT_EXIT);
 
-                        // Close current course window
-                        if (window.top) {
-                            window.top.close();
-                        } else {
-                            window.close();
-                        }
                     } catch (err) {
                         Utilities.consoleWarn("Failed to close the window. Error:", err);
                     }
@@ -294,16 +288,6 @@ namespace HTML5AudioPlayer.Components.Views {
             // });
         }
 
-        private clickToExitClicked(e: any): void {
-            try {
-                if (window.top)
-                    window.top.close();
-                else
-                    window.close();
-            } catch (err) {
-                Utilities.consoleWarn("Failed to close the window. Error:", err);
-            }
-        }
 
 
 

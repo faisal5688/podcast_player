@@ -79,7 +79,7 @@
         private onKcItemClick(e: MouseEvent): void {
             let KnowledgeCheckItemView: KnowledgeCheckItem = this,
                 KnowledgeCheckItemModel: Models.KnowledgeCheckItem = KnowledgeCheckItemView.model;
-            Utilities.consoleTrace("Question clicked: ", KnowledgeCheckItemModel.Id);
+            //Utilities.consoleTrace("Question clicked: ", KnowledgeCheckItemModel.Id);
 
             if (KnowledgeCheckItemModel.Disabled) {
                 return;

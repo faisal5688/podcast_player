@@ -175,8 +175,8 @@ namespace HTML5AudioPlayer.Components.Models {
                 }
             }
 
-            console.log("PlaylistItems")
-            console.log(model.PlaylistItems)
+            //console.log("PlaylistItems")
+            //console.log(model.PlaylistItems)
         }
 
 
@@ -199,6 +199,7 @@ namespace HTML5AudioPlayer.Components.Models {
         public isKClistComplete(): boolean {
             let model: Playlist = this;
             let KClength:number = this.KnowledgeCheckItems.filter(function (val: KnowledgeCheckItem): boolean {
+                console.log("Questions : ",val.id,"-", val.Complete); // log each value
                 return val.Complete;
             }).length;
             //let model: Models.AudioPlayer = this;

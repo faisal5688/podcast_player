@@ -172,7 +172,7 @@ namespace HTML5AudioPlayer.Views {
             let courseView: Course = this,
                 courseModel: Models.Course = courseView.model;
             courseView._item = item;
-            console.log(courseView._item.Index)
+            //console.log(courseView._item.Index)
             courseView.onCuePointHitList(courseModel.KnowledgeCheck.getCurrentCuePointsById(courseView._item.Id)[0], courseView._item.Index);
         }
 
@@ -368,8 +368,24 @@ namespace HTML5AudioPlayer.Views {
             }).addClass("to-hide");
         }
 
+        private onCourseExitLink(): void {
+            let courseView: Course = this,
+                courseModel: Models.Course = courseView.model;
+                console.log("onCourseExitLink")
+            try {
+                if (window.top)
+                    window.top.close();
+                else
+                    window.close();
+            }
+            catch (err) {
+                Utilities.consoleWarn("Failed to close the window. Error:", err);
+            }
+        }
+
         @named
         private onCourseExit(): void {
+            //console.log("onCourseExit")
             let courseView: Course = this,
                 courseModel: Models.Course = courseView.model;
             if (courseModel.ExitPopup) {
@@ -468,43 +484,43 @@ namespace HTML5AudioPlayer.Views {
             }
         }
 
-        private onOpenCopyright():void{
+        private onOpenCopyright(): void {
             let courseView: Course = this,
                 courseModel: Models.Course = courseView.model;
 
-                if (courseModel.Copyright.content && courseModel.Copyright.content.heading) {
-                    let modal: Components.Models.ModalDialog = new Components.Models.ModalDialog({
-                        "heading": courseModel.Copyright.content.heading,
-                        "hasclose": true,
-                        "hasProgressbar": false,
-                        "content": courseModel.Copyright.content.content,
-                        "buttons": courseModel.Copyright.content.buttons
+            if (courseModel.Copyright.content && courseModel.Copyright.content.heading) {
+                let modal: Components.Models.ModalDialog = new Components.Models.ModalDialog({
+                    "heading": courseModel.Copyright.content.heading,
+                    "hasclose": true,
+                    "hasProgressbar": false,
+                    "content": courseModel.Copyright.content.content,
+                    "buttons": courseModel.Copyright.content.buttons
+                }),
+                    modalView: Components.Views.ModalDialog = new Components.Views.ModalDialog({
+                        model: modal
                     }),
-                        modalView: Components.Views.ModalDialog = new Components.Views.ModalDialog({
-                            model: modal
-                        }),
+                    wasPlaying = false;
+
+                if (!courseView._player.paused()) {
+                    courseView._player.pause();
+                    $('.audio-player-template .play-pause').text('Play').addClass("play").removeClass("pause");
+                    wasPlaying = true;
+                }
+
+                modalView.once(Events.EVENT_MODAL_CLOSED, function (buttonID: string) {
+                    console.log("wasPlaying", buttonID)
+                    if (wasPlaying) {
+                        courseView._player.play();
+                        $('.audio-player-template .play-pause').text('Pause').addClass("pause").removeClass("play");
                         wasPlaying = false;
+                    }
+                });
 
-                        if (!courseView._player.paused()) {
-                            courseView._player.pause();
-                            $('.audio-player-template .play-pause').text('Play').addClass("play").removeClass("pause");
-                            wasPlaying = true;
-                        }
-
-                    modalView.once(Events.EVENT_MODAL_CLOSED, function (buttonID: string) {
-                        console.log("wasPlaying", buttonID)
-                        if (wasPlaying) {
-                            courseView._player.play();
-                            $('.audio-player-template .play-pause').text('Pause').addClass("pause").removeClass("play");
-                            wasPlaying=false;
-                        }
-                    });
-
-                    modalView.showModal();
-                }
-                else if(courseModel.Copyright) {
-                    Utilities.openPdf(this.model.Copyright.url);
-                }
+                modalView.showModal();
+            }
+            else if (courseModel.Copyright) {
+                Utilities.openPdf(this.model.Copyright.url);
+            }
         }
 
         private onOpenHelp(): void {
@@ -535,6 +551,7 @@ namespace HTML5AudioPlayer.Views {
             courseView._assessment.on(Events.EVENT_ASSESSMENT_CLOSE, courseView.assessmentClose, courseView);
             courseView._assessment.show();
             courseView._assessment.checkAssessmentComplete();
+            courseView._assessment.once(Events.EVENT_ASSESSMENT_EXIT, courseView.onCourseExitLink, courseView);
             //courseView._player.pause();
             if (!courseView._player.paused()) {
                 courseView._player.pause();

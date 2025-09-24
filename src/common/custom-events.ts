@@ -9,6 +9,7 @@ namespace HTML5AudioPlayer.Events {
     export let EVENT_CUEPOINT_HIT: string = "cuepoint-hit";
     export let EVENT_KC_SHOWN: string = "KC_SHOWN";
     export let EVENT_ASSESSMENT_COMPLETE: string = "ASSESSMENT_COMPLETE";
+    export let EVENT_ASSESSMENT_EXIT: string = "EVENT_ASSESSMENT_EXIT";
     export let EVENT_ASSESSMENT_STATUS: string = "ASSESSMENT_STATUS";
     export let EVENT_ASSESSMENT_CLOSE: string = "ASSESSMENT_CLOSE";
     export let EVENT_KC_COMPLETE: string = "KC_COMPLETE";

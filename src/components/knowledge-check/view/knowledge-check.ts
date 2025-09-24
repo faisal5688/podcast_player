@@ -362,7 +362,7 @@ namespace HTML5AudioPlayer.Components.Views {
         public reset(): void {
             let knowledgeCheckView: KnowledgeCheck = this,
                 knowledgeCheckModel: Models.KnowledgeCheck = knowledgeCheckView.model;
-            Utilities.consoleTrace("Reset current KC");
+            //Utilities.consoleTrace("Reset current KC");
 
             knowledgeCheckView.$('input[name=kc-option]').prop("checked", false)
                 .removeClass("correct incorrect");

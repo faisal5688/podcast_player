@@ -212,7 +212,7 @@ namespace HTML5AudioPlayer.Components.Views {
             playlistView.enable();
             setTimeout(function () {
                 playlistView._playlistItems[curEl].$el.trigger("click")
-               // playlistView.trigger(Events.EVENT_SELECTION_CHANGE, playlistModel.CurrentItem);
+                // playlistView.trigger(Events.EVENT_SELECTION_CHANGE, playlistModel.CurrentItem);
                 //playlistView.trigger(Events.EVENT_CREATEWAVEFORM);
                 setTimeout(function () {
                     playlistView.trigger(Events.EVENT_SELECTION_CHANGE, playlistModel.CurrentItem);
@@ -363,6 +363,9 @@ namespace HTML5AudioPlayer.Components.Views {
 
             if (item.IsAssessment) {
                 playlistView.trigger(Events.EVENT_LAUNCH_ASSESSMNET);
+                try {
+                    playlistModel.isKClistComplete()
+                } catch (error) {}
                 return;
             }
 

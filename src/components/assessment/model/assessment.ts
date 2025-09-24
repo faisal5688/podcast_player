@@ -177,7 +177,7 @@ namespace HTML5AudioPlayer.Components.Models {
                 if (model.RandomQuesNum.indexOf(r) === -1) model.RandomQuesNum.push(r);
             }
 
-            Utilities.consoleLog("model.RandomQuesNum ", model.RandomQuesNum);
+            //Utilities.consoleLog("model.RandomQuesNum ", model.RandomQuesNum);
         }
 
 
