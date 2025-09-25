@@ -36,8 +36,8 @@ namespace HTML5AudioPlayer.Components.Views {
         public render() {
             let playlistItemView = this,
                 playlistItemModel: Models.PlaylistItem = this.model;
-            console.log("playlistItemModel")
-            console.log(playlistItemModel);
+            //console.log("playlistItemModel")
+            //console.log(playlistItemModel);
 
             playlistItemView.$el.html(playlistItemView._template(playlistItemModel.toJSON()));
             // if (playlistItemModel.Current) {
@@ -78,7 +78,7 @@ namespace HTML5AudioPlayer.Components.Views {
             }
             playlistItemView.updateNextBack();
             if(playlistItemModel.id=="assessment"){
-                console.log("assessment hide me");
+                //console.log("assessment hide me");
                 playlistItemView.$el.find(".duration").hide();
             }
             //alert(playlistItemModel.Index);

@@ -320,12 +320,12 @@ namespace HTML5AudioPlayer.Components.Views {
             let audioPlayerView: AudioPlayer = this,
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
 
-            Utilities.consoleLog("Player Ready...");
+            //Utilities.consoleLog("Player Ready...");
 
             audioPlayerView.addScrubRestricter(audioPlayerView._myPlayer);
 
             audioPlayerView.addButtonsToPlayer();
-            console.log("updateTexttrack 1");
+            //console.log("updateTexttrack 1");
             audioPlayerView.updateTexttrack();
             audioPlayerView.loadCaptions(audioPlayerModel.Subtitle); // Replace 'captions.vtt' with your VTT file path
 

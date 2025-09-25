@@ -94,9 +94,9 @@ namespace HTML5AudioPlayer.Components.Models {
             if (!model.CurrentItem) {
                 model.setAudioByID(model.PlaylistItems[0].Id);
             }
-            console.log("Playlist options")
-            console.log(options)
-            console.log(options.kcdata)
+            //console.log("Playlist options")
+            //console.log(options)
+            //console.log(options.kcdata)
             //alert("model.KnowledgeChecks")
            // alert(kcdata)
             for (let i: number = 0; i < kcdata.length; i++) {

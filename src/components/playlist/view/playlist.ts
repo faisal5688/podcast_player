@@ -258,7 +258,7 @@ namespace HTML5AudioPlayer.Components.Views {
 
                 audio.addEventListener('loadedmetadata', () => {
                     durations[index] = audio.duration;
-                    console.log(`Metadata Loaded: ${track.Title}, Duration: ${audio.duration.toFixed(2)}s`);
+                    ////console.log(`Metadata Loaded: ${track.Title}, Duration: ${audio.duration.toFixed(2)}s`);
 
                     loadedCount++;
                     this.checkIfAllLoaded(player, playlist, durations, loadedCount);
@@ -285,7 +285,7 @@ namespace HTML5AudioPlayer.Components.Views {
         }
 
         public formatTime(seconds: number): string {
-            //console.log("************* formatTime ********************")
+            ////console.log("************* formatTime ********************")
             const minutes = Math.floor(seconds / 60);
             const sec = Math.floor(seconds % 60);
             return minutes + ':' + (sec < 10 ? '0' : '') + sec;
@@ -435,7 +435,7 @@ namespace HTML5AudioPlayer.Components.Views {
         }
 
         onoffAudio(): void {
-            console.log("onoffAudio")
+            //console.log("onoffAudio")
             let playlistView: Playlist = this;
             playlistView.trigger(Events.EVENT_ITEM_ONOFFAUDIO);
 
@@ -488,26 +488,26 @@ namespace HTML5AudioPlayer.Components.Views {
 
         togglePlayPause(): void {
             // e.stopPropagation();
-            console.log("togglePlayPause")
+            //console.log("togglePlayPause")
             let playlistView: Playlist = this;
             playlistView.trigger(Events.EVENT_ITEM_TOGGLE);
         }
 
         refreshAudio(): void {
-            console.log("refreshAudio")
+            //console.log("refreshAudio")
             let playlistView: Playlist = this;
             playlistView.trigger(Events.EVENT_ITEM_REFRESH);
 
         }
 
         ccAudio(): void {
-            console.log("ccAudio")
+            //console.log("ccAudio")
             let playlistView: Playlist = this;
             playlistView.trigger(Events.EVENT_ITEM_CC);
 
         }
         transcriptAudio(): void {
-            console.log("transcriptAudio")
+            //console.log("transcriptAudio")
             let playlistView: Playlist = this;
             playlistView.trigger(Events.EVENT_ITEM_TRANSCRIPT);
 
@@ -519,7 +519,7 @@ namespace HTML5AudioPlayer.Components.Views {
 
         }
         nextAudio(): void {
-            console.log("transcriptAudio")
+            //console.log("transcriptAudio")
             let playlistView: Playlist = this;
             playlistView.trigger(Events.EVENT_ITEM_NEXTAUDIO);
 
@@ -527,7 +527,7 @@ namespace HTML5AudioPlayer.Components.Views {
 
 
         seekAudio(time: any): void {
-            console.log("seekAudio")
+            //console.log("seekAudio")
             let playlistView: Playlist = this,
                 playlistModel: Models.Playlist = playlistView.model,
                 playlistContainer: JQuery = playlistView.$el.parent();
@@ -538,7 +538,7 @@ namespace HTML5AudioPlayer.Components.Views {
         }
 
         speedListAudio(): void {
-            console.log("speedListAudio")
+            //console.log("speedListAudio")
             let playlistView: Playlist = this,
                 playlistModel: Models.Playlist = playlistView.model,
                 playlistContainer: JQuery = playlistView.$el.parent();
@@ -549,7 +549,7 @@ namespace HTML5AudioPlayer.Components.Views {
         }
 
         speedClickAudio(): void {
-            console.log("speedClickAudio")
+            //console.log("speedClickAudio")
             let playlistView: Playlist = this,
                 playlistModel: Models.Playlist = playlistView.model,
                 playlistContainer: JQuery = playlistView.$el.parent();
