@@ -84,7 +84,7 @@ namespace HTML5AudioPlayer.Models {
 
         get Help(): DataStructures.HelpData { return this.get("help"); }
 
-        get Copyright():DataStructures.CopyrightData { return this.get("copyright"); }
+        get Copyright(): DataStructures.CopyrightData { return this.get("copyright"); }
 
         get Speakers(): DataStructures.Speakers { return this.get("speakers"); }
 
@@ -152,7 +152,7 @@ namespace HTML5AudioPlayer.Models {
             model.PlayerData.passingPercent = options.assessmentData ? options.assessmentData.passingPercent : 0;
             model.PlayerData.speakers = options.speakers;
 
-            model.PlayerModel = new Components.Models.AudioPlayer(model.PlayerData,model.KnowledgecheckItemData.knowledgechecksdata);
+            model.PlayerModel = new Components.Models.AudioPlayer(model.PlayerData, model.KnowledgecheckItemData.knowledgechecksdata);
             model.PlayerModel.on(Events.EVENT_SAVE_COURSE_DATA, model.onSendDataToScorm, model);
             model.PlayerModel.once(Events.EVENT_MARK_COURSE_COMPLETE, model.onMarkCourseComplete, model);
             //model.PlayerModel.once(Events.EVENT_LAUNCH_FEEDBACK, options.onLaunchFeedback);
@@ -257,7 +257,7 @@ namespace HTML5AudioPlayer.Models {
             model.CourseComplete = true;
             if (this._courseView) {
                 //alert()
-                if(!model.ScormPreviousData.feedback){
+                if (!model.ScormPreviousData.feedback) {
 
                     this._courseView.onLaunchFeedback();
                 }
@@ -381,9 +381,11 @@ namespace HTML5AudioPlayer.Models {
             let model: Course = this;
             if (model.scorm.CurrentSCORM.Name === Utilities.ScormWrapper.CONSTANTS.SCORM12.Name) {
                 model.scorm.exit(model.CourseComplete ? model.scorm.CurrentSCORM.DefaultValues.ExitLogout : model.scorm.CurrentSCORM.DefaultValues.ExitSuspend);
+                window.ADL.SCORM12.doLMSFinish()
             }
             if (model.scorm.CurrentSCORM.Name === Utilities.ScormWrapper.CONSTANTS.SCORM2004.Name) {
                 model.scorm.exit(model.scorm.CurrentSCORM.DefaultValues.ExitNormal);
+                window.ADL.SCORM2004.doTerminate()
             }
         }
     }
