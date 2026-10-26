@@ -216,7 +216,7 @@
             height: 100%;
 
             .playlist-inner {
-                height: calc(100% - 3em);
+                height: calc(100% - 6em);
                 // background: $colorWhite;
                 width: 45%;
                 margin-right: 15px;
@@ -228,6 +228,24 @@
                     padding-bottom: 5px;
                     margin-bottom: 10px;
                     border-bottom: 2px solid #CACACA;
+                }
+
+                .playlist-item.assessment {
+
+                    .item-index {
+                        display: none
+                    }
+
+                    .left-content {
+                        display: none;
+                    }
+
+                    .right-content {
+                        position: relative;
+                        padding: 20px 5px;
+                        width: 100%;
+                    }
+
                 }
 
                 .playlist-item {
@@ -536,7 +554,8 @@
                             color: $colorCobaltBlue;
                             color: #3250A3;
                             padding: 0px 10px 10px 0px;
-                            display: flex;                        ;
+                            display: flex;
+                            ;
                             justify-content: flex-end;
                             align-items: center;
                             flex-direction: row;
@@ -816,7 +835,7 @@
 
             .knowledge-check-list-inner {
                 width: 35%;
-                height: calc(100% - 3em);
+                height: calc(100% - 6em);
 
                 .knowledge-checklist-title {
                     font-size: $fontSizeStandard;
@@ -841,6 +860,503 @@
                     color: $colorGray20;
                     border-radius: 10px;
                     flex-wrap: wrap;
+
+
+                    .playlist-item.assessment {
+                        .item-index {
+                            display: none
+                        }
+
+                        .left-content {
+                            display: none;
+                        }
+
+                        .right-content {
+                            position: relative;
+                            padding: 20px 5px;
+                            width: 100%;
+                        }
+
+                    }
+
+                    .playlist-item {
+                        cursor: pointer;
+                        display: inline-flex;
+                        padding: 0px;
+                        margin-bottom: 15px;
+                        //width: calc(100% - 10px);
+                        width: calc(100% - 10px);
+                        height: auto;
+                        position: relative;
+                        background: $colorWhite;
+                        box-shadow: 0px 3px 6px #00000029;
+                        color: $colorGray20;
+                        border-radius: 10px;
+                        flex-wrap: wrap;
+                        box-sizing: border-box;
+
+                        &.enabled {
+                            // @include underlineFromLeft;
+                        }
+
+                        &.current {
+                            cursor: default !important;
+                            @include currentPlaylistItem;
+
+                            .left-content {
+                                width: 90px;
+                                height: 90px;
+                            }
+
+                        }
+
+                        &.hide {
+                            display: none;
+                        }
+
+                        &.disabled {
+                            cursor: default;
+                            color: $colorGray60;
+                            @include grayscale;
+                            @include chapterLockIcon;
+
+
+                            .right-content {
+                                .item-index {
+                                    color: $colorSacramentoGreen;
+                                }
+
+                                .item-title {
+                                    color: $colorSacramentoGreen;
+                                }
+                            }
+                        }
+
+                        .left-content {
+                            width: 90px;
+                            height: 62px;
+                            position: relative;
+                            border-radius: 6px;
+                            text-align: center;
+                            margin: 10px 0 15px 10px;
+                            overflow: hidden;
+                            @include linearBg;
+
+                            .vid-thumbnail {
+                                // width: 67px;
+                                // @include centerAlign;
+                            }
+
+                            .duration {
+                                @include videoDurationProperty;
+                            }
+
+                            .waveform {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                margin: 0px auto;
+                                position: absolute;
+                                width: 100%;
+                                height: calc(100% - 18px);
+                                top: 0;
+                                background: #0a0726;
+                                overflow: hidden;
+                                box-sizing: border-box;
+
+                                .bar {
+                                    width: 5px;
+                                    height: 20px;
+                                    margin: 0 1px;
+                                    // background-color: #fcecff;
+                                    @include linearBg;
+                                    transition: height 0.1s ease-in-out;
+                                }
+                            }
+                        }
+
+                        .right-content {
+                            width: calc(100% - 100px);
+                            position: relative;
+
+                            .item-complete {
+                                display: flex;
+                                justify-content: flex-end;
+                                align-items: center;
+                                position: absolute;
+                                right: 10px;
+                                top: 10px;
+
+                                .complete-status-text {
+                                    font-size: 14px;
+                                    color: $colorCobaltBlue;
+                                    font-style: italic;
+                                    padding-right: 10px;
+                                }
+
+                                .complete-status-icon {
+                                    @include itemCompletion;
+                                    margin-top: 4px;
+                                }
+                            }
+
+                            .item-inpogress {
+                                display: flex;
+                                justify-content: flex-end;
+                                align-items: center;
+                                position: absolute;
+                                right: 10px;
+                                top: 10px;
+
+                                .inpro-status-text {
+                                    font-size: 14px;
+                                    color: $colorCobaltBlue;
+                                    font-style: italic;
+                                    padding-right: 10px;
+                                }
+
+                                .inpro-status-icon {
+                                    @include itemInprogress;
+                                    margin-top: 4px;
+                                }
+                            }
+
+                            .item-index {
+                                @include ChapterNoFontStyle;
+                                padding: 10px 0 10px 0;
+                                font-weight: bold;
+                                color: $colorCobaltBlue;
+                            }
+
+                            .item-title {
+                                @include ChapterNameFontStyle;
+                                font-weight: bold;
+                                color: $colorCobaltBlue;
+                            }
+                        }
+
+                        .audio-player-container {
+                            display: none;
+                            // height: 40px;
+                            width: 100%;
+                            background: rgba($color: #00B8F5, $alpha: 0.1);
+                            position: relative;
+                            bottom: 0;
+                            height: 0px;
+                            // transition: 0 0.5s ease;
+
+                            &.showPlayer {
+                                display: block;
+                                height: auto;
+                                -webkit-animation: toAnimateDown 0.3s 1 ease-in;
+                                animation: toAnimateDown 0.3s 1 ease-in;
+                            }
+
+                            .controls {
+
+                                .track_inner_btn {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    width: 100%;
+                                    height: 50px;
+                                    padding-top: 2px;
+                                }
+
+                                .cc_text_main {
+                                    display: flex;
+                                    justify-content: center;
+                                    margin-bottom: 5px;
+
+                                    .cc_text_inner {
+                                        background: rgba($color: #000000, $alpha: 0.6);
+                                        padding: 1px 15px 2px 15px;
+                                        color: $colorWhite;
+                                        text-align: center;
+                                    }
+                                }
+
+                            }
+
+                            .transcript_btn {
+                                @include transcriptBtn;
+                                border: none;
+                                cursor: pointer;
+                                margin: 0 10px;
+                            }
+
+
+                            .refresh {
+                                @include refreshBtn;
+                                border: none;
+                                cursor: pointer;
+                                margin: 0 10px;
+                            }
+
+                            .back_chapt_btn {
+                                @include backChaptBtn;
+                                border: none;
+                                cursor: pointer;
+                                margin: 0 10px;
+
+                                &.chapt-enabled {
+                                    opacity: 1;
+                                }
+
+                                &.chapt-disabled {
+                                    opacity: 0.5;
+                                    cursor: default;
+                                }
+                            }
+
+                            .next_chapt_btn {
+                                @include nextChaptBtn;
+                                border: none;
+                                cursor: pointer;
+                                margin: 0 10px;
+
+                                &.chapt-enabled {
+                                    opacity: 1;
+                                }
+
+                                &.chapt-disabled {
+                                    opacity: 0.5;
+                                    cursor: default;
+                                }
+                            }
+
+                            .cc_text_btn {
+                                border: none;
+                                cursor: pointer;
+                                margin: 0 10px;
+
+                                &.captions-enabled {
+                                    @include ccTextEnableBtn;
+                                    //background: url(../resources/image/captions_icon.png) no-repeat 0 0;
+
+                                    opacity: 1;
+
+                                    &:hover {
+                                        opacity: 0.5;
+                                        //opacity: 1;
+                                        //background: url(../resources/image/captions_icon.png) no-repeat -40px 0;
+                                    }
+                                }
+
+                                &.captions-disabled {
+                                    @include ccTextDisableBtn;
+                                    //background: url(../resources/image/captions_icon.png) no-repeat -80px 0;
+
+                                    // opacity: 0.5;
+                                    &:hover {
+                                        opacity: 1;
+                                        //background: url(../resources/image/captions_icon.png) no-repeat -120px 0;
+                                    }
+                                }
+                            }
+
+                            .audio_on_off {
+                                cursor: pointer;
+                                margin: 0 10px;
+                                border: none;
+
+                                &.audio_on {
+                                    @include audioOnBtn;
+                                }
+
+                                &.audio_off {
+                                    @include audioOffBtn;
+                                }
+                            }
+
+                            .play-pause {
+                                margin: 0 10px;
+                                cursor: pointer;
+
+                                &.play {
+                                    @include playBtn;
+                                }
+
+                                &.pause {
+                                    @include pauseBtn;
+                                }
+                            }
+
+                            .play_pause_btn {
+                                color: $colorCobaltBlue;
+                                color: #3250A3;
+                                padding: 0px 10px 10px 0px;
+                                display: flex;
+                                ;
+                                justify-content: flex-end;
+                                align-items: center;
+                                flex-direction: row;
+                            }
+
+
+                            input[type="range"] {
+                                /* removing default appearance */
+                                -webkit-appearance: none;
+                                appearance: none;
+                                /* custom design */
+                                width: 100%;
+                                cursor: pointer;
+                                outline: none;
+                                /* increasing height to fit thumb better */
+                                height: 13px;
+                                /* Same height as the thumb */
+                                background: transparent;
+                                position: absolute;
+                                top: -11px;
+                                left: -2px;
+                                right: 0;
+                                border-radius: 10px;
+                                overflow: hidden;
+                            }
+
+                            /* Track: webkit browsers */
+                            input[type="range"]::-webkit-slider-runnable-track {
+                                height: 13px;
+                                /* Track height */
+                                background: #707070;
+                                background: rgba($color: #707070, $alpha: 0.3);
+                                border-radius: 1.5px;
+                                position: relative;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                /* Vertically center the track within the range */
+                            }
+
+                            /* Track: Mozilla Firefox */
+                            input[type="range"]::-moz-range-track {
+                                height: 13px;
+                                /* Track height */
+                                background: rgba($color: #707070, $alpha: 0.3);
+                                border-radius: 1.5px;
+                                position: relative;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                /* Vertically center the track */
+                            }
+
+                            /* Thumb: webkit */
+                            input[type="range"]::-webkit-slider-thumb {
+                                /* removing default appearance */
+                                -webkit-appearance: none;
+                                appearance: none;
+                                /* thumb design */
+                                height: 13px;
+                                width: 13px;
+                                /* box-shadow aligned with track and progress */
+                                box-shadow: -555px 0 0 545px #3B37E5;
+                                /* Adjust the range width dynamically */
+                                position: relative;
+                                border-radius: 100%;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                /* Center the thumb */
+                                z-index: 1;
+                                @include rangeThumb;
+                            }
+
+
+                            /* Thumb: Firefox */
+                            input[type="range"]::-moz-range-thumb {
+                                height: 13px;
+                                width: 13px;
+                                background-color: #fff;
+                                /* box-shadow aligned with track and progress */
+                                box-shadow: -555px 0 0 545px #3B37E5;
+                                /* Adjust the range width dynamically */
+                                position: relative;
+                                border-radius: 100%;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                /* Center the thumb */
+                                z-index: 1;
+                                @include rangeThumb;
+                            }
+
+
+
+
+
+                            .audio-player-template {
+                                .controls {
+                                    .bottomNav_audioSpeed {
+                                        position: relative;
+                                        display: inline-block;
+
+                                        .navigatorAudioSpeedBtn {
+                                            background: none;
+                                            color: #333333;
+                                            border: none;
+                                            padding: 0;
+                                            font: inherit;
+                                            cursor: pointer;
+                                            outline: inherit;
+                                            font-size: 16px;
+                                            width: 38px;
+                                            height: 38px;
+                                            text-align: center;
+
+                                        }
+
+                                        &.navigatorAudioSpeedBtn:hover {
+                                            background: #00b8f5;
+                                            border-radius: 5px;
+                                            height: 38px;
+                                            font-weight: bold;
+                                        }
+
+                                        &.navigatorAudioSpeedBtn.disabled {
+                                            cursor: default;
+                                        }
+
+                                        &.navigatorAudioSpeedBtn.disabled:hover {
+                                            background: none;
+                                            font-weight: normal;
+                                        }
+
+                                        .audioSpeedContent {
+                                            display: none;
+                                            position: absolute;
+                                            // background-color: #00338d;
+                                            color: blue;
+                                            min-width: 52px;
+                                            /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
+                                            z-index: 1;
+                                            bottom: 31px;
+                                            /* Position the dropdown content above the button */
+                                            left: -8px;
+                                            border: 1px solid $colorCobaltBlue;
+                                            background: $colorWhite;
+                                            border-radius: 10px;
+
+                                            a {
+                                                color: $colorBlack;
+                                                padding: 3px 5px;
+                                                text-decoration: none;
+                                                display: block;
+                                                text-align: center;
+                                                font-size: 12px;
+                                                background-color: $colorWhite;
+                                                border-radius: 10px;
+
+                                            }
+                                        }
+
+                                    }
+                                }
+                            }
+
+
+                        }
+
+
+
+
+                    }
 
                     &.enabled {
                         background: $colorBlue;
@@ -929,80 +1445,581 @@
 
 
                 }
-            }
 
-            .speaker-container{
-                width: 20%;
-                height: calc(100% - 3em);
-                margin-left: 15px;
-
-                    .speakers-title {
-                        font-size: $fontSizeStandard;
-                        color: $colorCobaltBlue;
-                        padding-bottom: 5px;
-                        margin-bottom: 10px;
-                        border-bottom: 2px solid #CACACA;
-                        font-family: "OpenSans-Bold";
+                //kc assessment
+                .playlist-item.assessment {
+                    .item-index {
+                        display: none
                     }
 
-                    .person{
-                        padding: 11px;
-                        border-radius: 4px;
-                        background-color: #fff;
-                        border: 1px solid;
-                        display: flex;
-                        margin-bottom: 10px;
-                        box-shadow: 0px 3px 6px #00000029;
-                        border: 1px solid #D9D9D9;
-                        border-radius: 10px;
-                        display: flex;
-                        justify-content: center;
+                    .left-content {
+                        display: none;
+                    }
 
-                        .photo{
-                            width: 80px;
+                    .right-content {
+                        position: relative;
+                        padding: 20px 5px;
+                        width: 100%;
+                    }
+
+                }
+
+                .playlist-item {
+                    cursor: pointer;
+                    display: inline-flex;
+                    padding: 0px;
+                    margin-bottom: 15px;
+                    width: calc(100% - 0px);
+                    height: auto;
+                    position: relative;
+                    background: $colorWhite;
+                    box-shadow: 0px 3px 6px #00000029;
+                    color: $colorGray20;
+                    border-radius: 10px;
+                    flex-wrap: wrap;
+                    box-sizing: border-box;
+
+                    &.enabled {
+                        // @include underlineFromLeft;
+                    }
+
+                    &.current {
+                        cursor: default !important;
+                        @include currentPlaylistItem;
+
+                        .left-content {
+                            width: 90px;
+                            height: 90px;
+                        }
+
+                    }
+
+                    &.hide {
+                        display: none;
+                    }
+
+                    &.disabled {
+                        cursor: default;
+                        color: $colorGray60;
+                        @include grayscale;
+                        @include chapterLockIcon;
+
+
+                        .right-content {
+                            .item-index {
+                                color: $colorSacramentoGreen;
+                            }
+
+                            .item-title {
+                                color: $colorSacramentoGreen;
+                            }
+                        }
+                    }
+
+                    .left-content {
+                        width: 90px;
+                        height: 62px;
+                        position: relative;
+                        border-radius: 6px;
+                        text-align: center;
+                        margin: 10px 0 15px 10px;
+                        overflow: hidden;
+                        @include linearBg;
+
+                        .vid-thumbnail {
+                            // width: 67px;
+                            // @include centerAlign;
+                        }
+
+                        .duration {
+                            @include videoDurationProperty;
+                        }
+
+                        .waveform {
                             display: flex;
-                            flex-direction: column;
-                            img{
+                            justify-content: center;
+                            align-items: center;
+                            margin: 0px auto;
+                            position: absolute;
+                            width: 100%;
+                            height: calc(100% - 18px);
+                            top: 0;
+                            background: #0a0726;
+                            overflow: hidden;
+                            box-sizing: border-box;
+
+                            .bar {
+                                width: 5px;
+                                height: 20px;
+                                margin: 0 1px;
+                                // background-color: #fcecff;
+                                @include linearBg;
+                                transition: height 0.1s ease-in-out;
+                            }
+                        }
+                    }
+
+                    .right-content {
+                        width: calc(100% - 100px);
+                        position: relative;
+
+                        .item-complete {
+                            display: flex;
+                            justify-content: flex-end;
+                            align-items: center;
+                            position: absolute;
+                            right: 10px;
+                            top: 10px;
+
+                            .complete-status-text {
+                                font-size: 14px;
+                                color: $colorCobaltBlue;
+                                font-style: italic;
+                                padding-right: 10px;
+                            }
+
+                            .complete-status-icon {
+                                @include itemCompletion;
+                                margin-top: 4px;
+                            }
+                        }
+
+                        .item-inpogress {
+                            display: flex;
+                            justify-content: flex-end;
+                            align-items: center;
+                            position: absolute;
+                            right: 10px;
+                            top: 10px;
+
+                            .inpro-status-text {
+                                font-size: 14px;
+                                color: $colorCobaltBlue;
+                                font-style: italic;
+                                padding-right: 10px;
+                            }
+
+                            .inpro-status-icon {
+                                @include itemInprogress;
+                                margin-top: 4px;
+                            }
+                        }
+
+                        .item-index {
+                            @include ChapterNoFontStyle;
+                            padding: 10px 0 10px 0;
+                            font-weight: bold;
+                            color: $colorCobaltBlue;
+                        }
+
+                        .item-title {
+                            @include ChapterNameFontStyle;
+                            font-weight: bold;
+                            color: $colorCobaltBlue;
+                        }
+                    }
+
+                    .audio-player-container {
+                        display: none;
+                        // height: 40px;
+                        width: 100%;
+                        background: rgba($color: #00B8F5, $alpha: 0.1);
+                        position: relative;
+                        bottom: 0;
+                        height: 0px;
+                        // transition: 0 0.5s ease;
+
+                        &.showPlayer {
+                            display: block;
+                            height: auto;
+                            -webkit-animation: toAnimateDown 0.3s 1 ease-in;
+                            animation: toAnimateDown 0.3s 1 ease-in;
+                        }
+
+                        .controls {
+
+                            .track_inner_btn {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                width: 100%;
+                                height: 50px;
+                                padding-top: 2px;
+                            }
+
+                            .cc_text_main {
+                                display: flex;
+                                justify-content: center;
+                                margin-bottom: 5px;
+
+                                .cc_text_inner {
+                                    background: rgba($color: #000000, $alpha: 0.6);
+                                    padding: 1px 15px 2px 15px;
+                                    color: $colorWhite;
+                                    text-align: center;
+                                }
+                            }
+
+                        }
+
+                        .transcript_btn {
+                            @include transcriptBtn;
+                            border: none;
+                            cursor: pointer;
+                            margin: 0 10px;
+                        }
+
+
+                        .refresh {
+                            @include refreshBtn;
+                            border: none;
+                            cursor: pointer;
+                            margin: 0 10px;
+                        }
+
+                        .back_chapt_btn {
+                            @include backChaptBtn;
+                            border: none;
+                            cursor: pointer;
+                            margin: 0 10px;
+
+                            &.chapt-enabled {
+                                opacity: 1;
+                            }
+
+                            &.chapt-disabled {
+                                opacity: 0.5;
+                                cursor: default;
+                            }
+                        }
+
+                        .next_chapt_btn {
+                            @include nextChaptBtn;
+                            border: none;
+                            cursor: pointer;
+                            margin: 0 10px;
+
+                            &.chapt-enabled {
+                                opacity: 1;
+                            }
+
+                            &.chapt-disabled {
+                                opacity: 0.5;
+                                cursor: default;
+                            }
+                        }
+
+                        .cc_text_btn {
+                            border: none;
+                            cursor: pointer;
+                            margin: 0 10px;
+
+                            &.captions-enabled {
+                                @include ccTextEnableBtn;
+                                //background: url(../resources/image/captions_icon.png) no-repeat 0 0;
+
+                                opacity: 1;
+
+                                &:hover {
+                                    opacity: 0.5;
+                                    //opacity: 1;
+                                    //background: url(../resources/image/captions_icon.png) no-repeat -40px 0;
+                                }
+                            }
+
+                            &.captions-disabled {
+                                @include ccTextDisableBtn;
+                                //background: url(../resources/image/captions_icon.png) no-repeat -80px 0;
+
+                                // opacity: 0.5;
+                                &:hover {
+                                    opacity: 1;
+                                    //background: url(../resources/image/captions_icon.png) no-repeat -120px 0;
+                                }
+                            }
+                        }
+
+                        .audio_on_off {
+                            cursor: pointer;
+                            margin: 0 10px;
+                            border: none;
+
+                            &.audio_on {
+                                @include audioOnBtn;
+                            }
+
+                            &.audio_off {
+                                @include audioOffBtn;
+                            }
+                        }
+
+                        .play-pause {
+                            margin: 0 10px;
+                            cursor: pointer;
+
+                            &.play {
+                                @include playBtn;
+                            }
+
+                            &.pause {
+                                @include pauseBtn;
+                            }
+                        }
+
+                        .play_pause_btn {
+                            color: $colorCobaltBlue;
+                            color: #3250A3;
+                            padding: 0px 10px 10px 0px;
+                            display: flex;
+                            ;
+                            justify-content: flex-end;
+                            align-items: center;
+                            flex-direction: row;
+                        }
+
+
+                        input[type="range"] {
+                            /* removing default appearance */
+                            -webkit-appearance: none;
+                            appearance: none;
+                            /* custom design */
+                            width: 100%;
+                            cursor: pointer;
+                            outline: none;
+                            /* increasing height to fit thumb better */
+                            height: 13px;
+                            /* Same height as the thumb */
+                            background: transparent;
+                            position: absolute;
+                            top: -11px;
+                            left: -2px;
+                            right: 0;
+                            border-radius: 10px;
+                            overflow: hidden;
+                        }
+
+                        /* Track: webkit browsers */
+                        input[type="range"]::-webkit-slider-runnable-track {
+                            height: 13px;
+                            /* Track height */
+                            background: #707070;
+                            background: rgba($color: #707070, $alpha: 0.3);
+                            border-radius: 1.5px;
+                            position: relative;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            /* Vertically center the track within the range */
+                        }
+
+                        /* Track: Mozilla Firefox */
+                        input[type="range"]::-moz-range-track {
+                            height: 13px;
+                            /* Track height */
+                            background: rgba($color: #707070, $alpha: 0.3);
+                            border-radius: 1.5px;
+                            position: relative;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            /* Vertically center the track */
+                        }
+
+                        /* Thumb: webkit */
+                        input[type="range"]::-webkit-slider-thumb {
+                            /* removing default appearance */
+                            -webkit-appearance: none;
+                            appearance: none;
+                            /* thumb design */
+                            height: 13px;
+                            width: 13px;
+                            /* box-shadow aligned with track and progress */
+                            box-shadow: -555px 0 0 545px #3B37E5;
+                            /* Adjust the range width dynamically */
+                            position: relative;
+                            border-radius: 100%;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            /* Center the thumb */
+                            z-index: 1;
+                            @include rangeThumb;
+                        }
+
+
+                        /* Thumb: Firefox */
+                        input[type="range"]::-moz-range-thumb {
+                            height: 13px;
+                            width: 13px;
+                            background-color: #fff;
+                            /* box-shadow aligned with track and progress */
+                            box-shadow: -555px 0 0 545px #3B37E5;
+                            /* Adjust the range width dynamically */
+                            position: relative;
+                            border-radius: 100%;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            /* Center the thumb */
+                            z-index: 1;
+                            @include rangeThumb;
+                        }
+
+
+
+
+
+                        .audio-player-template {
+                            .controls {
+                                .bottomNav_audioSpeed {
+                                    position: relative;
+                                    display: inline-block;
+
+                                    .navigatorAudioSpeedBtn {
+                                        background: none;
+                                        color: #333333;
+                                        border: none;
+                                        padding: 0;
+                                        font: inherit;
+                                        cursor: pointer;
+                                        outline: inherit;
+                                        font-size: 16px;
+                                        width: 38px;
+                                        height: 38px;
+                                        text-align: center;
+
+                                    }
+
+                                    &.navigatorAudioSpeedBtn:hover {
+                                        background: #00b8f5;
+                                        border-radius: 5px;
+                                        height: 38px;
+                                        font-weight: bold;
+                                    }
+
+                                    &.navigatorAudioSpeedBtn.disabled {
+                                        cursor: default;
+                                    }
+
+                                    &.navigatorAudioSpeedBtn.disabled:hover {
+                                        background: none;
+                                        font-weight: normal;
+                                    }
+
+                                    .audioSpeedContent {
+                                        display: none;
+                                        position: absolute;
+                                        // background-color: #00338d;
+                                        color: blue;
+                                        min-width: 52px;
+                                        /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
+                                        z-index: 1;
+                                        bottom: 31px;
+                                        /* Position the dropdown content above the button */
+                                        left: -8px;
+                                        border: 1px solid $colorCobaltBlue;
+                                        background: $colorWhite;
+                                        border-radius: 10px;
+
+                                        a {
+                                            color: $colorBlack;
+                                            padding: 3px 5px;
+                                            text-decoration: none;
+                                            display: block;
+                                            text-align: center;
+                                            font-size: 12px;
+                                            background-color: $colorWhite;
+                                            border-radius: 10px;
+
+                                        }
+                                    }
+
+                                }
+                            }
+                        }
+
+
+                    }
+
+
+
+
+                }
+
+
+            }
+
+            .speaker-container {
+                width: 20%;
+                height: calc(100% - 6em);
+                margin-left: 15px;
+
+                .speakers-title {
+                    font-size: $fontSizeStandard;
+                    color: $colorCobaltBlue;
+                    padding-bottom: 5px;
+                    margin-bottom: 10px;
+                    border-bottom: 2px solid #CACACA;
+                    font-family: "OpenSans-Bold";
+                }
+
+                .person {
+                    padding: 11px;
+                    border-radius: 4px;
+                    background-color: #fff;
+                    border: 1px solid;
+                    display: flex;
+                    margin-bottom: 10px;
+                    box-shadow: 0px 3px 6px #00000029;
+                    border: 1px solid #D9D9D9;
+                    border-radius: 10px;
+                    display: flex;
+                    justify-content: center;
+
+                    .photo {
+                        width: 80px;
+                        display: flex;
+                        flex-direction: column;
+
+                        img {
+                            width: 100%;
+                            height: auto;
+                        }
+                    }
+
+                    .info {
+                        width: calc(100% - 80px);
+                        padding-left: 10px;
+                        display: flex;
+                        height: 100%;
+                        display: flex;
+                        flex-direction: column;
+
+                        .name {
+                            font-family: "OpenSans-Bold";
+                            font-size: 16px;
+                            color: $colorCobaltBlue;
+                        }
+
+                        .post {
+                            font-size: 14px;
+                            line-height: 19px;
+                            color: $colorCobaltBlue;
+                            font-family: "OpenSans-Bold";
+                        }
+
+                        .linkdin {
+                            width: 22px;
+                            height: 22px;
+                            display: flex;
+                            justify-content: flex-end;
+                            align-items: baseline;
+                            flex-direction: column-reverse;
+                            margin-top: 1em;
+
+                            img {
                                 width: 100%;
                                 height: auto;
                             }
                         }
-
-                        .info{
-                            width: calc(100% - 80px);
-                            padding-left: 10px;
-                            display: flex;
-                            height: 100%;
-                            display: flex;
-                            flex-direction: column;
-
-                            .name{
-                                font-family: "OpenSans-Bold";
-                                font-size: 16px;
-                                color: $colorCobaltBlue;
-                            }
-                            .post{
-                                font-size: 14px;
-                                line-height: 19px;
-                                color: $colorCobaltBlue;
-                                font-family: "OpenSans-Bold";
-                            }
-                            .linkdin{
-                                width: 22px;
-                                height: 22px;
-                                display: flex;
-                                justify-content: flex-end;
-                                align-items: baseline;
-                                flex-direction: column-reverse;
-                                margin-top: 1em;
-
-                                img{
-                                    width: 100%;
-                                    height: auto;
-                                }
-                            }
-                        }
                     }
+                }
             }
         }
     }
@@ -1071,14 +2088,15 @@
                     height: auto;
                     margin-right: 0px;
 
-                    .playlist-item{
+                    .playlist-item {
                         width: 98.5%;
 
-                        .audio-player-container{
-                            .play-pause.play{
+                        .audio-player-container {
+                            .play-pause.play {
                                 background-size: contain;
                             }
-                            .play-pause.pause{
+
+                            .play-pause.pause {
                                 background-size: contain;
                             }
                         }
@@ -1190,6 +2208,7 @@
                     height: auto;
                     width: 100%;
                 }
+
                 .speaker-container {
                     height: auto;
                     width: 100%;
@@ -1386,23 +2405,28 @@
 }
 
 // Samsung Galaxy S22 CSS
-@media only screen and (min-width: 360px) and (min-height: 670px) and (orientation: portrait) and (min-device-pixel-ratio: 3){
-    .playlist-container{
-        .playlist{
+@media only screen and (min-width: 360px) and (min-height: 670px) and (orientation: portrait) and (min-device-pixel-ratio: 3) {
+    .playlist-container {
+        .playlist {
             .playlist-left-right {
-                .playlist-inner{
-                    .playlist-item{
+                .playlist-inner {
+                    .playlist-item {
                         width: calc(100% - 25px);
                     }
                 }
-                .knowledge-check-list-inner{
-                    .knowledge-check-item{
-                        width: calc(100% - 25px);
-                    }
-                }
-                .speaker-container{
 
-                    .person{
+                .knowledge-check-list-inner {
+                    .playlist-item {
+                        width: calc(100% - 15px);
+                    }
+                    .knowledge-check-item {
+                        width: calc(100% - 25px);
+                    }
+                }
+
+                .speaker-container {
+
+                    .person {
                         width: calc(100% - 25px);
                     }
                 }
@@ -1436,54 +2460,58 @@
         }
 
         .playlist {
-            .playlist-left-right{
+            .playlist-left-right {
                 overflow: hidden;
 
-            .playlist-inner {
-                width: 50% !important;
-                height: calc(100% - 2em) !important;
-                margin-right: 0 !important;
+                .playlist-inner {
+                    width: 50% !important;
+                    height: calc(100% - 2em) !important;
+                    margin-right: 0 !important;
 
-                .playlist-item {
-                    width: 100%;
+                    .playlist-item {
+                        width: 100%;
 
-                    &:nth-child(odd) {
-                        margin-right: 7px;
+                        &:nth-child(odd) {
+                            margin-right: 7px;
+                        }
                     }
                 }
-            }
-            .knowledge-check-list-inner{
-                width: 30% !important;
-                height: calc(100% - 2em) !important;
-            }
-            .speaker-container{
-                width: 20% !important;
-                height: calc(100% - 2em) !important;
-                .person {
-                    display: flex;
-                    justify-content: flex-start;
-                    flex-direction: column;
-                    align-items: flex-start;
 
+                .knowledge-check-list-inner {
+                    width: 30% !important;
+                    height: calc(100% - 2em) !important;
+                }
 
-                    .info{
-                        width: calc(100% - 0px);
+                .speaker-container {
+                    width: 20% !important;
+                    height: calc(100% - 2em) !important;
+
+                    .person {
                         display: flex;
-                        flex-direction: column;
                         justify-content: flex-start;
+                        flex-direction: column;
                         align-items: flex-start;
-                        padding-left: 0px;
 
-                        .name{
-                            font-size: 14px;
-                        }
-                        .post{
-                            font-size: 12px;
+
+                        .info {
+                            width: calc(100% - 0px);
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: flex-start;
+                            align-items: flex-start;
+                            padding-left: 0px;
+
+                            .name {
+                                font-size: 14px;
+                            }
+
+                            .post {
+                                font-size: 12px;
+                            }
                         }
                     }
                 }
             }
-        }
         }
     }
 }
@@ -1491,25 +2519,26 @@
 
 @media only screen and (max-height: 500px) and (orientation: landscape) {
     .playlist-container {
-            .playlist {
-                .playlist-left-right {
-                    margin-top: 1em;
+        .playlist {
+            .playlist-left-right {
+                margin-top: 1em;
 
-                    .playlist-inner {
-                        height: calc(100% - 10px);
-                        width: 100%;
-                    }
+                .playlist-inner {
+                    height: calc(100% - 20px);
+                    width: 100%;
+                }
 
-                    .knowledge-check-list-inner {
-                        height: calc(100% - 10px);
-                        width: 100%;
-                    }
-                    .speaker-container{
-                        height: calc(100% - 10px);
-                        width: 100%;
-                    }
+                .knowledge-check-list-inner {
+                    height: calc(100% - 20px);
+                    width: 100%;
+                }
+
+                .speaker-container {
+                    height: calc(100% - 20px);
+                    width: 100%;
                 }
             }
+        }
     }
 
 }
@@ -1519,15 +2548,17 @@
     .playlist-container {
         .playlist {
             .playlist-left-right {
-                .playlist-inner{
+                .playlist-inner {
                     width: 40%;
                     height: calc(100% - 9em);
                 }
-                .knowledge-check-list-inner{
+
+                .knowledge-check-list-inner {
                     width: 30%;
                     height: calc(100% - 9em);
                 }
-                .speaker-container{
+
+                .speaker-container {
                     width: 30%;
                     height: calc(100% - 9em);
                 }
@@ -1535,20 +2566,23 @@
         }
     }
 }
+
 /* iPad Pro 13 Portrait mode */
 @media only screen and (min-width: 1032px) and (max-height: 1302px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
     .playlist-container {
         .playlist {
             .playlist-left-right {
-                .playlist-inner{
+                .playlist-inner {
                     width: 40%;
                     height: calc(100% - 9em);
                 }
-                .knowledge-check-list-inner{
+
+                .knowledge-check-list-inner {
                     width: 30%;
                     height: calc(100% - 9em);
                 }
-                .speaker-container{
+
+                .speaker-container {
                     width: 30%;
                     height: calc(100% - 9em);
                 }
@@ -1562,17 +2596,19 @@
     .playlist-container {
         .playlist {
             .playlist-left-right {
-                .playlist-inner{
+                .playlist-inner {
                     width: 50%;
                 }
-                .knowledge-check-list-inner{
+
+                .knowledge-check-list-inner {
                     width: 30%;
                 }
-                .speaker-container{
+
+                .speaker-container {
                     width: 20%;
 
-                    .person{
-                        .info{
+                    .person {
+                        .info {
                             width: calc(100% - 0px);
                             padding-left: 10px;
                             display: flex;
@@ -1590,24 +2626,30 @@
 }
 
 // Samsung Galaxy Z Fold 5 v13.0 CSS
-@media only screen and (min-width: 340px) and (max-width: 500px){
-    .playlist-container{
-        .playlist{
+@media only screen and (min-width: 340px) and (max-width: 500px) {
+    .playlist-container {
+        .playlist {
             .playlist-left-right {
-                .playlist-inner{
+                .playlist-inner {
                     width: 97%;
-                    .playlist-item{
+
+                    .playlist-item {
                         width: calc(100% - 9px);
                     }
                 }
-                .knowledge-check-list-inner{
-                    .knowledge-check-item{
+
+                .knowledge-check-list-inner {
+                    .playlist-item {
+                        width: calc(100% - 15px);
+                    }
+                    .knowledge-check-item {
                         width: calc(100% - 25px);
                     }
                 }
-                .speaker-container{
 
-                    .person{
+                .speaker-container {
+
+                    .person {
                         width: calc(100% - 25px);
                     }
                 }

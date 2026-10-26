@@ -63,7 +63,26 @@ namespace HTML5AudioPlayer.DataStructures {
         progressTitle?: string;
         buttons?: ModalButton[];
         reportCategory?: string;
-        hasStarRating?:boolean;
+        hasStarRating?: boolean;
+    }
+
+
+
+    export interface PdfViewerOptions {
+        heading?: string;
+        content?: string;
+        hasclose?: boolean;
+        hasDownload?: boolean;   // <-- NEW
+        hasProgressbar?: boolean;
+        progressTitle?: string;
+        hasStarRating?: boolean;
+        buttons?: ModalButton[];
+
+        // PDF-specific
+        hasPdf?: boolean;
+        pdfUrl?: string;
+        pdfTitle?: string;
+        pdfScale?: number;   // <-- optional, default 1.5
     }
 
     export class VideoMessages {
@@ -73,6 +92,7 @@ namespace HTML5AudioPlayer.DataStructures {
         failTitle: string;
         failMessage: string;
         buttons: ModalButton[];
+
     }
 
     export class PlayerData {
@@ -81,8 +101,8 @@ namespace HTML5AudioPlayer.DataStructures {
         completiondelta: number;
         playlist: AudioData[];
         options: options[];
-        kcList : kcDate[];
-        titles:Titles[];
+        kcList: kcDate[];
+        titles: Titles[];
         //slides : Carousel;
         ScormPreviousData: any;
         coursemode: CourseMode;
@@ -90,10 +110,10 @@ namespace HTML5AudioPlayer.DataStructures {
         passingPercent: number;
         speakers: Speakers;
     }
-    export class KnowledgeChecks{
+    export class KnowledgeChecks {
         enabled?: boolean;
-        cuepointdelta:number;
-        knowledgechecksdata:KCData[];
+        cuepointdelta: number;
+        knowledgechecksdata: KCData[];
     }
     export class options {
         playbackRates: [];
@@ -102,7 +122,7 @@ namespace HTML5AudioPlayer.DataStructures {
     export class kcDate {
     }
 
-    export class Titles{
+    export class Titles {
         chapters: string;
         questions: string;
     }
@@ -126,8 +146,8 @@ namespace HTML5AudioPlayer.DataStructures {
         hiddenInPlaylist: boolean;
         quesDescription: string;
         microPolls: MicroPoll[];
-        numQuestions:number;
-        currentClicked:boolean;
+        numQuestions: number;
+        currentClicked: boolean;
     }
 
     export class kcListData {
@@ -143,7 +163,7 @@ namespace HTML5AudioPlayer.DataStructures {
         isAssessment: boolean;
         hiddenInPlaylist: boolean;
         quesDescription: string;
-        numQuestions:number;
+        numQuestions: number;
     }
 
     export class AudioScormData {
@@ -209,7 +229,7 @@ namespace HTML5AudioPlayer.DataStructures {
         audio: string;
         time: number;
         triggered: boolean;
-        visited:boolean;
+        visited: boolean;
         completed: boolean;
         complete: boolean;
     }
@@ -218,7 +238,7 @@ namespace HTML5AudioPlayer.DataStructures {
         id: string;
         audio: string;
         time: string;
-        title:string;
+        title: string;
         question: string;
         instruction: string;
         type: KCType;
@@ -233,8 +253,8 @@ namespace HTML5AudioPlayer.DataStructures {
         back: string;
         inputtype: string;
         usedattempts: number;
-        index:number;
-        total:number;
+        index: number;
+        total: number;
         Id: string;
         complete: boolean;
         disabled: boolean;
@@ -272,19 +292,19 @@ namespace HTML5AudioPlayer.DataStructures {
         tooltip: string;
         icon: string;
         url: string;
-        content:ModalDialogOptions;
+        content: ModalDialogOptions;
     }
 
-    export class Speakers{
-        title:string;
-        persons:Person;
+    export class Speakers {
+        title: string;
+        persons: Person;
     }
 
-    export class Person{
-        personImg:string;
-        personName:string;
-        designation:string;
-        linkdinUrl:string;
+    export class Person {
+        personImg: string;
+        personName: string;
+        designation: string;
+        linkdinUrl: string;
     }
 
     export class startPage {
@@ -298,7 +318,7 @@ namespace HTML5AudioPlayer.DataStructures {
         pageTitle: string;
         ResultText: string;
         ScoreText: string;
-        linkText:string;
+        linkText: string;
         PassText: PassText;
         FailText: FailText;
         AssessmentCloseText: string;
@@ -398,9 +418,9 @@ namespace HTML5AudioPlayer.DataStructures {
         answer: string;
     }
 
-    export class Carousel{
-		hasCarousel:boolean;
-        showcontrols:boolean;
+    export class Carousel {
+        hasCarousel: boolean;
+        showcontrols: boolean;
         slides: slideData[];
     }
     export class slideData {

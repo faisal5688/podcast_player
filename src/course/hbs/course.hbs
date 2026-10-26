@@ -8,13 +8,13 @@
         <div class="exit-button" title="Exit">EXIT</div>
     {{/if}}
     {{#if HideGlossaryBtn}} {{else}}
-        <div class="glossary-button">
+        <div class="glossary-button"  data-pdf-url="{{glossarypdf}}" data-title="{{GlossaryBtnText}}">
             <img src="resources/image/shell_glossary_icon.svg" alt="Glossary" title="Glossary" />
             <h4>{{{GlossaryBtnText}}}</h4>
         </div>
     {{/if}}
     {{#if ShowResourceBtn}}
-        <div class="resource-button">
+        <div class="resource-button" data-pdf-url="{{resourcepdf}}" data-title="{{ResourceBtnText}}">
             <img src="resources/image/shell_resources_icon.svg" alt="" title="Resources" />
             <h4>{{{ResourceBtnText}}}</h4>
         </div>
@@ -33,7 +33,7 @@
     {{#if help}}
         {{#if help.show}}
             {{!-- <div class="help-button" title="{{help.tooltip}}"><img src="{{help.icon}}" onload="SVGInject(this)" /></div> --}}
-            <div class="help-button">
+            <div class="help-button"  data-pdf-url="{{help.url}}" data-title="{{HelpBtnText}}">
                 <img src="resources/image/shell_help_icon.svg" alt=""  title="Help" />
                 <h4>{{{HelpBtnText}}}</h4>
             </div>

@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0">
+    <title>Podcast Audio Player</title>
+    <link rel="shortcut icon" type="image/png" href="resources/image/favicon.png" />
+
+    <link href="libs/video-js/video-js.min.css" rel="stylesheet" />
+    <link href="libs/custom-scrollbar/jquery.mCustomScrollbar.css" rel="stylesheet" />
+
+    <link href="css/app.css?cb=24" rel="stylesheet" />
+
+    <script src="libs/jQuery/jquery.min.js"></script>
+    <script src="libs/underscore/underscore.min.js"></script>
+    <script src="libs/backbone/backbone.min.js"></script>
+    <script src="libs/handlebars/handlebars.runtime.js"></script>
+    <script src="libs/video-js/video.min.js"></script>
+    <script src="libs/custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="libs/date.js"></script>
+    <script src="libs/svg-inject.min.js"></script>
+
+    <script src="app.js?cb=24"></script>
+    <script src="templates.js?cb=24"></script>
+
+    <script>
+        var HTML5AudioPlayer = HTML5AudioPlayer || {};
+        HTML5AudioPlayer.UNLOCK_AUDIOS = false;
+    </script>
+
+</head>
+
+<body>
+    <div id="visual-logs" class="visual-logs">
+        <button type="button" class="clear-logs">Clear All Logs</button>
+        <button type="button" class="close-logs">&times;</button>
+        <div class="logs-text selectable"></div>
+    </div>
+    <div class="loader">
+        <div class="center">Loading...</div>
+    </div>
+    <div id="app"></div>
+    <div id="knowledge-check-container"></div>
+    <div id="assessment-container"></div>
+    <div id="survey-container"></div>
+    <div class="appversion"></div>
+</body>
+
+</html>

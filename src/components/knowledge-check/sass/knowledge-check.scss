@@ -154,7 +154,7 @@
                         }
 
                         .question-text {
-                            padding-right: 1%;
+                            padding-right: 10%;
                             width: 100%;
                             box-sizing: border-box;
                             font-size: $fontSizeStandard;
@@ -169,7 +169,7 @@
 
                     .question-data {
                         padding-left: 20px;
-                        padding-right: 1%;
+                        padding-right: 10%;
                         width: 100%;
                         box-sizing: border-box;
 
@@ -557,7 +557,12 @@
 // mobile Landscape
 @media only screen and (min-width: 1px) and (max-width: 767px) and (orientation: landscape) {
     .knowledge-check-container {
+        .feedback-container {
+            .feedback {
+                width: calc(75% - 60px);
 
+        }
+    }
         .knowledge-check {
 
             .mCSB_container {
@@ -601,7 +606,12 @@
 @media only screen and (max-width: 1024px) and (orientation: landscape) {
     .knowledge-check-container {
 
+        .feedback-container {
+            .feedback {
+                width: calc(75% - 60px)!important;
 
+        }
+    }
         .knowledge-check {
             .question-container {
                 .index {
@@ -616,6 +626,7 @@
 
             .question-data {
                 padding-left: 10%;
+                padding-right: 10%;
             }
         }
 
@@ -644,6 +655,7 @@
 
             .question-data {
                 padding-left: 10%;
+                padding-right: 10%;
             }
         }
 

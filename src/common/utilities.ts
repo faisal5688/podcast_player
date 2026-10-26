@@ -42,6 +42,37 @@ namespace Utilities {
         return ios_devices;
     }
 
+    export function isMobile(): boolean {
+        // Touch capability
+        const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+        // Screen width – matches your mobile CSS breakpoint (max-width: 767px)
+        const isSmallScreen = window.matchMedia('(max-width: 767px)').matches;
+
+        // User agent fallback
+        const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera;
+        const mobileRegex = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini|mobile|silk|kindle/i;
+
+        // Consider it mobile if UA matches OR (touch + small screen)
+        return mobileRegex.test(userAgent) || (hasTouch && isSmallScreen);
+    }
+    export function onOrientationChange(callback: (orientation: string) => void): void {
+        const handler = () => {
+            // Debounce – some browsers fire multiple times
+            setTimeout(() => {
+                callback(readDeviceOrientation());
+            }, 150);
+        };
+
+        window.addEventListener("orientationchange", handler);
+
+        // Modern fallback: matchMedia fires more reliably than orientationchange
+        if (window.matchMedia) {
+            window.matchMedia("(orientation: portrait)").addEventListener("change", handler);
+            window.matchMedia("(orientation: landscape)").addEventListener("change", handler);
+        }
+    }
+
     export function isiOS() {
         let user_agent = navigator.userAgent.toLowerCase(),
             ios_devices = user_agent.match(/(iphone|ipod|ipad)/);

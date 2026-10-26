@@ -71,12 +71,12 @@ namespace HTML5AudioPlayer.Views {
         public events() {
             return {
                 'click .launch-button': 'onLaunchCourse',
-                'click .help-button': 'onOpenHelp', //onOpenHelp
+                'click .help-button': 'onViewPdfClicked', //onOpenHelp
                 'click .exit-button': 'onCourseExit',
                 'click .close-button': 'onClosePlaylist',
                 'click .index-button': 'onShowIndex',
-                'click .glossary-button': 'onShowGlossary',
-                'click .resource-button': 'onShowResource',
+                'click .glossary-button': 'onViewPdfClicked', //onShowGlossary
+                'click .resource-button': 'onViewPdfClicked', //onShowResource
                 'click .copyright-button': 'onOpenCopyright',
             }
         }
@@ -371,7 +371,7 @@ namespace HTML5AudioPlayer.Views {
         private onCourseExitLink(): void {
             let courseView: Course = this,
                 courseModel: Models.Course = courseView.model;
-                console.log("onCourseExitLink")
+            console.log("onCourseExitLink")
             try {
                 if (window.top)
                     window.top.close();
@@ -392,6 +392,7 @@ namespace HTML5AudioPlayer.Views {
                 let modal: Components.Models.ModalDialog = new Components.Models.ModalDialog({
                     "heading": courseModel.ExitPopup.heading,
                     "hasclose": false,
+
                     "hasProgressbar": false,
                     "content": courseModel.ExitPopup.content,
                     "buttons": courseModel.ExitPopup.buttons
@@ -483,6 +484,126 @@ namespace HTML5AudioPlayer.Views {
                 // }
             }
         }
+
+        private onViewPdfClicked(evt: Event): void {
+            let $btn = $(evt.currentTarget);
+            let pdfUrl: string = $btn.attr("data-pdf-url");// || this.model.ResourcePDF;
+            let pdfTitle: string = $btn.attr("data-title");// || this.model.ResourcePDF;
+            // console.log($(evt.currentTarget))
+            // console.log("pdfUrl", pdfUrl)
+            // console.log("pdfTitle", pdfTitle)
+            let tempStrin: string = "resources/pdfs/resources.pdf";
+           // debugger;
+           this.onOpenPdfView(pdfTitle, pdfUrl);
+        }
+
+        public onOpenPdfView(pdfTitle: string, pdfUrl: string): void {
+            let courseView: Course = this;
+
+            // Guard: no URL → nothing to open
+            if (!pdfUrl) {
+                return;
+            }
+
+            let pdfViewerModel: Components.Models.PdfViewer,
+                pdfViewerView: Components.Views.PdfViewer,
+                wasPlaying = false;
+
+            // ------------------------------------------------------------------
+            // 1. Build the PdfViewer model
+            // ------------------------------------------------------------------
+            pdfViewerModel = new Components.Models.PdfViewer(<DataStructures.PdfViewerOptions>{
+                heading: pdfTitle || "PDF Document",
+                hasclose: true,
+                hasPdf: true,
+                hasDownload:true,
+                pdfUrl: pdfUrl,
+                pdfTitle: pdfTitle || "PDF Document",
+                buttons: []            // add buttons here if needed
+            });
+
+            // ------------------------------------------------------------------
+            // 2. Build the PdfViewer view
+            // ------------------------------------------------------------------
+            pdfViewerView = new Components.Views.PdfViewer({
+                model: pdfViewerModel
+            });
+
+            // ------------------------------------------------------------------
+            // 3. Pause the player if it's currently playing
+            // ------------------------------------------------------------------
+            if (!courseView._player.paused()) {
+                courseView._player.pause();
+                $('.audio-player-template .play-pause')
+                    .text('Play')
+                    .addClass("play")
+                    .removeClass("pause");
+                wasPlaying = true;
+            }
+
+            // ------------------------------------------------------------------
+            // 4. Resume the player when the modal closes
+            // ------------------------------------------------------------------
+            pdfViewerView.once(Events.EVENT_MODAL_CLOSED, function (buttonID: string) {
+                if (buttonID === "download") {
+                    window.open(pdfUrl, "_blank");
+                    return;
+                }
+
+                if (wasPlaying) {
+                    courseView._player.play();
+                    $('.audio-player-template .play-pause')
+                        .text('Pause')
+                        .addClass("pause")
+                        .removeClass("play");
+                    wasPlaying = false;
+                }
+            });
+
+            // ------------------------------------------------------------------
+            // 5. Show the modal
+            // ------------------------------------------------------------------
+            pdfViewerView.showModal();
+        }
+
+        // private onOpenPdfView():void{
+        //     let courseView: Course = this,
+        //         courseModel: Models.Course = courseView.model;
+
+        //     if (courseModel.Copyright.content && courseModel.Copyright.content.heading) {
+        //         let modal: Components.Models.ModalDialog = new Components.Models.ModalDialog({
+        //             "heading": courseModel.Copyright.content.heading,
+        //             "hasclose": true,
+        //             "hasProgressbar": false,
+        //             "content": courseModel.Copyright.content.content,
+        //             "buttons": courseModel.Copyright.content.buttons
+        //         }),
+        //             modalView: Components.Views.ModalDialog = new Components.Views.ModalDialog({
+        //                 model: modal
+        //             }),
+        //             wasPlaying = false;
+
+        //         if (!courseView._player.paused()) {
+        //             courseView._player.pause();
+        //             $('.audio-player-template .play-pause').text('Play').addClass("play").removeClass("pause");
+        //             wasPlaying = true;
+        //         }
+
+        //         modalView.once(Events.EVENT_MODAL_CLOSED, function (buttonID: string) {
+        //             console.log("wasPlaying", buttonID)
+        //             if (wasPlaying) {
+        //                 courseView._player.play();
+        //                 $('.audio-player-template .play-pause').text('Pause').addClass("pause").removeClass("play");
+        //                 wasPlaying = false;
+        //             }
+        //         });
+
+        //         modalView.showModal();
+        //     }
+        //     else if (courseModel.Copyright) {
+        //         Utilities.openPdf(this.model.Copyright.url);
+        //     }
+        // }
 
         private onOpenCopyright(): void {
             let courseView: Course = this,

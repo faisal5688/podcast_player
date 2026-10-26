@@ -1,0 +1,58 @@
+<div class="pdf-viewer vertical-middle{{#if heading}}{{else}} no-header{{/if}}{{#if hasPdf}} has-pdf{{/if}}">
+    {{#if heading}}
+        <div class="modal-header">
+            <span class="modal-title">{{{heading}}}</span>
+            <div class="header-actions">
+                {{#if hasDownload}}
+                    <button type="button" class="download download-pdf" title="Download PDF" aria-label="Download PDF"></button>
+                {{/if}}
+                {{#if hasclose}}
+                    <button type="button" class="close close-modal" data-id="close">&times;</button>
+                {{/if}}
+            </div>
+        </div>
+        <div class="modal-body">
+    {{else}}
+        <div class="modal-body no-header">
+    {{/if}}
+
+    {{#if hasPdf}}
+        <div class="pdf-container">
+            <div class="pdf-loader" aria-hidden="true">
+                <div class="spinner"></div>
+                <span class="loader-text">Loading PDF…</span>
+            </div>
+            <div class="pdfjs-viewer"
+                 data-pdf-url="{{pdfUrl}}"
+                 data-pdf-title="{{pdfTitle}}">
+            </div>
+        </div>
+    {{else}}
+        {{#if hasProgressbar}}
+            <div class="progress">
+                <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="0" style="width: 0%"></div>
+                <div class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar" aria-valuenow="0" style="width: 0%"></div>
+            </div>
+            <div class="progress-text">
+                <span class="progress-text-title">{{progressTitle}}</span>
+                <span class="progress-text-content"></span>
+            </div>
+        {{else}}
+            <p>{{{content}}}</p>
+            {{#if hasStarRating}}
+                <div class="inst">Click on a star to rate this podcast.</div>
+                <div class="star-container">
+                    <div class="star-rating">
+                        <span class="star" data-value="1">&#9733;</span>
+                        <span class="star" data-value="2">&#9733;</span>
+                        <span class="star" data-value="3">&#9733;</span>
+                        <span class="star" data-value="4">&#9733;</span>
+                        <span class="star" data-value="5">&#9733;</span>
+                    </div>
+                    <div class="rating-text"></div>
+                </div>
+            {{/if}}
+        {{/if}}
+    {{/if}}
+    </div>
+</div>

@@ -290,7 +290,13 @@
 @media only screen and (min-width: 320px) and (max-width: 767px) {
     .audio-player {
         height: 1900px;
-        overflow: hidden;
+        overflow: scroll;
+
+        // height: calc(100% - 1em);
+        // overflow: scroll;
+
+        // height: calc(100% -1em);
+        // overflow: auto;
 
         .player-container {
             width: 100%;

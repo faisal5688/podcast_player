@@ -10,6 +10,12 @@ namespace HTML5AudioPlayer.Components.Views {
         private _playlistItems: PlaylistItem[];
         private _knowledgeCheckItems: KnowledgeCheckItem[];
 
+        // <<< ADDED: orientation-change state flags
+        private _orientationBound: boolean = false;
+        private _lastOrientation: string;
+        private _isRendered: boolean = false;
+        // <<< END ADDED
+
         constructor(options: Backbone.ViewOptions<Models.Playlist>) {
             super(options);
 
@@ -84,7 +90,60 @@ namespace HTML5AudioPlayer.Components.Views {
                 playlistView._knowledgeCheckItems.push(KnowledgeCheckItemsView);
                 KnowledgeCheckItemsView.on(Events.EVENT_KCITEM_CLICKED, playlistView.onKcItemClicked, playlistView);
             }
+
+            // <<< ADDED: bind orientation listener exactly once (was previously inside render())
+            playlistView.bindOrientationChange();
+            // <<< END ADDED
         }
+
+        // <<< ADDED: register the orientation listener only once
+        private bindOrientationChange(): void {
+            let playlistView: Playlist = this;
+
+            if (playlistView._orientationBound) { return; }
+            playlistView._orientationBound = true;
+
+            Utilities.onOrientationChange((orientation: string) => {
+                Utilities.consoleLog("Orientation changed to: " + orientation);
+
+                if (!Utilities.isMobile()) { return; }
+                if (playlistView._lastOrientation === orientation) { return; }
+                playlistView._lastOrientation = orientation;
+
+                // Defer so the browser has finished reflowing the viewport
+                _.defer(() => {
+                    if (!playlistView._isRendered) { return; }
+                    playlistView.reflowForOrientation(orientation);
+                });
+            });
+        }
+
+        // <<< ADDED: minimal DOM re-layout instead of full re-render
+        // (keeps video.js instance / waveforms / handlers intact)
+        private reflowForOrientation(orientation: string): void {
+            let playlistView: Playlist = this;
+
+            // Only the assessment item changes container between orientations
+            let assessmentItem = _.find(
+                playlistView._playlistItems,
+                (i) => i.model.Id === "assessment"
+            );
+
+            if (assessmentItem) {
+                let $target: JQuery = (Utilities.isMobile() && orientation === "Portrait")
+                    ? playlistView.$(".knowledge-checklist-list")
+                    : playlistView.$(".playlist-list");
+
+                if (assessmentItem.$el.parent()[0] !== $target[0]) {
+                    $target.append(assessmentItem.$el);
+                }
+            }
+
+            // Refresh custom scrollbars after DOM moved
+            try { playlistView.$(".playlist-inner").mCustomScrollbar("update"); } catch (e) { }
+            try { playlistView.$(".knowledge-check-list-inner").mCustomScrollbar("update"); } catch (e) { }
+        }
+        // <<< END ADDED
 
         public events(): Backbone.EventsHash {
             return {
@@ -109,9 +168,27 @@ namespace HTML5AudioPlayer.Components.Views {
 
             for (let i = 0; i < playlistView._playlistItems.length; i++) {
                 let playlistItem: PlaylistItem = playlistView._playlistItems[i];
+                //assessment
+                console.log("Utilities.isiPhone() --- " + Utilities.isiPhone())
+                console.log("isMobile --  " + Utilities.isMobile())
+                console.log("Utilities.readDeviceOrientation()" + Utilities.readDeviceOrientation())
+
+                // if (playlistItem.model.Id != "assessment") {
+                //     playlistInner.append(playlistItem.render().$el);
+                // }
+
 
                 playlistInner.append(playlistItem.render().$el);
             }
+
+            // <<< REMOVED: this block was adding a new listener on every render()
+            // Utilities.onOrientationChange((orientation) => {
+            //     Utilities.consoleLog("Orientation changed to: " + orientation);
+            //     if (Utilities.isMobile()) {
+            //         // re-init mobile layout / re-render playlist
+            //     }
+            // });
+            // <<< END REMOVED
 
 
             let KnowledgeCheckLisInner: JQuery = playlistView.$el.find(".knowledge-checklist-list");
@@ -120,6 +197,35 @@ namespace HTML5AudioPlayer.Components.Views {
 
                 KnowledgeCheckLisInner.append(knowledgeCheckItem.render().$el);
             }
+
+            for (let i = 0; i < playlistView._playlistItems.length; i++) {
+                let playlistItem: PlaylistItem = playlistView._playlistItems[i];
+                if (playlistItem.model.Id == "assessment") {
+                    playlistItem.$el.addClass("assessment");
+                    if (Utilities.isMobile() && Utilities.readDeviceOrientation() === "Portrait") {
+                        KnowledgeCheckLisInner.append(playlistItem.render().$el);
+                        setTimeout(function () {
+                            //$(".audio-player").height(1000)
+                            // $(".audio-player").css(
+                            //     "height",
+                            //     "calc(100% + " + $(".carousel-container").height() + "px)"
+                            // );
+                            // $(".audio-player").height(
+                            //     $(".audio-player").height()
+                            // );
+                            $(".audio-player").height(
+                                $(".playlist-container").height() + $(".carousel-container").height()
+                            );
+                        }, 50)
+                    } else {
+                        playlistInner.append(playlistItem.render().$el);
+                    }
+
+                }
+
+
+            }
+
 
             //alert("playlistModel.ScormPreviousData.cv "+playlistModel.ScormPreviousData.cv)
             console.log("model.supposedCurrentTime ")
@@ -146,6 +252,11 @@ namespace HTML5AudioPlayer.Components.Views {
             }
 
             //playlistView.onItemClicked(curEl);
+
+            // <<< ADDED: mark view as rendered and remember current orientation
+            playlistView._isRendered = true;
+            playlistView._lastOrientation = Utilities.readDeviceOrientation();
+            // <<< END ADDED
 
             return playlistView;
         }
@@ -245,7 +356,8 @@ namespace HTML5AudioPlayer.Components.Views {
             let loadedCount = 0;
 
             playlist.forEach((track, index) => {
-                if (!track.url) {
+                // <<< CHANGED: was `!track.url` (lowercase) — the property is `Url`
+                if (!track.Url) {
                     console.warn(`Track at index ${index} is missing a URL.`);
                     durations[index] = 0;
                     loadedCount++;
@@ -365,7 +477,7 @@ namespace HTML5AudioPlayer.Components.Views {
                 playlistView.trigger(Events.EVENT_LAUNCH_ASSESSMNET);
                 try {
                     playlistModel.isKClistComplete()
-                } catch (error) {}
+                } catch (error) { }
                 return;
             }
 

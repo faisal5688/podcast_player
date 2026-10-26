@@ -3,6 +3,7 @@
 /// <reference path="../../../common/utilities.ts" />
 
 /// <reference path="../../modal-dialog/view/modal-dialog.ts" />
+/// <reference path="../../pdf-viewer/view/pdf-viewer.ts" />
 /// <reference path="../model/audio-player.ts" />
 
 /// <reference path="../../carousel/model/carousel.ts" />
@@ -1466,7 +1467,9 @@ namespace HTML5AudioPlayer.Components.Views {
                 audioPlayerModel: Models.AudioPlayer = audioPlayerView.model;
 
             if (audioPlayerModel.Playlist.CurrentItem.Transcript) {
-                Utilities.openPdf(audioPlayerModel.Playlist.CurrentItem.Transcript);
+                //Utilities.openPdf(audioPlayerModel.Playlist.CurrentItem.Transcript);
+                //COURSE_VIEW.onOpenPdfView
+                COURSE_VIEW.onOpenPdfView("Transcript", audioPlayerModel.Playlist.CurrentItem.Transcript);
             }
         }
 
